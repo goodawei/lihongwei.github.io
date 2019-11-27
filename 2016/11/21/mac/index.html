@@ -8,13 +8,13 @@
   <link rel="dns-prefetch" href="http://blog.nicexiangcun.com">
   <title>mac 开发大杂烩 | 李宏伟&#39;blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content=":eyes: mac终端常用配置安装oh my zsh首先安装 iterm2  http:&#x2F;&#x2F;www.iterm2.com 然后进入 http:&#x2F;&#x2F;ohmyz.sh 根据以下文档安装 zshrc 1git clone git:&#x2F;&#x2F;github.com&#x2F;robbyrussell&#x2F;oh-my-zsh.git ~&#x2F;.oh-my-zsh23cp ~&#x2F;.oh-my-zsh&#x2F;templates&#x2F;zshrc.">
+  <meta name="description" content="👀 mac终端常用配置 ¶安装oh my zsh 首先安装 iterm2  http:&#x2F;&#x2F;www.iterm2.com 然后进入 http:&#x2F;&#x2F;ohmyz.sh 根据以下文档安装 zshrc 1git clone git:&#x2F;&#x2F;github.com&#x2F;robbyrussell&#x2F;oh-my-zsh.git ~&#x2F;.oh-my-zsh23cp ~&#x2F;.oh-my-zsh&#x2F;templates&#x2F;zshrc.z">
 <meta name="keywords" content="mac">
 <meta property="og:type" content="article">
 <meta property="og:title" content="mac 开发大杂烩">
 <meta property="og:url" content="http:&#x2F;&#x2F;blog.nicexiangcun.com&#x2F;2016&#x2F;11&#x2F;21&#x2F;mac&#x2F;index.html">
 <meta property="og:site_name" content="李宏伟&#39;blog">
-<meta property="og:description" content=":eyes: mac终端常用配置安装oh my zsh首先安装 iterm2  http:&#x2F;&#x2F;www.iterm2.com 然后进入 http:&#x2F;&#x2F;ohmyz.sh 根据以下文档安装 zshrc 1git clone git:&#x2F;&#x2F;github.com&#x2F;robbyrussell&#x2F;oh-my-zsh.git ~&#x2F;.oh-my-zsh23cp ~&#x2F;.oh-my-zsh&#x2F;templates&#x2F;zshrc.">
+<meta property="og:description" content="👀 mac终端常用配置 ¶安装oh my zsh 首先安装 iterm2  http:&#x2F;&#x2F;www.iterm2.com 然后进入 http:&#x2F;&#x2F;ohmyz.sh 根据以下文档安装 zshrc 1git clone git:&#x2F;&#x2F;github.com&#x2F;robbyrussell&#x2F;oh-my-zsh.git ~&#x2F;.oh-my-zsh23cp ~&#x2F;.oh-my-zsh&#x2F;templates&#x2F;zshrc.z">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http:&#x2F;&#x2F;o8979n2hu.bkt.clouddn.com&#x2F;iterm-theme.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;o8979n2hu.bkt.clouddn.com&#x2F;iterm2.png">
@@ -178,23 +178,25 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p><img src="http://o8979n2hu.bkt.clouddn.com/iterm-theme.png" alt="iterm2"></p>
-<h1 id="eyes-mac终端常用配置"><a href="#eyes-mac终端常用配置" class="headerlink" title=":eyes: mac终端常用配置"></a>:eyes: mac终端常用配置</h1><h3 id="安装oh-my-zsh"><a href="#安装oh-my-zsh" class="headerlink" title="安装oh my zsh"></a>安装oh my zsh</h3><p>首先安装 <code>iterm2</code>  <a href="http://www.iterm2.com" target="_blank" rel="noopener">http://www.iterm2.com</a></p>
+<h1>👀 mac终端常用配置</h1>
+<h3 id="安装oh-my-zsh"><a class="header-anchor" href="#安装oh-my-zsh">¶</a>安装oh my zsh</h3>
+<p>首先安装 <code>iterm2</code>  <a href="http://www.iterm2.com" target="_blank" rel="noopener">http://www.iterm2.com</a></p>
 <p>然后进入 <a href="http://ohmyz.sh" target="_blank" rel="noopener">http://ohmyz.sh</a> 根据以下文档安装 <code>zshrc</code></p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">git <span class="keyword">clone</span> git:<span class="comment">//github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc</span></pre></td></tr></table></figure>
 <p>配置</p>
 <p><code>zsh</code> 的配置主要集中在用户当前目录的<code>.zshrc</code>里，用 <code>vim</code> 或你喜欢的其他编辑器打开<code>.zshrc</code>：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">alias</span> cls=<span class="string">'clear'</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">alias</span> ll=<span class="string">'ls -l'</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">alias</span> la=<span class="string">'ls -a'</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">alias</span> vi=<span class="string">'vim'</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">alias</span> javac=<span class="string">"javac -J-Dfile.encoding=utf8"</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">alias</span> grep=<span class="string">"grep --color=auto"</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">alias</span> -s html=mate   <span class="comment"># 在命令行直接输入后缀为 html 的文件名，会在 TextMate 中打开</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">alias</span> -s rb=mate     <span class="comment"># 在命令行直接输入 ruby 文件，会在 TextMate 中打开</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">alias</span> -s py=vi       <span class="comment"># 在命令行直接输入 python 文件，会用 vim 中打开，以下类似</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">alias</span> -s js=vi</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">alias</span> -s c=vi</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">alias</span> -s java=vi</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">alias</span> -s txt=vi</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">alias</span> -s gz=<span class="string">'tar -xzvf'</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">alias</span> -s tgz=<span class="string">'tar -xzvf'</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">alias</span> -s zip=<span class="string">'unzip'</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">alias</span> -s bz2=<span class="string">'tar -xjvf'</span></span></pre></td></tr></table></figure>
-
 <a id="more"></a>
-
 <p>安装完成，终端输入<code>zsh</code>进入 zsh</p>
-<h3 id="安装-zsh-autosuggestions"><a href="#安装-zsh-autosuggestions" class="headerlink" title="安装 zsh-autosuggestions"></a>安装 <code>zsh-autosuggestions</code></h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">git <span class="keyword">clone</span> git:<span class="comment">//github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions</span></span></pre></td></tr></table></figure>
+<h3 id="安装-zsh-autosuggestions"><a class="header-anchor" href="#安装-zsh-autosuggestions">¶</a>安装 <code>zsh-autosuggestions</code></h3>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">git <span class="keyword">clone</span> git:<span class="comment">//github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions</span></span></pre></td></tr></table></figure>
 <p>在 <code>.zshrc</code> 添加：</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh</span></pre></td></tr></table></figure>
 <p>最后 <code>source ~/.zshrc</code></p>
 <p>更多 <code>oh my zsh</code> 配置参考：</p>
 <p><a href="https://zhuanlan.zhihu.com/p/19556676" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/19556676</a></p>
-<h3 id="iterm2-的配置"><a href="#iterm2-的配置" class="headerlink" title="iterm2 的配置"></a>iterm2 的配置</h3><p>zsh的主题 ： sudo vi ~/.zshrc  下的 ZSH_THEME=”cloud”</p>
+<h3 id="iterm2-的配置"><a class="header-anchor" href="#iterm2-的配置">¶</a>iterm2 的配置</h3>
+<p>zsh的主题 ： sudo vi ~/.zshrc  下的 ZSH_THEME=“cloud”</p>
 <p>iterm2的主题：</p>
 <p><a href="https://github.com/mbadolato/iTerm2-Color-Schemes" target="_blank" rel="noopener">https://github.com/mbadolato/iTerm2-Color-Schemes</a></p>
 <p><a href="https://draculatheme.com" target="_blank" rel="noopener">https://draculatheme.com</a>  , Dracula.itermcolors (非常不错哦)</p>
@@ -473,19 +475,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">api</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">yar</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">Yii</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">api</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">bug</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">Yii</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -501,11 +499,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">devops</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">bug</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">devops</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -513,15 +511,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">jenkins</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">webhook</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">webhook</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">jenkins</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -533,10 +535,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">mac</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">memcache</a>
               </li>
              
@@ -545,15 +543,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">mac</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">php</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">trait</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">sign</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -565,7 +559,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">sign</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">phpstrom</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">trait</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -577,15 +579,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">svn</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">sql</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">svn</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">swoole</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">字符串</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">协程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -594,14 +604,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">xdebug</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">协程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">字符串</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -8,13 +8,13 @@
   <link rel="dns-prefetch" href="http://blog.nicexiangcun.com">
   <title>大型网站技术篇之容量估算和负载的查看 | 李宏伟&#39;blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content=":writing_hand:大型网站具有的特点 海量数据（大数据） 高并发 大流量 高可用 7*24 小时不断服务, 五个9级别 (99.999) 频频迭代，需求多  :writing_hand:容量估算和负载查看容量：数据量，并发量，带宽，CPU 等 容量评估的简单步骤和方法：  评估总访问量，结合市场及运营活动等评估 评估平局访问量QPS 评估高峰QPS，一般是平均QPS的2倍 系统压测如用a">
+  <meta name="description" content="¶✍️大型网站具有的特点  海量数据（大数据） 高并发 大流量 高可用 7*24 小时不断服务, 五个9级别 (99.999) 频频迭代，需求多  ¶✍️容量估算和负载查看 容量：数据量，并发量，带宽，CPU 等 容量评估的简单步骤和方法：  评估总访问量，结合市场及运营活动等评估 评估平局访问量QPS 评估高峰QPS，一般是平均QPS的2倍 系统压测如用apache的 ab等，单机极限QPS，拿">
 <meta name="keywords" content="大型网站">
 <meta property="og:type" content="article">
 <meta property="og:title" content="大型网站技术篇之容量估算和负载的查看">
 <meta property="og:url" content="http:&#x2F;&#x2F;blog.nicexiangcun.com&#x2F;2017&#x2F;04&#x2F;09&#x2F;large-website&#x2F;index.html">
 <meta property="og:site_name" content="李宏伟&#39;blog">
-<meta property="og:description" content=":writing_hand:大型网站具有的特点 海量数据（大数据） 高并发 大流量 高可用 7*24 小时不断服务, 五个9级别 (99.999) 频频迭代，需求多  :writing_hand:容量估算和负载查看容量：数据量，并发量，带宽，CPU 等 容量评估的简单步骤和方法：  评估总访问量，结合市场及运营活动等评估 评估平局访问量QPS 评估高峰QPS，一般是平均QPS的2倍 系统压测如用a">
+<meta property="og:description" content="¶✍️大型网站具有的特点  海量数据（大数据） 高并发 大流量 高可用 7*24 小时不断服务, 五个9级别 (99.999) 频频迭代，需求多  ¶✍️容量估算和负载查看 容量：数据量，并发量，带宽，CPU 等 容量评估的简单步骤和方法：  评估总访问量，结合市场及运营活动等评估 评估平局访问量QPS 评估高峰QPS，一般是平均QPS的2倍 系统压测如用apache的 ab等，单机极限QPS，拿">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2019-11-27T12:11:01.037Z">
 <meta name="twitter:card" content="summary">
@@ -173,13 +173,15 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="writing-hand-大型网站具有的特点"><a href="#writing-hand-大型网站具有的特点" class="headerlink" title=":writing_hand:大型网站具有的特点"></a>:writing_hand:大型网站具有的特点</h3><ul>
+        <h3 id="✍-大型网站具有的特点"><a class="header-anchor" href="#✍-大型网站具有的特点">¶</a>✍️大型网站具有的特点</h3>
+<ul>
 <li>海量数据（大数据）</li>
 <li>高并发 大流量</li>
 <li>高可用 7*24 小时不断服务, 五个9级别 (99.999)</li>
 <li>频频迭代，需求多</li>
 </ul>
-<h3 id="writing-hand-容量估算和负载查看"><a href="#writing-hand-容量估算和负载查看" class="headerlink" title=":writing_hand:容量估算和负载查看"></a>:writing_hand:容量估算和负载查看</h3><p>容量：数据量，并发量，带宽，CPU 等</p>
+<h3 id="✍-容量估算和负载查看"><a class="header-anchor" href="#✍-容量估算和负载查看">¶</a>✍️容量估算和负载查看</h3>
+<p>容量：数据量，并发量，带宽，CPU 等</p>
 <p>容量评估的简单步骤和方法：</p>
 <ul>
 <li>评估总访问量，结合市场及运营活动等评估</li>
@@ -189,8 +191,8 @@
 <li>计算容量</li>
 </ul>
 <p>负载：系统的繁忙程度，即有多少进程等cpu调度</p>
-<p>top命令：过去1分钟，5分钟，10分钟的负载值 </p>
-<p>Load Avg: 1.61, 1.79, 1.64  CPU usage: 1.96% user, 1.96% sys, 96.6%  </p>
+<p>top命令：过去1分钟，5分钟，10分钟的负载值</p>
+<p>Load Avg: 1.61, 1.79, 1.64  CPU usage: 1.96% user, 1.96% sys, 96.6%</p>
 <p>Load 的警惕值 ： 以单核为例 Load &gt; 2 系统以相对繁忙 Load &gt; 5 系统崩溃边缘</p>
 <a id="more"></a>
       
@@ -437,19 +439,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">api</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">yar</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">Yii</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">api</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">bug</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">Yii</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -465,11 +463,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">devops</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">bug</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">devops</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -477,15 +475,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">jenkins</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">webhook</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">webhook</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">jenkins</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -497,10 +499,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">mac</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">memcache</a>
               </li>
              
@@ -509,15 +507,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">mac</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">php</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">trait</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">sign</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -529,7 +523,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">sign</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">phpstrom</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">trait</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -541,15 +543,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">svn</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">sql</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">svn</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">swoole</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">字符串</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">协程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -558,14 +568,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">xdebug</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">协程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">字符串</a>
               </li>
              
               <li class="article-tag-list-item">

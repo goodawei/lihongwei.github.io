@@ -8,13 +8,13 @@
   <link rel="dns-prefetch" href="http://blog.nicexiangcun.com">
   <title>designpatterns | 李宏伟&#39;blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="组合模式组合模式相关概念：依赖注入、控制反转 依赖注入概念：一个类如果想使用另一类中的某些方法或者属性，除了继承外，也可以使用组合，组合的含义是将继承或者在构造触发new的过程，提到类的外面去做，采用依赖注入的方式传递对象。（消除了依赖）降低代码耦合程度，提高项目的可维护性。">
+  <meta name="description" content="组合模式 组合模式相关概念：依赖注入、控制反转 ¶依赖注入概念： 一个类如果想使用另一类中的某些方法或者属性，除了继承外，也可以使用组合，组合的含义是将继承或者在构造触发new的过程，提到类的外面去做，采用依赖注入的方式传递对象。（消除了依赖）降低代码耦合程度，提高项目的可维护性。">
 <meta name="keywords" content="设计模式">
 <meta property="og:type" content="article">
 <meta property="og:title" content="designpatterns">
 <meta property="og:url" content="http:&#x2F;&#x2F;blog.nicexiangcun.com&#x2F;2016&#x2F;05&#x2F;22&#x2F;designpatterns&#x2F;index.html">
 <meta property="og:site_name" content="李宏伟&#39;blog">
-<meta property="og:description" content="组合模式组合模式相关概念：依赖注入、控制反转 依赖注入概念：一个类如果想使用另一类中的某些方法或者属性，除了继承外，也可以使用组合，组合的含义是将继承或者在构造触发new的过程，提到类的外面去做，采用依赖注入的方式传递对象。（消除了依赖）降低代码耦合程度，提高项目的可维护性。">
+<meta property="og:description" content="组合模式 组合模式相关概念：依赖注入、控制反转 ¶依赖注入概念： 一个类如果想使用另一类中的某些方法或者属性，除了继承外，也可以使用组合，组合的含义是将继承或者在构造触发new的过程，提到类的外面去做，采用依赖注入的方式传递对象。（消除了依赖）降低代码耦合程度，提高项目的可维护性。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2019-11-27T12:11:01.032Z">
 <meta name="twitter:card" content="summary">
@@ -173,18 +173,24 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="组合模式"><a href="#组合模式" class="headerlink" title="组合模式"></a>组合模式</h1><p>组合模式相关概念：依赖注入、控制反转</p>
-<h3 id="依赖注入概念："><a href="#依赖注入概念：" class="headerlink" title="依赖注入概念："></a>依赖注入概念：</h3><p>一个类如果想使用另一类中的某些方法或者属性，除了继承外，也可以使用组合，组合的含义是将继承或者在构造触发new的过程，提到类的外面去做，采用依赖注入的方式传递对象。（消除了依赖）降低代码耦合程度，提高项目的可维护性。</p>
+        <h1>组合模式</h1>
+<p>组合模式相关概念：依赖注入、控制反转</p>
+<h3 id="依赖注入概念："><a class="header-anchor" href="#依赖注入概念：">¶</a>依赖注入概念：</h3>
+<p>一个类如果想使用另一类中的某些方法或者属性，除了继承外，也可以使用组合，组合的含义是将继承或者在构造触发new的过程，提到类的外面去做，采用依赖注入的方式传递对象。（消除了依赖）降低代码耦合程度，提高项目的可维护性。</p>
 <a id="more"></a>
 <p>这种注入的缺陷在于：我们的业务层对依赖单元的实例化代码是一个重复、繁琐的过程。</p>
-<h3 id="控制反转概念："><a href="#控制反转概念：" class="headerlink" title="控制反转概念："></a>控制反转概念：</h3><p>将类（上层）,所依赖的单元（下层）的实例化过程交由第三方来实现。一个简单的特征，就是类中不对所依赖的单元有诸如 $component = new yii\component\SomeClass（） 的实例化语句。</p>
+<h3 id="控制反转概念："><a class="header-anchor" href="#控制反转概念：">¶</a>控制反转概念：</h3>
+<p>将类（上层）,所依赖的单元（下层）的实例化过程交由第三方来实现。一个简单的特征，就是类中不对所依赖的单元有诸如 $component = new yii\component\SomeClass（） 的实例化语句。</p>
 <p>Yii中为什么要使用DI，像上面所所说的，一个类如果想使用另一类中的某些方法或者属性，除了继承外，也可以使用组合，也就是DI模式，其本质现象就是，我访问我所依赖的单元对象中成员方法或者属性时就像访问本类一样。因为我已经通过DI将本类所依赖的单元注入到了本类中。</p>
-<h3 id="什么时候是有继承，什么时候使用接口"><a href="#什么时候是有继承，什么时候使用接口" class="headerlink" title="什么时候是有继承，什么时候使用接口"></a>什么时候是有继承，什么时候使用接口</h3><p>继承意味着公用，公用的含义：</p>
+<h3 id="什么时候是有继承-什么时候使用接口"><a class="header-anchor" href="#什么时候是有继承-什么时候使用接口">¶</a>什么时候是有继承，什么时候使用接口</h3>
+<p>继承意味着公用，公用的含义：</p>
 <p>一 公用的功能、逻辑，意味着具体的，可封装的</p>
 <p>二 公用的特性，但是表现不一样，意味着抽象，抽象类</p>
 <p>基于以上可以使用继承。</p>
 <p>接口，当某些实例拥有一部分区别于其他同类实例的特性，那么这些特性是不适合被这些类继承过来的，那么这些特性可以使用接口，只有适用这些特性的类来实现这个接口。</p>
-<h3 id="策略-和-多态"><a href="#策略-和-多态" class="headerlink" title="策略 和 多态"></a>策略 和 多态</h3><h3 id="工厂-和-抽象工厂"><a href="#工厂-和-抽象工厂" class="headerlink" title="工厂 和 抽象工厂"></a>工厂 和 抽象工厂</h3>
+<h3 id="策略-和-多态"><a class="header-anchor" href="#策略-和-多态">¶</a>策略 和 多态</h3>
+<h3 id="工厂-和-抽象工厂"><a class="header-anchor" href="#工厂-和-抽象工厂">¶</a>工厂 和 抽象工厂</h3>
+
       
 
       
@@ -440,19 +446,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">api</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">yar</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">Yii</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">api</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">bug</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">Yii</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -468,11 +470,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">devops</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">bug</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">devops</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -480,15 +482,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">jenkins</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">webhook</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">webhook</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">jenkins</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -500,10 +506,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">mac</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">memcache</a>
               </li>
              
@@ -512,15 +514,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">mac</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">php</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">trait</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">sign</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -532,7 +530,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">sign</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">phpstrom</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">trait</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -544,15 +550,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">svn</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">sql</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">svn</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">swoole</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">字符串</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">协程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -561,14 +575,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">xdebug</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">协程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">字符串</a>
               </li>
              
               <li class="article-tag-list-item">

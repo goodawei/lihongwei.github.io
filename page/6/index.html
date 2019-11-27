@@ -173,10 +173,17 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="RESTful-API-设计"><a href="#RESTful-API-设计" class="headerlink" title="RESTful API 设计"></a>RESTful API 设计</h1><h3 id="协议"><a href="#协议" class="headerlink" title="协议"></a>协议</h3><p> <code>API</code>与用户的通信协议，<code>HTTPS/HTTP</code>。</p>
-<h3 id="域名"><a href="#域名" class="headerlink" title="域名"></a>域名</h3><p> <code>https://api.domain.com</code> 专用api域名<br> 或者<br> <code>https://domain.com/api/</code> 将api作为一个模块</p>
-<h3 id="版本（Versioning）"><a href="#版本（Versioning）" class="headerlink" title="版本（Versioning）"></a>版本（Versioning）</h3><p> <code>https://api.example.com/v1/</code> 将版本号体现在URL上</p>
-<h3 id="路径"><a href="#路径" class="headerlink" title="路径"></a>路径</h3><p>在RESTful架构中，每个网址代表一种资源（resource），所以网址中不能有动词，只能有名词，而且所用的名词往往与数据库的表格名对应。一般来说，数据库中的表都是同种记录的”集合”（collection），所以API中的名词也应该使用复数。</p>
+        <h1>RESTful API 设计</h1>
+<h3 id="协议"><a class="header-anchor" href="#协议">¶</a>协议</h3>
+<p><code>API</code>与用户的通信协议，<code>HTTPS/HTTP</code>。</p>
+<h3 id="域名"><a class="header-anchor" href="#域名">¶</a>域名</h3>
+<p><code>https://api.domain.com</code> 专用api域名<br>
+或者<br>
+<code>https://domain.com/api/</code> 将api作为一个模块</p>
+<h3 id="版本-versioning"><a class="header-anchor" href="#版本-versioning">¶</a>版本（Versioning）</h3>
+<p><code>https://api.example.com/v1/</code> 将版本号体现在URL上</p>
+<h3 id="路径"><a class="header-anchor" href="#路径">¶</a>路径</h3>
+<p>在RESTful架构中，每个网址代表一种资源（resource），所以网址中不能有动词，只能有名词，而且所用的名词往往与数据库的表格名对应。一般来说，数据库中的表都是同种记录的&quot;集合&quot;（collection），所以API中的名词也应该使用复数。</p>
 <p><code>https://api.example.com/v1/article</code></p>
         
           <a class="article-more-a" href="/2016/06/03/RESTful-API/#more">more >></a>
@@ -264,28 +271,41 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="design-step"><a href="#design-step" class="headerlink" title="design step"></a>design step</h3><ul>
-<li><p>确定领域边界，领域功能（所能暴露的接口功能） ， 领域模型</p>
+        <h3 id="design-step"><a class="header-anchor" href="#design-step">¶</a>design step</h3>
+<ul>
+<li>
+<p>确定领域边界，领域功能（所能暴露的接口功能） ， 领域模型</p>
 </li>
-<li><p>概要设计 api </p>
+<li>
+<p>概要设计 api</p>
 </li>
-<li><p>详细设计 API 输入 输出 </p>
+<li>
+<p>详细设计 API 输入 输出</p>
 </li>
-<li><p>coding 重要的业务画一画流程图</p>
+<li>
+<p>coding 重要的业务画一画流程图</p>
 </li>
 </ul>
-<h3 id="服务拆分"><a href="#服务拆分" class="headerlink" title="服务拆分"></a>服务拆分</h3><p>就现在的软件工程来说，都可以通过抽象来优雅的解决问题。</p>
+<h3 id="服务拆分"><a class="header-anchor" href="#服务拆分">¶</a>服务拆分</h3>
+<p>就现在的软件工程来说，都可以通过抽象来优雅的解决问题。</p>
 <p>重点：明确职责，关注点分离 。</p>
 <p>不要重复早轮子，你自己造的轮子是自己一个人拍着脑袋瓜造的，结对编程或者一个屋子就一台电脑几个人轮溜写代码，有足够多的眼睛，就可以让问题浮现。</p>
 <p>重要的业务场景一定要化流程图。结对编程。</p>
 <p>追求单个文件代码行数，还是文件个数，取决你是否 能够快速描述一段代码的流程</p>
 <p>服务拆分：代码按照业务 水平拆，结对编程 垂直拆，这里可能涉及到devpos 的反模式。</p>
-<h3 id="pass-云平台-part-component"><a href="#pass-云平台-part-component" class="headerlink" title="pass 云平台 part component"></a>pass 云平台 part component</h3><h3 id="Apigetway"><a href="#Apigetway" class="headerlink" title="Apigetway"></a>Apigetway</h3><h3 id="服务注册中心"><a href="#服务注册中心" class="headerlink" title="服务注册中心"></a>服务注册中心</h3><p>服务注册中心是服务发现的核心。它保存了各个可用服务实例的网络地址（IP Address和Port）。服务注册中心必须要有高可用性和实时更新功能。</p>
-<p>服务发现的核心是服务注册中心。服务注册中心保存了各个服务可用的实例的相关信息。服务注册中心提供了管理API和查询API。使用管理API进行服务注册、注销。系统的其他组件可以通过查询API来获得当前可用的服务实例信息。<br>有两种主要的服务发现方式：客户端发现（client-side service discovery）和服务端发现（ server-side discovery）。在使用客户端服务发现的方式中，客户通过查询服务注册中心，选择一个可用的服务实例。在使用服务器端发现系统中，客户访问Router/load balancer，通过Router/load balancer查询服务注册中心，并将请求转发到一个可用服务实例上。<br>服务注册和注销的方式也有两种。一种是服务自己主动的将自己注册到服务注册中心，称为self-registration。另一种是通过其他组件来处理服务的注册和注销，称为third-party registration。</p>
+<h3 id="pass-云平台-part-component"><a class="header-anchor" href="#pass-云平台-part-component">¶</a>pass 云平台 part component</h3>
+<h3 id="apigetway"><a class="header-anchor" href="#apigetway">¶</a>Apigetway</h3>
+<h3 id="服务注册中心"><a class="header-anchor" href="#服务注册中心">¶</a>服务注册中心</h3>
+<p>服务注册中心是服务发现的核心。它保存了各个可用服务实例的网络地址（IP Address和Port）。服务注册中心必须要有高可用性和实时更新功能。</p>
+<p>服务发现的核心是服务注册中心。服务注册中心保存了各个服务可用的实例的相关信息。服务注册中心提供了管理API和查询API。使用管理API进行服务注册、注销。系统的其他组件可以通过查询API来获得当前可用的服务实例信息。<br>
+有两种主要的服务发现方式：客户端发现（client-side service discovery）和服务端发现（ server-side discovery）。在使用客户端服务发现的方式中，客户通过查询服务注册中心，选择一个可用的服务实例。在使用服务器端发现系统中，客户访问Router/load balancer，通过Router/load balancer查询服务注册中心，并将请求转发到一个可用服务实例上。<br>
+服务注册和注销的方式也有两种。一种是服务自己主动的将自己注册到服务注册中心，称为self-registration。另一种是通过其他组件来处理服务的注册和注销，称为third-party registration。</p>
 <p>不同语言之间可以通过各种代理实现服务注册。</p>
-<h3 id="problem"><a href="#problem" class="headerlink" title="problem"></a>problem</h3><p>程序层级目录结构：尽量避免已程序层面建立目录 ， 应从业务角度组建目录结构，并且保证功能文件的高内聚低耦合 。</p>
+<h3 id="problem"><a class="header-anchor" href="#problem">¶</a>problem</h3>
+<p>程序层级目录结构：尽量避免已程序层面建立目录 ， 应从业务角度组建目录结构，并且保证功能文件的高内聚低耦合 。</p>
 <p>支持门面包装服务。</p>
-<h3 id="Minimum-Viable-Product"><a href="#Minimum-Viable-Product" class="headerlink" title="Minimum Viable Product"></a>Minimum Viable Product</h3><p>是一种避免开发出客户并不真正需要的产品的开发策略。该策略的基本想法是，快速地构建出符合产品预期功能的最小功能集合，这个最小集合所包含的功能足以满足产品部署的要求并能够检验有关客户与产品交互的关键假设[1]。该概念由Eric Ries在其著作《精益创业实战》中提出，用最快、最简明的方式建立一个可用的产品原型，这个原型要表达出你产品最终想要的效果，然后通过迭代来完善细节。</p>
+<h3 id="minimum-viable-product"><a class="header-anchor" href="#minimum-viable-product">¶</a>Minimum Viable Product</h3>
+<p>是一种避免开发出客户并不真正需要的产品的开发策略。该策略的基本想法是，快速地构建出符合产品预期功能的最小功能集合，这个最小集合所包含的功能足以满足产品部署的要求并能够检验有关客户与产品交互的关键假设[1]。该概念由Eric Ries在其著作《精益创业实战》中提出，用最快、最简明的方式建立一个可用的产品原型，这个原型要表达出你产品最终想要的效果，然后通过迭代来完善细节。</p>
 <p><a href="http://www.jianshu.com/p/2e1ca1c22b65" target="_blank" rel="noopener">http://www.jianshu.com/p/2e1ca1c22b65</a></p>
 <p><a href="http://www.woshipm.com/pd/237443.html" target="_blank" rel="noopener">http://www.woshipm.com/pd/237443.html</a></p>
 
@@ -372,7 +392,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="先来介绍PHP几个函数"><a href="#先来介绍PHP几个函数" class="headerlink" title="先来介绍PHP几个函数"></a>先来介绍PHP几个函数</h1><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">ctype_alpha    <span class="comment">//检查字符串是否全是字母</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">ctype_lower    <span class="comment">//检查字符串是否小写</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">ctype_upper    <span class="comment">//检查字符串是否大写</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">ctype_digit    <span class="comment">//检查字符串是否全是数字</span></span></pre></td></tr></table></figure>
+        <h1>先来介绍PHP几个函数</h1>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">ctype_alpha    <span class="comment">//检查字符串是否全是字母</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">ctype_lower    <span class="comment">//检查字符串是否小写</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">ctype_upper    <span class="comment">//检查字符串是否大写</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">ctype_digit    <span class="comment">//检查字符串是否全是数字</span></span></pre></td></tr></table></figure>
         
           <a class="article-more-a" href="/2016/05/29/php-sign/#more">more >></a>
         
@@ -460,7 +481,8 @@
     <div class="article-entry" itemprop="articleBody">
       
         <hr>
-<h1 id="memcache-一致性hash"><a href="#memcache-一致性hash" class="headerlink" title="memcache 一致性hash"></a>memcache 一致性hash</h1><hr>
+<h1>memcache 一致性hash</h1>
+<hr>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// memcache一致性hash实现,为了解决多台memcache服务器setcache的时候增加或删除节点导致,缓存瞬间命不中问题 通话hash算法将节点映射到一个圆环上</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义循环链表 长度 为2的32 次方</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">$circle = <span class="keyword">array</span>(<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span>,<span class="number">11</span>);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"><span class="comment">//将3台memcache 服务器节点映射的圆环上</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">$circle[<span class="string">'3'</span>] = <span class="string">'192.168.10.1'</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">$circle[<span class="string">'6'</span>] = <span class="string">'192.168.10.2'</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">$circle[<span class="string">'9'</span>] = <span class="string">'192.168.10.3'</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line"><span class="comment">//建立cache请求</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">$key = <span class="number">2</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">foreach</span> ($circle <span class="keyword">as</span> $key=&gt;$val)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">	<span class="keyword">if</span>(strlen($circle[$key])!=<span class="number">1</span>)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">		$cache-&gt;connect($circle[$key],<span class="string">'11211'</span>);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">		$cache-&gt;set($key,<span class="string">'val'</span>);<span class="keyword">break</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">	&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
         
           <a class="article-more-a" href="/2016/05/29/memcache/#more">more >></a>
@@ -636,7 +658,8 @@
     <div class="article-entry" itemprop="articleBody">
       
         <hr>
-<h1 id="Yii2匿名函数小应用"><a href="#Yii2匿名函数小应用" class="headerlink" title="Yii2匿名函数小应用"></a>Yii2匿名函数小应用</h1><hr>
+<h1>Yii2匿名函数小应用</h1>
+<hr>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">console</span>\<span class="title">controllers</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> <span class="title">Yii</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestController</span> <span class="keyword">extends</span> \<span class="title">yii</span>\<span class="title">console</span>\<span class="title">Controller</span></span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"><span class="class"></span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">public</span> $enableCsrfValidation = <span class="keyword">false</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">actionTest</span><span class="params">()</span></span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line"><span class="function">    </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">        <span class="comment">//在循环中使用闭包时,要注意如果一个变量在闭包中改变了值,到下一次循环时,不会被释放</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">        $type = [];</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">        $flg  = <span class="number">0</span>; <span class="comment">//要改变的变量 或者对象</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">        $data = [</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">            [<span class="string">'type'</span>=&gt;<span class="string">'1'</span>,<span class="string">'one_level'</span>=&gt;<span class="number">100</span>,<span class="string">'two_lever'</span>=&gt;<span class="number">200</span>,<span class="string">'phone'</span>=&gt;<span class="string">'15510337665'</span> ],</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">            [<span class="string">'type'</span>=&gt;<span class="string">'1'</span>,<span class="string">'one_level'</span>=&gt;<span class="number">100</span>,<span class="string">'two_lever'</span>=&gt;<span class="number">200</span>,<span class="string">'phone'</span>=&gt;<span class="string">'15510337665'</span> ],</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line">            [<span class="string">'type'</span>=&gt;<span class="string">'2'</span>,<span class="string">'one_level'</span>=&gt;<span class="number">100</span>,<span class="string">'two_lever'</span>=&gt;<span class="number">200</span>,<span class="string">'phone'</span>=&gt;<span class="string">'15510337665'</span> ],</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line">            [<span class="string">'type'</span>=&gt;<span class="string">'1'</span>,<span class="string">'one_level'</span>=&gt;<span class="number">100</span>,<span class="string">'two_lever'</span>=&gt;<span class="number">200</span>,<span class="string">'phone'</span>=&gt;<span class="string">'15510337665'</span> ],</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line">            [<span class="string">'type'</span>=&gt;<span class="string">'2'</span>,<span class="string">'one_level'</span>=&gt;<span class="number">100</span>,<span class="string">'two_lever'</span>=&gt;<span class="number">200</span>,<span class="string">'phone'</span>=&gt;<span class="string">'15510337665'</span> ],</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">22</span></pre></td><td class="code"><pre><span class="line">            [<span class="string">'type'</span>=&gt;<span class="string">'1'</span>,<span class="string">'one_level'</span>=&gt;<span class="number">100</span>,<span class="string">'two_lever'</span>=&gt;<span class="number">200</span>,<span class="string">'phone'</span>=&gt;<span class="string">'15510337665'</span> ],</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">23</span></pre></td><td class="code"><pre><span class="line">            [<span class="string">'type'</span>=&gt;<span class="string">'2'</span>,<span class="string">'one_level'</span>=&gt;<span class="number">100</span>,<span class="string">'two_lever'</span>=&gt;<span class="number">200</span>,<span class="string">'phone'</span>=&gt;<span class="string">'15510337665'</span> ],</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">24</span></pre></td><td class="code"><pre><span class="line">        ] ;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">25</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">26</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">foreach</span>($data <span class="keyword">as</span> $key=&gt;$val)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">27</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">28</span></pre></td><td class="code"><pre><span class="line">            <span class="keyword">$this</span>-&gt;filter($val , $flg ,<span class="function"><span class="keyword">function</span><span class="params">($ret)</span> <span class="title">use</span> <span class="params">($type)</span></span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">29</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">30</span></pre></td><td class="code"><pre><span class="line">                file_put_contents(<span class="string">'lhw.log'</span>,var_export($ret,<span class="keyword">true</span>).PHP_EOL,FILE_APPEND);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">31</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">32</span></pre></td><td class="code"><pre><span class="line">            &#125;);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">33</span></pre></td><td class="code"><pre><span class="line">        &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">34</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">35</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">36</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">37</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">function</span> <span class="title">filter</span><span class="params">(array $arr,$flg,$fun)</span></span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">38</span></pre></td><td class="code"><pre><span class="line"><span class="function">    </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">39</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">40</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">if</span>($arr[<span class="string">'type'</span>] == <span class="string">'1'</span>)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">41</span></pre></td><td class="code"><pre><span class="line">            $flg = <span class="number">500</span>; <span class="comment">//下次循环500不会从内存中释放</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">42</span></pre></td><td class="code"><pre><span class="line">            $arr[<span class="string">'one_level'</span>] = $arr[<span class="string">'one_level'</span>] + <span class="number">1000</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">43</span></pre></td><td class="code"><pre><span class="line">            $arr[<span class="string">'flg'</span>] = $flg + $arr[<span class="string">'one_level'</span>];</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">44</span></pre></td><td class="code"><pre><span class="line">        &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">45</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">46</span></pre></td><td class="code"><pre><span class="line">        $fun($arr);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">47</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">48</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">49</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">50</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">51</span></pre></td><td class="code"><pre><span class="line">    <span class="comment">//使用过滤</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">52</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">actionFilter</span><span class="params">()</span></span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">53</span></pre></td><td class="code"><pre><span class="line"><span class="function">    </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">54</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">55</span></pre></td><td class="code"><pre><span class="line">        <span class="comment">//习惯使用list 指定获取索引数组值</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">56</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">list</span>($value, $property, $cType) = [<span class="string">'dd'</span>,<span class="string">'33'</span>,<span class="string">'32'</span>];</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">57</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">58</span></pre></td><td class="code"><pre><span class="line">        <span class="comment">//使用匿名函数过滤元素</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">59</span></pre></td><td class="code"><pre><span class="line">        $filterItem[<span class="string">'andor'</span>] = <span class="string">'or'</span>;<span class="comment">//过滤元素</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">60</span></pre></td><td class="code"><pre><span class="line">        $andor = call_user_func(<span class="function"><span class="keyword">function</span><span class="params">($default)</span> <span class="title">use</span><span class="params">($filterItem)</span> </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">61</span></pre></td><td class="code"><pre><span class="line">            <span class="keyword">if</span> ((array_key_exists(<span class="string">'andor'</span>, $filterItem)) &amp;&amp; (strtolower($filterItem[<span class="string">'andor'</span>]) == <span class="string">'or'</span>)) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">62</span></pre></td><td class="code"><pre><span class="line">                <span class="keyword">return</span> <span class="string">"OR"</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">63</span></pre></td><td class="code"><pre><span class="line">            &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">64</span></pre></td><td class="code"><pre><span class="line">            <span class="keyword">return</span> $default;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">65</span></pre></td><td class="code"><pre><span class="line">        &#125;, <span class="string">"AND"</span>);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">66</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">67</span></pre></td><td class="code"><pre><span class="line">        <span class="comment">//结合使用</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">68</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">list</span>($val) = [call_user_func(<span class="function"><span class="keyword">function</span><span class="params">($default)</span> <span class="title">use</span> <span class="params">($filterItem)</span></span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">69</span></pre></td><td class="code"><pre><span class="line">            <span class="keyword">if</span> ((array_key_exists(<span class="string">'andor'</span>, $filterItem)) &amp;&amp; (strtolower($filterItem[<span class="string">'andor'</span>]) == <span class="string">'or'</span>)) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">70</span></pre></td><td class="code"><pre><span class="line">                <span class="keyword">return</span> <span class="string">"OR"</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">71</span></pre></td><td class="code"><pre><span class="line">            &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">72</span></pre></td><td class="code"><pre><span class="line">            <span class="keyword">return</span> $default;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">73</span></pre></td><td class="code"><pre><span class="line">        &#125;,<span class="string">'default'</span>)];</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">74</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">75</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">echo</span> $val;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">76</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">77</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">78</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">79</span></pre></td><td class="code"><pre><span class="line">    <span class="comment">//如果整个action 都要求返回json 可以在进action 之前 判断转换如：</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">80</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">beforeAction</span><span class="params">($action)</span></span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">81</span></pre></td><td class="code"><pre><span class="line"><span class="function">    </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">82</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">83</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">if</span> (Yii::$app-&gt;request-&gt;isAjax) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">84</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">85</span></pre></td><td class="code"><pre><span class="line">            Yii::$app-&gt;response-&gt;format = Response::FORMAT_JSON;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">86</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">87</span></pre></td><td class="code"><pre><span class="line">        &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">88</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">89</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">return</span>   <span class="keyword">parent</span>::beforeAction($action);<span class="comment">//必须return</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">90</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">91</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">92</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">actionApi</span><span class="params">()</span></span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">93</span></pre></td><td class="code"><pre><span class="line"><span class="function">    </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">94</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">return</span> [<span class="string">'name'</span>=&gt;<span class="string">'lwh'</span>] ;<span class="comment">//自动转换成json</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">95</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">96</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">97</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">98</span></pre></td><td class="code"><pre><span class="line">    <span class="comment">//使用模型对象添加数据的一种方法</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">99</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">actionAdd</span><span class="params">()</span></span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">100</span></pre></td><td class="code"><pre><span class="line"><span class="function">    </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">101</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">102</span></pre></td><td class="code"><pre><span class="line">        SmsMessage::initSms(</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">103</span></pre></td><td class="code"><pre><span class="line">            $user,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">104</span></pre></td><td class="code"><pre><span class="line">            [$user-&gt;real_name,  date(<span class="string">'Y-m-d H:i'</span>, $draw-&gt;created_at), $draw-&gt;money, <span class="string">'T+1'</span>, Yii::$app-&gt;params[<span class="string">'contact_tel'</span>]],</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">105</span></pre></td><td class="code"><pre><span class="line">            Yii::$app-&gt;params[<span class="string">'sms'</span>][<span class="string">'tixian_apply'</span>]</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">106</span></pre></td><td class="code"><pre><span class="line">        )-&gt;save(<span class="keyword">false</span>);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">107</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">108</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">109</span></pre></td><td class="code"><pre><span class="line">    <span class="comment">//数据模型</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">110</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="function"><span class="keyword">function</span> <span class="title">initSms</span><span class="params">(User $user, array $message, $template_id, $level = self::LEVEL_MIDDLE)</span></span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">111</span></pre></td><td class="code"><pre><span class="line"><span class="function">    </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">112</span></pre></td><td class="code"><pre><span class="line">        $smsmsg = <span class="keyword">new</span> <span class="keyword">self</span>([</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">113</span></pre></td><td class="code"><pre><span class="line">            <span class="string">'uid'</span> =&gt; $user-&gt;id,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">114</span></pre></td><td class="code"><pre><span class="line">            <span class="string">'template_id'</span> =&gt; $template_id,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">115</span></pre></td><td class="code"><pre><span class="line">            <span class="string">'mobile'</span> =&gt; $user-&gt;mobile,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">116</span></pre></td><td class="code"><pre><span class="line">            <span class="string">'level'</span> =&gt; $level,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">117</span></pre></td><td class="code"><pre><span class="line">            <span class="string">'message'</span> =&gt; json_encode($message),</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">118</span></pre></td><td class="code"><pre><span class="line">        ]);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">119</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">120</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">return</span> $smsmsg;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">121</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">122</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">123</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">124</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">125</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
       
 
@@ -721,8 +744,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="组合模式"><a href="#组合模式" class="headerlink" title="组合模式"></a>组合模式</h1><p>组合模式相关概念：依赖注入、控制反转</p>
-<h3 id="依赖注入概念："><a href="#依赖注入概念：" class="headerlink" title="依赖注入概念："></a>依赖注入概念：</h3><p>一个类如果想使用另一类中的某些方法或者属性，除了继承外，也可以使用组合，组合的含义是将继承或者在构造触发new的过程，提到类的外面去做，采用依赖注入的方式传递对象。（消除了依赖）降低代码耦合程度，提高项目的可维护性。</p>
+        <h1>组合模式</h1>
+<p>组合模式相关概念：依赖注入、控制反转</p>
+<h3 id="依赖注入概念："><a class="header-anchor" href="#依赖注入概念：">¶</a>依赖注入概念：</h3>
+<p>一个类如果想使用另一类中的某些方法或者属性，除了继承外，也可以使用组合，组合的含义是将继承或者在构造触发new的过程，提到类的外面去做，采用依赖注入的方式传递对象。（消除了依赖）降低代码耦合程度，提高项目的可维护性。</p>
         
           <a class="article-more-a" href="/2016/05/22/designpatterns/#more">more >></a>
         
@@ -809,13 +834,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="用composer-安装Yii2"><a href="#用composer-安装Yii2" class="headerlink" title="用composer 安装Yii2"></a>用composer 安装Yii2</h1><p>安装依赖包方式，获取定义的依赖到你的本地项目，只需要调用 composer.phar 运行 install 命令如。</p>
+        <h1>用composer 安装Yii2</h1>
+<p>安装依赖包方式，获取定义的依赖到你的本地项目，只需要调用 composer.phar 运行 install 命令如。</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">php composer.phar install</span></pre></td></tr></table></figure>
-
-<p>安装时需要<code>githug</code>账号，下载时需要token,可以通过 <code>git  ssh-keygen</code> 生成 token秘钥</p>
-<p>一 先下载 advanced 模板  <a href="https://github.com/yiisoft/yii2-app-advanced" target="_blank" rel="noopener">https://github.com/yiisoft/yii2-app-advanced</a><br>二 dos cd 到 advanced 模板下 ：执行</p>
+<p>安装时需要<code>githug</code>账号，下载时需要token,可以通过 <code>git ssh-keygen</code> 生成 token秘钥</p>
+<p>一 先下载 advanced 模板  <a href="https://github.com/yiisoft/yii2-app-advanced" target="_blank" rel="noopener">https://github.com/yiisoft/yii2-app-advanced</a><br>
+二 dos cd 到 advanced 模板下 ：执行</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">php -r <span class="string">"readfile('https://getcomposer.org/installer');"</span> | php   </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="comment">//下载 composer.phar</span></span></pre></td></tr></table></figure>
-<p>三 准备插件 </p>
+<p>三 准备插件</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">php composer.phar <span class="keyword">global</span> <span class="keyword">require</span> <span class="string">"fxp/composer-asset-plugin:1.0.0"</span></span></pre></td></tr></table></figure>
 <p>或者</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">php composer.phar <span class="keyword">global</span> <span class="keyword">require</span> <span class="string">"fxp/composer-asset-plugin:~1.1.1"</span></span></pre></td></tr></table></figure>
@@ -905,8 +931,11 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="ubuntu-svn-搭建步骤："><a href="#ubuntu-svn-搭建步骤：" class="headerlink" title="ubuntu svn 搭建步骤："></a>ubuntu svn 搭建步骤：</h1><h4 id="pig-安装"><a href="#pig-安装" class="headerlink" title=":pig: 安装"></a>:pig: 安装</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">sudo apt-get install subversion</span></pre></td></tr></table></figure>
-<h4 id="建立版本库"><a href="#建立版本库" class="headerlink" title="建立版本库"></a>建立版本库</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">sudo mkdir -p /data/repos</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">sudo svnadmin create /data/repos/client</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">sudo svnadmin create /data/repos/server</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">sudo svnadmin create /data/repos/api</span></pre></td></tr></table></figure>
+        <h1>ubuntu svn 搭建步骤：</h1>
+<h4 id="🐷-安装"><a class="header-anchor" href="#🐷-安装">¶</a>🐷 安装</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">sudo apt-get install subversion</span></pre></td></tr></table></figure>
+<h4 id="建立版本库"><a class="header-anchor" href="#建立版本库">¶</a>建立版本库</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">sudo mkdir -p /data/repos</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">sudo svnadmin create /data/repos/client</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">sudo svnadmin create /data/repos/server</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">sudo svnadmin create /data/repos/api</span></pre></td></tr></table></figure>
         
           <a class="article-more-a" href="/2016/05/17/svn/#more">more >></a>
         
@@ -993,10 +1022,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="nginx-信号控制"><a href="#nginx-信号控制" class="headerlink" title="nginx 信号控制"></a>nginx 信号控制</h1><hr>
-<h3 id="查看服务端口列表项"><a href="#查看服务端口列表项" class="headerlink" title="查看服务端口列表项"></a>查看服务端口列表项</h3><p><code>netstat -antp</code> (p是显示那个进程 和进程号)</p>
-<h3 id="查看进程"><a href="#查看进程" class="headerlink" title="查看进程"></a>查看进程</h3><p><code>ps -aux | grep 80</code> （httpd）</p>
-<h3 id="信号控制"><a href="#信号控制" class="headerlink" title="信号控制"></a>信号控制</h3><p>   使用参数<code>INT</code>是紧急杀掉进程非常暴力（特殊场景不推荐），<code>QUIT</code> 优雅的杀掉进程，等待<code>work</code>主进程接收处理所有请求后在杀掉。<code>HUP</code>平滑的读取配置文件，不用重启nginx就能使配置文件生效（很重要），<code>USR1</code> 告诉nginx 写入log 往新建的文件中写（在备份log日志时必须要用，因为<code>linux</code>中的文件存放地址是通过<code>innode</code>号存储的，当mv 备份文件的时候只是变化名字而已，而<code>innode</code>号依然不变，所有nginx依然往原始的<code>innode</code>号文件写入日志，此时需要用信号量<code>USR1</code>）。</p>
+        <h1>nginx 信号控制</h1>
+<hr>
+<h3 id="查看服务端口列表项"><a class="header-anchor" href="#查看服务端口列表项">¶</a>查看服务端口列表项</h3>
+<p><code>netstat -antp</code> (p是显示那个进程 和进程号)</p>
+<h3 id="查看进程"><a class="header-anchor" href="#查看进程">¶</a>查看进程</h3>
+<p><code>ps -aux | grep 80</code> （httpd）</p>
+<h3 id="信号控制"><a class="header-anchor" href="#信号控制">¶</a>信号控制</h3>
+<p>使用参数<code>INT</code>是紧急杀掉进程非常暴力（特殊场景不推荐），<code>QUIT</code> 优雅的杀掉进程，等待<code>work</code>主进程接收处理所有请求后在杀掉。<code>HUP</code>平滑的读取配置文件，不用重启nginx就能使配置文件生效（很重要），<code>USR1</code> 告诉nginx 写入log 往新建的文件中写（在备份log日志时必须要用，因为<code>linux</code>中的文件存放地址是通过<code>innode</code>号存储的，当mv 备份文件的时候只是变化名字而已，而<code>innode</code>号依然不变，所有nginx依然往原始的<code>innode</code>号文件写入日志，此时需要用信号量<code>USR1</code>）。</p>
         
           <a class="article-more-a" href="/2016/05/15/nginx/#more">more >></a>
         
@@ -1164,19 +1197,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">api</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">yar</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">Yii</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">api</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">bug</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">Yii</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1192,11 +1221,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">devops</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">bug</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">devops</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1204,15 +1233,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">jenkins</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">webhook</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">webhook</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">jenkins</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1224,10 +1257,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">mac</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">memcache</a>
               </li>
              
@@ -1236,15 +1265,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">mac</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">php</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">trait</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">sign</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1256,7 +1281,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">sign</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">phpstrom</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">trait</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1268,15 +1301,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">svn</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">sql</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">svn</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">swoole</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">字符串</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">协程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1285,14 +1326,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">xdebug</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">协程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">字符串</a>
               </li>
              
               <li class="article-tag-list-item">

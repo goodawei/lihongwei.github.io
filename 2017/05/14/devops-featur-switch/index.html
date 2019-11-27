@@ -8,13 +8,13 @@
   <link rel="dns-prefetch" href="http://blog.nicexiangcun.com">
   <title>Best practice for feature switch of devops | 李宏伟&#39;blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="为什么要使用特性开关? 上线周期短，屏蔽在单一上线周期内已开发但未完成的特性（例如每周两次上线，但“产品列表”功能需要三周才能开发完成） 对比在不同 UI 下的用户行为和转化率（A&#x2F;B Testing） 部署与发布分离，持续频繁部署，业务随时可发布 部署：代码部署到生产环境 发布：特性上线，交付给最终用户使用,部署与发布分离，开发团队频繁持续进行部署，而业务人员（需求方）决定特性何时发布。">
+  <meta name="description" content="¶为什么要使用特性开关?  上线周期短，屏蔽在单一上线周期内已开发但未完成的特性（例如每周两次上线，但“产品列表”功能需要三周才能开发完成） 对比在不同 UI 下的用户行为和转化率（A&#x2F;B Testing） 部署与发布分离，持续频繁部署，业务随时可发布 部署：代码部署到生产环境 发布：特性上线，交付给最终用户使用,部署与发布分离，开发团队频繁持续进行部署，而业务人员（需求方）决定特性何时发布。">
 <meta name="keywords" content="devops">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Best practice for feature switch of devops">
 <meta property="og:url" content="http:&#x2F;&#x2F;blog.nicexiangcun.com&#x2F;2017&#x2F;05&#x2F;14&#x2F;devops-featur-switch&#x2F;index.html">
 <meta property="og:site_name" content="李宏伟&#39;blog">
-<meta property="og:description" content="为什么要使用特性开关? 上线周期短，屏蔽在单一上线周期内已开发但未完成的特性（例如每周两次上线，但“产品列表”功能需要三周才能开发完成） 对比在不同 UI 下的用户行为和转化率（A&#x2F;B Testing） 部署与发布分离，持续频繁部署，业务随时可发布 部署：代码部署到生产环境 发布：特性上线，交付给最终用户使用,部署与发布分离，开发团队频繁持续进行部署，而业务人员（需求方）决定特性何时发布。">
+<meta property="og:description" content="¶为什么要使用特性开关?  上线周期短，屏蔽在单一上线周期内已开发但未完成的特性（例如每周两次上线，但“产品列表”功能需要三周才能开发完成） 对比在不同 UI 下的用户行为和转化率（A&#x2F;B Testing） 部署与发布分离，持续频繁部署，业务随时可发布 部署：代码部署到生产环境 发布：特性上线，交付给最终用户使用,部署与发布分离，开发团队频繁持续进行部署，而业务人员（需求方）决定特性何时发布。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2019-11-27T12:11:01.032Z">
 <meta name="twitter:card" content="summary">
@@ -173,7 +173,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="为什么要使用特性开关"><a href="#为什么要使用特性开关" class="headerlink" title="为什么要使用特性开关?"></a>为什么要使用特性开关?</h3><ul>
+        <h3 id="为什么要使用特性开关"><a class="header-anchor" href="#为什么要使用特性开关">¶</a>为什么要使用特性开关?</h3>
+<ul>
 <li>上线周期短，屏蔽在单一上线周期内已开发但未完成的特性（例如每周两次上线，但“产品列表”功能需要三周才能开发完成）</li>
 <li>对比在不同 UI 下的用户行为和转化率（A/B Testing）</li>
 <li>部署与发布分离，持续频繁部署，业务随时可发布</li>
@@ -182,22 +183,27 @@
 </ul>
 <hr>
 <a id="more"></a>
-
-<h3 id="为什么不继续使用旧做法（挑代码）？"><a href="#为什么不继续使用旧做法（挑代码）？" class="headerlink" title="为什么不继续使用旧做法（挑代码）？"></a>为什么不继续使用旧做法（挑代码）？</h3><p>旧做法：每次发布前，从代码仓库中，由开发组长从最近的若干提交中，手工挑选出需要上线的若干个提交，测试人员进行测试并发布。<br>这种做法：</p>
+<h3 id="为什么不继续使用旧做法-挑代码-？"><a class="header-anchor" href="#为什么不继续使用旧做法-挑代码-？">¶</a>为什么不继续使用旧做法（挑代码）？</h3>
+<p>旧做法：每次发布前，从代码仓库中，由开发组长从最近的若干提交中，手工挑选出需要上线的若干个提交，测试人员进行测试并发布。<br>
+这种做法：</p>
 <ul>
 <li>生产环境和开发主干代码不一致，违背了单一主干代码的策略，造成代码库版本碎片化</li>
 <li>与持续集成理念背道而驰（不能早期集成、早期测试、提供快速反馈）</li>
 </ul>
 <hr>
-<h3 id="为什么不用-Git-Branch？"><a href="#为什么不用-Git-Branch？" class="headerlink" title="为什么不用 Git Branch？"></a>为什么不用 Git Branch？</h3><p>Long-lived feature branch是一个常见的持续交付反模式。这是因为：如果项目拥有多个长期彼此独立演进的分支，往往需要等到最后发布时才合并代码，这与持续集成的最佳实践背道而驰。<br>可参见 ThoughtWorks技术雷达相关介绍：<a href="https://www.thoughtworks.com/radar/techniques/long-lived-branches-with-gitflow" target="_blank" rel="noopener">https://www.thoughtworks.com/radar/techniques/long-lived-branches-with-gitflow</a></p>
+<h3 id="为什么不用-git-branch？"><a class="header-anchor" href="#为什么不用-git-branch？">¶</a>为什么不用 Git Branch？</h3>
+<p>Long-lived feature branch是一个常见的持续交付反模式。这是因为：如果项目拥有多个长期彼此独立演进的分支，往往需要等到最后发布时才合并代码，这与持续集成的最佳实践背道而驰。<br>
+可参见 ThoughtWorks技术雷达相关介绍：<a href="https://www.thoughtworks.com/radar/techniques/long-lived-branches-with-gitflow" target="_blank" rel="noopener">https://www.thoughtworks.com/radar/techniques/long-lived-branches-with-gitflow</a></p>
 <hr>
-<h3 id="特性开关是解决问题的最后手段"><a href="#特性开关是解决问题的最后手段" class="headerlink" title="特性开关是解决问题的最后手段"></a>特性开关是解决问题的最后手段</h3><p>为了隐藏未完成的特性进入生产环境，我们应遵循以下步骤：</p>
+<h3 id="特性开关是解决问题的最后手段"><a class="header-anchor" href="#特性开关是解决问题的最后手段">¶</a>特性开关是解决问题的最后手段</h3>
+<p>为了隐藏未完成的特性进入生产环境，我们应遵循以下步骤：</p>
 <ul>
 <li>首先考虑将大的业务特性分解，分批次小步引入新的特性。这样做的好处是减少上线风险，并收集用户对于新特性的真实使用反馈，便于持续改进该特性。</li>
 <li>其次，可以考虑新特性UI的入口地址与已有UI分离，给新特性赋予一个全新的URL，但不暴露该地址给真实用户，即可隐藏未完成的特性。最后才考虑特性开关，作为解决问题的最后手段。</li>
 </ul>
 <hr>
-<h3 id="使用特性开关的注意事项"><a href="#使用特性开关的注意事项" class="headerlink" title="使用特性开关的注意事项"></a>使用特性开关的注意事项</h3><ul>
+<h3 id="使用特性开关的注意事项"><a class="header-anchor" href="#使用特性开关的注意事项">¶</a>使用特性开关的注意事项</h3>
+<ul>
 <li>使用特性开关包裹某一特性时，要特别注意不要遗漏某些特性代码在开关范围之外。</li>
 <li>使用了特性开关后，测试人员的测试策略 - 通常说来只需测试下列两种情况：</li>
 </ul>
@@ -465,19 +471,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">api</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">yar</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">Yii</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">api</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">bug</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">Yii</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -493,11 +495,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">devops</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">bug</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">devops</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -505,15 +507,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">jenkins</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">webhook</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">webhook</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">jenkins</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -525,10 +531,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">mac</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">memcache</a>
               </li>
              
@@ -537,15 +539,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">mac</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">php</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">trait</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">sign</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -557,7 +555,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">sign</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">phpstrom</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">trait</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -569,15 +575,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">svn</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">sql</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">svn</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">swoole</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">字符串</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">协程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -586,14 +600,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">xdebug</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">协程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">字符串</a>
               </li>
              
               <li class="article-tag-list-item">

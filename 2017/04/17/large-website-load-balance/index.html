@@ -8,13 +8,13 @@
   <link rel="dns-prefetch" href="http://blog.nicexiangcun.com">
   <title>大型网站技术篇之负载均衡 | 李宏伟&#39;blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="架构图 负载均衡工作方式 http 重定向＝》转移请求DNS 负载均衡多机房部署，就近访问。可以查看google的dns配置 ： dig google.cn 可以产看 google.cn 的域名后面配置的IP 反响代理负载均衡工作在 http层（七层）常用 nginx做代理软件 IP负载均衡工作在 传输层 (四层转发负载) ，通过转发ip数据包方式，缺点是所有数据均要通过负载机器，负载机器的网络带">
+  <meta name="description" content="¶架构图  ¶负载均衡工作方式  ¶http 重定向＝》转移请求 ¶DNS 负载均衡 多机房部署，就近访问。可以查看google的dns配置 ： dig google.cn 可以产看 google.cn 的域名后面配置的IP ¶反响代理负载均衡 工作在 http层（七层）常用 nginx做代理软件 ¶IP负载均衡 工作在 传输层 (四层转发负载) ，通过转发ip数据包方式，缺点是所有数据均要通过负">
 <meta name="keywords" content="大型网站">
 <meta property="og:type" content="article">
 <meta property="og:title" content="大型网站技术篇之负载均衡">
 <meta property="og:url" content="http:&#x2F;&#x2F;blog.nicexiangcun.com&#x2F;2017&#x2F;04&#x2F;17&#x2F;large-website-load-balance&#x2F;index.html">
 <meta property="og:site_name" content="李宏伟&#39;blog">
-<meta property="og:description" content="架构图 负载均衡工作方式 http 重定向＝》转移请求DNS 负载均衡多机房部署，就近访问。可以查看google的dns配置 ： dig google.cn 可以产看 google.cn 的域名后面配置的IP 反响代理负载均衡工作在 http层（七层）常用 nginx做代理软件 IP负载均衡工作在 传输层 (四层转发负载) ，通过转发ip数据包方式，缺点是所有数据均要通过负载机器，负载机器的网络带">
+<meta property="og:description" content="¶架构图  ¶负载均衡工作方式  ¶http 重定向＝》转移请求 ¶DNS 负载均衡 多机房部署，就近访问。可以查看google的dns配置 ： dig google.cn 可以产看 google.cn 的域名后面配置的IP ¶反响代理负载均衡 工作在 http层（七层）常用 nginx做代理软件 ¶IP负载均衡 工作在 传输层 (四层转发负载) ，通过转发ip数据包方式，缺点是所有数据均要通过负">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http:&#x2F;&#x2F;o8979n2hu.bkt.clouddn.com&#x2F;%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1.jpg">
 <meta property="og:image" content="http:&#x2F;&#x2F;o8979n2hu.bkt.clouddn.com&#x2F;lvs.png">
@@ -176,13 +176,21 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="架构图"><a href="#架构图" class="headerlink" title="架构图"></a>架构图</h3><p><img src="http://o8979n2hu.bkt.clouddn.com/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1.jpg" alt="架构图"></p>
-<h3 id="负载均衡工作方式"><a href="#负载均衡工作方式" class="headerlink" title="负载均衡工作方式"></a>负载均衡工作方式</h3><p><img src="http://o8979n2hu.bkt.clouddn.com/lvs.png" alt="lvs"></p>
-<h4 id="http-重定向＝》转移请求"><a href="#http-重定向＝》转移请求" class="headerlink" title="http 重定向＝》转移请求"></a>http 重定向＝》转移请求</h4><h4 id="DNS-负载均衡"><a href="#DNS-负载均衡" class="headerlink" title="DNS 负载均衡"></a>DNS 负载均衡</h4><p>多机房部署，就近访问。可以查看google的dns配置 ： <code>dig google.cn</code> 可以产看 <code>google.cn</code> 的域名后面配置的<code>IP</code></p>
-<h4 id="反响代理负载均衡"><a href="#反响代理负载均衡" class="headerlink" title="反响代理负载均衡"></a>反响代理负载均衡</h4><p>工作在 http层（七层）常用 nginx做代理软件</p>
-<h4 id="IP负载均衡"><a href="#IP负载均衡" class="headerlink" title="IP负载均衡"></a>IP负载均衡</h4><p>工作在 传输层 (四层转发负载) ，通过转发ip数据包方式，缺点是所有数据均要通过负载机器，负载机器的网络带宽会逐渐成为瓶颈</p>
-<h4 id="LVS"><a href="#LVS" class="headerlink" title="LVS"></a>LVS</h4><p>工作在 数据链路层（二层）通过虚拟IP转发webserver,2⃣webserver处理完成后直接响应给客户端</p>
-<h3 id="负载均衡常见策略"><a href="#负载均衡常见策略" class="headerlink" title="负载均衡常见策略"></a>负载均衡常见策略</h3><ul>
+        <h3 id="架构图"><a class="header-anchor" href="#架构图">¶</a>架构图</h3>
+<p><img src="http://o8979n2hu.bkt.clouddn.com/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1.jpg" alt="架构图"></p>
+<h3 id="负载均衡工作方式"><a class="header-anchor" href="#负载均衡工作方式">¶</a>负载均衡工作方式</h3>
+<p><img src="http://o8979n2hu.bkt.clouddn.com/lvs.png" alt="lvs"></p>
+<h4 id="http-重定向＝-转移请求"><a class="header-anchor" href="#http-重定向＝-转移请求">¶</a>http 重定向＝》转移请求</h4>
+<h4 id="dns-负载均衡"><a class="header-anchor" href="#dns-负载均衡">¶</a>DNS 负载均衡</h4>
+<p>多机房部署，就近访问。可以查看google的dns配置 ： <code>dig google.cn</code> 可以产看 <code>google.cn</code> 的域名后面配置的<code>IP</code></p>
+<h4 id="反响代理负载均衡"><a class="header-anchor" href="#反响代理负载均衡">¶</a>反响代理负载均衡</h4>
+<p>工作在 http层（七层）常用 nginx做代理软件</p>
+<h4 id="ip负载均衡"><a class="header-anchor" href="#ip负载均衡">¶</a>IP负载均衡</h4>
+<p>工作在 传输层 (四层转发负载) ，通过转发ip数据包方式，缺点是所有数据均要通过负载机器，负载机器的网络带宽会逐渐成为瓶颈</p>
+<h4 id="lvs"><a class="header-anchor" href="#lvs">¶</a>LVS</h4>
+<p>工作在 数据链路层（二层）通过虚拟IP转发webserver,2⃣webserver处理完成后直接响应给客户端</p>
+<h3 id="负载均衡常见策略"><a class="header-anchor" href="#负载均衡常见策略">¶</a>负载均衡常见策略</h3>
+<ul>
 <li>轮询</li>
 <li>加权轮询</li>
 <li>最小链接数</li>
@@ -433,19 +441,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">api</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">yar</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">Yii</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">api</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">bug</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">Yii</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -461,11 +465,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">devops</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">bug</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">devops</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -473,15 +477,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">jenkins</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">webhook</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">webhook</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">jenkins</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -493,10 +501,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">mac</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">memcache</a>
               </li>
              
@@ -505,15 +509,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">mac</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">php</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">trait</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">sign</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -525,7 +525,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">sign</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">phpstrom</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">trait</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -537,15 +545,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">svn</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">sql</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">svn</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">swoole</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">字符串</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">协程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -554,14 +570,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">xdebug</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">协程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">字符串</a>
               </li>
              
               <li class="article-tag-list-item">

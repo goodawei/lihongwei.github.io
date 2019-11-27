@@ -8,13 +8,13 @@
   <link rel="dns-prefetch" href="http://blog.nicexiangcun.com">
   <title>阿里云站点部署 | 李宏伟&#39;blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="以 Ubuntu 14.04 为例通过下面的命令来删除Apache1sudo service apache2 stop2update-rc.d -f apache2 remove3sudo apt-get remove apache2  删除完之后，更新一下包列表 1sudo apt-get update 安装Nginx1# 注意nginx安装需要第三方库的依赖，通常有 pcre库（支持rewri">
+  <meta name="description" content="以 Ubuntu 14.04 为例 ¶通过下面的命令来删除Apache 1sudo service apache2 stop2update-rc.d -f apache2 remove3sudo apt-get remove apache2 删除完之后，更新一下包列表 1sudo apt-get update ¶安装Nginx 1# 注意nginx安装需要第三方库的依赖，通常有 pcre库（支持r">
 <meta name="keywords" content="webhook">
 <meta property="og:type" content="article">
 <meta property="og:title" content="阿里云站点部署">
 <meta property="og:url" content="http:&#x2F;&#x2F;blog.nicexiangcun.com&#x2F;2016&#x2F;10&#x2F;13&#x2F;laravel-webhook&#x2F;index.html">
 <meta property="og:site_name" content="李宏伟&#39;blog">
-<meta property="og:description" content="以 Ubuntu 14.04 为例通过下面的命令来删除Apache1sudo service apache2 stop2update-rc.d -f apache2 remove3sudo apt-get remove apache2  删除完之后，更新一下包列表 1sudo apt-get update 安装Nginx1# 注意nginx安装需要第三方库的依赖，通常有 pcre库（支持rewri">
+<meta property="og:description" content="以 Ubuntu 14.04 为例 ¶通过下面的命令来删除Apache 1sudo service apache2 stop2update-rc.d -f apache2 remove3sudo apt-get remove apache2 删除完之后，更新一下包列表 1sudo apt-get update ¶安装Nginx 1# 注意nginx安装需要第三方库的依赖，通常有 pcre库（支持r">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2019-11-27T12:11:01.036Z">
 <meta name="twitter:card" content="summary">
@@ -173,44 +173,46 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="以-Ubuntu-14-04-为例"><a href="#以-Ubuntu-14-04-为例" class="headerlink" title="以 Ubuntu 14.04 为例"></a>以 Ubuntu 14.04 为例</h1><h3 id="通过下面的命令来删除Apache"><a href="#通过下面的命令来删除Apache" class="headerlink" title="通过下面的命令来删除Apache"></a>通过下面的命令来删除Apache</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">sudo service apache2 stop</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">update-rc.d -f apache2 remove</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">sudo apt-get remove apache2</span></pre></td></tr></table></figure>
-
+        <h1>以 Ubuntu 14.04 为例</h1>
+<h3 id="通过下面的命令来删除apache"><a class="header-anchor" href="#通过下面的命令来删除apache">¶</a>通过下面的命令来删除Apache</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">sudo service apache2 stop</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">update-rc.d -f apache2 remove</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">sudo apt-get remove apache2</span></pre></td></tr></table></figure>
 <p>删除完之后，更新一下包列表</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span></pre></td></tr></table></figure>
-<h3 id="安装Nginx"><a href="#安装Nginx" class="headerlink" title="安装Nginx"></a>安装Nginx</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment"># 注意nginx安装需要第三方库的依赖，通常有 pcre库（支持rewrite模块）zlib库（支持gzip模块）和openssl库（支持ssl模块） </span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">sudo apt-get install nginx</span></pre></td></tr></table></figure>
+<h3 id="安装nginx"><a class="header-anchor" href="#安装nginx">¶</a>安装Nginx</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment"># 注意nginx安装需要第三方库的依赖，通常有 pcre库（支持rewrite模块）zlib库（支持gzip模块）和openssl库（支持ssl模块） </span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">sudo apt-get install nginx</span></pre></td></tr></table></figure>
 <p>安装完Nginx，执行｀sudo service nginx start｀再在浏览器地址栏输入你的公网IP，你就可以看的welcome to Nginx的界面了</p>
-<h3 id="安装PHP"><a href="#安装PHP" class="headerlink" title="安装PHP"></a>安装PHP</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">sudo apt-get install php5-fpm php5-cli php5-mcrypt</span></pre></td></tr></table></figure>
+<h3 id="安装php"><a class="header-anchor" href="#安装php">¶</a>安装PHP</h3>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">sudo apt-get install php5-fpm php5-cli php5-mcrypt</span></pre></td></tr></table></figure>
 <p>只有通过php5-fpm，PHP在Nginx下才能正常运行，遂，安装之。</p>
 <p>至于php5-mcrypt，有些PHP框架会依赖于这个，比如Laravel就是，所以也把它装上了。</p>
-<h3 id="配置php"><a href="#配置php" class="headerlink" title="配置php"></a>配置php</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">sudo vim /etc/php5/fpm/php.ini</span></pre></td></tr></table></figure>
+<h3 id="配置php"><a class="header-anchor" href="#配置php">¶</a>配置php</h3>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">sudo vim /etc/php5/fpm/php.ini</span></pre></td></tr></table></figure>
 <p>打开PHP配置文件，找到cgi.fix_pathinfo选项，去掉它前面的注释分号;，然后将它的值设置为0,如下 <code>cgi.fix_pathinfo=0</code></p>
 <p>启用php5-mcrypt: <code>sudo php5enmod mcrypt</code></p>
 <p>重启php5-fpm: <code>sudo service php5-fpm restart</code></p>
 <a id="more"></a>
-
-<h3 id="在搭建完LEMP环境之后，首先要明确两个重要目录"><a href="#在搭建完LEMP环境之后，首先要明确两个重要目录" class="headerlink" title="在搭建完LEMP环境之后，首先要明确两个重要目录"></a>在搭建完LEMP环境之后，首先要明确两个重要目录</h3><p>Nginx的默认root文件夹 <code>/usr/share/nginx/html</code></p>
+<h3 id="在搭建完lemp环境之后-首先要明确两个重要目录"><a class="header-anchor" href="#在搭建完lemp环境之后-首先要明确两个重要目录">¶</a>在搭建完LEMP环境之后，首先要明确两个重要目录</h3>
+<p>Nginx的默认root文件夹 <code>/usr/share/nginx/html</code></p>
 <p>Nginx的服务器配置文件所在目录 <code>/etc/nginx/sites-available/</code></p>
-<h3 id="部署Laravel"><a href="#部署Laravel" class="headerlink" title="部署Laravel"></a>部署Laravel</h3><p>创建网站的根目录</p>
+<h3 id="部署laravel"><a class="header-anchor" href="#部署laravel">¶</a>部署Laravel</h3>
+<p>创建网站的根目录</p>
 <p><code>sudo mkdir -p /var/www</code></p>
 <p>配置nginx服务器</p>
 <p><code>sudo vim /etc/nginx/sites-available/default</code></p>
 <p>打开nginx的配置文件之后，找到server这一块，大概是长这个样子的</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">server &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">        listen 80 default_server;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">        listen [::]:80 default_server ipv6only=on;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">        root /usr/share/nginx/html;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">        index index.html index.htm;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">        server_name localhost;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">        location / &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">                try_files <span class="variable">$uri</span> <span class="variable">$uri</span>/ =404;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">        &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
-
 <p>其中root，index ，server_name和location这几行需要稍微修改一下</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">server &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    listen 80 default_server;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    listen [::]:80 default_server ipv6only=on;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">    root /var/www/laravel/public;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">    index index.php index.html index.htm;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">    server_name server_domain_or_IP;      <span class="comment"># 将server_domain_or_IP修改为你的公网IP</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">    location / &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">            try_files <span class="variable">$uri</span> <span class="variable">$uri</span>/ /index.php?<span class="variable">$query_string</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
-
 <p>最后我们还需要配置一下Nginx，让其执行PHP文件。同样是在这个文件里，在location下方添加下面的配置：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">server &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    listen 80 default_server;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    listen [::]:80 default_server ipv6only=on;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    root /var/www/laravel/public;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">    index index.php index.html index.htm;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">    server_name server_domain_or_IP;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">    location / &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">        try_files <span class="variable">$uri</span> <span class="variable">$uri</span>/ /index.php?<span class="variable">$query_string</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">    location ~ \.php$ &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">        try_files <span class="variable">$uri</span> /index.php =404;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">        fastcgi_split_path_info ^(.+\.php)(/.+)$;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">        fastcgi_pass unix:/var/run/php5-fpm.sock;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">        fastcgi_index index.php;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line">        fastcgi_param SCRIPT_FILENAME <span class="variable">$document_root</span><span class="variable">$fastcgi_script_name</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line">        include fastcgi_params;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">22</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
-
 <p>配置完之后重启Nginx，使上面的配置项生效。</p>
 <p><code>sudo service nginx restart</code></p>
-<h3 id="创建Laravel项目"><a href="#创建Laravel项目" class="headerlink" title="创建Laravel项目"></a>创建Laravel项目</h3><p>第一种方式：</p>
+<h3 id="创建laravel项目"><a class="header-anchor" href="#创建laravel项目">¶</a>创建Laravel项目</h3>
+<p>第一种方式：</p>
 <p>直接通过composer来安装,安装composer</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">curl -sS https://getcomposer.org/installer | php</span></pre></td></tr></table></figure>
 <p>如果 curl 有关于ssl错误可以尝试一下方式：</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">wget https:<span class="comment">//getcomposer.org/installer</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">and</span> </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">php installer;</span></pre></td></tr></table></figure>
-
 <p>composer全局使用：</p>
 <p><code>sudo mv composer.phar /usr/local/bin/composer</code></p>
 <p>或者</p>
@@ -232,8 +234,8 @@
 <p><code>sudo chmod -R 775 /var/www/laravel/storage</code></p>
 <p>同时还要执行以下操作</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">php artisan cache:clear  <span class="comment">//在bootstrap/cache 生成 services.php 文件</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">php artisan key:generate <span class="comment">//将生成的key复制到config/app.php替换82行的APP_KEY键值。</span></span></pre></td></tr></table></figure>
-
-<h3 id="ssh-登录服务器"><a href="#ssh-登录服务器" class="headerlink" title="ssh 登录服务器"></a>ssh 登录服务器</h3><p><code>ssh-keygen -t rsa</code> 本地生成秘钥对</p>
+<h3 id="ssh-登录服务器"><a class="header-anchor" href="#ssh-登录服务器">¶</a>ssh 登录服务器</h3>
+<p><code>ssh-keygen -t rsa</code> 本地生成秘钥对</p>
 <p>接下来需要将本地的 id_rsa.pub 拷贝服务器上。</p>
 <p>ssh登录服务器创建 .ssh 目录</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">sudo mkdir .ssh</span></pre></td></tr></table></figure>
@@ -243,11 +245,12 @@
 <p>拷贝成功回到服务器</p>
 <p><code>cat id_rsa.pub &gt;&gt; authorized_keys</code></p>
 <p>最后删掉 id_rsa.pub ,退出服务器，重新登录，就不用输入密码了。</p>
-<h3 id="利用webhook-实现PHP-自动部署-git-代码"><a href="#利用webhook-实现PHP-自动部署-git-代码" class="headerlink" title="利用webhook 实现PHP 自动部署 git 代码"></a>利用webhook 实现PHP 自动部署 git 代码</h3><p>首先推荐两篇文章</p>
+<h3 id="利用webhook-实现php-自动部署-git-代码"><a class="header-anchor" href="#利用webhook-实现php-自动部署-git-代码">¶</a>利用webhook 实现PHP 自动部署 git 代码</h3>
+<p>首先推荐两篇文章</p>
 <p><a href="http://m.aoh.cc/149.html" target="_blank" rel="noopener">http://m.aoh.cc/149.html</a></p>
 <p><a href="http://overtrue.me/articles/2015/01/how-to-deploy-project-with-git-hook.html" target="_blank" rel="noopener">http://overtrue.me/articles/2015/01/how-to-deploy-project-with-git-hook.html</a></p>
 <p>登录服务器部署用户公钥</p>
-<p><code>ssh-keygen -t rsa -C &quot;bjletaoba@sina.com&quot;</code> </p>
+<p><code>ssh-keygen -t rsa -C &quot;bjletaoba@sina.com&quot;</code></p>
 <p>将用户公钥部署到codding 的用户设置中</p>
 <p>创建目录</p>
 <p><code>sudo mkdir /var/www/.ssh</code></p>
@@ -260,18 +263,14 @@
 <p>准备部署代码和注册路由</p>
 <p>路由要注册到 middleware 外面</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">Route::group([<span class="string">'middleware'</span>=&gt;[<span class="string">'web'</span>]],<span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">&#125;)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">Route::any(<span class="string">'/deploy'</span>,<span class="string">'DeployController@deploy'</span>);</span></pre></td></tr></table></figure>
-
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">deploy</span><span class="params">(Request $request)</span></span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    $token    = <span class="string">'ffanfood'</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    $target   = <span class="string">'/var/www/ffanfood/aliyun'</span>; <span class="comment">// 生产环境web目录</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    $wwwUser  = <span class="string">'www-data'</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    $wwwGroup = <span class="string">'www-data'</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">    $json = json_decode(file_get_contents(<span class="string">'php://input'</span>),<span class="keyword">true</span>);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">if</span>(<span class="keyword">empty</span>($json[<span class="string">'token'</span>]) || $json[<span class="string">'token'</span>] !== $token)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">exit</span>(<span class="string">'error_request'</span>);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">    file_put_contents(<span class="string">'deploy.log'</span>,var_export($json,<span class="keyword">true</span>),FILE_APPEND);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">     $cmds = <span class="keyword">array</span>(</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">         <span class="string">"cd $target &amp;&amp; git pull"</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">         <span class="string">"chown -R &#123;$wwwUser&#125;:&#123;$wwwGroup&#125; $target/"</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">     );</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">     <span class="keyword">foreach</span> ($cmds <span class="keyword">as</span> $cmd) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">         shell_exec($cmd);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">     &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
-<p> 以上代码可以使用 php-shell-wrapper 这个 包</p>
-<p> <code>https://github.com/adambrett/php-shell-wrapper</code></p>
+<p>以上代码可以使用 php-shell-wrapper 这个 包</p>
+<p><code>https://github.com/adambrett/php-shell-wrapper</code></p>
  <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="comment">   * 执行cd 命令</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="comment">   * <span class="doctag">@param</span> $paht</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="comment">   * <span class="doctag">@return</span> $this</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"><span class="comment">   */</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">  <span class="keyword">protected</span> <span class="function"><span class="keyword">function</span> <span class="title">cdInfo</span><span class="params">($paht)</span></span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">      $command = <span class="keyword">new</span> Command(<span class="string">'cd'</span>);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">      $command-&gt;addParam(<span class="keyword">new</span> Param($paht));</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">      <span class="keyword">$this</span>-&gt;shell-&gt;run($command);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">      <span class="keyword">return</span> <span class="keyword">$this</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">  &#125;</span></pre></td></tr></table></figure>
-
-
 <p>修改git配置和保存git用户名密码 (会在 ／var/www 下生成git 配置文件)</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">sudo -Hu www git config --global credential.helper store <span class="comment"># 永久保存</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">sudo -Hu www-data git config --global user.name lhw</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">sudo -Hu www-data git config --global user.email bjletaoba@sina.com</span></pre></td></tr></table></figure>
-
 <p>初始化 (注意要用ssh 的链接 这样就不用输入密码)</p>
-<p><code>sudo -Hu www-data git clone git@git.coding.net:goodawei/aliyun_laravel_5_2.git  --depth=1</code></p>
+<p><code>sudo -Hu www-data git clone git@git.coding.net:goodawei/aliyun_laravel_5_2.git --depth=1</code></p>
 
       
 
@@ -528,19 +527,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">api</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">yar</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">Yii</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">api</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">bug</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">Yii</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -556,11 +551,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">devops</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">bug</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">devops</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -568,15 +563,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">jenkins</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">webhook</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">webhook</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">jenkins</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -588,10 +587,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">mac</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">memcache</a>
               </li>
              
@@ -600,15 +595,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">mac</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">php</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">trait</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">sign</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -620,7 +611,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">sign</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">phpstrom</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">trait</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -632,15 +631,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">svn</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">sql</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">svn</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">swoole</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">字符串</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">协程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -649,14 +656,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">xdebug</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">协程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">字符串</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -8,13 +8,13 @@
   <link rel="dns-prefetch" href="http://blog.nicexiangcun.com">
   <title>Yii_install | 李宏伟&#39;blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="用composer 安装Yii2安装依赖包方式，获取定义的依赖到你的本地项目，只需要调用 composer.phar 运行 install 命令如。 1php composer.phar install  安装时需要githug账号，下载时需要token,可以通过 git  ssh-keygen 生成 token秘钥 一 先下载 advanced 模板  https:&#x2F;&#x2F;github.com&#x2F;yi">
+  <meta name="description" content="用composer 安装Yii2 安装依赖包方式，获取定义的依赖到你的本地项目，只需要调用 composer.phar 运行 install 命令如。 1php composer.phar install 安装时需要githug账号，下载时需要token,可以通过 git ssh-keygen 生成 token秘钥 一 先下载 advanced 模板  https:&#x2F;&#x2F;github.com&#x2F;yii">
 <meta name="keywords" content="Yii">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Yii_install">
 <meta property="og:url" content="http:&#x2F;&#x2F;blog.nicexiangcun.com&#x2F;2016&#x2F;05&#x2F;17&#x2F;Yii-install&#x2F;index.html">
 <meta property="og:site_name" content="李宏伟&#39;blog">
-<meta property="og:description" content="用composer 安装Yii2安装依赖包方式，获取定义的依赖到你的本地项目，只需要调用 composer.phar 运行 install 命令如。 1php composer.phar install  安装时需要githug账号，下载时需要token,可以通过 git  ssh-keygen 生成 token秘钥 一 先下载 advanced 模板  https:&#x2F;&#x2F;github.com&#x2F;yi">
+<meta property="og:description" content="用composer 安装Yii2 安装依赖包方式，获取定义的依赖到你的本地项目，只需要调用 composer.phar 运行 install 命令如。 1php composer.phar install 安装时需要githug账号，下载时需要token,可以通过 git ssh-keygen 生成 token秘钥 一 先下载 advanced 模板  https:&#x2F;&#x2F;github.com&#x2F;yii">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2019-11-27T12:11:01.030Z">
 <meta name="twitter:card" content="summary">
@@ -173,27 +173,34 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="用composer-安装Yii2"><a href="#用composer-安装Yii2" class="headerlink" title="用composer 安装Yii2"></a>用composer 安装Yii2</h1><p>安装依赖包方式，获取定义的依赖到你的本地项目，只需要调用 composer.phar 运行 install 命令如。</p>
+        <h1>用composer 安装Yii2</h1>
+<p>安装依赖包方式，获取定义的依赖到你的本地项目，只需要调用 composer.phar 运行 install 命令如。</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">php composer.phar install</span></pre></td></tr></table></figure>
-
-<p>安装时需要<code>githug</code>账号，下载时需要token,可以通过 <code>git  ssh-keygen</code> 生成 token秘钥</p>
-<p>一 先下载 advanced 模板  <a href="https://github.com/yiisoft/yii2-app-advanced" target="_blank" rel="noopener">https://github.com/yiisoft/yii2-app-advanced</a><br>二 dos cd 到 advanced 模板下 ：执行</p>
+<p>安装时需要<code>githug</code>账号，下载时需要token,可以通过 <code>git ssh-keygen</code> 生成 token秘钥</p>
+<p>一 先下载 advanced 模板  <a href="https://github.com/yiisoft/yii2-app-advanced" target="_blank" rel="noopener">https://github.com/yiisoft/yii2-app-advanced</a><br>
+二 dos cd 到 advanced 模板下 ：执行</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">php -r <span class="string">"readfile('https://getcomposer.org/installer');"</span> | php   </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="comment">//下载 composer.phar</span></span></pre></td></tr></table></figure>
-<p>三 准备插件 </p>
+<p>三 准备插件</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">php composer.phar <span class="keyword">global</span> <span class="keyword">require</span> <span class="string">"fxp/composer-asset-plugin:1.0.0"</span></span></pre></td></tr></table></figure>
 <p>或者</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">php composer.phar <span class="keyword">global</span> <span class="keyword">require</span> <span class="string">"fxp/composer-asset-plugin:~1.1.1"</span></span></pre></td></tr></table></figure>
 <a id="more"></a>
-
-<p>要保证 composer 版本一致 升级 1.1.1 更新命令  </p>
+<p>要保证 composer 版本一致 升级 1.1.1 更新命令</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">composer <span class="keyword">self</span>-update</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">composer update</span></pre></td></tr></table></figure>
 <p>四  安装</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">php composer.phar create-project --prefer-dist --stability=dev yiisoft/yii2-app-advanced  ../yii2test</span></pre></td></tr></table></figure>
 <p>五 最后一步：初始化我们的应用,初始化是在你创建的yii2test目录下 执行 init命令 选0 按y</p>
 <p>最后Yii2 添加新应用需要注意的地方 以新加wap 站为例</p>
-<p>一  将 frontend 前台复制一份 改名wap(注意把里面所有文件的命名空间改为 wap的)<br>二  将common/config bootstrap 新加一份 wap 的别名<br>三  将common/config main.php  新加路由修改配置（不使用默认路由规则）<br>    将改过来的wap 下的config 的main.php 中的 <code>id</code> 和<code>controllerNamespace</code> 等改正确</p>
+<p>一  将 frontend 前台复制一份 改名wap(注意把里面所有文件的命名空间改为 wap的)<br>
+二  将common/config bootstrap 新加一份 wap 的别名<br>
+三  将common/config main.php  新加路由修改配置（不使用默认路由规则）<br>
+将改过来的wap 下的config 的main.php 中的 <code>id</code> 和<code>controllerNamespace</code> 等改正确</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="string">'urlManager'</span> =&gt; [</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    <span class="string">'enablePrettyUrl'</span> =&gt; <span class="keyword">true</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    <span class="string">'showScriptName'</span> =&gt; <span class="keyword">false</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">]</span></pre></td></tr></table></figure>
-<p>四：修改apache 路由规则 隐藏点 index.php<br>  RewriteEngine on<br>  RewriteCond %{REQUEST_FILENAME} !-d<br>  RewriteCond %{REQUEST_FILENAME} !-f<br>  RewriteRule ^(.*)$ index.php/$1 [QSA,PT,L]</p>
+<p>四：修改apache 路由规则 隐藏点 index.php<br>
+RewriteEngine on<br>
+RewriteCond %{REQUEST_FILENAME} !-d<br>
+RewriteCond %{REQUEST_FILENAME} !-f<br>
+RewriteRule ^(.*)$ index.php/$1 [QSA,PT,L]</p>
 
       
 
@@ -450,19 +457,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">api</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">yar</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">Yii</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">api</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">bug</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">Yii</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -478,11 +481,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">devops</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">bug</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">devops</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -490,15 +493,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">jenkins</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">webhook</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">webhook</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">jenkins</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -510,10 +517,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">mac</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">memcache</a>
               </li>
              
@@ -522,15 +525,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">mac</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">php</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">trait</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">sign</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -542,7 +541,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">sign</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">phpstrom</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">trait</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -554,15 +561,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">svn</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">sql</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">svn</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">swoole</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">字符串</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">协程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -571,14 +586,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">xdebug</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">协程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">字符串</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -8,13 +8,13 @@
   <link rel="dns-prefetch" href="http://blog.nicexiangcun.com">
   <title>Yii2 | 李宏伟&#39;blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Yii2 登录机制和验证码的使用 :chipmunk: Yii2登录如果要通过gii自定义生产user模型的话(不适用默认的user)，要在当前应用的config&#x2F;main 下配置user组件路径如： 1&amp;apos;user&amp;apos; &#x3D;&amp;gt; [2        &amp;apos;identityClass&amp;apos; &#x3D;&amp;gt; &amp;apos;common\models\user\Diyouuser&amp;apos;,3        &amp;apos;enableAutoLo">
+  <meta name="description" content="Yii2 登录机制和验证码的使用  ¶🐿 Yii2登录 如果要通过gii自定义生产user模型的话(不适用默认的user)，要在当前应用的config&#x2F;main 下配置user组件路径如： 1&amp;apos;user&amp;apos; &#x3D;&amp;gt; [2        &amp;apos;identityClass&amp;apos; &#x3D;&amp;gt; &amp;apos;common\models\user\Diyouuser&amp;apos;,3        &amp;apos;enableAutoLogin&amp;apos;">
 <meta name="keywords" content="Yii">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Yii2">
 <meta property="og:url" content="http:&#x2F;&#x2F;blog.nicexiangcun.com&#x2F;2016&#x2F;05&#x2F;13&#x2F;Yii2&#x2F;index.html">
 <meta property="og:site_name" content="李宏伟&#39;blog">
-<meta property="og:description" content="Yii2 登录机制和验证码的使用 :chipmunk: Yii2登录如果要通过gii自定义生产user模型的话(不适用默认的user)，要在当前应用的config&#x2F;main 下配置user组件路径如： 1&amp;apos;user&amp;apos; &#x3D;&amp;gt; [2        &amp;apos;identityClass&amp;apos; &#x3D;&amp;gt; &amp;apos;common\models\user\Diyouuser&amp;apos;,3        &amp;apos;enableAutoLo">
+<meta property="og:description" content="Yii2 登录机制和验证码的使用  ¶🐿 Yii2登录 如果要通过gii自定义生产user模型的话(不适用默认的user)，要在当前应用的config&#x2F;main 下配置user组件路径如： 1&amp;apos;user&amp;apos; &#x3D;&amp;gt; [2        &amp;apos;identityClass&amp;apos; &#x3D;&amp;gt; &amp;apos;common\models\user\Diyouuser&amp;apos;,3        &amp;apos;enableAutoLogin&amp;apos;">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2019-11-27T12:11:01.030Z">
 <meta name="twitter:card" content="summary">
@@ -173,31 +173,36 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Yii2-登录机制和验证码的使用"><a href="#Yii2-登录机制和验证码的使用" class="headerlink" title="Yii2 登录机制和验证码的使用"></a>Yii2 登录机制和验证码的使用</h1><hr>
-<h3 id="chipmunk-Yii2登录"><a href="#chipmunk-Yii2登录" class="headerlink" title=":chipmunk: Yii2登录"></a>:chipmunk: Yii2登录</h3><p>如果要通过gii自定义生产user模型的话(不适用默认的user)，要在当前应用的config/main 下配置user组件路径如：</p>
+        <h1>Yii2 登录机制和验证码的使用</h1>
+<hr>
+<h3 id="🐿-yii2登录"><a class="header-anchor" href="#🐿-yii2登录">¶</a>🐿 Yii2登录</h3>
+<p>如果要通过gii自定义生产user模型的话(不适用默认的user)，要在当前应用的config/main 下配置user组件路径如：</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="string">'user'</span> =&gt; [</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">        <span class="string">'identityClass'</span> =&gt; <span class="string">'common\models\user\Diyouuser'</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">        <span class="string">'enableAutoLogin'</span> =&gt; <span class="keyword">true</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    ],</span></pre></td></tr></table></figure>
 <pre><code>接下来在`loginForm` 模型下 `use common\models\user\Diyouuser;` 使用该模型
 
-验证规则写在 loginForm 下 如：</code></pre><a id="more"></a>
-
+验证规则写在 loginForm 下 如：
+</code></pre>
+<a id="more"></a>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">rules</span><span class="params">()</span></span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="function"></span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">return</span> [</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">        [[<span class="string">'username'</span>, <span class="string">'password'</span>], <span class="string">'required'</span>],</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">        [<span class="string">'password'</span>, <span class="string">'validatePassword'</span>],</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">    ];</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">validatePassword</span><span class="params">($attribute, $params)</span></span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line"><span class="function"></span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">if</span> (!<span class="keyword">$this</span>-&gt;hasErrors()) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">        $user = <span class="keyword">$this</span>-&gt;getUser();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">if</span> (!$user || $user-&gt;password != md5(<span class="keyword">$this</span>-&gt;password)) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">            <span class="keyword">$this</span>-&gt;addError($attribute, <span class="string">'用户名或者密码错误'</span>);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">        &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
-
-<p>在触发登录前要先验证<code>validatePassword</code>的话 必须触发 <code>Yii</code>的 </p>
-<pre><code>$model-&gt;validate()</code></pre><p>如果要添加自定义<code>validate</code>的话，也必须在触发login前调用自定义的<code>mycustvalidate</code>，<br><code>validate</code> 都验证通过后 在触发 Yii 的 login :</p>
-<pre><code>Yii::$app-&gt;user-&gt;login($user);</code></pre><p><code>$user</code> 是  <code>common\models\user\Diyouuser;</code>组件的一个组件而且必须实现 IdentityInterface 这个接口</p>
-<h3 id="Yii2-验证码相关"><a href="#Yii2-验证码相关" class="headerlink" title="Yii2 验证码相关"></a>Yii2 验证码相关</h3><p>使用验证码步骤:</p>
+<p>在触发登录前要先验证<code>validatePassword</code>的话 必须触发 <code>Yii</code>的</p>
+<pre><code>$model-&gt;validate()
+</code></pre>
+<p>如果要添加自定义<code>validate</code>的话，也必须在触发login前调用自定义的<code>mycustvalidate</code>，<br>
+<code>validate</code> 都验证通过后 在触发 Yii 的 login :</p>
+<pre><code> Yii::$app-&gt;user-&gt;login($user);
+</code></pre>
+<p><code>$user</code> 是  <code>common\models\user\Diyouuser;</code>组件的一个组件而且必须实现 IdentityInterface 这个接口</p>
+<h3 id="yii2-验证码相关"><a class="header-anchor" href="#yii2-验证码相关">¶</a>Yii2 验证码相关</h3>
+<p>使用验证码步骤:</p>
 <ol>
-<li><p>在使用的相关类中重写 Controller中的actions方法主要是自定义配置。</p>
-</li>
-<li><p>要做Model的验证规则中指定使用的路径位置如 :<br><code>[&#39;verify&#39;, &#39;captcha&#39;,&#39;captchaAction&#39;=&gt;&#39;login/captcha&#39;]</code></p>
-</li>
-<li><p>在视图中使用widget 部件 如：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?</span>= $form-&gt;field($model, <span class="string">'verify'</span>, [</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    ])-&gt;widget(yii\captcha\Captcha::className(), [</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">        <span class="string">'template'</span> =&gt; <span class="string">'&lt;div class="input-group"&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="string">                            &lt;span class="input-group-addon"&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"><span class="string">                                &lt;span class="glyphicon glyphicon-picture"&gt;&lt;/span&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"><span class="string">                            &lt;/span&gt;&#123;input&#125;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line"><span class="string">                            &lt;span class="input-group-addon"style="margin:0;padding:0"&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line"><span class="string">                                    &#123;image&#125;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line"><span class="string">                                    &lt;/span&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line"><span class="string">                                &lt;/div&gt;'</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">                            <span class="string">'imageOptions'</span> =&gt; [</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">                                <span class="string">'alt'</span> =&gt; <span class="string">'点击换图'</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">                                <span class="string">'title'</span> =&gt; <span class="string">'点击换图'</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">                                <span class="string">'style'</span> =&gt; <span class="string">'cursor:pointer'</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">                            ],</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">                            <span class="string">'captchaAction'</span> =&gt; <span class="string">'login/captcha'</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">     ])-&gt;label(<span class="keyword">false</span>) <span class="meta">?&gt;</span></span></pre></td></tr></table></figure>
-
-</li>
+<li>在使用的相关类中重写 Controller中的actions方法主要是自定义配置。</li>
+<li>要做Model的验证规则中指定使用的路径位置如 :<br>
+<code>['verify', 'captcha','captchaAction'=&gt;'login/captcha']</code></li>
+<li>在视图中使用widget 部件 如：</li>
 </ol>
-<h3 id="Yii2-中的分页"><a href="#Yii2-中的分页" class="headerlink" title="Yii2 中的分页"></a>Yii2 中的分页</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">&lt;nav&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">$this</span>-&gt;widget(<span class="string">'CLinkPager'</span>,<span class="keyword">array</span>(</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    <span class="string">'header'</span>=&gt;<span class="string">''</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    <span class="string">'firstPageLabel'</span> =&gt; <span class="string">'首页'</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">    <span class="string">'lastPageLabel'</span> =&gt; <span class="string">'末页'</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">    <span class="string">'prevPageLabel'</span> =&gt; <span class="string">'上一页'</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">    <span class="string">'nextPageLabel'</span> =&gt; <span class="string">'下一页'</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">    <span class="string">'pages'</span> =&gt; $pager,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">    <span class="string">'maxButtonCount'</span>=&gt;<span class="number">8</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">    <span class="string">'cssFile'</span>=&gt;<span class="keyword">false</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">    <span class="string">'htmlOptions'</span> =&gt;<span class="keyword">array</span>(<span class="string">"class"</span>=&gt;<span class="string">"pagination"</span>),</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">    <span class="string">'selectedPageCssClass'</span>=&gt;<span class="string">"active"</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line"> )</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line"> );</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line"><span class="meta">?&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">&lt;/nav&gt;</span></pre></td></tr></table></figure>
-
+ <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?</span>= $form-&gt;field($model, <span class="string">'verify'</span>, [</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    ])-&gt;widget(yii\captcha\Captcha::className(), [</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">        <span class="string">'template'</span> =&gt; <span class="string">'&lt;div class="input-group"&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="string">                            &lt;span class="input-group-addon"&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"><span class="string">                                &lt;span class="glyphicon glyphicon-picture"&gt;&lt;/span&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"><span class="string">                            &lt;/span&gt;&#123;input&#125;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line"><span class="string">                            &lt;span class="input-group-addon"style="margin:0;padding:0"&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line"><span class="string">                                    &#123;image&#125;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line"><span class="string">                                    &lt;/span&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line"><span class="string">                                &lt;/div&gt;'</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">                            <span class="string">'imageOptions'</span> =&gt; [</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">                                <span class="string">'alt'</span> =&gt; <span class="string">'点击换图'</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">                                <span class="string">'title'</span> =&gt; <span class="string">'点击换图'</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">                                <span class="string">'style'</span> =&gt; <span class="string">'cursor:pointer'</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">                            ],</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">                            <span class="string">'captchaAction'</span> =&gt; <span class="string">'login/captcha'</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">     ])-&gt;label(<span class="keyword">false</span>) <span class="meta">?&gt;</span></span></pre></td></tr></table></figure>
+<h3 id="yii2-中的分页"><a class="header-anchor" href="#yii2-中的分页">¶</a>Yii2 中的分页</h3>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">&lt;nav&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">$this</span>-&gt;widget(<span class="string">'CLinkPager'</span>,<span class="keyword">array</span>(</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    <span class="string">'header'</span>=&gt;<span class="string">''</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    <span class="string">'firstPageLabel'</span> =&gt; <span class="string">'首页'</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">    <span class="string">'lastPageLabel'</span> =&gt; <span class="string">'末页'</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">    <span class="string">'prevPageLabel'</span> =&gt; <span class="string">'上一页'</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">    <span class="string">'nextPageLabel'</span> =&gt; <span class="string">'下一页'</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">    <span class="string">'pages'</span> =&gt; $pager,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">    <span class="string">'maxButtonCount'</span>=&gt;<span class="number">8</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">    <span class="string">'cssFile'</span>=&gt;<span class="keyword">false</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">    <span class="string">'htmlOptions'</span> =&gt;<span class="keyword">array</span>(<span class="string">"class"</span>=&gt;<span class="string">"pagination"</span>),</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">    <span class="string">'selectedPageCssClass'</span>=&gt;<span class="string">"active"</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line"> )</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line"> );</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line"><span class="meta">?&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">&lt;/nav&gt;</span></pre></td></tr></table></figure>
 <ol>
 <li>分页必须在<code>&lt;nav&gt;</code>里</li>
 <li><code>htmlOptions</code>选项是必须的，他指定了yii生成的分页<code>div</code>的<code>class</code>名称，在这里我们使用bootstrap的class名</li>
@@ -205,48 +210,56 @@
 <li>另外还需要把cssFile设为false，不加载分页css样式文件</li>
 </ol>
 <hr>
-<h1 id="Yii2事件"><a href="#Yii2事件" class="headerlink" title="Yii2事件"></a>Yii2事件</h1><hr>
-<h3 id="Yii2中的事件原理"><a href="#Yii2中的事件原理" class="headerlink" title="Yii2中的事件原理"></a>Yii2中的事件原理</h3><p><code>Yii2</code>中的事件<code>handle</code>,就是一段回调处理程序，说白了<code>handle</code>就是回调函数的应用，php中回调的应用几种方式：</p>
-<p> 一. 一个全局的函数 如</p>
+<h1>Yii2事件</h1>
+<hr>
+<h3 id="yii2中的事件原理"><a class="header-anchor" href="#yii2中的事件原理">¶</a>Yii2中的事件原理</h3>
+<p><code>Yii2</code>中的事件<code>handle</code>,就是一段回调处理程序，说白了<code>handle</code>就是回调函数的应用，php中回调的应用几种方式：</p>
+<p>一. 一个全局的函数 如</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">call_usr_func(<span class="string">'funcname'</span>,<span class="string">'args'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">$person = <span class="keyword">new</span> Person;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用PHP全局函数作为handler来进行绑定</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">$person-&gt;on(Person::EVENT_GREET, <span class="string">'person_say_hello'</span>);</span></pre></td></tr></table></figure>
-<p> 二. 对象中的成员方法如果:</p>
+<p>二. 对象中的成员方法如果:</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用对象$obj的成员函数say_hello来进行绑定</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">$person-&gt;on(Person::EVENT_GREET, [$obj, <span class="string">'say_hello'</span>]);</span></pre></td></tr></table></figure>
-
 <p>三.类中的静态方法：</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用类Greet的静态成员函数say_hello进行绑定</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">$person-&gt;on(Person::EVENT_GREET, [<span class="string">'app\helper\Greet'</span>, <span class="string">'say_hello'</span>]);</span></pre></td></tr></table></figure>
-
 <p>四. 匿名函数：</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用匿名函数</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">$person-&gt;on(Person::EVENT_GREET, <span class="function"><span class="keyword">function</span> <span class="params">($event)</span> </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">echo</span> <span class="string">'Hello'</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">&#125;);</span></pre></td></tr></table></figure>
 <p><code>Yii</code> 在绑定事件的时候 其实就是 维护一个 <code>_event</code> 事件数组，通过<code>on</code> 方法 按照规则 将<code>handle</code>和<code>args</code>插入到事件数组里，当调用<code>trigger</code>时候，其实就是循环 <code>_enevt</code> 然后 通过 <code>call_user_func_array()</code>触发 回调，回调的逻辑要在 ，定义好的 以上四种 中<code>handdle</code> 中实现。</p>
 <hr>
-<h1 id="Yii2-Layout"><a href="#Yii2-Layout" class="headerlink" title="Yii2 Layout"></a>Yii2 Layout</h1><hr>
-<h3 id="Layout布局"><a href="#Layout布局" class="headerlink" title="Layout布局"></a>Layout布局</h3><p>在<code>controall</code> 中使用布局文件方法：</p>
+<h1>Yii2 Layout</h1>
+<hr>
+<h3 id="layout布局"><a class="header-anchor" href="#layout布局">¶</a>Layout布局</h3>
+<p>在<code>controall</code> 中使用布局文件方法：</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">Public</span> <span class="function"><span class="keyword">function</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">	<span class="keyword">Parent</span>:: init();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">	<span class="comment">//在当前controll 指定布局文件</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">	<span class="keyword">$this</span>-&gt;layout = <span class="string">'custmain'</span>；</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">	<span class="comment">//在当前controll不使用布局文件</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">	<span class="keyword">$this</span>-&gt;layout = <span class="keyword">false</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
 <p>然后在<code>controll</code>渲染视图前 在指定要重新定义的<code>layout</code></p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">Public</span> <span class="function"><span class="keyword">function</span> <span class="title">actionTest</span><span class="params">()</span></span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">	<span class="keyword">$this</span>-&gt;layout = <span class="string">'main'</span>；</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">	<span class="keyword">$this</span>-&gt;render();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
-<p>布局文件可以嵌套使用：原理是从内往外逐层传递<code>$content</code> 变量<br>例如：<br>Testlayout 中指定</p>
+<p>布局文件可以嵌套使用：原理是从内往外逐层传递<code>$content</code> 变量<br>
+例如：<br>
+Testlayout 中指定</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> <span class="keyword">$this</span>-&gt;beginContent(<span class="string">'@/app/view/layout/main'</span>)  <span class="meta">?&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">&lt;div&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">		Cust content</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">&lt;/div&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> $content  <span class="meta">?&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> <span class="keyword">$this</span>-&gt;endcontent <span class="meta">?&gt;</span></span></pre></td></tr></table></figure>
 <p>最终将<code>testlayout</code>文件作为一个<code>content</code>变量传递到<code>main</code>中的<code>content</code></p>
 <p><code>View</code> 中可以指定多个 <code>block</code> 块 默认是一个 <code>content</code>,每个<code>block</code>款 要在<code>layout</code>布局文件中 用变量一一对应 如:</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment">//View 中指定两个 block</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span>  <span class="keyword">$this</span>-&gt;beginBlock(<span class="string">'content'</span>);<span class="meta">?&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">	&lt;div&gt;test&lt;/div&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">	</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span>  <span class="keyword">$this</span>-&gt;endBlock ();<span class="meta">?&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span>  <span class="keyword">$this</span>-&gt;beginBlock(<span class="string">'contenttwo'</span>);<span class="meta">?&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">	&lt;div&gt;test&lt;/div&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">	</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span>  <span class="keyword">$this</span>-&gt;endBlock ();<span class="meta">?&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line"><span class="comment">//那么在 laoyout 中main  文件中 要有两个变量 </span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span>  <span class="keyword">echo</span> $content ;<span class="meta">?&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span>  <span class="keyword">echo</span> $contenttwo ;<span class="meta">?&gt;</span></span></pre></td></tr></table></figure>
-<h1 id="Yii2中-widget-和-assets-的使用："><a href="#Yii2中-widget-和-assets-的使用：" class="headerlink" title="Yii2中 widget 和 assets 的使用："></a>Yii2中 widget 和 assets 的使用：</h1><h3 id="assets-的使用"><a href="#assets-的使用" class="headerlink" title="assets 的使用"></a>assets 的使用</h3><p>使用 <code>assets</code> 资源控制器，可以达到按需加载<code>css</code>、<code>js</code>样式的目的，通常会将一个站点的公共部分提取出来，制作<code>layout</code>布局并且制作公共 <code>assets</code>，在<code>layout</code>的布局中将<code>assets</code>注册进来。<br>例如：<br>先定义一个 <code>MainAsset</code> </p>
+<h1>Yii2中 widget 和 assets 的使用：</h1>
+<h3 id="assets-的使用"><a class="header-anchor" href="#assets-的使用">¶</a>assets 的使用</h3>
+<p>使用 <code>assets</code> 资源控制器，可以达到按需加载<code>css</code>、<code>js</code>样式的目的，通常会将一个站点的公共部分提取出来，制作<code>layout</code>布局并且制作公共 <code>assets</code>，在<code>layout</code>的布局中将<code>assets</code>注册进来。<br>
+例如：<br>
+先定义一个 <code>MainAsset</code></p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MainAsset</span> <span class="keyword">extends</span> <span class="title">AssetBundle</span></span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="class"></span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">public</span> $basePath = <span class="string">'@webroot'</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">public</span> $baseUrl = <span class="string">'@web'</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">public</span> $css = [</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">        <span class="string">'css/base.css'</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">    ];</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">public</span> $js = [</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">    ];</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">public</span> $depends = [</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">        <span class="string">'yii\web\YiiAsset'</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">        <span class="string">'yii\web\JqueryAsset'</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">        <span class="string">'backend\assets\FontAwesomeAsset'</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">        <span class="string">'yii\bootstrap\BootstrapAsset'</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">    ];</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
-
 <p>然后在<code>layout</code>中这样使用 ：</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">MainAsset::register(<span class="keyword">$this</span>); <span class="comment">//默认会将css添加到header中将js添加到页尾</span></span></pre></td></tr></table></figure>
-<p>当有个别页面需要加载不同静态文件时，有两种引用方式：<br>一：在视图中通过<code>$this-&gt;registerJsFile()</code>引入可以指定依赖关系和加载顺序例如：</p>
+<p>当有个别页面需要加载不同静态文件时，有两种引用方式：<br>
+一：在视图中通过<code>$this-&gt;registerJsFile()</code>引入可以指定依赖关系和加载顺序例如：</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">$this</span>-&gt;registerJsFile(<span class="string">'/js/editormd.js'</span>,[<span class="string">'depends'</span>=&gt;[<span class="string">'yii\web\JqueryAsset'</span>]]);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">$this</span>-&gt;registerCssFile(<span class="string">'/js/editormd.css'</span>,[<span class="string">'depends'</span>=&gt;[<span class="string">'yii\web\JqueryAsset'</span>]]);</span></pre></td></tr></table></figure>
-<p>如果在控制器中可以使用当前的视图对象如： </p>
+<p>如果在控制器中可以使用当前的视图对象如：</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">$view = <span class="keyword">$this</span>-&gt;getView();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">  $view-&gt;registerJsFile(<span class="string">'/js/editormd.js'</span>,[<span class="string">'depends'</span>=&gt;[<span class="string">'yii\web\JqueryAsset'</span>]]);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">  $view-&gt;registerCssFile($cssfile, [AppAsset::className(), <span class="string">'depends'</span> =&gt; <span class="string">'frontend\assets\AppAsset'</span>]);</span></pre></td></tr></table></figure>
-
-<p>二：在单独制作出一个<code>authorassets</code>类<br>在页面中通过 <code>authorassets ::register($this);</code>注册进来</p>
-<p>在控制器中：        </p>
+<p>二：在单独制作出一个<code>authorassets</code>类<br>
+在页面中通过 <code>authorassets ::register($this);</code>注册进来</p>
+<p>在控制器中：</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">$view = <span class="keyword">$this</span>-&gt;getView();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">authorassets::register($view);</span></pre></td></tr></table></figure>
-
 <p>在控制器中执行一段js代码：</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">$view-&gt;registerJs(<span class="string">'var '</span>.$handle.<span class="string">' = editormd('</span>.$options.<span class="string">');'</span>);</span></pre></td></tr></table></figure>
-
-<h3 id="widget的使用"><a href="#widget的使用" class="headerlink" title="widget的使用"></a>widget的使用</h3><p><code>widget</code>大部分都是在<code>view</code>中使用 分为两种情况：<br>一：通过数据模型的<code>ActiveField</code>调用</p>
+<h3 id="widget的使用"><a class="header-anchor" href="#widget的使用">¶</a>widget的使用</h3>
+<p><code>widget</code>大部分都是在<code>view</code>中使用 分为两种情况：<br>
+一：通过数据模型的<code>ActiveField</code>调用</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?</span>=$form-&gt;field($model,<span class="string">'markdown'</span>)-&gt;widget(<span class="string">'common\widgets\EditorMD'</span>,[</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    <span class="string">'editorConfigs'</span>=&gt;[</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    <span class="string">'height'</span>=&gt;<span class="number">500</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    <span class="string">'markTextarea'</span>=&gt;<span class="string">'Article[markdown]'</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    <span class="string">'htmlTextarea'</span>=&gt;<span class="string">'Article[content]'</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">    <span class="string">'saveHTMLToTextarea'</span>=&gt;<span class="keyword">true</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">    ],</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">    <span class="string">'editorOptions'</span>=&gt;[</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">    <span class="string">'style'</span>=&gt;<span class="string">'z-index:1000;'</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">    ]</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">])<span class="meta">?&gt;</span></span></pre></td></tr></table></figure>
 <p>在<code>ActiveField</code>中会自动触发我们自定义的<code>widget</code>如：</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">widget</span><span class="params">($class, $config = [])</span></span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="function"></span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    <span class="comment">/* <span class="doctag">@var</span> $class \yii\base\Widget */</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    $config[<span class="string">'model'</span>] = <span class="keyword">$this</span>-&gt;model;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    $config[<span class="string">'attribute'</span>] = <span class="keyword">$this</span>-&gt;attribute;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">    $config[<span class="string">'view'</span>] = <span class="keyword">$this</span>-&gt;form-&gt;getView();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">$this</span>-&gt;parts[<span class="string">'&#123;input&#125;'</span>] = $class::widget($config);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">return</span> <span class="keyword">$this</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
@@ -507,19 +520,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">api</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">yar</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">Yii</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">api</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">bug</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">Yii</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -535,11 +544,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">devops</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">bug</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">devops</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -547,15 +556,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">jenkins</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">webhook</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">webhook</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">jenkins</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -567,10 +580,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">mac</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">memcache</a>
               </li>
              
@@ -579,15 +588,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">mac</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">php</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">trait</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">sign</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -599,7 +604,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">sign</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">phpstrom</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">trait</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -611,15 +624,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">svn</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">sql</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">svn</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">swoole</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">字符串</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">协程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -628,14 +649,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">xdebug</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">协程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">字符串</a>
               </li>
              
               <li class="article-tag-list-item">

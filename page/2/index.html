@@ -173,11 +173,13 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="整数运算"><a href="#整数运算" class="headerlink" title="整数运算"></a>整数运算</h3><p>整数除法仍然是整数，<code>%</code>可以取余。</p>
+        <h3 id="整数运算"><a class="header-anchor" href="#整数运算">¶</a>整数运算</h3>
+<p>整数除法仍然是整数，<code>%</code>可以取余。</p>
 <p>自增和自减运算：<code>++</code>和<code>--</code>，注意是先引用在自增，还是先自增在引用的差别。</p>
 <p>简写的<code>+=</code>和<code>-=</code></p>
 <p>计算结果溢出不报错，但结果是错误的。 在计算过程中我们没有必要为了减少内存，采用byte,short等短类型进行计算。</p>
-<h3 id="移位运算"><a href="#移位运算" class="headerlink" title="移位运算"></a>移位运算</h3><p>左移：<code>&lt;&lt;</code></p>
+<h3 id="移位运算"><a class="header-anchor" href="#移位运算">¶</a>移位运算</h3>
+<p>左移：<code>&lt;&lt;</code></p>
 <p>右移：<code>&gt;&gt;</code></p>
 <p>无条件右移：<code>&gt;&gt;&gt;</code></p>
 <p>byte 和 short 会先转换为int在移位</p>
@@ -273,14 +275,17 @@
       
         <p>Reference：<code>https://www.gnu.org/software/gawk/manual/gawk.html#Running-gawk</code></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">Amelia       555-5553     amelia.zodiacusque@gmail.com    F</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">Anthony      555-3412     anthony.asserturo@hotmail.com   A</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">Becky        555-7685     becky.algebrarum@gmail.com      A</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">Bill         555-1675     bill.drowning@hotmail.com       A</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">Broderick    555-0542     broderick.aliquotiens@yahoo.com R</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">Camilla      555-2912     camilla.infusarum@skynet.be     R</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">Fabius       555-1234     fabius.undevicesimus@ucb.edu    F</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">Julie        555-6699     julie.perscrutabor@skeeve.com   F</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">Martin       555-6480     martin.codicibus@hotmail.com    A</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">Samuel       555-3430     samuel.lanceolis@shu.edu        A</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">Jean-Paul    555-2127     jeanpaul.campanorum@nyu.edu     R</span></pre></td></tr></table></figure>
-
-<h3 id="按-0-查找匹配元素"><a href="#按-0-查找匹配元素" class="headerlink" title="按 $0 查找匹配元素"></a>按 $0 查找匹配元素</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">awk <span class="string">'/li/ &#123;print $0&#125;'</span> 2017.log </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">&lt;=&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">grep li 2017.log</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">//不同的是 ‘/’ is called a regular expression,</span></pre></td></tr></table></figure>
-
-<h3 id="切割-slice"><a href="#切割-slice" class="headerlink" title="切割 slice"></a>切割 slice</h3><p><code>uuidd:x:107:111::/run/uuidd:/bin/false</code></p>
+<h3 id="按-0-查找匹配元素"><a class="header-anchor" href="#按-0-查找匹配元素">¶</a>按 $0 查找匹配元素</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">awk <span class="string">'/li/ &#123;print $0&#125;'</span> 2017.log </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">&lt;=&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">grep li 2017.log</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">//不同的是 ‘/’ is called a regular expression,</span></pre></td></tr></table></figure>
+<h3 id="切割-slice"><a class="header-anchor" href="#切割-slice">¶</a>切割 slice</h3>
+<p><code>uuidd:x:107:111::/run/uuidd:/bin/false</code></p>
 <p>如果每行串都有某个特殊字符可以按照特殊字符切割字符串。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">awk -F <span class="string">':'</span> <span class="string">' /redis/ &#123; print $1 &#125;'</span> /etc/passwd</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">awk -F <span class="string">':'</span> <span class="string">'/redis/ &#123; print $1 &#125;'</span> /etc/passwd  | wc -l</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">awk -F <span class="string">':'</span> <span class="string">' &#123; print $1 &#125;'</span> /etc/passwd | sort</span></pre></td></tr></table></figure>
-
-<h3 id="COUNT-THIS-FILE"><a href="#COUNT-THIS-FILE" class="headerlink" title="COUNT THIS FILE"></a>COUNT THIS FILE</h3><p>统计文件有多少列<br><code>awk &#39;END { print NF }&#39; 2017.log</code><br>统计文件有多少行<br><code>awk &#39;END { print NR }&#39; 2017.log</code></p>
+<h3 id="count-this-file"><a class="header-anchor" href="#count-this-file">¶</a>COUNT THIS FILE</h3>
+<p>统计文件有多少列<br>
+<code>awk 'END { print NF }' 2017.log</code><br>
+统计文件有多少行<br>
+<code>awk 'END { print NR }' 2017.log</code></p>
 
       
 
@@ -446,7 +451,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="为什么要使用特性开关"><a href="#为什么要使用特性开关" class="headerlink" title="为什么要使用特性开关?"></a>为什么要使用特性开关?</h3><ul>
+        <h3 id="为什么要使用特性开关"><a class="header-anchor" href="#为什么要使用特性开关">¶</a>为什么要使用特性开关?</h3>
+<ul>
 <li>上线周期短，屏蔽在单一上线周期内已开发但未完成的特性（例如每周两次上线，但“产品列表”功能需要三周才能开发完成）</li>
 <li>对比在不同 UI 下的用户行为和转化率（A/B Testing）</li>
 <li>部署与发布分离，持续频繁部署，业务随时可发布</li>
@@ -540,7 +546,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="精益思想：消除浪费"><a href="#精益思想：消除浪费" class="headerlink" title="精益思想：消除浪费"></a>精益思想：消除浪费</h3><ol>
+        <h3 id="精益思想：消除浪费"><a class="header-anchor" href="#精益思想：消除浪费">¶</a>精益思想：消除浪费</h3>
+<ol>
 <li>以越来越少的投入——较少的人力、较少的设备、较短的时间和较小的场地创造出尽可能多的价值；</li>
 <li>越来越接近用户，提供他们确实要的东西，精确地定义价值</li>
 <li>确定每个产品的全部价值流；</li>
@@ -548,7 +555,8 @@
 <li>及时跟上不断变化着的顾客需求</li>
 <li>精益思想包括精益生产、精益管理、精益设计和精益供应等一系列思想，其核心是通过及时适量、零库存、传票卡等现场管理手段实现订货生产，从而确保产品质量并降低成本。“精”体现在质量上，追求尽善尽美、精益求精；“益”体现在成本上，只有成本低于行业平均成本的企业才能获得收益。因而，精益思想不单纯追求成本最低、企业眼中的质量最优，而是追求用户和企业都满意的质量、追求成本与质量的最佳配置、追求产品性能价格的最优比。</li>
 </ol>
-<h3 id="敏捷选型：SCRUM"><a href="#敏捷选型：SCRUM" class="headerlink" title="敏捷选型：SCRUM"></a>敏捷选型：SCRUM</h3><hr>
+<h3 id="敏捷选型：scrum"><a class="header-anchor" href="#敏捷选型：scrum">¶</a>敏捷选型：SCRUM</h3>
+<hr>
         
           <a class="article-more-a" href="/2017/05/14/devops-thinking/#more">more >></a>
         
@@ -635,7 +643,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="Jenkins交付流水"><a href="#Jenkins交付流水" class="headerlink" title="Jenkins交付流水"></a>Jenkins交付流水</h3><p>DevOps和产品团队需要熟悉的Jenkins技能</p>
+        <h3 id="jenkins交付流水"><a class="header-anchor" href="#jenkins交付流水">¶</a>Jenkins交付流水</h3>
+<p>DevOps和产品团队需要熟悉的Jenkins技能</p>
 <ol>
 <li>持续集成</li>
 </ol>
@@ -655,16 +664,17 @@
 <li>Jenkins的使用</li>
 </ol>
 <ul>
-<li><p>流水线的目录层级规划</p>
-</li>
-<li><p>在Jenkins中创建流水线</p>
+<li>流水线的目录层级规划</li>
+<li>在Jenkins中创建流水线</li>
+</ul>
 <ol>
 <li>配置定时检查代码更新</li>
 <li>配置带输入参数的流水线</li>
 <li>添加流水线内容</li>
 </ol>
-</li>
-<li><p>Jenkinsfile的使用</p>
+<ul>
+<li>Jenkinsfile的使用</li>
+</ul>
 <ol>
 <li>Jenkinsfile的管理：项目中的pipeline目录</li>
 <li>标准流水线的常见步骤</li>
@@ -672,8 +682,6 @@
 <li>Jenkins中的Pipeline Syntax工具</li>
 </ol>
 <hr>
-</li>
-</ul>
         
           <a class="article-more-a" href="/2017/05/11/jenkins/#more">more >></a>
         
@@ -913,8 +921,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="从release上选择一个版本clone源代码-wink"><a href="#从release上选择一个版本clone源代码-wink" class="headerlink" title="从release上选择一个版本clone源代码 :wink:"></a>从release上选择一个版本clone源代码 :wink:</h3><p><code>sudo  git clone https://github.com/swoole/swoole-src.git</code></p>
-<h3 id="编译生成configure文件"><a href="#编译生成configure文件" class="headerlink" title="编译生成configure文件"></a>编译生成configure文件</h3><p>一 ： 通过phpize脚本生成<br> <code>cd swoole-src.git</code><br> <code>sudo /usr/bin/phpize7.0</code></p>
+        <h3 id="从release上选择一个版本clone源代码-😉"><a class="header-anchor" href="#从release上选择一个版本clone源代码-😉">¶</a>从release上选择一个版本clone源代码 😉</h3>
+<p><code>sudo git clone https://github.com/swoole/swoole-src.git</code></p>
+<h3 id="编译生成configure文件"><a class="header-anchor" href="#编译生成configure文件">¶</a>编译生成configure文件</h3>
+<p>一 ： 通过phpize脚本生成<br>
+<code>cd swoole-src.git</code><br>
+<code>sudo /usr/bin/phpize7.0</code></p>
 <p>如果没有找到<code>phpize</code> 先安装<code>phpize</code></p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">sudo apt-get install autoconf automake libtool m4</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">sudo apt-get install php7<span class="number">.0</span>-dev</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">For</span> PHP7<span class="number">.1</span>, <span class="keyword">use</span> <span class="title">php7</span>.1-<span class="title">dev</span></span></pre></td></tr></table></figure>
         
@@ -1003,13 +1015,21 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="架构图"><a href="#架构图" class="headerlink" title="架构图"></a>架构图</h3><p><img src="http://o8979n2hu.bkt.clouddn.com/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1.jpg" alt="架构图"></p>
-<h3 id="负载均衡工作方式"><a href="#负载均衡工作方式" class="headerlink" title="负载均衡工作方式"></a>负载均衡工作方式</h3><p><img src="http://o8979n2hu.bkt.clouddn.com/lvs.png" alt="lvs"></p>
-<h4 id="http-重定向＝》转移请求"><a href="#http-重定向＝》转移请求" class="headerlink" title="http 重定向＝》转移请求"></a>http 重定向＝》转移请求</h4><h4 id="DNS-负载均衡"><a href="#DNS-负载均衡" class="headerlink" title="DNS 负载均衡"></a>DNS 负载均衡</h4><p>多机房部署，就近访问。可以查看google的dns配置 ： <code>dig google.cn</code> 可以产看 <code>google.cn</code> 的域名后面配置的<code>IP</code></p>
-<h4 id="反响代理负载均衡"><a href="#反响代理负载均衡" class="headerlink" title="反响代理负载均衡"></a>反响代理负载均衡</h4><p>工作在 http层（七层）常用 nginx做代理软件</p>
-<h4 id="IP负载均衡"><a href="#IP负载均衡" class="headerlink" title="IP负载均衡"></a>IP负载均衡</h4><p>工作在 传输层 (四层转发负载) ，通过转发ip数据包方式，缺点是所有数据均要通过负载机器，负载机器的网络带宽会逐渐成为瓶颈</p>
-<h4 id="LVS"><a href="#LVS" class="headerlink" title="LVS"></a>LVS</h4><p>工作在 数据链路层（二层）通过虚拟IP转发webserver,2⃣webserver处理完成后直接响应给客户端</p>
-<h3 id="负载均衡常见策略"><a href="#负载均衡常见策略" class="headerlink" title="负载均衡常见策略"></a>负载均衡常见策略</h3><ul>
+        <h3 id="架构图"><a class="header-anchor" href="#架构图">¶</a>架构图</h3>
+<p><img src="http://o8979n2hu.bkt.clouddn.com/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1.jpg" alt="架构图"></p>
+<h3 id="负载均衡工作方式"><a class="header-anchor" href="#负载均衡工作方式">¶</a>负载均衡工作方式</h3>
+<p><img src="http://o8979n2hu.bkt.clouddn.com/lvs.png" alt="lvs"></p>
+<h4 id="http-重定向＝-转移请求"><a class="header-anchor" href="#http-重定向＝-转移请求">¶</a>http 重定向＝》转移请求</h4>
+<h4 id="dns-负载均衡"><a class="header-anchor" href="#dns-负载均衡">¶</a>DNS 负载均衡</h4>
+<p>多机房部署，就近访问。可以查看google的dns配置 ： <code>dig google.cn</code> 可以产看 <code>google.cn</code> 的域名后面配置的<code>IP</code></p>
+<h4 id="反响代理负载均衡"><a class="header-anchor" href="#反响代理负载均衡">¶</a>反响代理负载均衡</h4>
+<p>工作在 http层（七层）常用 nginx做代理软件</p>
+<h4 id="ip负载均衡"><a class="header-anchor" href="#ip负载均衡">¶</a>IP负载均衡</h4>
+<p>工作在 传输层 (四层转发负载) ，通过转发ip数据包方式，缺点是所有数据均要通过负载机器，负载机器的网络带宽会逐渐成为瓶颈</p>
+<h4 id="lvs"><a class="header-anchor" href="#lvs">¶</a>LVS</h4>
+<p>工作在 数据链路层（二层）通过虚拟IP转发webserver,2⃣webserver处理完成后直接响应给客户端</p>
+<h3 id="负载均衡常见策略"><a class="header-anchor" href="#负载均衡常见策略">¶</a>负载均衡常见策略</h3>
+<ul>
 <li>轮询</li>
 <li>加权轮询</li>
 <li>最小链接数</li>
@@ -1169,19 +1189,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">api</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">yar</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">Yii</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">api</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">bug</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">Yii</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1197,11 +1213,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">devops</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">bug</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">devops</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1209,15 +1225,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">jenkins</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">webhook</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">webhook</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">jenkins</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1229,10 +1249,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">mac</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">memcache</a>
               </li>
              
@@ -1241,15 +1257,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">mac</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">php</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">trait</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">sign</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1261,7 +1273,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">sign</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">phpstrom</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">trait</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1273,15 +1293,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">svn</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">sql</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">svn</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">swoole</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">字符串</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">协程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1290,14 +1318,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">xdebug</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">协程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">字符串</a>
               </li>
              
               <li class="article-tag-list-item">

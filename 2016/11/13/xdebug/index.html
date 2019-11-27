@@ -8,13 +8,13 @@
   <link rel="dns-prefetch" href="http://blog.nicexiangcun.com">
   <title>phpstorm vagrant xdebug | 李宏伟&#39;blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="phpstorm 结合homestead 配置xdebug :high_heel:编辑php配置文件homestead ssh sudo vi &#x2F;etc&#x2F;php&#x2F;7.0&#x2F;fpm&#x2F;conf.d&#x2F;20-xdebug.ini 添加 ： 12zend_extension&#x3D;&#x2F;usr&#x2F;lib&#x2F;php&#x2F;20151012&#x2F;xdebug.so3xdebug.remote_enable &#x3D; 14xdebug.remo">
+  <meta name="description" content="phpstorm 结合homestead 配置xdebug 👠 ¶编辑php配置文件 homestead ssh sudo vi &#x2F;etc&#x2F;php&#x2F;7.0&#x2F;fpm&#x2F;conf.d&#x2F;20-xdebug.ini 添加 ： 12zend_extension&#x3D;&#x2F;usr&#x2F;lib&#x2F;php&#x2F;20151012&#x2F;xdebug.so3xdebug.remote_enable &#x3D; 14xdebug.remote_con">
 <meta name="keywords" content="xdebug">
 <meta property="og:type" content="article">
 <meta property="og:title" content="phpstorm vagrant xdebug">
 <meta property="og:url" content="http:&#x2F;&#x2F;blog.nicexiangcun.com&#x2F;2016&#x2F;11&#x2F;13&#x2F;xdebug&#x2F;index.html">
 <meta property="og:site_name" content="李宏伟&#39;blog">
-<meta property="og:description" content="phpstorm 结合homestead 配置xdebug :high_heel:编辑php配置文件homestead ssh sudo vi &#x2F;etc&#x2F;php&#x2F;7.0&#x2F;fpm&#x2F;conf.d&#x2F;20-xdebug.ini 添加 ： 12zend_extension&#x3D;&#x2F;usr&#x2F;lib&#x2F;php&#x2F;20151012&#x2F;xdebug.so3xdebug.remote_enable &#x3D; 14xdebug.remo">
+<meta property="og:description" content="phpstorm 结合homestead 配置xdebug 👠 ¶编辑php配置文件 homestead ssh sudo vi &#x2F;etc&#x2F;php&#x2F;7.0&#x2F;fpm&#x2F;conf.d&#x2F;20-xdebug.ini 添加 ： 12zend_extension&#x3D;&#x2F;usr&#x2F;lib&#x2F;php&#x2F;20151012&#x2F;xdebug.so3xdebug.remote_enable &#x3D; 14xdebug.remote_con">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2019-11-27T12:11:01.044Z">
 <meta name="twitter:card" content="summary">
@@ -173,22 +173,25 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="phpstorm-结合homestead-配置xdebug-high-heel"><a href="#phpstorm-结合homestead-配置xdebug-high-heel" class="headerlink" title="phpstorm 结合homestead 配置xdebug :high_heel:"></a>phpstorm 结合homestead 配置xdebug :high_heel:</h1><h3 id="编辑php配置文件"><a href="#编辑php配置文件" class="headerlink" title="编辑php配置文件"></a>编辑php配置文件</h3><p><code>homestead ssh</code></p>
+        <h1>phpstorm 结合homestead 配置xdebug 👠</h1>
+<h3 id="编辑php配置文件"><a class="header-anchor" href="#编辑php配置文件">¶</a>编辑php配置文件</h3>
+<p><code>homestead ssh</code></p>
 <p><code>sudo vi /etc/php/7.0/fpm/conf.d/20-xdebug.ini</code></p>
 <p>添加 ：</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">zend_extension=/usr/lib/php/<span class="number">20151012</span>/xdebug.so</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">xdebug.remote_enable = <span class="number">1</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">xdebug.remote_connect_back = <span class="number">1</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">xdebug.remote_port = <span class="number">9000</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">xdebug.scream=<span class="number">0</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">xdebug.cli_color=<span class="number">1</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">xdebug.show_local_vars=<span class="number">1</span></span></pre></td></tr></table></figure>
-
 <p>重启fpm</p>
 <p><code>sudo service php7.0-fpm restart</code></p>
 <a id="more"></a>
-
-<h3 id="下载chrom-xdebug-help-扩展"><a href="#下载chrom-xdebug-help-扩展" class="headerlink" title="下载chrom  xdebug-help  扩展"></a>下载chrom  xdebug-help  扩展</h3><p><a href="https://chrome.google.com/webstore/detail/eadndfjplgieldjbigjakmdgkmoaaaoc" target="_blank" rel="noopener">https://chrome.google.com/webstore/detail/eadndfjplgieldjbigjakmdgkmoaaaoc</a></p>
+<h3 id="下载chrom-xdebug-help-扩展"><a class="header-anchor" href="#下载chrom-xdebug-help-扩展">¶</a>下载chrom  xdebug-help  扩展</h3>
+<p><a href="https://chrome.google.com/webstore/detail/eadndfjplgieldjbigjakmdgkmoaaaoc" target="_blank" rel="noopener">https://chrome.google.com/webstore/detail/eadndfjplgieldjbigjakmdgkmoaaaoc</a></p>
 <p>配置xdebug-help：</p>
 <p>IDE key  ： phpstorm</p>
-<h3 id="phpstorm-配置"><a href="#phpstorm-配置" class="headerlink" title="phpstorm 配置"></a>phpstorm 配置</h3><p>呼出配置项，搜索php，选择一个版本。</p>
+<h3 id="phpstorm-配置"><a class="header-anchor" href="#phpstorm-配置">¶</a>phpstorm 配置</h3>
+<p>呼出配置项，搜索php，选择一个版本。</p>
 <p>配置<code>ssh</code>链接vagrant ,如果使用私钥链接位置在 <code>.homestead\.vagrant\machines\default\virtualbox</code></p>
 <p>如果有问题可以查看 <code>phpinfo xdebug</code>是否安装成功</p>
-<h3 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h3><p>打开 <code>phpstorm xdebug</code> 监听。</p>
+<h3 id="调试"><a class="header-anchor" href="#调试">¶</a>调试</h3>
+<p>打开 <code>phpstorm xdebug</code> 监听。</p>
 <p>打开 <code>xdebug-helper</code> 扩展。</p>
 <p>输入<code>app.dev</code>，phpstorm会弹出对话框，选择“Accept”。</p>
 <p>然后选择 <code>Preferences —&gt; Languages &amp; Frameworks — &gt; PHP —&gt; Servers</code></p>
@@ -450,19 +453,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">api</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">yar</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">Yii</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">api</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">bug</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">Yii</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -478,11 +477,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">devops</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">bug</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">devops</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -490,15 +489,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">jenkins</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">webhook</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">webhook</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">jenkins</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -510,10 +513,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">mac</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">memcache</a>
               </li>
              
@@ -522,15 +521,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">mac</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">php</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">trait</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">sign</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -542,7 +537,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">sign</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">phpstrom</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">trait</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -554,15 +557,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">svn</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">sql</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">svn</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">swoole</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">字符串</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">协程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -571,14 +582,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">xdebug</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">协程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">字符串</a>
               </li>
              
               <li class="article-tag-list-item">

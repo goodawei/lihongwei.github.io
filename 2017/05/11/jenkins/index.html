@@ -8,13 +8,13 @@
   <link rel="dns-prefetch" href="http://blog.nicexiangcun.com">
   <title>Best Practice Of Jenkins | 李宏伟&#39;blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Jenkins交付流水DevOps和产品团队需要熟悉的Jenkins技能  持续集成   持续集成概念简介 项目交付流水线：持续集成的表现形式 Web和Mobile项目的典型交付流水线   Jenkins持续集成系统   Jenkins的特点 理解流水线即代码（Pipeline as Code）   Jenkins的使用   流水线的目录层级规划  在Jenkins中创建流水线  配置定时检查代码">
+  <meta name="description" content="¶Jenkins交付流水 DevOps和产品团队需要熟悉的Jenkins技能  持续集成   持续集成概念简介 项目交付流水线：持续集成的表现形式 Web和Mobile项目的典型交付流水线   Jenkins持续集成系统   Jenkins的特点 理解流水线即代码（Pipeline as Code）   Jenkins的使用   流水线的目录层级规划 在Jenkins中创建流水线   配置定时检查">
 <meta name="keywords" content="jenkins">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Best Practice Of Jenkins">
 <meta property="og:url" content="http:&#x2F;&#x2F;blog.nicexiangcun.com&#x2F;2017&#x2F;05&#x2F;11&#x2F;jenkins&#x2F;index.html">
 <meta property="og:site_name" content="李宏伟&#39;blog">
-<meta property="og:description" content="Jenkins交付流水DevOps和产品团队需要熟悉的Jenkins技能  持续集成   持续集成概念简介 项目交付流水线：持续集成的表现形式 Web和Mobile项目的典型交付流水线   Jenkins持续集成系统   Jenkins的特点 理解流水线即代码（Pipeline as Code）   Jenkins的使用   流水线的目录层级规划  在Jenkins中创建流水线  配置定时检查代码">
+<meta property="og:description" content="¶Jenkins交付流水 DevOps和产品团队需要熟悉的Jenkins技能  持续集成   持续集成概念简介 项目交付流水线：持续集成的表现形式 Web和Mobile项目的典型交付流水线   Jenkins持续集成系统   Jenkins的特点 理解流水线即代码（Pipeline as Code）   Jenkins的使用   流水线的目录层级规划 在Jenkins中创建流水线   配置定时检查">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http:&#x2F;&#x2F;o8979n2hu.bkt.clouddn.com&#x2F;pipeline.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;o8979n2hu.bkt.clouddn.com&#x2F;jenkins-manager.png">
@@ -180,7 +180,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="Jenkins交付流水"><a href="#Jenkins交付流水" class="headerlink" title="Jenkins交付流水"></a>Jenkins交付流水</h3><p>DevOps和产品团队需要熟悉的Jenkins技能</p>
+        <h3 id="jenkins交付流水"><a class="header-anchor" href="#jenkins交付流水">¶</a>Jenkins交付流水</h3>
+<p>DevOps和产品团队需要熟悉的Jenkins技能</p>
 <ol>
 <li>持续集成</li>
 </ol>
@@ -200,16 +201,17 @@
 <li>Jenkins的使用</li>
 </ol>
 <ul>
-<li><p>流水线的目录层级规划</p>
-</li>
-<li><p>在Jenkins中创建流水线</p>
+<li>流水线的目录层级规划</li>
+<li>在Jenkins中创建流水线</li>
+</ul>
 <ol>
 <li>配置定时检查代码更新</li>
 <li>配置带输入参数的流水线</li>
 <li>添加流水线内容</li>
 </ol>
-</li>
-<li><p>Jenkinsfile的使用</p>
+<ul>
+<li>Jenkinsfile的使用</li>
+</ul>
 <ol>
 <li>Jenkinsfile的管理：项目中的pipeline目录</li>
 <li>标准流水线的常见步骤</li>
@@ -217,12 +219,9 @@
 <li>Jenkins中的Pipeline Syntax工具</li>
 </ol>
 <hr>
-</li>
-</ul>
 <a id="more"></a>
-
-
-<h3 id="建议阅读材料"><a href="#建议阅读材料" class="headerlink" title="建议阅读材料"></a>建议阅读材料</h3><ol>
+<h3 id="建议阅读材料"><a class="header-anchor" href="#建议阅读材料">¶</a>建议阅读材料</h3>
+<ol>
 <li>Jenkins Pipeline官方教程：</li>
 </ol>
 <ul>
@@ -240,8 +239,13 @@
 <ul>
 <li><a href="https://github.com/jenkinsci/pipeline-examples" target="_blank" rel="noopener">https://github.com/jenkinsci/pipeline-examples</a></li>
 </ul>
-<h3 id="持续集成基础概念"><a href="#持续集成基础概念" class="headerlink" title="持续集成基础概念"></a>持续集成基础概念</h3><p>持续集成，Continuous integration ，简称CI。</p>
-<p>随着软件开发复杂度的不断提高，团队开发成员间如何更好地协同工作以确保软件开发的质量已经慢慢成为开发过程中不可回避的问题。尤其是近些年来，敏捷（Agile） 在软件工程领域越来越红火，如何能再不断变化的需求中快速适应和保证软件的质量也显得尤其的重要。<br>持续集成正是针对这一类问题的一种软件开发实践。它倡导团队开发成员必须经常集成他们的工作，甚至每天都可能发生多次集成。而每次的集成都是通过自动化的构建来验证，包括自动编译、发布和测试，从而尽快地发现集成错误，让团队能够更快的开发内聚的软件。<br>以一个比较典型的大型IT项目为例。<br>首先，解释下集成。我们所有项目的代码都是托管在Git服务器上。每个项目都要有若干个单元测试，只有在本地电脑上通过了单元测试的代码才能上传到Git服务器上，保证上传的代码没有问题。代码进入流水线以后会经历一系列的预定过程，比如确认单元测试通过，代码静态检查和测试环境的部署等，然后会进入集成测试阶段。集成测试是指将多个软件组件连接后，通过自动化的手段检查组件直接的通信是否被破坏，因此这里的“集成”指就是指的集成测试。<br>再说持续。不言而喻，就是指长期的对项目代码进行集成测试。既然是长期，那肯定是自动执行的，否则，人工执行则没有保证，而且耗人力。对此，我们有一台服务器，它会检查Git仓库的代码变更，当代码仓库内容发生变化以后，它需要更新本地代码，重新编译，然后跑集成测试。每次集成测试结果都会记录在案。完成这方面工作的就是Jenkins软件，当然，它的功能远不止这些。</p>
+<h3 id="持续集成基础概念"><a class="header-anchor" href="#持续集成基础概念">¶</a>持续集成基础概念</h3>
+<p>持续集成，Continuous integration ，简称CI。</p>
+<p>随着软件开发复杂度的不断提高，团队开发成员间如何更好地协同工作以确保软件开发的质量已经慢慢成为开发过程中不可回避的问题。尤其是近些年来，敏捷（Agile） 在软件工程领域越来越红火，如何能再不断变化的需求中快速适应和保证软件的质量也显得尤其的重要。<br>
+持续集成正是针对这一类问题的一种软件开发实践。它倡导团队开发成员必须经常集成他们的工作，甚至每天都可能发生多次集成。而每次的集成都是通过自动化的构建来验证，包括自动编译、发布和测试，从而尽快地发现集成错误，让团队能够更快的开发内聚的软件。<br>
+以一个比较典型的大型IT项目为例。<br>
+首先，解释下集成。我们所有项目的代码都是托管在Git服务器上。每个项目都要有若干个单元测试，只有在本地电脑上通过了单元测试的代码才能上传到Git服务器上，保证上传的代码没有问题。代码进入流水线以后会经历一系列的预定过程，比如确认单元测试通过，代码静态检查和测试环境的部署等，然后会进入集成测试阶段。集成测试是指将多个软件组件连接后，通过自动化的手段检查组件直接的通信是否被破坏，因此这里的“集成”指就是指的集成测试。<br>
+再说持续。不言而喻，就是指长期的对项目代码进行集成测试。既然是长期，那肯定是自动执行的，否则，人工执行则没有保证，而且耗人力。对此，我们有一台服务器，它会检查Git仓库的代码变更，当代码仓库内容发生变化以后，它需要更新本地代码，重新编译，然后跑集成测试。每次集成测试结果都会记录在案。完成这方面工作的就是Jenkins软件，当然，它的功能远不止这些。</p>
 <p>持续集成的特点：</p>
 <ul>
 <li>它是一个自动化的周期性的集成测试过程，从检出代码、编译构建、运行测试、结果记录、测试统计等都是自动完成的，无需人工干预；</li>
@@ -253,8 +257,9 @@
 <li>保证团队开发人员提交代码的质量，减轻了软件发布时的压力</li>
 <li>持续集成中的任何一个环节都是自动完成的，无需太多的人工干预，有利于减少重复过程以节省时间、费用和工作量；</li>
 </ul>
-<h3 id="Jenkins安装与配置"><a href="#Jenkins安装与配置" class="headerlink" title="Jenkins安装与配置"></a>Jenkins安装与配置</h3><p>Jenkins是一个开源的实现持续集成的软件工具。它能实时监控集成中存在的错误，提供详细的日志文件和提醒功能，还能用图表的形式形象地展示项目构建的趋势和稳定性。</p>
-<p>官方网站：<a href="http://jenkins.io" target="_blank" rel="noopener">http://jenkins.io</a> </p>
+<h3 id="jenkins安装与配置"><a class="header-anchor" href="#jenkins安装与配置">¶</a>Jenkins安装与配置</h3>
+<p>Jenkins是一个开源的实现持续集成的软件工具。它能实时监控集成中存在的错误，提供详细的日志文件和提醒功能，还能用图表的形式形象地展示项目构建的趋势和稳定性。</p>
+<p>官方网站：<a href="http://jenkins.io" target="_blank" rel="noopener">http://jenkins.io</a></p>
 <p>Jenkins的特点：</p>
 <ul>
 <li>易安装：仅仅一个 java -jar jenkins.war，从官网下载该文件后，直接运行，无需额外的安装，更无需安装数据库；</li>
@@ -267,7 +272,8 @@
 <li>文件指纹信息：Jenkins会保存哪次集成构建产生了哪些产物文件，哪一次集成测试的环境是哪个版本部署的等记录</li>
 <li>支持第三方插件：使得Jenkins 变得越来越强大；</li>
 </ul>
-<h3 id="部署Jenkins服务"><a href="#部署Jenkins服务" class="headerlink" title="部署Jenkins服务"></a>部署Jenkins服务</h3><ol>
+<h3 id="部署jenkins服务"><a class="header-anchor" href="#部署jenkins服务">¶</a>部署Jenkins服务</h3>
+<ol>
 <li>安装环境介绍</li>
 </ol>
 <ul>
@@ -280,17 +286,22 @@
 <li>安装 Jenkins</li>
 </ol>
 <ul>
-<li><p>新建 /opt/soft/jenkins 目录</p>
+<li>
+<p>新建 /opt/soft/jenkins 目录</p>
 </li>
-<li><p>jenkins 官网下载 war 包</p>
+<li>
+<p>jenkins 官网下载 war 包</p>
 </li>
-<li><p>将 jenkins.war 拷贝到此目录下</p>
+<li>
+<p>将 jenkins.war 拷贝到此目录下</p>
 </li>
-<li><p>初始化运行，执行以下命令，默认以管理员身份启动运行</p>
-  <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">cd /opt/soft/jenkins;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=/opt/jdk1<span class="number">.8</span><span class="number">.0</span>_51;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">export PATH=$&#123;JAVA_HOME&#125;/bin:$PATH;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">export JENKINS_HOME=/opt/soft/jenkins/workdir/;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">java -jar /opt/soft/jenkins/jenkins.war --httpPort=<span class="number">80</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"><span class="comment">//在浏览器里输入 10.70.71.235，可以进入 Jenkins</span></span></pre></td></tr></table></figure></li>
+<li>
+<p>初始化运行，执行以下命令，默认以管理员身份启动运行</p>
+  <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">cd /opt/soft/jenkins;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=/opt/jdk1<span class="number">.8</span><span class="number">.0</span>_51;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">export PATH=$&#123;JAVA_HOME&#125;/bin:$PATH;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">export JENKINS_HOME=/opt/soft/jenkins/workdir/;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">java -jar /opt/soft/jenkins/jenkins.war --httpPort=<span class="number">80</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"><span class="comment">//在浏览器里输入 10.70.71.235，可以进入 Jenkins</span></span></pre></td></tr></table></figure>
+</li>
 </ul>
 <ol start="3">
-<li>配置 Jenkins </li>
+<li>配置 Jenkins</li>
 </ol>
 <ul>
 <li>从左侧面板的“系统管理”按钮进入配置管理页面</li>
@@ -298,44 +309,57 @@
 <li>然后进入“Configure Global Security”页面，勾选“启用安全”，安全域里选择Gitlab登录，并添加相关信息</li>
 <li>在“Configure Global Security”页面的安全域“权限”中选择“Role-Based Strategy”，然后到“Manage and Assign Roles”页面配置项目角色和权限</li>
 <li>域名映射</li>
-<li>启动时，设置 –httpPort=80，再由网管指定域名 <a href="http://jenkins.haihangyun.com" target="_blank" rel="noopener">http://jenkins.haihangyun.com</a> 映射即可</li>
+<li>启动时，设置 --httpPort=80，再由网管指定域名 <a href="http://jenkins.haihangyun.com" target="_blank" rel="noopener">http://jenkins.haihangyun.com</a> 映射即可</li>
 <li>集成Gitlab登录后，用户登录时会跳转到Gitlab页面，此时可用海航域账号登录，完成后会跳转回到Jenkins首页。</li>
 </ul>
-<h3 id="Jenkins发布流水线"><a href="#Jenkins发布流水线" class="headerlink" title="Jenkins发布流水线"></a>Jenkins发布流水线</h3><p>部署流水线：<br>Jenkins提供很好的持续集成/交付的支持。<br>通常流水线的设计是从Gitlab获取代码更新开始的，对于单开发分支+单发布分支的项目，应该对应有两条甚至多条流水线。<br>一个比较完整的部署流程如下图：</p>
+<h3 id="jenkins发布流水线"><a class="header-anchor" href="#jenkins发布流水线">¶</a>Jenkins发布流水线</h3>
+<p>部署流水线：<br>
+Jenkins提供很好的持续集成/交付的支持。<br>
+通常流水线的设计是从Gitlab获取代码更新开始的，对于单开发分支+单发布分支的项目，应该对应有两条甚至多条流水线。<br>
+一个比较完整的部署流程如下图：</p>
 <p><img src="http://o8979n2hu.bkt.clouddn.com/pipeline.png" alt="pipeline"></p>
 <p>创建流水线:</p>
 <ol>
-<li>进入jenkins界面后，点击左上角新建按钮，出现如下界面<br><img src="http://o8979n2hu.bkt.clouddn.com/jenkins-manager.png" alt="jenkins-manager"></li>
+<li>进入jenkins界面后，点击左上角新建按钮，出现如下界面<br>
+<img src="http://o8979n2hu.bkt.clouddn.com/jenkins-manager.png" alt="jenkins-manager"></li>
 </ol>
 <ol start="2">
 <li>依据需要创建子目录或流水线</li>
 </ol>
 <ul>
-<li>如果需要创建的是子目录，在界面中填写目录名称，并且选择下方的Folder选项<br>为同一项目搭建的流水线应该放置于同一目录下。<br><img src="http://o8979n2hu.bkt.clouddn.com/jenkins-manager-project-name.png" alt="jenkins-manager"></li>
+<li>如果需要创建的是子目录，在界面中填写目录名称，并且选择下方的Folder选项<br>
+为同一项目搭建的流水线应该放置于同一目录下。<br>
+<img src="http://o8979n2hu.bkt.clouddn.com/jenkins-manager-project-name.png" alt="jenkins-manager"></li>
 </ul>
-<p>点击保存后，在界面会出现新建的目录<br><img src="http://o8979n2hu.bkt.clouddn.com/jenkins-manager-project-name-over.png" alt="jenkins-manager"></p>
+<p>点击保存后，在界面会出现新建的目录<br>
+<img src="http://o8979n2hu.bkt.clouddn.com/jenkins-manager-project-name-over.png" alt="jenkins-manager"></p>
 <p>点击目录名称进入目录内，在左侧的按钮可以继续创建子目录和流水线。</p>
 <p>如果创建的是流水线，填写流水线名称，并选择Pipeline选项,流水线的创建完成</p>
-<h3 id="Jenkins配置流水线内容"><a href="#Jenkins配置流水线内容" class="headerlink" title="Jenkins配置流水线内容"></a>Jenkins配置流水线内容</h3><p>打开新建流水线，点击左侧configure按钮。进入配置界面。具体有两种方式：</p>
+<h3 id="jenkins配置流水线内容"><a class="header-anchor" href="#jenkins配置流水线内容">¶</a>Jenkins配置流水线内容</h3>
+<p>打开新建流水线，点击左侧configure按钮。进入配置界面。具体有两种方式：</p>
 <ol>
-<li>直接填写在界面中,选择Pipeline script，如下图所示：<br><img src="http://o8979n2hu.bkt.clouddn.com/Pipeline-scrip.png" alt="jenkins-manager"></li>
+<li>直接填写在界面中,选择Pipeline script，如下图所示：<br>
+<img src="http://o8979n2hu.bkt.clouddn.com/Pipeline-scrip.png" alt="jenkins-manager"></li>
 </ol>
 <ol start="2">
-<li>使用SCM,在Defintion部分选择  Pipeline script from SCM。在SCM类型中选择Git，填写Pipeline script所在代码仓库和分支以及脚本文件路径。<br><img src="http://o8979n2hu.bkt.clouddn.com/Pipeline-script-from-SCM.png" alt="jenkins-manager"></li>
+<li>使用SCM,在Defintion部分选择  Pipeline script from SCM。在SCM类型中选择Git，填写Pipeline script所在代码仓库和分支以及脚本文件路径。<br>
+<img src="http://o8979n2hu.bkt.clouddn.com/Pipeline-script-from-SCM.png" alt="jenkins-manager"></li>
 </ol>
 <ol start="3">
 <li>至此一条流水线搭建完成。</li>
 </ol>
-<h3 id="典型的流水线模板"><a href="#典型的流水线模板" class="headerlink" title="典型的流水线模板"></a>典型的流水线模板</h3><p>对于不同类型的应用，所需的流水线会有差异。例如Web应用通常需要设计自动化部署的流程，而Mobile的应用则通常只能到达打包的步骤。<br>以聚宝滙产品为例。一个比较规范的Web项目流水线如下：</p>
+<h3 id="典型的流水线模板"><a class="header-anchor" href="#典型的流水线模板">¶</a>典型的流水线模板</h3>
+<p>对于不同类型的应用，所需的流水线会有差异。例如Web应用通常需要设计自动化部署的流程，而Mobile的应用则通常只能到达打包的步骤。<br>
+以聚宝滙产品为例。一个比较规范的Web项目流水线如下：</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">withEnv([<span class="string">'PATH=/usr/local/bin:$PATH'</span>]) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    node &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">        stage(<span class="string">'代码更新'</span>) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">            checkout scm: [$class: <span class="string">'GitSCM'</span>, branches: [[name: <span class="string">'*/dev'</span>]],</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">                         userRemoteConfigs: [[url: <span class="string">'git@gitbj.haihangyun.com:JBH/web.git'</span>]]]</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">        &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">        stage(<span class="string">'单元测试'</span>) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">            sh <span class="string">"phpunit"</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">        &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">        stage(<span class="string">'代码检查'</span>) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">            sh <span class="string">"sonar-scanner -Dsonar.login='jenkins' -Dsonar.password='jenkins' -Dsonar.host.url=http://sonar.haihangyun.com"</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">            sh <span class="string">"bash ./pipeline/checkSonarStatus.sh"</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">        &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">    stage(<span class="string">'部署确认'</span>) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">        timeout(time:<span class="number">1</span>, unit:<span class="string">'HOURS'</span>) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">            milestone()</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">            input <span class="string">"现在执行部署？"</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line">        &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line">    node &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">22</span></pre></td><td class="code"><pre><span class="line">        lock(resource: <span class="string">'WEB_PAAS'</span>, inversePrecedence: <span class="keyword">true</span>) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">23</span></pre></td><td class="code"><pre><span class="line">            stage(<span class="string">'部署PaaS云主站服务'</span>) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">24</span></pre></td><td class="code"><pre><span class="line">                sh <span class="string">'bash ./pipeline/buildImage.sh dev'</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">25</span></pre></td><td class="code"><pre><span class="line">                sh <span class="string">'bash ./pipeline/makesureImageReady.sh dev'</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">26</span></pre></td><td class="code"><pre><span class="line">                sh <span class="string">"bash ./pipeline/deployImage.sh dev"</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">27</span></pre></td><td class="code"><pre><span class="line">                sh <span class="string">"bash ./pipeline/waitDeployment.sh dev"</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">28</span></pre></td><td class="code"><pre><span class="line">            &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">29</span></pre></td><td class="code"><pre><span class="line">            stage(<span class="string">'部署PaaS云消息队列服务'</span>) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">30</span></pre></td><td class="code"><pre><span class="line">                sh <span class="string">'bash ./pipeline/buildImage.sh dev -queue'</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">31</span></pre></td><td class="code"><pre><span class="line">                sh <span class="string">'bash ./pipeline/makesureImageReady.sh dev -queue'</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">32</span></pre></td><td class="code"><pre><span class="line">                sh <span class="string">"bash ./pipeline/deployImage.sh dev -queue"</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">33</span></pre></td><td class="code"><pre><span class="line">                sh <span class="string">"bash ./pipeline/waitDeployment.sh dev -queue"</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">34</span></pre></td><td class="code"><pre><span class="line">            &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">35</span></pre></td><td class="code"><pre><span class="line">            stage(<span class="string">'接口测试'</span>) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">36</span></pre></td><td class="code"><pre><span class="line">                withEnv([<span class="string">'SERVICE_NAME=api-app'</span>,<span class="string">'BACKEND_ADDR="http://devopsgroup-jbh-api-dev.haihangyun.com"'</span>]) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">37</span></pre></td><td class="code"><pre><span class="line">                    dir(<span class="string">'api-test'</span>) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">38</span></pre></td><td class="code"><pre><span class="line">                        git url: <span class="string">'git@gitbj.haihangyun.com:JBH/api-doc.git'</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">39</span></pre></td><td class="code"><pre><span class="line">                        sh <span class="string">'npm run api-test'</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">40</span></pre></td><td class="code"><pre><span class="line">                    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">41</span></pre></td><td class="code"><pre><span class="line">                &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">42</span></pre></td><td class="code"><pre><span class="line">            &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">43</span></pre></td><td class="code"><pre><span class="line">            stage(<span class="string">'界面测试'</span>) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">44</span></pre></td><td class="code"><pre><span class="line">                withEnv([<span class="string">'PATH=/opt/jdk1.7.0_67/bin:/usr/local/bin:$PATH'</span>,<span class="string">'JAVA_HOME=/opt/jdk1.7.0_67'</span>]) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">45</span></pre></td><td class="code"><pre><span class="line">                    dir(<span class="string">'e2e-test'</span>) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">46</span></pre></td><td class="code"><pre><span class="line">                        git url: <span class="string">'git@gitbj.haihangyun.com:JBH/e2e-test.git'</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">47</span></pre></td><td class="code"><pre><span class="line">                        sh <span class="string">'mvn clean test'</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">48</span></pre></td><td class="code"><pre><span class="line">                    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">49</span></pre></td><td class="code"><pre><span class="line">                &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">50</span></pre></td><td class="code"><pre><span class="line">            &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">51</span></pre></td><td class="code"><pre><span class="line">            milestone()</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">52</span></pre></td><td class="code"><pre><span class="line">        &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">53</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">54</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
-
 <p>而Mobile的流水线内容看起来是这样的：</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">withEnv([<span class="string">'PATH=/usr/local/bin:$PATH'</span>]) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    node &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">        stage(<span class="string">'代码更新'</span>) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">            checkout scm: [$class: <span class="string">'GitSCM'</span>, branches: [[name: <span class="string">'*/dev'</span>]],</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">                         userRemoteConfigs: [[url: <span class="string">'git@gitbj.haihangyun.com:JBH/app-android.git'</span>]]]</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">        &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">        dir(<span class="string">'jbh'</span>) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">            stage(<span class="string">'单元测试'</span>) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">                sh <span class="string">'gradle clean test'</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">            &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">            stage(<span class="string">'代码检查'</span>) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">                sh <span class="string">"sonar-scanner -Dsonar.login='jenkins' -Dsonar.password='jenkins' -Dsonar.host.url=http://sonar.haihangyun.com"</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">                sh <span class="string">"bash ./pipeline/checkSonarStatus.sh"</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">            &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">        &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">    stage(<span class="string">'打包确认'</span>) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">        timeout(time:<span class="number">6</span>, unit:<span class="string">'HOURS'</span>) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line">            milestone()</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line">            input <span class="string">"生成此版本的Apk包？"</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line">        &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">22</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">23</span></pre></td><td class="code"><pre><span class="line">    node &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">24</span></pre></td><td class="code"><pre><span class="line">        dir(<span class="string">'jbh'</span>) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">25</span></pre></td><td class="code"><pre><span class="line">            stage(<span class="string">'生成Apk'</span>) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">26</span></pre></td><td class="code"><pre><span class="line">                sh <span class="string">"gradle build"</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">27</span></pre></td><td class="code"><pre><span class="line">                archiveArtifacts <span class="string">'build/app.apk'</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">28</span></pre></td><td class="code"><pre><span class="line">            &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">29</span></pre></td><td class="code"><pre><span class="line">        &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">30</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">31</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
-
-<h3 id="Jenkinsfile文件管理"><a href="#Jenkinsfile文件管理" class="headerlink" title="Jenkinsfile文件管理"></a>Jenkinsfile文件管理</h3><p>依据Jenkins的惯例，流水线脚本文件通常命名为Jenkinsfile，与项目一起存放到版本仓库中。<br>在Jenkinsfile中可能还需要调用其他辅助脚本，我们可以将所有相关的文件放到一个统一的pipeline目录中。形成类似这样的结构：</p>
+<h3 id="jenkinsfile文件管理"><a class="header-anchor" href="#jenkinsfile文件管理">¶</a>Jenkinsfile文件管理</h3>
+<p>依据Jenkins的惯例，流水线脚本文件通常命名为Jenkinsfile，与项目一起存放到版本仓库中。<br>
+在Jenkinsfile中可能还需要调用其他辅助脚本，我们可以将所有相关的文件放到一个统一的pipeline目录中。形成类似这样的结构：</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">pipeline</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">├── Jenkinsfile.dev</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">├── Jenkinsfile.release</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">├── Jenkinsfile.prod</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">├── checkSonarStatus.sh</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">├── buildImage.sh</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">├── deployImage.sh</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">├── ... ...</span></pre></td></tr></table></figure>
-
-<h3 id="help"><a href="#help" class="headerlink" title="help"></a>help</h3><ul>
+<h3 id="help"><a class="header-anchor" href="#help">¶</a>help</h3>
+<ul>
 <li>Jenkins Step参考：<a href="https://jenkins.io/doc/pipeline/steps/" target="_blank" rel="noopener">https://jenkins.io/doc/pipeline/steps/</a></li>
 <li>使用Jenkins Syntax</li>
 </ul>
@@ -584,19 +608,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">api</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">yar</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">Yii</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">api</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">bug</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">Yii</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -612,11 +632,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">devops</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">bug</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">devops</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -624,15 +644,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">jenkins</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">webhook</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">webhook</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">jenkins</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -644,10 +668,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">mac</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">memcache</a>
               </li>
              
@@ -656,15 +676,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">mac</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">php</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">trait</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">sign</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -676,7 +692,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">sign</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">phpstrom</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">trait</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -688,15 +712,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">svn</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">sql</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">svn</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">swoole</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">字符串</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">协程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -705,14 +737,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">xdebug</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">协程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">字符串</a>
               </li>
              
               <li class="article-tag-list-item">

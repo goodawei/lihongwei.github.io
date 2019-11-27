@@ -8,13 +8,13 @@
   <link rel="dns-prefetch" href="http://blog.nicexiangcun.com">
   <title>nginx | 李宏伟&#39;blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="nginx 信号控制 查看服务端口列表项netstat -antp (p是显示那个进程 和进程号) 查看进程ps -aux | grep 80 （httpd） 信号控制   使用参数INT是紧急杀掉进程非常暴力（特殊场景不推荐），QUIT 优雅的杀掉进程，等待work主进程接收处理所有请求后在杀掉。HUP平滑的读取配置文件，不用重启nginx就能使配置文件生效（很重要），USR1 告诉nginx">
+  <meta name="description" content="nginx 信号控制  ¶查看服务端口列表项 netstat -antp (p是显示那个进程 和进程号) ¶查看进程 ps -aux | grep 80 （httpd） ¶信号控制 使用参数INT是紧急杀掉进程非常暴力（特殊场景不推荐），QUIT 优雅的杀掉进程，等待work主进程接收处理所有请求后在杀掉。HUP平滑的读取配置文件，不用重启nginx就能使配置文件生效（很重要），USR1 告诉ng">
 <meta name="keywords" content="nginx">
 <meta property="og:type" content="article">
 <meta property="og:title" content="nginx">
 <meta property="og:url" content="http:&#x2F;&#x2F;blog.nicexiangcun.com&#x2F;2016&#x2F;05&#x2F;15&#x2F;nginx&#x2F;index.html">
 <meta property="og:site_name" content="李宏伟&#39;blog">
-<meta property="og:description" content="nginx 信号控制 查看服务端口列表项netstat -antp (p是显示那个进程 和进程号) 查看进程ps -aux | grep 80 （httpd） 信号控制   使用参数INT是紧急杀掉进程非常暴力（特殊场景不推荐），QUIT 优雅的杀掉进程，等待work主进程接收处理所有请求后在杀掉。HUP平滑的读取配置文件，不用重启nginx就能使配置文件生效（很重要），USR1 告诉nginx">
+<meta property="og:description" content="nginx 信号控制  ¶查看服务端口列表项 netstat -antp (p是显示那个进程 和进程号) ¶查看进程 ps -aux | grep 80 （httpd） ¶信号控制 使用参数INT是紧急杀掉进程非常暴力（特殊场景不推荐），QUIT 优雅的杀掉进程，等待work主进程接收处理所有请求后在杀掉。HUP平滑的读取配置文件，不用重启nginx就能使配置文件生效（很重要），USR1 告诉ng">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2019-11-27T12:11:01.038Z">
 <meta name="twitter:card" content="summary">
@@ -173,24 +173,36 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="nginx-信号控制"><a href="#nginx-信号控制" class="headerlink" title="nginx 信号控制"></a>nginx 信号控制</h1><hr>
-<h3 id="查看服务端口列表项"><a href="#查看服务端口列表项" class="headerlink" title="查看服务端口列表项"></a>查看服务端口列表项</h3><p><code>netstat -antp</code> (p是显示那个进程 和进程号)</p>
-<h3 id="查看进程"><a href="#查看进程" class="headerlink" title="查看进程"></a>查看进程</h3><p><code>ps -aux | grep 80</code> （httpd）</p>
-<h3 id="信号控制"><a href="#信号控制" class="headerlink" title="信号控制"></a>信号控制</h3><p>   使用参数<code>INT</code>是紧急杀掉进程非常暴力（特殊场景不推荐），<code>QUIT</code> 优雅的杀掉进程，等待<code>work</code>主进程接收处理所有请求后在杀掉。<code>HUP</code>平滑的读取配置文件，不用重启nginx就能使配置文件生效（很重要），<code>USR1</code> 告诉nginx 写入log 往新建的文件中写（在备份log日志时必须要用，因为<code>linux</code>中的文件存放地址是通过<code>innode</code>号存储的，当mv 备份文件的时候只是变化名字而已，而<code>innode</code>号依然不变，所有nginx依然往原始的<code>innode</code>号文件写入日志，此时需要用信号量<code>USR1</code>）。</p>
+        <h1>nginx 信号控制</h1>
+<hr>
+<h3 id="查看服务端口列表项"><a class="header-anchor" href="#查看服务端口列表项">¶</a>查看服务端口列表项</h3>
+<p><code>netstat -antp</code> (p是显示那个进程 和进程号)</p>
+<h3 id="查看进程"><a class="header-anchor" href="#查看进程">¶</a>查看进程</h3>
+<p><code>ps -aux | grep 80</code> （httpd）</p>
+<h3 id="信号控制"><a class="header-anchor" href="#信号控制">¶</a>信号控制</h3>
+<p>使用参数<code>INT</code>是紧急杀掉进程非常暴力（特殊场景不推荐），<code>QUIT</code> 优雅的杀掉进程，等待<code>work</code>主进程接收处理所有请求后在杀掉。<code>HUP</code>平滑的读取配置文件，不用重启nginx就能使配置文件生效（很重要），<code>USR1</code> 告诉nginx 写入log 往新建的文件中写（在备份log日志时必须要用，因为<code>linux</code>中的文件存放地址是通过<code>innode</code>号存储的，当mv 备份文件的时候只是变化名字而已，而<code>innode</code>号依然不变，所有nginx依然往原始的<code>innode</code>号文件写入日志，此时需要用信号量<code>USR1</code>）。</p>
 <a id="more"></a>
-
 <p><code>kill -INT 进程号</code>  杀掉nginx进程，<code>ps -aux | greap nginx</code>查看进程号</p>
-<p>小技巧：有时候经常需要查看 nginx 主进程号， 可以查看pid的存放文件，这样用的时候直接如： </p>
+<p>小技巧：有时候经常需要查看 nginx 主进程号， 可以查看pid的存放文件，这样用的时候直接如：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">kill</span> -INT  <span class="string">'cat  /usr/local/var/niginx/log/nginx.pid'</span></span></pre></td></tr></table></figure>
-<h3 id="nginx第二种启动方法"><a href="#nginx第二种启动方法" class="headerlink" title="nginx第二种启动方法"></a>nginx第二种启动方法</h3><p>nginx  -s reload 重启<br>nginx -s stop 停止<br>nginx -s reopen 重新读取配置文件<br>nginx -t  查看配置文件配置是否正确</p>
-<h3 id="虚拟主机配置"><a href="#虚拟主机配置" class="headerlink" title="虚拟主机配置"></a>虚拟主机配置</h3><p>Nginx 的虚拟主机就是配置 http 中的 server 块。<br>可以基于 域名、端口、和ip 主要 三项：<br><code>listen、server_name、location{ root:}</code></p>
+<h3 id="nginx第二种启动方法"><a class="header-anchor" href="#nginx第二种启动方法">¶</a>nginx第二种启动方法</h3>
+<p>nginx  -s reload 重启<br>
+nginx -s stop 停止<br>
+nginx -s reopen 重新读取配置文件<br>
+nginx -t  查看配置文件配置是否正确</p>
+<h3 id="虚拟主机配置"><a class="header-anchor" href="#虚拟主机配置">¶</a>虚拟主机配置</h3>
+<p>Nginx 的虚拟主机就是配置 http 中的 server 块。<br>
+可以基于 域名、端口、和ip 主要 三项：<br>
+<code>listen、server_name、location{ root:}</code></p>
 <p>Location 定位配置块 三种:</p>
 <ol>
 <li>精准匹配（精准匹配最好不要匹配跟目录，会默认追加索引文件可能导致多重定位，如循环重定向死循环等）</li>
 <li>正则匹配</li>
-<li>普通匹配：普通匹配优先级最高，言外之意是正则会覆盖普通匹配的结果 ，普通匹配如果命中多个则最长的匹配结果先记下来，然后走正则匹配如果正则没有匹配到这返回这个最长的匹配结果，静态文件的动静分离 可以用 location 将静态文件 放到 应用以外的目录 然后用 loaction 正则定位。<br>备注：当发现 404 时 要记住看下log 日志 是去哪个目录没找到 非常有用 。</li>
+<li>普通匹配：普通匹配优先级最高，言外之意是正则会覆盖普通匹配的结果 ，普通匹配如果命中多个则最长的匹配结果先记下来，然后走正则匹配如果正则没有匹配到这返回这个最长的匹配结果，静态文件的动静分离 可以用 location 将静态文件 放到 应用以外的目录 然后用 loaction 正则定位。<br>
+备注：当发现 404 时 要记住看下log 日志 是去哪个目录没找到 非常有用 。</li>
 </ol>
-<h3 id="日志管理："><a href="#日志管理：" class="headerlink" title="日志管理："></a>日志管理：</h3><p>首先日志可以辅助排错，<code>nginx</code>可以针对不同的<code>server</code>配置不同的<code>log</code>位置和<code>log</code>日志格式 ：默认是main 格式，大概是 来访者ip ，访问方式 …..</p>
+<h3 id="日志管理："><a class="header-anchor" href="#日志管理：">¶</a>日志管理：</h3>
+<p>首先日志可以辅助排错，<code>nginx</code>可以针对不同的<code>server</code>配置不同的<code>log</code>位置和<code>log</code>日志格式 ：默认是main 格式，大概是 来访者ip ，访问方式 ……</p>
 <p>一个日志的切割管理bash:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">logpath = /usr/<span class="built_in">local</span>/nginx/<span class="built_in">log</span>/access.log</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">topath  = /data/<span class="built_in">log</span>/$(date -d yesterday + <span class="string">"%Y%m"</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">mkdir -p <span class="variable">$topath</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">bathpath = <span class="variable">$topaht</span>/$(date -d yesterday + <span class="string">"%Y%m%d"</span>).<span class="built_in">log</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">mv <span class="variable">$logpath</span> <span class="variable">$bathpaht</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">touch <span class="variable">$logpath</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">kill</span> USR1 /usr/run/nginx.pid</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">sh ./run.sh</span></pre></td></tr></table></figure>
       
@@ -448,19 +460,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">api</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">yar</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">Yii</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">api</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">bug</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">Yii</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -476,11 +484,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">devops</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">bug</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">devops</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -488,15 +496,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">jenkins</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">webhook</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">webhook</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">jenkins</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -508,10 +520,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">mac</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">memcache</a>
               </li>
              
@@ -520,15 +528,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">mac</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">php</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">trait</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">sign</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -540,7 +544,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">sign</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">phpstrom</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">trait</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -552,15 +564,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">svn</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">sql</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">svn</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">swoole</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">字符串</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">协程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -569,14 +589,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">xdebug</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">协程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">字符串</a>
               </li>
              
               <li class="article-tag-list-item">

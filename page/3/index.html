@@ -173,13 +173,21 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="锁机制用于管理对共享资源的并发访问，提供数据的完整性和一致性"><a href="#锁机制用于管理对共享资源的并发访问，提供数据的完整性和一致性" class="headerlink" title="锁机制用于管理对共享资源的并发访问，提供数据的完整性和一致性"></a>锁机制用于管理对共享资源的并发访问，提供数据的完整性和一致性</h1><blockquote>
+        <h1>锁机制用于管理对共享资源的并发访问，提供数据的完整性和一致性</h1>
+<blockquote>
 <p>读锁是共享的，不影响并发的读取，但是会阻塞写操作（当然这只是默认情况，可以通过修改配置，使其可以进行末尾插入），写锁是排他的，阻塞读和写。</p>
 </blockquote>
-<h3 id="行锁"><a href="#行锁" class="headerlink" title="行锁"></a>行锁</h3><p>InnoDB行锁是通过给索引记录加锁来实现的，即：InnoDB会在它扫描到的每条索引记录上设置一个S或X锁，在MVCC模式下，简单的select语句不会加任何锁，除非手动添加。因此查询时，索引很重要 :100:</p>
-<h3 id="锁模式"><a href="#锁模式" class="headerlink" title="锁模式"></a>锁模式</h3><p>共享锁S(Shared Lock)： 允许事务使用该锁去读取<br>加锁语句： select … lock in share mode (手动加锁)<br>排它锁X(Exclusive Lock)： 允许事务使用该锁去update、insert或者delete<br>加锁语句： insert … update … delete … select … for update (手动加锁)</p>
-<h3 id="阻塞"><a href="#阻塞" class="headerlink" title="阻塞"></a>阻塞</h3><p>因为不同锁之间的兼容性关系，在有些时刻一个事务中的锁需要等待另一事务中的锁释放它所占有的资源，阻塞可以确保事务正常进行</p>
-<h3 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h3><p>指两个或两个以上的事务在执行过程中，因争夺资源而造成的一种互相等待的现象 除了超时机制外（innodb_lock_wait_timeout），InnoDB还采用了wait-for graph来进行死锁检测，若检测到死锁，InnoDB会选择回滚undo量最小的事务</p>
+<h3 id="行锁"><a class="header-anchor" href="#行锁">¶</a>行锁</h3>
+<p>InnoDB行锁是通过给索引记录加锁来实现的，即：InnoDB会在它扫描到的每条索引记录上设置一个S或X锁，在MVCC模式下，简单的select语句不会加任何锁，除非手动添加。因此查询时，索引很重要 💯</p>
+<h3 id="锁模式"><a class="header-anchor" href="#锁模式">¶</a>锁模式</h3>
+<p>共享锁S(Shared Lock)： 允许事务使用该锁去读取<br>
+加锁语句： select … lock in share mode (手动加锁)<br>
+排它锁X(Exclusive Lock)： 允许事务使用该锁去update、insert或者delete<br>
+加锁语句： insert … update … delete … select … for update (手动加锁)</p>
+<h3 id="阻塞"><a class="header-anchor" href="#阻塞">¶</a>阻塞</h3>
+<p>因为不同锁之间的兼容性关系，在有些时刻一个事务中的锁需要等待另一事务中的锁释放它所占有的资源，阻塞可以确保事务正常进行</p>
+<h3 id="死锁"><a class="header-anchor" href="#死锁">¶</a>死锁</h3>
+<p>指两个或两个以上的事务在执行过程中，因争夺资源而造成的一种互相等待的现象 除了超时机制外（innodb_lock_wait_timeout），InnoDB还采用了wait-for graph来进行死锁检测，若检测到死锁，InnoDB会选择回滚undo量最小的事务</p>
         
           <a class="article-more-a" href="/2017/04/11/mysql/#more">more >></a>
         
@@ -266,17 +274,24 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>:bug:</p>
-<h3 id="事务概念："><a href="#事务概念：" class="headerlink" title="事务概念："></a>事务概念：</h3><p>事务是由一组SQL组成，可以认为是一个执行单元，在事务中，所有操作要么全部成功，要么全部回滚，建表统一使用InnoDB存储引擎</p>
+        <p>🐛</p>
+<h3 id="事务概念："><a class="header-anchor" href="#事务概念：">¶</a>事务概念：</h3>
+<p>事务是由一组SQL组成，可以认为是一个执行单元，在事务中，所有操作要么全部成功，要么全部回滚，建表统一使用InnoDB存储引擎</p>
 <hr>
-<h3 id="事务的ACID的特性："><a href="#事务的ACID的特性：" class="headerlink" title="事务的ACID的特性："></a>事务的ACID的特性：</h3><p>原子性(atomicity): 事务中的所有操作要么全部提交成功，要么全部失败回滚一致性(consistency): 在事务开始和完成时，数据都必须保持一致状态隔离性(isolation): 一个事务所做的修改在提交之前对其它事务是不可见的持久性(durability):一旦事务提交，其所做的修改便会永久保存在数据库中</p>
+<h3 id="事务的acid的特性："><a class="header-anchor" href="#事务的acid的特性：">¶</a>事务的ACID的特性：</h3>
+<p>原子性(atomicity): 事务中的所有操作要么全部提交成功，要么全部失败回滚一致性(consistency): 在事务开始和完成时，数据都必须保持一致状态隔离性(isolation): 一个事务所做的修改在提交之前对其它事务是不可见的持久性(durability):一旦事务提交，其所做的修改便会永久保存在数据库中</p>
 <hr>
-<h3 id="事务使用场景："><a href="#事务使用场景：" class="headerlink" title="事务使用场景："></a>事务使用场景：</h3><p>例如一个金融平台，凡是涉及到核心业务，比如：金额、积分等操作都必须使用事务，事务保证了数据的一致性和完整性</p>
+<h3 id="事务使用场景："><a class="header-anchor" href="#事务使用场景：">¶</a>事务使用场景：</h3>
+<p>例如一个金融平台，凡是涉及到核心业务，比如：金额、积分等操作都必须使用事务，事务保证了数据的一致性和完整性</p>
 <p>比如用户购买，此时需要使用事务，同时需要使用select … for update进行数据验证，确保数据的一致性和完整性</p>
 <hr>
-<h3 id="不需要使用事务的场景："><a href="#不需要使用事务的场景：" class="headerlink" title="不需要使用事务的场景："></a>不需要使用事务的场景：</h3><p>用户登录<br>用户资产，钱包，积分等查询，允许一定的延时<br>凡是不涉及到交易的查询</p>
+<h3 id="不需要使用事务的场景："><a class="header-anchor" href="#不需要使用事务的场景：">¶</a>不需要使用事务的场景：</h3>
+<p>用户登录<br>
+用户资产，钱包，积分等查询，允许一定的延时<br>
+凡是不涉及到交易的查询</p>
 <hr>
-<h3 id="NULL的问题"><a href="#NULL的问题" class="headerlink" title="NULL的问题"></a>NULL的问题</h3><p>NULL：可以插入空值或NULL，NULL会占用数据库空间，数据库会请求额外的空间记录该行为NULL</p>
+<h3 id="null的问题"><a class="header-anchor" href="#null的问题">¶</a>NULL的问题</h3>
+<p>NULL：可以插入空值或NULL，NULL会占用数据库空间，数据库会请求额外的空间记录该行为NULL</p>
 <p>NOT NULL：不可以插入NULL，可以插入空值，空值不占用数据库空间</p>
 <p>NULL占用空间，空值不占用空间，B树索引不会存储NULL值，如果索引字段可以为NULL，则效率下降很多</p>
 <p>通常字段设置(NOT NULL) 如时间字段 NOT NULL DEFAULT 0000-00 00:00:00</p>
@@ -366,9 +381,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>查看mysql系统的事务隔离级别 :relaxed:</p>
+        <p>查看mysql系统的事务隔离级别 ☺️</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT @@global.tx_isolation;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">+-----------------------+</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">| @@global.tx_isolation |</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">+-----------------------+</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">| REPEATABLE-READ       |</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">+-----------------------+</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">1 row <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span></pre></td></tr></table></figure>
-
 <p>查看mysql会话的事务隔离级别</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT @@tx_isolation;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">+-----------------+</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">| @@tx_isolation  |</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">+-----------------+</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">| REPEATABLE-READ |</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">+-----------------+</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">1 row <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT @@session.tx_isolation;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">+------------------------+</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">| @@session.tx_isolation |</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">+------------------------+</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">| REPEATABLE-READ        |</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">+------------------------+</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">1 row <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span></pre></td></tr></table></figure>
         
@@ -457,30 +471,36 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="变量-stuck-out-tongue-winking-eye"><a href="#变量-stuck-out-tongue-winking-eye" class="headerlink" title="变量 :stuck_out_tongue_winking_eye:"></a>变量 :stuck_out_tongue_winking_eye:</h3><ul>
+        <h3 id="变量-😜"><a class="header-anchor" href="#变量-😜">¶</a>变量 😜</h3>
+<ul>
 <li>变量可以持有基本类型或指向某个对象</li>
 <li>变量必须先定义后使用</li>
 <li>定义变量</li>
 <li>变量可以被赋值，还可以被重新赋值</li>
 <li>等号<code>=</code>是赋值，不是数学的相等</li>
 </ul>
-<h3 id="Eclipse-Debug"><a href="#Eclipse-Debug" class="headerlink" title="Eclipse Debug"></a>Eclipse Debug</h3><p>进入调试模式后可以设置断点后单步执行</p>
-<h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><ul>
+<h3 id="eclipse-debug"><a class="header-anchor" href="#eclipse-debug">¶</a>Eclipse Debug</h3>
+<p>进入调试模式后可以设置断点后单步执行</p>
+<h3 id="数据类型"><a class="header-anchor" href="#数据类型">¶</a>数据类型</h3>
+<ul>
 <li>整数类型：byte，short，int，long</li>
 <li>浮点类型：float，double</li>
 <li>字符类型：char</li>
 <li>布尔类型：boolean</li>
 </ul>
-<h3 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h3><ul>
+<h3 id="常量"><a class="header-anchor" href="#常量">¶</a>常量</h3>
+<ul>
 <li>用final定义</li>
 <li>通常全部大写</li>
 <li>避免magic number</li>
 </ul>
-<h3 id="计算机内存地址"><a href="#计算机内存地址" class="headerlink" title="计算机内存地址"></a>计算机内存地址</h3><p>如下图所示，每个内存正好存一个字节，算一下如果你有16G内存，大概有多少字节呢.</p>
+<h3 id="计算机内存地址"><a class="header-anchor" href="#计算机内存地址">¶</a>计算机内存地址</h3>
+<p>如下图所示，每个内存正好存一个字节，算一下如果你有16G内存，大概有多少字节呢.</p>
 <p><img src="http://omduc9pze.bkt.clouddn.com/java%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.png" alt="计算机内存地址"></p>
 <p>java中,整型所对应内存的字节数如下图</p>
 <p><img src="http://omduc9pze.bkt.clouddn.com/java%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%AF%B9%E5%BA%94%E5%86%85%E5%AD%98.jpg" alt="java内存地址"></p>
-<h3 id="整型的范围"><a href="#整型的范围" class="headerlink" title="整型的范围"></a>整型的范围</h3><p>java 的整型是带符号的，注意要声明为long整型的时候要在后面加上L，否则是int类型，如下图</p>
+<h3 id="整型的范围"><a class="header-anchor" href="#整型的范围">¶</a>整型的范围</h3>
+<p>java 的整型是带符号的，注意要声明为long整型的时候要在后面加上L，否则是int类型，如下图</p>
 <p><img src="http://omduc9pze.bkt.clouddn.com/java%E6%95%B4%E5%9E%8B.jpg" alt="java整型值范围"></p>
         
           <a class="article-more-a" href="/2017/04/10/java-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/#more">more >></a>
@@ -568,13 +588,15 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="writing-hand-大型网站具有的特点"><a href="#writing-hand-大型网站具有的特点" class="headerlink" title=":writing_hand:大型网站具有的特点"></a>:writing_hand:大型网站具有的特点</h3><ul>
+        <h3 id="✍-大型网站具有的特点"><a class="header-anchor" href="#✍-大型网站具有的特点">¶</a>✍️大型网站具有的特点</h3>
+<ul>
 <li>海量数据（大数据）</li>
 <li>高并发 大流量</li>
 <li>高可用 7*24 小时不断服务, 五个9级别 (99.999)</li>
 <li>频频迭代，需求多</li>
 </ul>
-<h3 id="writing-hand-容量估算和负载查看"><a href="#writing-hand-容量估算和负载查看" class="headerlink" title=":writing_hand:容量估算和负载查看"></a>:writing_hand:容量估算和负载查看</h3><p>容量：数据量，并发量，带宽，CPU 等</p>
+<h3 id="✍-容量估算和负载查看"><a class="header-anchor" href="#✍-容量估算和负载查看">¶</a>✍️容量估算和负载查看</h3>
+<p>容量：数据量，并发量，带宽，CPU 等</p>
 <p>容量评估的简单步骤和方法：</p>
 <ul>
 <li>评估总访问量，结合市场及运营活动等评估</li>
@@ -584,8 +606,8 @@
 <li>计算容量</li>
 </ul>
 <p>负载：系统的繁忙程度，即有多少进程等cpu调度</p>
-<p>top命令：过去1分钟，5分钟，10分钟的负载值 </p>
-<p>Load Avg: 1.61, 1.79, 1.64  CPU usage: 1.96% user, 1.96% sys, 96.6%  </p>
+<p>top命令：过去1分钟，5分钟，10分钟的负载值</p>
+<p>Load Avg: 1.61, 1.79, 1.64  CPU usage: 1.96% user, 1.96% sys, 96.6%</p>
 <p>Load 的警惕值 ： 以单核为例 Load &gt; 2 系统以相对繁忙 Load &gt; 5 系统崩溃边缘</p>
         
           <a class="article-more-a" href="/2017/04/09/large-website/#more">more >></a>
@@ -662,7 +684,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="pig-Yar-编译安装"><a href="#pig-Yar-编译安装" class="headerlink" title=":pig: Yar 编译安装"></a>:pig: Yar 编译安装</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">git <span class="keyword">clone</span> https:<span class="comment">//github.com/laruence/yar.git</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">cd yar</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"><span class="comment">//安装依赖包</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">sudo apt-get install curl</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">sudo apt-get install libcurl4-gnutls-dev</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line"><span class="comment">//软连接到bin目录</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">ln -s /usr/local/php7<span class="number">.0</span>/bin/phpize /usr/bin/phpize </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">phpize</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">./configure</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">sudo make</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">sudo make install</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line"><span class="comment">//配置fpm</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line">sudo ln -s /etc/php/<span class="number">7.0</span>/mods-available/yar.ini  /etc/php/<span class="number">7.0</span>/fpm/conf.d/yar.ini</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line"><span class="comment">//重启fpm</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">22</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">23</span></pre></td><td class="code"><pre><span class="line">sudo service php7<span class="number">.0</span>-fpm restart</span></pre></td></tr></table></figure>
+        <h3 id="🐷-yar-编译安装"><a class="header-anchor" href="#🐷-yar-编译安装">¶</a>🐷 Yar 编译安装</h3>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">git <span class="keyword">clone</span> https:<span class="comment">//github.com/laruence/yar.git</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">cd yar</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"><span class="comment">//安装依赖包</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">sudo apt-get install curl</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">sudo apt-get install libcurl4-gnutls-dev</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line"><span class="comment">//软连接到bin目录</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">ln -s /usr/local/php7<span class="number">.0</span>/bin/phpize /usr/bin/phpize </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">phpize</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">./configure</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">sudo make</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">sudo make install</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line"><span class="comment">//配置fpm</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line">sudo ln -s /etc/php/<span class="number">7.0</span>/mods-available/yar.ini  /etc/php/<span class="number">7.0</span>/fpm/conf.d/yar.ini</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line"><span class="comment">//重启fpm</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">22</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">23</span></pre></td><td class="code"><pre><span class="line">sudo service php7<span class="number">.0</span>-fpm restart</span></pre></td></tr></table></figure>
         
           <a class="article-more-a" href="/2017/03/27/Yar/#more">more >></a>
         
@@ -749,13 +772,18 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="表达式测试-bee"><a href="#表达式测试-bee" class="headerlink" title="表达式测试 :bee:"></a>表达式测试 :bee:</h3><p>推荐一个测试地址 <a href="http://www.rexv.org/" target="_blank" rel="noopener">http://www.rexv.org/</a><br>测试题：用单引号和双引号匹配 <code>\$</code><br>答案 ： 首先<code>\$</code>都是元字符都需要转义，转义结果为：<code>\\\$</code></p>
+        <h3 id="表达式测试-🐝"><a class="header-anchor" href="#表达式测试-🐝">¶</a>表达式测试 🐝</h3>
+<p>推荐一个测试地址 <a href="http://www.rexv.org/" target="_blank" rel="noopener">http://www.rexv.org/</a><br>
+测试题：用单引号和双引号匹配 <code>\$</code><br>
+答案 ： 首先<code>\$</code>都是元字符都需要转义，转义结果为：<code>\\\$</code></p>
 <ul>
 <li>用单引号来标识的正则: <code>/\\\\\$/</code></li>
 <li>用双引号来标识的正则: <code>/\\\\\\\$/</code></li>
 </ul>
-<h3 id="palm-tree-分组和后向引用"><a href="#palm-tree-分组和后向引用" class="headerlink" title=":palm_tree: 分组和后向引用"></a>:palm_tree: 分组和后向引用</h3><p>通过次数限定符，来限定前面括号中的单元。匹配到的单元将会被捕获，捕获到的内容可以在正则表达式的后面通过<code>\1,\2,\3</code>获取。</p>
-<h3 id="贪婪与非贪婪-beetle"><a href="#贪婪与非贪婪-beetle" class="headerlink" title="贪婪与非贪婪 :beetle:"></a>贪婪与非贪婪 :beetle:</h3><ul>
+<h3 id="🌴-分组和后向引用"><a class="header-anchor" href="#🌴-分组和后向引用">¶</a>🌴 分组和后向引用</h3>
+<p>通过次数限定符，来限定前面括号中的单元。匹配到的单元将会被捕获，捕获到的内容可以在正则表达式的后面通过<code>\1,\2,\3</code>获取。</p>
+<h3 id="贪婪与非贪婪-🐞"><a class="header-anchor" href="#贪婪与非贪婪-🐞">¶</a>贪婪与非贪婪 🐞</h3>
+<ul>
 <li><code>.*</code> 贪婪模式，贪婪模式会回溯匹配效率低。</li>
 <li><code>.*?</code> 非贪婪模式</li>
 </ul>
@@ -848,13 +876,15 @@
         <blockquote>
 <p>有时候非常严重的问题，就是你常常忽略的小不点。</p>
 </blockquote>
-<p>开发过程中，有时候会遇到要修改别人的代码，那么怎么确保不会带出新的问题出来呢:pray:我们的鹏飞老大给出了几条建议:100:。</p>
+<p>开发过程中，有时候会遇到要修改别人的代码，那么怎么确保不会带出新的问题出来呢🙏我们的鹏飞老大给出了几条建议💯。</p>
 <ul>
 <li>UnitTest，仔细想了想，单元测试真的是太有必要了。</li>
 <li>代码走查，优秀的技术团队通常都会有，走查和分享的环节。</li>
-<li>开发纪律上以下上原话 </li>
+<li>开发纪律上以下上原话</li>
 </ul>
-<p>代码块注释：标明作者、时间、描述<br>原则上不允许擅自修改他人代码：如需修改需通知作者配合修改，如无法通知作者则必须慎重修改且须有测试保障<br>防御式编程与契约式编程：默认不信任任何外部调用和方法，默认双方遵守契约，任意一方撕毁契约则抛出异常，建议在UI及应用层倾向于防御式编程保证友好及体验，在逻辑层倾向于契约式编程尽早暴露隐患 </p>
+<p>代码块注释：标明作者、时间、描述<br>
+原则上不允许擅自修改他人代码：如需修改需通知作者配合修改，如无法通知作者则必须慎重修改且须有测试保障<br>
+防御式编程与契约式编程：默认不信任任何外部调用和方法，默认双方遵守契约，任意一方撕毁契约则抛出异常，建议在UI及应用层倾向于防御式编程保证友好及体验，在逻辑层倾向于契约式编程尽早暴露隐患</p>
 
       
 
@@ -939,24 +969,29 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="spider-单引号和双引号的区别"><a href="#spider-单引号和双引号的区别" class="headerlink" title=":spider:单引号和双引号的区别"></a>:spider:单引号和双引号的区别</h3><p>单引号和双引号的区别经常被当做面试题被问到，但是大部分回答的并不好，其中有以下几种区别经常被忽略。<br>当字符串用双引号或者heredoc结构定义时，其中变量可以被解析，同时可以解析以下字符</p>
+        <h3 id="🕷单引号和双引号的区别"><a class="header-anchor" href="#🕷单引号和双引号的区别">¶</a>🕷单引号和双引号的区别</h3>
+<p>单引号和双引号的区别经常被当做面试题被问到，但是大部分回答的并不好，其中有以下几种区别经常被忽略。<br>
+当字符串用双引号或者heredoc结构定义时，其中变量可以被解析，同时可以解析以下字符</p>
 <ul>
 <li>\n,\r,\t,\v,\e,\f,\,$,&quot;</li>
-<li>[0-7]{1,3}符合该正则表达式的，是以一个八进制方式来表达的字符，例如<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="comment">* 101转10进制：1*8^2+0*8^1+1*8^0 = 64+0+1 = 65</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="comment">* 102转10进制：1*8^2+0*8^1+2*8^0 = 64+0+2 = 66</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="comment">*/</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">echo</span> <span class="string">"\101\102"</span> <span class="comment">// AB</span></span></pre></td></tr></table></figure></li>
+<li>[0-7]{1,3}符合该正则表达式的，是以一个八进制方式来表达的字符，例如</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="comment">* 101转10进制：1*8^2+0*8^1+1*8^0 = 64+0+1 = 65</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="comment">* 102转10进制：1*8^2+0*8^1+2*8^0 = 64+0+2 = 66</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="comment">*/</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">echo</span> <span class="string">"\101\102"</span> <span class="comment">// AB</span></span></pre></td></tr></table></figure>
+<ul>
 <li>\x[0-9A-Fa-f]{1,2}符合该正则表达的，是以一个十六进制方式来表达的字符，例如</li>
 </ul>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="comment">* 41转10进制：4*16^1+1*16^0 = 64+1 = 65</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="comment">* 42转10进制：4*16^2+2*16^0 = 64+2 = 66</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="comment">*/</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">echo</span> <span class="string">"\x41\x42"</span> <span class="comment">// AB</span></span></pre></td></tr></table></figure>
-
 <blockquote>
-<p>单引号只转义\ 和 &#39;</p>
+<p>单引号只转义\ 和 ’</p>
 </blockquote>
-<h3 id="arrow-lower-right-关于字符串下标"><a href="#arrow-lower-right-关于字符串下标" class="headerlink" title=":arrow_lower_right: 关于字符串下标"></a>:arrow_lower_right: 关于字符串下标</h3><ul>
+<h3 id="关于字符串下标"><a class="header-anchor" href="#关于字符串下标">¶</a>↘️ 关于字符串下标</h3>
+<ul>
 <li>获取字符串中的字符，可以通过下标去获取。</li>
-<li>用超出字符串长度的下标写入字符串，会拉长该字符串，中间以空格填充。<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">$str = <span class="string">'lhw'</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">$str[<span class="number">10</span>] = <span class="string">'ok'</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">echo</span> $str;</span></pre></td></tr></table></figure>
-
-</li>
+<li>用超出字符串长度的下标写入字符串，会拉长该字符串，中间以空格填充。</li>
 </ul>
-<h3 id="ant-字符串串行化"><a href="#ant-字符串串行化" class="headerlink" title=":ant: 字符串串行化"></a>:ant: 字符串串行化</h3><p>串行化的目的：将不易于存储的数据结构，通过串行化来存储数据库或者文件当中。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">$str = <span class="string">'lhw'</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">$str[<span class="number">10</span>] = <span class="string">'ok'</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">echo</span> $str;</span></pre></td></tr></table></figure>
+<h3 id="🐜-字符串串行化"><a class="header-anchor" href="#🐜-字符串串行化">¶</a>🐜 字符串串行化</h3>
+<p>串行化的目的：将不易于存储的数据结构，通过串行化来存储数据库或者文件当中。</p>
 <ul>
 <li>serialize()   性能稍差，可序列号对象</li>
 <li>json_encode() 性能好，这序列化数组，并且不同语言可通用</li>
@@ -1058,9 +1093,8 @@
 <li>自定义<code>Observer</code> 和 <code>Subject</code></li>
 </ul>
 <p>不管采用哪种方式其目的是：对象更改其状态时，将通知附加的“观察者”。它用于缩短耦合对象的数量，并使用松耦合。</p>
-<p>举个缓存依赖例子：:dog:</p>
+<p>举个缓存依赖例子：🐶</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment">//如果数据源发生变化根据cacheType清空不同数据缓存</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CacheRepository</span> <span class="keyword">implements</span> <span class="title">Cache</span> </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">protected</span> $catenation;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">($db)</span> </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">$this</span>-&gt;catenation = $db;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">cacheClear</span><span class="params">($cacheType)</span> </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">        <span class="comment">//</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
-
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment">//mem 观察员</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MemcacheObserver</span> <span class="keyword">implements</span> \<span class="title">SplObserver</span></span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="class"></span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">update</span><span class="params">(Cache $cache)</span></span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"><span class="function">    </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">       $cache-&gt;clean(<span class="string">'mem'</span>);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">    <span class="comment">/**</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line"><span class="comment">     * <span class="doctag">@return</span> List[]</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line"><span class="comment">     */</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getArticles</span><span class="params">()</span>: <span class="title">array</span></span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line"><span class="function">    </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;getArticles;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
         
           <a class="article-more-a" href="/2017/02/23/code-summarize-three/#more">more >></a>
@@ -1229,19 +1263,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">api</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">yar</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">Yii</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">api</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">bug</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">Yii</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1257,11 +1287,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">devops</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">bug</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">devops</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1269,15 +1299,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">jenkins</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">webhook</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">webhook</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">jenkins</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1289,10 +1323,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">mac</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">memcache</a>
               </li>
              
@@ -1301,15 +1331,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">mac</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">php</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">trait</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">sign</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1321,7 +1347,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">sign</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">phpstrom</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">trait</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1333,15 +1367,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">svn</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">sql</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">svn</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">swoole</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">字符串</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">协程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1350,14 +1392,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">xdebug</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">协程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">字符串</a>
               </li>
              
               <li class="article-tag-list-item">

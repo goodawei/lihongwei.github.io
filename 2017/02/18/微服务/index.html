@@ -8,13 +8,13 @@
   <link rel="dns-prefetch" href="http://blog.nicexiangcun.com">
   <title>微服务 | 李宏伟&#39;blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="微服务目的一直在说微服务，微服务到底能带来什么好处呢，从老板的角度来说，他们真正只在乎两件事情： 系统要稳定，别挂 出活要快，我让你们加什么功能，赶紧就给加上 稳定性和交付速度就是最重要的两个指标了。 微服务切分把一个单体应用切分为多个进程，独立部署是必然的。独立发布，独立测试，独立流水线，无论怎么拆分，都会比合在一起要好。但是也会设计到跨进程的事务一致性问题如何保证，以及跨网络延时等用户体验问题">
+  <meta name="description" content="¶微服务目的 一直在说微服务，微服务到底能带来什么好处呢，从老板的角度来说，他们真正只在乎两件事情： 系统要稳定，别挂 出活要快，我让你们加什么功能，赶紧就给加上 稳定性和交付速度就是最重要的两个指标了。 ¶微服务切分 把一个单体应用切分为多个进程，独立部署是必然的。独立发布，独立测试，独立流水线，无论怎么拆分，都会比合在一起要好。但是也会设计到跨进程的事务一致性问题如何保证，以及跨网络延时等用户">
 <meta name="keywords" content="微服务">
 <meta property="og:type" content="article">
 <meta property="og:title" content="微服务">
 <meta property="og:url" content="http:&#x2F;&#x2F;blog.nicexiangcun.com&#x2F;2017&#x2F;02&#x2F;18&#x2F;%E5%BE%AE%E6%9C%8D%E5%8A%A1&#x2F;index.html">
 <meta property="og:site_name" content="李宏伟&#39;blog">
-<meta property="og:description" content="微服务目的一直在说微服务，微服务到底能带来什么好处呢，从老板的角度来说，他们真正只在乎两件事情： 系统要稳定，别挂 出活要快，我让你们加什么功能，赶紧就给加上 稳定性和交付速度就是最重要的两个指标了。 微服务切分把一个单体应用切分为多个进程，独立部署是必然的。独立发布，独立测试，独立流水线，无论怎么拆分，都会比合在一起要好。但是也会设计到跨进程的事务一致性问题如何保证，以及跨网络延时等用户体验问题">
+<meta property="og:description" content="¶微服务目的 一直在说微服务，微服务到底能带来什么好处呢，从老板的角度来说，他们真正只在乎两件事情： 系统要稳定，别挂 出活要快，我让你们加什么功能，赶紧就给加上 稳定性和交付速度就是最重要的两个指标了。 ¶微服务切分 把一个单体应用切分为多个进程，独立部署是必然的。独立发布，独立测试，独立流水线，无论怎么拆分，都会比合在一起要好。但是也会设计到跨进程的事务一致性问题如何保证，以及跨网络延时等用户">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2019-11-27T12:11:01.045Z">
 <meta name="twitter:card" content="summary">
@@ -173,14 +173,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="微服务目的"><a href="#微服务目的" class="headerlink" title="微服务目的"></a>微服务目的</h3><p>一直在说微服务，微服务到底能带来什么好处呢，从老板的角度来说，他们真正只在乎两件事情：</p>
+        <h3 id="微服务目的"><a class="header-anchor" href="#微服务目的">¶</a>微服务目的</h3>
+<p>一直在说微服务，微服务到底能带来什么好处呢，从老板的角度来说，他们真正只在乎两件事情：</p>
 <p>系统要稳定，别挂<br></p>
 <p>出活要快，我让你们加什么功能，赶紧就给加上</p>
 <p>稳定性和交付速度就是最重要的两个指标了。</p>
-<h3 id="微服务切分"><a href="#微服务切分" class="headerlink" title="微服务切分"></a>微服务切分</h3><p>把一个单体应用切分为多个进程，独立部署是必然的。独立发布，独立测试，独立流水线，无论怎么拆分，都会比合在一起要好。但是也会设计到跨进程的事务一致性问题如何保证，以及跨网络延时等用户体验问题。</p>
+<h3 id="微服务切分"><a class="header-anchor" href="#微服务切分">¶</a>微服务切分</h3>
+<p>把一个单体应用切分为多个进程，独立部署是必然的。独立发布，独立测试，独立流水线，无论怎么拆分，都会比合在一起要好。但是也会设计到跨进程的事务一致性问题如何保证，以及跨网络延时等用户体验问题。</p>
 <a id="more"></a>
-
-<h3 id="微服务之间调用和异步化"><a href="#微服务之间调用和异步化" class="headerlink" title="微服务之间调用和异步化"></a>微服务之间调用和异步化</h3><p>SOAP和RPC都是SOA的具体实现方式。这里要说的是由于服务的拆分，消息总线或者消息队列也是重要的一个设计环节，因为RPC 和消息队列最本质的区别，不是网络开销，不是提高并发，而是职责的反转。比如我们开发中经常遇到这样的业务流程，卡券团队对订单团队说你们下单的时候要调一下我的接口我要送卡券…,可以转变成不是我调你而是你主动来取。我只要将事件handle放进消息队列就ok啦。当然RPC好还是走消息队列好，还是要根据业务去做权衡。</p>
+<h3 id="微服务之间调用和异步化"><a class="header-anchor" href="#微服务之间调用和异步化">¶</a>微服务之间调用和异步化</h3>
+<p>SOAP和RPC都是SOA的具体实现方式。这里要说的是由于服务的拆分，消息总线或者消息队列也是重要的一个设计环节，因为RPC 和消息队列最本质的区别，不是网络开销，不是提高并发，而是职责的反转。比如我们开发中经常遇到这样的业务流程，卡券团队对订单团队说你们下单的时候要调一下我的接口我要送卡券…,可以转变成不是我调你而是你主动来取。我只要将事件handle放进消息队列就ok啦。当然RPC好还是走消息队列好，还是要根据业务去做权衡。</p>
 
       
 
@@ -437,19 +439,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">api</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">yar</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">Yii</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">api</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">bug</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">Yii</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -465,11 +463,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">devops</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">bug</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">devops</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -477,15 +475,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">jenkins</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">webhook</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">webhook</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">jenkins</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -497,10 +499,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">mac</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">memcache</a>
               </li>
              
@@ -509,15 +507,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">mac</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">php</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">trait</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">sign</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -529,7 +523,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">sign</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">phpstrom</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">trait</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -541,15 +543,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">svn</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">sql</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">svn</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">swoole</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">字符串</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">协程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -558,14 +568,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">xdebug</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">协程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">字符串</a>
               </li>
              
               <li class="article-tag-list-item">

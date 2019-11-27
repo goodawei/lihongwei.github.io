@@ -8,13 +8,13 @@
   <link rel="dns-prefetch" href="http://blog.nicexiangcun.com">
   <title>java－基础整数运算 | 李宏伟&#39;blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="整数运算整数除法仍然是整数，%可以取余。 自增和自减运算：++和--，注意是先引用在自增，还是先自增在引用的差别。 简写的+&#x3D;和-&#x3D; 计算结果溢出不报错，但结果是错误的。 在计算过程中我们没有必要为了减少内存，采用byte,short等短类型进行计算。 移位运算左移：&amp;lt;&amp;lt; 右移：&amp;gt;&amp;gt; 无条件右移：&amp;gt;&amp;gt;&amp;gt; byte 和 short 会先转换为int在移位 注">
+  <meta name="description" content="¶整数运算 整数除法仍然是整数，%可以取余。 自增和自减运算：++和--，注意是先引用在自增，还是先自增在引用的差别。 简写的+&#x3D;和-&#x3D; 计算结果溢出不报错，但结果是错误的。 在计算过程中我们没有必要为了减少内存，采用byte,short等短类型进行计算。 ¶移位运算 左移：&amp;lt;&amp;lt; 右移：&amp;gt;&amp;gt; 无条件右移：&amp;gt;&amp;gt;&amp;gt; byte 和 short 会先转换为int在">
 <meta name="keywords" content="Java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="java－基础整数运算">
 <meta property="og:url" content="http:&#x2F;&#x2F;blog.nicexiangcun.com&#x2F;2017&#x2F;07&#x2F;23&#x2F;java-%E6%95%B4%E6%95%B0%E8%BF%90%E7%AE%97&#x2F;index.html">
 <meta property="og:site_name" content="李宏伟&#39;blog">
-<meta property="og:description" content="整数运算整数除法仍然是整数，%可以取余。 自增和自减运算：++和--，注意是先引用在自增，还是先自增在引用的差别。 简写的+&#x3D;和-&#x3D; 计算结果溢出不报错，但结果是错误的。 在计算过程中我们没有必要为了减少内存，采用byte,short等短类型进行计算。 移位运算左移：&amp;lt;&amp;lt; 右移：&amp;gt;&amp;gt; 无条件右移：&amp;gt;&amp;gt;&amp;gt; byte 和 short 会先转换为int在移位 注">
+<meta property="og:description" content="¶整数运算 整数除法仍然是整数，%可以取余。 自增和自减运算：++和--，注意是先引用在自增，还是先自增在引用的差别。 简写的+&#x3D;和-&#x3D; 计算结果溢出不报错，但结果是错误的。 在计算过程中我们没有必要为了减少内存，采用byte,short等短类型进行计算。 ¶移位运算 左移：&amp;lt;&amp;lt; 右移：&amp;gt;&amp;gt; 无条件右移：&amp;gt;&amp;gt;&amp;gt; byte 和 short 会先转换为int在">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http:&#x2F;&#x2F;o8979n2hu.bkt.clouddn.com&#x2F;java_%E7%A7%BB%E4%BD%8D.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;o8979n2hu.bkt.clouddn.com&#x2F;java%20%E4%BD%8D%E8%BF%90%E7%AE%97%E7%A7%BB%E4%BD%8D.png">
@@ -180,11 +180,13 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="整数运算"><a href="#整数运算" class="headerlink" title="整数运算"></a>整数运算</h3><p>整数除法仍然是整数，<code>%</code>可以取余。</p>
+        <h3 id="整数运算"><a class="header-anchor" href="#整数运算">¶</a>整数运算</h3>
+<p>整数除法仍然是整数，<code>%</code>可以取余。</p>
 <p>自增和自减运算：<code>++</code>和<code>--</code>，注意是先引用在自增，还是先自增在引用的差别。</p>
 <p>简写的<code>+=</code>和<code>-=</code></p>
 <p>计算结果溢出不报错，但结果是错误的。 在计算过程中我们没有必要为了减少内存，采用byte,short等短类型进行计算。</p>
-<h3 id="移位运算"><a href="#移位运算" class="headerlink" title="移位运算"></a>移位运算</h3><p>左移：<code>&lt;&lt;</code></p>
+<h3 id="移位运算"><a class="header-anchor" href="#移位运算">¶</a>移位运算</h3>
+<p>左移：<code>&lt;&lt;</code></p>
 <p>右移：<code>&gt;&gt;</code></p>
 <p>无条件右移：<code>&gt;&gt;&gt;</code></p>
 <p>byte 和 short 会先转换为int在移位</p>
@@ -193,12 +195,14 @@
 <p><code>int</code> 类型如上图在内存中占32位存储空间其中最高位是符号位。在右移过程中可以用<code>&gt;&gt;&gt;</code>强制右移，将直接移动最高位的二进制数。</p>
 <p><img src="http://o8979n2hu.bkt.clouddn.com/java%20%E4%BD%8D%E8%BF%90%E7%AE%97%E7%A7%BB%E4%BD%8D.png" alt="java_right_move"></p>
 <a id="more"></a>
-
-<h3 id="位运算"><a href="#位运算" class="headerlink" title="位运算"></a>位运算</h3><p><img src="http://o8979n2hu.bkt.clouddn.com/java_%E4%BD%8D%E8%BF%90%E7%AE%97.png" alt="java_wei_calut"></p>
+<h3 id="位运算"><a class="header-anchor" href="#位运算">¶</a>位运算</h3>
+<p><img src="http://o8979n2hu.bkt.clouddn.com/java_%E4%BD%8D%E8%BF%90%E7%AE%97.png" alt="java_wei_calut"></p>
 <p>位运算过程中会先按位对齐，然后一次按位进行与运算或者或运算For example:</p>
 <p><img src="http://o8979n2hu.bkt.clouddn.com/java_%E4%BD%8D%E8%BF%90%E7%AE%97_%E4%BE%8B%E5%AD%90.png" alt="java_wei"></p>
-<h3 id="异或运算"><a href="#异或运算" class="headerlink" title="异或运算"></a>异或运算</h3><p><img src="http://o8979n2hu.bkt.clouddn.com/%E5%BC%82%E6%88%96%E8%BF%90%E7%AE%97.png" alt="java_yihuo"></p>
-<h3 id="运算过程中类型的自动提升"><a href="#运算过程中类型的自动提升" class="headerlink" title="运算过程中类型的自动提升"></a>运算过程中类型的自动提升</h3><p>Notice: 不能将较大的类型参与进入一个较小类型的运算当中。</p>
+<h3 id="异或运算"><a class="header-anchor" href="#异或运算">¶</a>异或运算</h3>
+<p><img src="http://o8979n2hu.bkt.clouddn.com/%E5%BC%82%E6%88%96%E8%BF%90%E7%AE%97.png" alt="java_yihuo"></p>
+<h3 id="运算过程中类型的自动提升"><a class="header-anchor" href="#运算过程中类型的自动提升">¶</a>运算过程中类型的自动提升</h3>
+<p>Notice: 不能将较大的类型参与进入一个较小类型的运算当中。</p>
 <p><img src="http://o8979n2hu.bkt.clouddn.com/java_%E7%B1%BB%E5%9E%8B%E8%87%AA%E5%8A%A8%E6%8F%90%E5%8D%87.png" alt="java_yihuo"></p>
 
       
@@ -456,19 +460,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">api</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">yar</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">Yii</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">api</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">bug</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">Yii</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -484,11 +484,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">devops</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">bug</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">devops</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -496,15 +496,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">jenkins</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">webhook</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">webhook</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">jenkins</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -516,10 +520,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">mac</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">memcache</a>
               </li>
              
@@ -528,15 +528,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">mac</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">php</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">trait</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">sign</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -548,7 +544,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">sign</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">phpstrom</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">trait</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -560,15 +564,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">svn</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">sql</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">svn</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">swoole</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">字符串</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">协程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -577,14 +589,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">xdebug</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">协程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">字符串</a>
               </li>
              
               <li class="article-tag-list-item">

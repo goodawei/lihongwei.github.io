@@ -8,13 +8,13 @@
   <link rel="dns-prefetch" href="http://blog.nicexiangcun.com">
   <title>深入理解正则表达式 | 李宏伟&#39;blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="表达式测试 :bee:推荐一个测试地址 http:&#x2F;&#x2F;www.rexv.org&#x2F;测试题：用单引号和双引号匹配 \$答案 ： 首先\$都是元字符都需要转义，转义结果为：\\\$  用单引号来标识的正则: &#x2F;\\\\\$&#x2F; 用双引号来标识的正则: &#x2F;\\\\\\\$&#x2F;  :palm_tree: 分组和后向引用通过次数限定符，来限定前面括号中的单元。匹配到的单元将会被捕获，捕获到的内容可以在正则表达式的">
+  <meta name="description" content="¶表达式测试 🐝 推荐一个测试地址 http:&#x2F;&#x2F;www.rexv.org&#x2F; 测试题：用单引号和双引号匹配 \$ 答案 ： 首先\$都是元字符都需要转义，转义结果为：\\\$  用单引号来标识的正则: &#x2F;\\\\\$&#x2F; 用双引号来标识的正则: &#x2F;\\\\\\\$&#x2F;  ¶🌴 分组和后向引用 通过次数限定符，来限定前面括号中的单元。匹配到的单元将会被捕获，捕获到的内容可以在正则表达式的后面通过\1">
 <meta name="keywords" content="正则">
 <meta property="og:type" content="article">
 <meta property="og:title" content="深入理解正则表达式">
 <meta property="og:url" content="http:&#x2F;&#x2F;blog.nicexiangcun.com&#x2F;2017&#x2F;02&#x2F;25&#x2F;%E6%AD%A3%E5%88%99&#x2F;index.html">
 <meta property="og:site_name" content="李宏伟&#39;blog">
-<meta property="og:description" content="表达式测试 :bee:推荐一个测试地址 http:&#x2F;&#x2F;www.rexv.org&#x2F;测试题：用单引号和双引号匹配 \$答案 ： 首先\$都是元字符都需要转义，转义结果为：\\\$  用单引号来标识的正则: &#x2F;\\\\\$&#x2F; 用双引号来标识的正则: &#x2F;\\\\\\\$&#x2F;  :palm_tree: 分组和后向引用通过次数限定符，来限定前面括号中的单元。匹配到的单元将会被捕获，捕获到的内容可以在正则表达式的">
+<meta property="og:description" content="¶表达式测试 🐝 推荐一个测试地址 http:&#x2F;&#x2F;www.rexv.org&#x2F; 测试题：用单引号和双引号匹配 \$ 答案 ： 首先\$都是元字符都需要转义，转义结果为：\\\$  用单引号来标识的正则: &#x2F;\\\\\$&#x2F; 用双引号来标识的正则: &#x2F;\\\\\\\$&#x2F;  ¶🌴 分组和后向引用 通过次数限定符，来限定前面括号中的单元。匹配到的单元将会被捕获，捕获到的内容可以在正则表达式的后面通过\1">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2019-11-27T12:11:01.045Z">
 <meta name="twitter:card" content="summary">
@@ -173,31 +173,40 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="表达式测试-bee"><a href="#表达式测试-bee" class="headerlink" title="表达式测试 :bee:"></a>表达式测试 :bee:</h3><p>推荐一个测试地址 <a href="http://www.rexv.org/" target="_blank" rel="noopener">http://www.rexv.org/</a><br>测试题：用单引号和双引号匹配 <code>\$</code><br>答案 ： 首先<code>\$</code>都是元字符都需要转义，转义结果为：<code>\\\$</code></p>
+        <h3 id="表达式测试-🐝"><a class="header-anchor" href="#表达式测试-🐝">¶</a>表达式测试 🐝</h3>
+<p>推荐一个测试地址 <a href="http://www.rexv.org/" target="_blank" rel="noopener">http://www.rexv.org/</a><br>
+测试题：用单引号和双引号匹配 <code>\$</code><br>
+答案 ： 首先<code>\$</code>都是元字符都需要转义，转义结果为：<code>\\\$</code></p>
 <ul>
 <li>用单引号来标识的正则: <code>/\\\\\$/</code></li>
 <li>用双引号来标识的正则: <code>/\\\\\\\$/</code></li>
 </ul>
-<h3 id="palm-tree-分组和后向引用"><a href="#palm-tree-分组和后向引用" class="headerlink" title=":palm_tree: 分组和后向引用"></a>:palm_tree: 分组和后向引用</h3><p>通过次数限定符，来限定前面括号中的单元。匹配到的单元将会被捕获，捕获到的内容可以在正则表达式的后面通过<code>\1,\2,\3</code>获取。</p>
-<h3 id="贪婪与非贪婪-beetle"><a href="#贪婪与非贪婪-beetle" class="headerlink" title="贪婪与非贪婪 :beetle:"></a>贪婪与非贪婪 :beetle:</h3><ul>
+<h3 id="🌴-分组和后向引用"><a class="header-anchor" href="#🌴-分组和后向引用">¶</a>🌴 分组和后向引用</h3>
+<p>通过次数限定符，来限定前面括号中的单元。匹配到的单元将会被捕获，捕获到的内容可以在正则表达式的后面通过<code>\1,\2,\3</code>获取。</p>
+<h3 id="贪婪与非贪婪-🐞"><a class="header-anchor" href="#贪婪与非贪婪-🐞">¶</a>贪婪与非贪婪 🐞</h3>
+<ul>
 <li><code>.*</code> 贪婪模式，贪婪模式会回溯匹配效率低。</li>
 <li><code>.*?</code> 非贪婪模式</li>
 </ul>
 <a id="more"></a>
-
-<h3 id="正则表达式的回溯"><a href="#正则表达式的回溯" class="headerlink" title="正则表达式的回溯"></a>正则表达式的回溯</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">/<span class="string">".*"</span>/ 和 /<span class="string">".*?"</span>/</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">分别匹配 <span class="string">'my name is "lhw" who "are" you '</span></span></pre></td></tr></table></figure>
-
+<h3 id="正则表达式的回溯"><a class="header-anchor" href="#正则表达式的回溯">¶</a>正则表达式的回溯</h3>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">/<span class="string">".*"</span>/ 和 /<span class="string">".*?"</span>/</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">分别匹配 <span class="string">'my name is "lhw" who "are" you '</span></span></pre></td></tr></table></figure>
 <ul>
-<li><p><code>&quot;.*&quot;</code>匹配过程：当匹配到第一个<code>&quot;</code>字符的时候由于<code>.</code>是匹配非换行符的所有字符，所以就从<code>&quot;</code>一直匹配的最后，匹配到最后然后在逐次往前回溯，拿每个字符和最后一个<code>&quot;</code>符号匹配，直到匹配到为止，所以<code>&quot;.*&quot;</code>匹配的结果是 “lhw” who “are”</p>
+<li>
+<p><code>&quot;.*&quot;</code>匹配过程：当匹配到第一个<code>&quot;</code>字符的时候由于<code>.</code>是匹配非换行符的所有字符，所以就从<code>&quot;</code>一直匹配的最后，匹配到最后然后在逐次往前回溯，拿每个字符和最后一个<code>&quot;</code>符号匹配，直到匹配到为止，所以<code>&quot;.*&quot;</code>匹配的结果是 “lhw” who “are”</p>
 </li>
-<li><p><code>&quot;.*?&quot;</code>匹配过程：当匹配到第一个<code>&quot;</code>字符的时候，就会逐次的从当前的<code>&quot;</code>后面的字符和最后<code>&quot;</code>做匹配。直到匹配为止。</p>
+<li>
+<p><code>&quot;.*?&quot;</code>匹配过程：当匹配到第一个<code>&quot;</code>字符的时候，就会逐次的从当前的<code>&quot;</code>后面的字符和最后<code>&quot;</code>做匹配。直到匹配为止。</p>
 </li>
 </ul>
-<h3 id="scissors-限定符和元字符使用时注意"><a href="#scissors-限定符和元字符使用时注意" class="headerlink" title=":scissors: 限定符和元字符使用时注意"></a>:scissors: 限定符和元字符使用时注意</h3><ul>
+<h3 id="✂-限定符和元字符使用时注意"><a class="header-anchor" href="#✂-限定符和元字符使用时注意">¶</a>✂️ 限定符和元字符使用时注意</h3>
+<ul>
 <li>所有限定符都是限定它前面的一个子单元出现的次数。</li>
-<li>只有元字符出现在它该出现的地方才能起到元字符作用，否则就是普通字符如：<br>[-0-9A-Z.?]由于[]优先级高于<code>.?</code>所以这里的<code>.?</code>就是普通字符</li>
+<li>只有元字符出现在它该出现的地方才能起到元字符作用，否则就是普通字符如：<br>
+[-0-9A-Z.?]由于[]优先级高于<code>.?</code>所以这里的<code>.?</code>就是普通字符</li>
 </ul>
-<h3 id="PCRE-主要函数"><a href="#PCRE-主要函数" class="headerlink" title="PCRE 主要函数"></a>PCRE 主要函数</h3><ul>
+<h3 id="pcre-主要函数"><a class="header-anchor" href="#pcre-主要函数">¶</a>PCRE 主要函数</h3>
+<ul>
 <li>preg_grep 返回匹配模式的数组条目</li>
 <li>preg_match 执行一个正则表达式匹配</li>
 <li>preg_match_all 执行一个全局正则表达式匹配</li>
@@ -206,14 +215,16 @@
 <li>preg_replace_callback 执行一个正则表达式搜索且使用一个回调进行替换</li>
 <li>preg_split 通过一个正则表达式分割字符串</li>
 </ul>
-<h3 id="正则表达式-元字符-pig-nose"><a href="#正则表达式-元字符-pig-nose" class="headerlink" title="正则表达式 - 元字符 :pig_nose:"></a>正则表达式 - 元字符 :pig_nose:</h3><table>
+<h3 id="正则表达式-元字符-🐽"><a class="header-anchor" href="#正则表达式-元字符-🐽">¶</a>正则表达式 - 元字符 🐽</h3>
+<table>
 <thead>
 <tr>
 <th>字符</th>
 <th>描述</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>\</td>
 <td>有三种含义，1是转义如 <code>\\</code>,<code>\(</code>,2是特殊字符如<code>\n</code> 匹配一个换行符,3是向后引用</td>
 </tr>
@@ -227,39 +238,39 @@
 </tr>
 <tr>
 <td>*</td>
-<td>匹配前面的子表达式零次或多次(注意：前面的子表达)。例如，lhw* 能匹配 “lh”和”lhw” 以及 “lhwww”。等价于{0,}</td>
+<td>匹配前面的子表达式零次或多次(注意：前面的子表达)。例如，lhw* 能匹配 “lh&quot;和&quot;lhw” 以及 “lhwww”。等价于{0,}</td>
 </tr>
 <tr>
 <td>+</td>
-<td>匹配前面的子表达式一次或多次。例如，’lhw+’ 能匹配 “lhw” 以及 “lhwww”，但不能匹配 “lh”。+ 等价于 {1,}</td>
+<td>匹配前面的子表达式一次或多次。例如，‘lhw+’ 能匹配 “lhw” 以及 “lhwww”，但不能匹配 “lh”。+ 等价于 {1,}</td>
 </tr>
 <tr>
 <td>?</td>
-<td>匹配前面的子表达式零次或一次。例如，”lhw(nb)?” 可以匹配 “lhw” 或 “lhwnb” 等价于 {0,1}</td>
+<td>匹配前面的子表达式零次或一次。例如，“lhw(nb)?” 可以匹配 “lhw” 或 “lhwnb” 等价于 {0,1}</td>
 </tr>
 <tr>
 <td>{n}</td>
-<td>匹配确定的 n 次。例如，’lhw{2}’ 不能匹配 “lhw” 但是能匹配 “lhww”</td>
+<td>匹配确定的 n 次。例如，‘lhw{2}’ 不能匹配 “lhw” 但是能匹配 “lhww”</td>
 </tr>
 <tr>
 <td>{n,}</td>
-<td>至少匹配n 次。例如，’o{2,}’ 不能匹配 “Bob” 中的 ‘o’，但能匹配 “foood” 中的所有 o,’o{1,}’ 等价于 ‘o+’,’o{0,}’ 则等价于 ‘o*’</td>
+<td>至少匹配n 次。例如，‘o{2,}’ 不能匹配 “Bob” 中的 ‘o’，但能匹配 “foood” 中的所有 o,‘o{1,}’ 等价于 ‘o+’,‘o{0,}’ 则等价于 ‘o*’</td>
 </tr>
 <tr>
 <td>{n,m}</td>
-<td>最少匹配 n 次且最多匹配 m 次。例如，”o{1,3}” 将匹配 “fooood” 中的前三个 o。’o{0,1}’ 等价于 ‘o?’</td>
+<td>最少匹配 n 次且最多匹配 m 次。例如，“o{1,3}” 将匹配 “fooood” 中的前三个 o。‘o{0,1}’ 等价于 ‘o?’</td>
 </tr>
 <tr>
 <td>.</td>
-<td>匹配除 “\n” 之外的任何单个字符。要匹配包括 ‘\n’ 在内的任何字符，请使用像”(.</td>
+<td>匹配除 “\n” 之外的任何单个字符。要匹配包括 ‘\n’ 在内的任何字符，请使用像&quot;(.</td>
 </tr>
 <tr>
 <td>?</td>
-<td>当该字符紧跟在任何一个其他限制符 (*, +, ?, {n}, {n,}, {n,m}) 后面时，匹配模式是非贪婪的。非贪婪模式尽可能少的匹配所搜索的字符串，而默认的贪婪模式则尽可能多的匹配所搜索的字符串。例如，对于字符串 “oooo”，’o+?’ 将匹配单个 “o”，而 ‘o+’ 将匹配所有 ‘o’</td>
+<td>当该字符紧跟在任何一个其他限制符 (*, +, ?, {n}, {n,}, {n,m}) 后面时，匹配模式是非贪婪的。非贪婪模式尽可能少的匹配所搜索的字符串，而默认的贪婪模式则尽可能多的匹配所搜索的字符串。例如，对于字符串 “oooo”，‘o+?’ 将匹配单个 “o”，而 ‘o+’ 将匹配所有 ‘o’</td>
 </tr>
 <tr>
 <td>x|y</td>
-<td>匹配 x 或 y。例如，’z|food’ 能匹配 “z” 或 “food”。’(z|f)ood’ 则匹配 “zood” 或 “food”</td>
+<td>匹配 x 或 y。例如，‘z|food’ 能匹配 “z” 或 “food”。’(z|f)ood’ 则匹配 “zood” 或 “food”</td>
 </tr>
 <tr>
 <td>[xyz]</td>
@@ -267,7 +278,7 @@
 </tr>
 <tr>
 <td>[^xyz]</td>
-<td>匹配未包含的任意字符。例如， ‘[^abc]’ 可以匹配 “plain” 中的’p’、’l’、’i’、’n’</td>
+<td>匹配未包含的任意字符。例如， ‘[^abc]’ 可以匹配 “plain” 中的’p’、‘l’、‘i’、‘n’</td>
 </tr>
 <tr>
 <td>[a-z]</td>
@@ -325,7 +336,8 @@
 <td>[\u4e00-\u9fa5]</td>
 <td>unicode码范围，匹配任意汉字，\u固定写法，4e00为16进制的unicode编码</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 
       
 
@@ -582,19 +594,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">api</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">yar</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">Yii</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">api</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">bug</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">Yii</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -610,11 +618,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">devops</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">bug</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">devops</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -622,15 +630,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">jenkins</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">webhook</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">webhook</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">jenkins</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -642,10 +654,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">mac</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">memcache</a>
               </li>
              
@@ -654,15 +662,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">mac</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">php</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">trait</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">sign</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -674,7 +678,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">sign</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">phpstrom</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">trait</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -686,15 +698,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">svn</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">sql</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">svn</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">swoole</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">字符串</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">协程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -703,14 +723,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">xdebug</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">协程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">字符串</a>
               </li>
              
               <li class="article-tag-list-item">

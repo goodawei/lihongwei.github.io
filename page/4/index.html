@@ -173,11 +173,13 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="微服务目的"><a href="#微服务目的" class="headerlink" title="微服务目的"></a>微服务目的</h3><p>一直在说微服务，微服务到底能带来什么好处呢，从老板的角度来说，他们真正只在乎两件事情：</p>
+        <h3 id="微服务目的"><a class="header-anchor" href="#微服务目的">¶</a>微服务目的</h3>
+<p>一直在说微服务，微服务到底能带来什么好处呢，从老板的角度来说，他们真正只在乎两件事情：</p>
 <p>系统要稳定，别挂<br></p>
 <p>出活要快，我让你们加什么功能，赶紧就给加上</p>
 <p>稳定性和交付速度就是最重要的两个指标了。</p>
-<h3 id="微服务切分"><a href="#微服务切分" class="headerlink" title="微服务切分"></a>微服务切分</h3><p>把一个单体应用切分为多个进程，独立部署是必然的。独立发布，独立测试，独立流水线，无论怎么拆分，都会比合在一起要好。但是也会设计到跨进程的事务一致性问题如何保证，以及跨网络延时等用户体验问题。</p>
+<h3 id="微服务切分"><a class="header-anchor" href="#微服务切分">¶</a>微服务切分</h3>
+<p>把一个单体应用切分为多个进程，独立部署是必然的。独立发布，独立测试，独立流水线，无论怎么拆分，都会比合在一起要好。但是也会设计到跨进程的事务一致性问题如何保证，以及跨网络延时等用户体验问题。</p>
         
           <a class="article-more-a" href="/2017/02/18/%E5%BE%AE%E6%9C%8D%E5%8A%A1/#more">more >></a>
         
@@ -264,7 +266,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="shamrock-if-else-和-switch-case-优化方案"><a href="#shamrock-if-else-和-switch-case-优化方案" class="headerlink" title=":shamrock: if else 和 switch case 优化方案"></a>:shamrock: if else 和 switch case 优化方案</h1><p>1 如果嵌套逻辑是 返回值或者输出等简单的一句话代码，则使用表驱动方案。</p>
+        <h1>☘️ if else 和 switch case 优化方案</h1>
+<p>1 如果嵌套逻辑是 返回值或者输出等简单的一句话代码，则使用表驱动方案。</p>
 <p>2 如果是逻辑处理或者函数调用，则采用策略和多态模式。</p>
 <p>举个例子：</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">$type = $data[<span class="string">'type'</span>];</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"> </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="comment">//1-绑卡 2-充值 3-投资 4-提现 5-登陆 6-基金</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span> ($type) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">case</span> <span class="number">1</span>:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">        $res = (<span class="keyword">new</span> AccountPermission())-&gt;bindCard($account);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">break</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">case</span> <span class="number">2</span>:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">        $res = (<span class="keyword">new</span> AccountPermission())-&gt;recharge($account);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">break</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">case</span> <span class="number">3</span>:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">        $res = (<span class="keyword">new</span> AccountPermission())-&gt;invest($account);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">break</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">case</span> <span class="number">4</span>:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">        $res = (<span class="keyword">new</span> AccountPermission())-&gt;withdraw($account);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">break</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">case</span> <span class="number">5</span>:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">        $res = (<span class="keyword">new</span> AccountPermission())-&gt;unbandCard($account);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">break</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
@@ -360,7 +363,10 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p><img src="http://o8979n2hu.bkt.clouddn.com/php-7-image-2-1474571040.jpg" alt="devops"></p>
-<h1 id="Jenkins"><a href="#Jenkins" class="headerlink" title="Jenkins"></a>Jenkins</h1><h1 id="Sonar"><a href="#Sonar" class="headerlink" title="Sonar"></a>Sonar</h1><h1 id="Gitlab"><a href="#Gitlab" class="headerlink" title="Gitlab"></a>Gitlab</h1>
+<h1>Jenkins</h1>
+<h1>Sonar</h1>
+<h1>Gitlab</h1>
+
       
 
       
@@ -445,23 +451,24 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p><img src="http://o8979n2hu.bkt.clouddn.com/php-7-image-1474571041.jpg" alt="Coding Summarize"></p>
-<h1 id="优雅的代码应该是什么样的"><a href="#优雅的代码应该是什么样的" class="headerlink" title="优雅的代码应该是什么样的"></a>优雅的代码应该是什么样的</h1><ul>
+<h1>优雅的代码应该是什么样的</h1>
+<ul>
 <li>能够满足当前的需求（功能，稳定性，负载能力等）。</li>
 <li>对未来的需求，能够快速的扩展，修改。</li>
 <li>出现问题能够快速的定位问题方便修改问题。</li>
 <li>尽量避免重复，最大程度复用。</li>
 </ul>
 <p>针对这些问题，整理出一些自己对于设计模式的理解，其实设计模式就是别人走过的路，踩过的坑，总结出来的优秀经验。总结的代码整洁之道就是如何复用这些经验。</p>
-<p>下面是代码整洁之道第一篇：技巧总结 :pray:</p>
+<p>下面是代码整洁之道第一篇：技巧总结 🙏</p>
 <p>1.命名非常重要，就为了可读性更好。</p>
 <p>2.适当的使用注释，开发新功能，修改别人的bug,关键业务逻辑，要合理的使用注释</p>
-<p>3.变量需要初始化 </p>
+<p>3.变量需要初始化</p>
 <p>4.1==$a 和常量比较常量在前,防御编程，避免误写出$a=1</p>
 <p>5.防御式编程和契约编程</p>
-<p>默认不信任任何外部调用和方法，默认双方遵守契约，任意一方撕毁契约则抛出异常，建议在UI及应用层倾向于防御式编程保证友好及体验，在逻辑层倾向于契约式编程尽早暴露隐患 </p>
-<p>6.可控的环境参数 :bug:</p>
-<p>代码不受环境的影响，各种魔术常亮，声明字符集，定义包含的绝对路径，错误级别7，自己开发的测试，准生产，生产环境切好等 :spider:</p>
-<p>7.PHP结束标记 </p>
+<p>默认不信任任何外部调用和方法，默认双方遵守契约，任意一方撕毁契约则抛出异常，建议在UI及应用层倾向于防御式编程保证友好及体验，在逻辑层倾向于契约式编程尽早暴露隐患</p>
+<p>6.可控的环境参数 🐛</p>
+<p>代码不受环境的影响，各种魔术常亮，声明字符集，定义包含的绝对路径，错误级别7，自己开发的测试，准生产，生产环境切好等 🕷</p>
+<p>7.PHP结束标记</p>
 <p>纯php语句不要结束标记</p>
         
           <a class="article-more-a" href="/2016/12/05/code-summarize/#more">more >></a>
@@ -551,13 +558,28 @@
       
         <p><img src="http://o8979n2hu.bkt.clouddn.com/test-pyramid.png" alt="iterm2"></p>
 <blockquote class="blockquote-center">devops</blockquote>
-
 <hr>
 <blockquote>
-<p>虽然不喜欢devops，但是还是要总结一下在devops中遇到一些所使用的工具。<br><a href="https://github.com/integrations" target="_blank" rel="noopener">https://github.com/integrations</a></p>
+<p>虽然不喜欢devops，但是还是要总结一下在devops中遇到一些所使用的工具。<br>
+<a href="https://github.com/integrations" target="_blank" rel="noopener">https://github.com/integrations</a></p>
 </blockquote>
 <hr>
-<h3 id="git"><a href="#git" class="headerlink" title="git"></a>git</h3><pre><code>http://blog.ffanfood.com/2016/07/09/git</code></pre><h3 id="代码托管和代码审查"><a href="#代码托管和代码审查" class="headerlink" title="代码托管和代码审查"></a>代码托管和代码审查</h3><pre><code>gitlab / github ／ Code Review</code></pre><h3 id="CI-自动化构件，测试，部署"><a href="#CI-自动化构件，测试，部署" class="headerlink" title="CI 自动化构件，测试，部署"></a>CI 自动化构件，测试，部署</h3><pre><code>CircleCI ／ Travis CI</code></pre><h3 id="日志聚集"><a href="#日志聚集" class="headerlink" title="日志聚集"></a>日志聚集</h3><pre><code>Slack  https://slack.com/</code></pre><h3 id="项目与事务跟踪"><a href="#项目与事务跟踪" class="headerlink" title="项目与事务跟踪"></a>项目与事务跟踪</h3><pre><code>JIRA https://github.com/integrations/jira-software</code></pre><h3 id="前端后端解藕（契约测试）"><a href="#前端后端解藕（契约测试）" class="headerlink" title="前端后端解藕（契约测试）"></a>前端后端解藕（契约测试）</h3>
+<h3 id="git"><a class="header-anchor" href="#git">¶</a>git</h3>
+<pre><code>http://blog.ffanfood.com/2016/07/09/git
+</code></pre>
+<h3 id="代码托管和代码审查"><a class="header-anchor" href="#代码托管和代码审查">¶</a>代码托管和代码审查</h3>
+<pre><code>gitlab / github ／ Code Review
+</code></pre>
+<h3 id="ci-自动化构件-测试-部署"><a class="header-anchor" href="#ci-自动化构件-测试-部署">¶</a>CI 自动化构件，测试，部署</h3>
+<pre><code>CircleCI ／ Travis CI
+</code></pre>
+<h3 id="日志聚集"><a class="header-anchor" href="#日志聚集">¶</a>日志聚集</h3>
+<pre><code>Slack  https://slack.com/
+</code></pre>
+<h3 id="项目与事务跟踪"><a class="header-anchor" href="#项目与事务跟踪">¶</a>项目与事务跟踪</h3>
+<pre><code>JIRA https://github.com/integrations/jira-software
+</code></pre>
+<h3 id="前端后端解藕-契约测试"><a class="header-anchor" href="#前端后端解藕-契约测试">¶</a>前端后端解藕（契约测试）</h3>
         
           <a class="article-more-a" href="/2016/12/04/devops/#more">more >></a>
         
@@ -644,12 +666,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h3><p>如果class new 起来嫌麻烦，:bikini: 或者想使用单例模式，请在你的class中  use Singleton</p>
+        <h3 id="单例模式"><a class="header-anchor" href="#单例模式">¶</a>单例模式</h3>
+<p>如果class new 起来嫌麻烦，👙 或者想使用单例模式，请在你的class中  use Singleton</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">trait</span> Singleton</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">protected</span> <span class="keyword">static</span> $__instances__ = <span class="keyword">array</span>();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">protected</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">()</span></span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"><span class="function">    </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__clone</span><span class="params">()</span></span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line"><span class="function">    </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> \<span class="keyword">Exception</span>(<span class="string">'Cloning '</span>.<span class="keyword">__CLASS__</span>.<span class="string">' is not allowed'</span>);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="function"><span class="keyword">function</span> <span class="title">getInstance</span><span class="params">()</span></span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line"><span class="function">    </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">        $class = get_called_class();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">if</span> (!<span class="keyword">isset</span>(<span class="keyword">static</span>::$__instances__[$class])) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">            <span class="keyword">static</span>::$__instances__[$class] = <span class="keyword">new</span> <span class="keyword">static</span>();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">        &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">return</span> <span class="keyword">static</span>::$__instances__[$class];</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="function"><span class="keyword">function</span> <span class="title">resetInstance</span><span class="params">()</span></span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line"><span class="function">    </span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line">        $class = get_called_class();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">22</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">unset</span>(<span class="keyword">static</span>::$__instances__[$class]);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">23</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">24</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
-
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Order</span> <span class="keyword">extends</span> \<span class="title">AbstractOrder</span></span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="class"></span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">	<span class="keyword">use</span> <span class="title">Singleton</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">	<span class="title">public</span> <span class="title">function</span> <span class="title">getOrderInfo</span>()&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">		//<span class="title">todo</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">	&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line"><span class="title">Order</span>::<span class="title">getInstance</span>()-&gt;<span class="title">getOrderInfo</span>();</span></pre></td></tr></table></figure>
+<h3 id="laravel-多太关联结合trait"><a class="header-anchor" href="#laravel-多太关联结合trait">¶</a>laravel 多太关联结合trait</h3>
 
-<h3 id="laravel-多太关联结合trait"><a href="#laravel-多太关联结合trait" class="headerlink" title="laravel 多太关联结合trait"></a>laravel 多太关联结合trait</h3>
       
 
       
@@ -733,7 +755,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="数据双向绑定"><a href="#数据双向绑定" class="headerlink" title="数据双向绑定"></a>数据双向绑定</h3><p>v-model 使用于 <code>input</code> ,<code>textarea</code> 将属性和我们的 <code>data</code>对象中的属性绑定在一起</p>
+        <h3 id="数据双向绑定"><a class="header-anchor" href="#数据双向绑定">¶</a>数据双向绑定</h3>
+<p>v-model 使用于 <code>input</code> ,<code>textarea</code> 将属性和我们的 <code>data</code>对象中的属性绑定在一起</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    &lt;head&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">        &lt;title&gt;vue-js&lt;<span class="regexp">/title&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"><span class="regexp">        &lt;script type="text/</span>javascript<span class="string">" src="</span>./node_modules/vue/dist/vue.js<span class="string">"&gt;&lt;/script&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"><span class="string">    &lt;/head&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line"><span class="string">    &lt;body&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line"><span class="string">        &lt;div id="</span>app<span class="string">"&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line"><span class="string">            &lt;h1&gt;&#123;&#123; message &#125;&#125;&lt;/h1&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line"><span class="string"></span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line"><span class="string">            &lt;input type="</span>text<span class="string">" v-model="</span>message<span class="string">"&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line"><span class="string"></span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line"><span class="string">            &lt;pre&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line"><span class="string">                &#123;&#123; $data | json &#125;&#125;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line"><span class="string">            &lt;/pre&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line"><span class="string">        &lt;/div&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line"><span class="string">    &lt;/body&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line"><span class="string">    &lt;script&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line"><span class="string">        new Vue(&#123;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line"><span class="string">            el:'#app',</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line"><span class="string"></span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">22</span></pre></td><td class="code"><pre><span class="line"><span class="string">            data:&#123;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">23</span></pre></td><td class="code"><pre><span class="line"><span class="string">                message:'hello world !!'</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">24</span></pre></td><td class="code"><pre><span class="line"><span class="string">            &#125;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">25</span></pre></td><td class="code"><pre><span class="line"><span class="string">        &#125;)</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">26</span></pre></td><td class="code"><pre><span class="line"><span class="string">    &lt;/script&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">27</span></pre></td><td class="code"><pre><span class="line"><span class="string">&lt;/html&gt;</span></span></pre></td></tr></table></figure>
         
           <a class="article-more-a" href="/2016/11/22/vue-js/#more">more >></a>
@@ -822,7 +845,9 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p><img src="http://o8979n2hu.bkt.clouddn.com/iterm-theme.png" alt="iterm2"></p>
-<h1 id="eyes-mac终端常用配置"><a href="#eyes-mac终端常用配置" class="headerlink" title=":eyes: mac终端常用配置"></a>:eyes: mac终端常用配置</h1><h3 id="安装oh-my-zsh"><a href="#安装oh-my-zsh" class="headerlink" title="安装oh my zsh"></a>安装oh my zsh</h3><p>首先安装 <code>iterm2</code>  <a href="http://www.iterm2.com" target="_blank" rel="noopener">http://www.iterm2.com</a></p>
+<h1>👀 mac终端常用配置</h1>
+<h3 id="安装oh-my-zsh"><a class="header-anchor" href="#安装oh-my-zsh">¶</a>安装oh my zsh</h3>
+<p>首先安装 <code>iterm2</code>  <a href="http://www.iterm2.com" target="_blank" rel="noopener">http://www.iterm2.com</a></p>
 <p>然后进入 <a href="http://ohmyz.sh" target="_blank" rel="noopener">http://ohmyz.sh</a> 根据以下文档安装 <code>zshrc</code></p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">git <span class="keyword">clone</span> git:<span class="comment">//github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc</span></pre></td></tr></table></figure>
 <p>配置</p>
@@ -915,13 +940,13 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p><img src="http://o8979n2hu.bkt.clouddn.com/wcg.jpg" alt="设计场景"></p>
-<h3 id="容器注入"><a href="#容器注入" class="headerlink" title="容器注入"></a>容器注入</h3><p>关键词： <code>依赖倒置</code>,<code>依赖注入</code></p>
+<h3 id="容器注入"><a class="header-anchor" href="#容器注入">¶</a>容器注入</h3>
+<p>关键词： <code>依赖倒置</code>,<code>依赖注入</code></p>
 <p>相当于Yii中的DI容器，使用目的，由于在我们平时写代码过程中使用new这个关键字被视为一种不好的习惯，所以laravel中提供了两种类型（多种方法）来帮我们自动实例化类。</p>
 <p>第一种方式：PHP 反射机制</p>
 <p>laravel 会在实例化一个类触发了构造方法的时候检查构造方法所需要的依赖，并且自动实例化。不是全局的，根据业务场景去设计。</p>
 <p>第二种方式：全局的 App:bind() 和 serviceProvider 方法 如：</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span></span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">App::bind(<span class="string">'foo'</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">	<span class="keyword">return</span> <span class="keyword">new</span> Foo();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">&#125;)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">app()-&gt;make(<span class="string">'foo'</span>)-&gt;method();</span></pre></td></tr></table></figure>
-
 <p>laravel中是用serviceProvider中的register方法 来帮顶我们需要的依赖单元 如</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">protected</span> <span class="function"><span class="keyword">function</span> <span class="title">register</span><span class="params">()</span></span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">	<span class="keyword">$this</span>-&gt;app-&gt;singleton(<span class="string">'file'</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> Files;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">	&#125;);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
         
@@ -1156,19 +1181,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">api</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">yar</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">Yii</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">api</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">bug</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">Yii</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1184,11 +1205,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">devops</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">bug</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">devops</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1196,15 +1217,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">jenkins</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">webhook</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">webhook</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">jenkins</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1216,10 +1241,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">mac</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">memcache</a>
               </li>
              
@@ -1228,15 +1249,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">mac</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">php</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">trait</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">sign</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1248,7 +1265,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">sign</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">phpstrom</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">trait</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1260,15 +1285,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">svn</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">sql</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">svn</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">swoole</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">字符串</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">协程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1277,14 +1310,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">xdebug</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">协程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">字符串</a>
               </li>
              
               <li class="article-tag-list-item">

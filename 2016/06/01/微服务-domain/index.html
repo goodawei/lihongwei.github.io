@@ -8,13 +8,13 @@
   <link rel="dns-prefetch" href="http://blog.nicexiangcun.com">
   <title>微服务领域设计范式-领域边界-领域职责 | 李宏伟&#39;blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="design step 确定领域边界，领域功能（所能暴露的接口功能） ， 领域模型  概要设计 api   详细设计 API 输入 输出   coding 重要的业务画一画流程图   服务拆分就现在的软件工程来说，都可以通过抽象来优雅的解决问题。 重点：明确职责，关注点分离 。 不要重复早轮子，你自己造的轮子是自己一个人拍着脑袋瓜造的，结对编程或者一个屋子就一台电脑几个人轮溜写代码，有足够多的眼睛">
+  <meta name="description" content="¶design step   确定领域边界，领域功能（所能暴露的接口功能） ， 领域模型   概要设计 api   详细设计 API 输入 输出   coding 重要的业务画一画流程图   ¶服务拆分 就现在的软件工程来说，都可以通过抽象来优雅的解决问题。 重点：明确职责，关注点分离 。 不要重复早轮子，你自己造的轮子是自己一个人拍着脑袋瓜造的，结对编程或者一个屋子就一台电脑几个人轮溜写代码，有">
 <meta name="keywords" content="微服务">
 <meta property="og:type" content="article">
 <meta property="og:title" content="微服务领域设计范式-领域边界-领域职责">
 <meta property="og:url" content="http:&#x2F;&#x2F;blog.nicexiangcun.com&#x2F;2016&#x2F;06&#x2F;01&#x2F;%E5%BE%AE%E6%9C%8D%E5%8A%A1-domain&#x2F;index.html">
 <meta property="og:site_name" content="李宏伟&#39;blog">
-<meta property="og:description" content="design step 确定领域边界，领域功能（所能暴露的接口功能） ， 领域模型  概要设计 api   详细设计 API 输入 输出   coding 重要的业务画一画流程图   服务拆分就现在的软件工程来说，都可以通过抽象来优雅的解决问题。 重点：明确职责，关注点分离 。 不要重复早轮子，你自己造的轮子是自己一个人拍着脑袋瓜造的，结对编程或者一个屋子就一台电脑几个人轮溜写代码，有足够多的眼睛">
+<meta property="og:description" content="¶design step   确定领域边界，领域功能（所能暴露的接口功能） ， 领域模型   概要设计 api   详细设计 API 输入 输出   coding 重要的业务画一画流程图   ¶服务拆分 就现在的软件工程来说，都可以通过抽象来优雅的解决问题。 重点：明确职责，关注点分离 。 不要重复早轮子，你自己造的轮子是自己一个人拍着脑袋瓜造的，结对编程或者一个屋子就一台电脑几个人轮溜写代码，有">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2019-11-27T12:11:01.045Z">
 <meta name="twitter:card" content="summary">
@@ -173,28 +173,41 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="design-step"><a href="#design-step" class="headerlink" title="design step"></a>design step</h3><ul>
-<li><p>确定领域边界，领域功能（所能暴露的接口功能） ， 领域模型</p>
+        <h3 id="design-step"><a class="header-anchor" href="#design-step">¶</a>design step</h3>
+<ul>
+<li>
+<p>确定领域边界，领域功能（所能暴露的接口功能） ， 领域模型</p>
 </li>
-<li><p>概要设计 api </p>
+<li>
+<p>概要设计 api</p>
 </li>
-<li><p>详细设计 API 输入 输出 </p>
+<li>
+<p>详细设计 API 输入 输出</p>
 </li>
-<li><p>coding 重要的业务画一画流程图</p>
+<li>
+<p>coding 重要的业务画一画流程图</p>
 </li>
 </ul>
-<h3 id="服务拆分"><a href="#服务拆分" class="headerlink" title="服务拆分"></a>服务拆分</h3><p>就现在的软件工程来说，都可以通过抽象来优雅的解决问题。</p>
+<h3 id="服务拆分"><a class="header-anchor" href="#服务拆分">¶</a>服务拆分</h3>
+<p>就现在的软件工程来说，都可以通过抽象来优雅的解决问题。</p>
 <p>重点：明确职责，关注点分离 。</p>
 <p>不要重复早轮子，你自己造的轮子是自己一个人拍着脑袋瓜造的，结对编程或者一个屋子就一台电脑几个人轮溜写代码，有足够多的眼睛，就可以让问题浮现。</p>
 <p>重要的业务场景一定要化流程图。结对编程。</p>
 <p>追求单个文件代码行数，还是文件个数，取决你是否 能够快速描述一段代码的流程</p>
 <p>服务拆分：代码按照业务 水平拆，结对编程 垂直拆，这里可能涉及到devpos 的反模式。</p>
-<h3 id="pass-云平台-part-component"><a href="#pass-云平台-part-component" class="headerlink" title="pass 云平台 part component"></a>pass 云平台 part component</h3><h3 id="Apigetway"><a href="#Apigetway" class="headerlink" title="Apigetway"></a>Apigetway</h3><h3 id="服务注册中心"><a href="#服务注册中心" class="headerlink" title="服务注册中心"></a>服务注册中心</h3><p>服务注册中心是服务发现的核心。它保存了各个可用服务实例的网络地址（IP Address和Port）。服务注册中心必须要有高可用性和实时更新功能。</p>
-<p>服务发现的核心是服务注册中心。服务注册中心保存了各个服务可用的实例的相关信息。服务注册中心提供了管理API和查询API。使用管理API进行服务注册、注销。系统的其他组件可以通过查询API来获得当前可用的服务实例信息。<br>有两种主要的服务发现方式：客户端发现（client-side service discovery）和服务端发现（ server-side discovery）。在使用客户端服务发现的方式中，客户通过查询服务注册中心，选择一个可用的服务实例。在使用服务器端发现系统中，客户访问Router/load balancer，通过Router/load balancer查询服务注册中心，并将请求转发到一个可用服务实例上。<br>服务注册和注销的方式也有两种。一种是服务自己主动的将自己注册到服务注册中心，称为self-registration。另一种是通过其他组件来处理服务的注册和注销，称为third-party registration。</p>
+<h3 id="pass-云平台-part-component"><a class="header-anchor" href="#pass-云平台-part-component">¶</a>pass 云平台 part component</h3>
+<h3 id="apigetway"><a class="header-anchor" href="#apigetway">¶</a>Apigetway</h3>
+<h3 id="服务注册中心"><a class="header-anchor" href="#服务注册中心">¶</a>服务注册中心</h3>
+<p>服务注册中心是服务发现的核心。它保存了各个可用服务实例的网络地址（IP Address和Port）。服务注册中心必须要有高可用性和实时更新功能。</p>
+<p>服务发现的核心是服务注册中心。服务注册中心保存了各个服务可用的实例的相关信息。服务注册中心提供了管理API和查询API。使用管理API进行服务注册、注销。系统的其他组件可以通过查询API来获得当前可用的服务实例信息。<br>
+有两种主要的服务发现方式：客户端发现（client-side service discovery）和服务端发现（ server-side discovery）。在使用客户端服务发现的方式中，客户通过查询服务注册中心，选择一个可用的服务实例。在使用服务器端发现系统中，客户访问Router/load balancer，通过Router/load balancer查询服务注册中心，并将请求转发到一个可用服务实例上。<br>
+服务注册和注销的方式也有两种。一种是服务自己主动的将自己注册到服务注册中心，称为self-registration。另一种是通过其他组件来处理服务的注册和注销，称为third-party registration。</p>
 <p>不同语言之间可以通过各种代理实现服务注册。</p>
-<h3 id="problem"><a href="#problem" class="headerlink" title="problem"></a>problem</h3><p>程序层级目录结构：尽量避免已程序层面建立目录 ， 应从业务角度组建目录结构，并且保证功能文件的高内聚低耦合 。</p>
+<h3 id="problem"><a class="header-anchor" href="#problem">¶</a>problem</h3>
+<p>程序层级目录结构：尽量避免已程序层面建立目录 ， 应从业务角度组建目录结构，并且保证功能文件的高内聚低耦合 。</p>
 <p>支持门面包装服务。</p>
-<h3 id="Minimum-Viable-Product"><a href="#Minimum-Viable-Product" class="headerlink" title="Minimum Viable Product"></a>Minimum Viable Product</h3><p>是一种避免开发出客户并不真正需要的产品的开发策略。该策略的基本想法是，快速地构建出符合产品预期功能的最小功能集合，这个最小集合所包含的功能足以满足产品部署的要求并能够检验有关客户与产品交互的关键假设[1]。该概念由Eric Ries在其著作《精益创业实战》中提出，用最快、最简明的方式建立一个可用的产品原型，这个原型要表达出你产品最终想要的效果，然后通过迭代来完善细节。</p>
+<h3 id="minimum-viable-product"><a class="header-anchor" href="#minimum-viable-product">¶</a>Minimum Viable Product</h3>
+<p>是一种避免开发出客户并不真正需要的产品的开发策略。该策略的基本想法是，快速地构建出符合产品预期功能的最小功能集合，这个最小集合所包含的功能足以满足产品部署的要求并能够检验有关客户与产品交互的关键假设[1]。该概念由Eric Ries在其著作《精益创业实战》中提出，用最快、最简明的方式建立一个可用的产品原型，这个原型要表达出你产品最终想要的效果，然后通过迭代来完善细节。</p>
 <p><a href="http://www.jianshu.com/p/2e1ca1c22b65" target="_blank" rel="noopener">http://www.jianshu.com/p/2e1ca1c22b65</a></p>
 <p><a href="http://www.woshipm.com/pd/237443.html" target="_blank" rel="noopener">http://www.woshipm.com/pd/237443.html</a></p>
 
@@ -453,19 +466,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">api</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">yar</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">Yii</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">api</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">bug</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">Yii</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -481,11 +490,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">devops</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">bug</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">devops</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -493,15 +502,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">jenkins</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">webhook</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">webhook</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">jenkins</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -513,10 +526,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">mac</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">memcache</a>
               </li>
              
@@ -525,15 +534,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">mac</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">php</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">trait</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">sign</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -545,7 +550,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">sign</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">phpstrom</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">trait</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -557,15 +570,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">svn</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">sql</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">svn</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">swoole</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">字符串</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">协程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -574,14 +595,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">xdebug</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">协程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">字符串</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -8,13 +8,13 @@
   <link rel="dns-prefetch" href="http://blog.nicexiangcun.com">
   <title>memcache | 李宏伟&#39;blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="memcache 一致性hash 1&#x2F;&#x2F; memcache一致性hash实现,为了解决多台memcache服务器setcache的时候增加或删除节点导致,缓存瞬间命不中问题 通话hash算法将节点映射到一个圆环上23&#x2F;&#x2F; 定义循环链表 长度 为2的32 次方4$circle &#x3D; array(0,1,2,3,4,5,6,7,8,9,10,11);56&#x2F;&#x2F;将3台memcache 服务器节点映射的圆环">
+  <meta name="description" content="memcache 一致性hash  1&#x2F;&#x2F; memcache一致性hash实现,为了解决多台memcache服务器setcache的时候增加或删除节点导致,缓存瞬间命不中问题 通话hash算法将节点映射到一个圆环上23&#x2F;&#x2F; 定义循环链表 长度 为2的32 次方4$circle &#x3D; array(0,1,2,3,4,5,6,7,8,9,10,11);56&#x2F;&#x2F;将3台memcache 服务器节点映射的圆">
 <meta name="keywords" content="memcache">
 <meta property="og:type" content="article">
 <meta property="og:title" content="memcache">
 <meta property="og:url" content="http:&#x2F;&#x2F;blog.nicexiangcun.com&#x2F;2016&#x2F;05&#x2F;29&#x2F;memcache&#x2F;index.html">
 <meta property="og:site_name" content="李宏伟&#39;blog">
-<meta property="og:description" content="memcache 一致性hash 1&#x2F;&#x2F; memcache一致性hash实现,为了解决多台memcache服务器setcache的时候增加或删除节点导致,缓存瞬间命不中问题 通话hash算法将节点映射到一个圆环上23&#x2F;&#x2F; 定义循环链表 长度 为2的32 次方4$circle &#x3D; array(0,1,2,3,4,5,6,7,8,9,10,11);56&#x2F;&#x2F;将3台memcache 服务器节点映射的圆环">
+<meta property="og:description" content="memcache 一致性hash  1&#x2F;&#x2F; memcache一致性hash实现,为了解决多台memcache服务器setcache的时候增加或删除节点导致,缓存瞬间命不中问题 通话hash算法将节点映射到一个圆环上23&#x2F;&#x2F; 定义循环链表 长度 为2的32 次方4$circle &#x3D; array(0,1,2,3,4,5,6,7,8,9,10,11);56&#x2F;&#x2F;将3台memcache 服务器节点映射的圆">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2019-11-27T12:11:01.037Z">
 <meta name="twitter:card" content="summary">
@@ -174,10 +174,16 @@
     <div class="article-entry" itemprop="articleBody">
       
         <hr>
-<h1 id="memcache-一致性hash"><a href="#memcache-一致性hash" class="headerlink" title="memcache 一致性hash"></a>memcache 一致性hash</h1><hr>
+<h1>memcache 一致性hash</h1>
+<hr>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// memcache一致性hash实现,为了解决多台memcache服务器setcache的时候增加或删除节点导致,缓存瞬间命不中问题 通话hash算法将节点映射到一个圆环上</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义循环链表 长度 为2的32 次方</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">$circle = <span class="keyword">array</span>(<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span>,<span class="number">11</span>);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"><span class="comment">//将3台memcache 服务器节点映射的圆环上</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">$circle[<span class="string">'3'</span>] = <span class="string">'192.168.10.1'</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">$circle[<span class="string">'6'</span>] = <span class="string">'192.168.10.2'</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">$circle[<span class="string">'9'</span>] = <span class="string">'192.168.10.3'</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line"><span class="comment">//建立cache请求</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">$key = <span class="number">2</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">foreach</span> ($circle <span class="keyword">as</span> $key=&gt;$val)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">	<span class="keyword">if</span>(strlen($circle[$key])!=<span class="number">1</span>)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">		$cache-&gt;connect($circle[$key],<span class="string">'11211'</span>);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">		$cache-&gt;set($key,<span class="string">'val'</span>);<span class="keyword">break</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">	&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
 <a id="more"></a>
-<p>1、一致性hash算法只是帮我们减少cache集群中的机器数量增减的时候，cache的数据能进行最少重建。只要cache集群的server数量有变化，必然产生数据命中的问题<br>2、对于数据的分布均衡问题，通过虚拟节点的思想来达到均衡分配。当然，我们cache server节点越少就越需要虚拟节点这个方式来均衡负载。<br>3、我们的cache客户端根本不会维护一个map来记录每个key存储在哪里，都是通过key的hash和cacheserver（也许ip可以作为参数）的hash计算当前的key应该存储在哪个节点上。<br>4、当我们的cache节点崩溃了。我们必定丢失部分cache数据，并且要根据活着的cache server和key进行新的一致性匹配计算。有可能对部分没有丢失的数据也要做重建…<br>5、至于正常到达数据存储节点，如何找到key对应的数据，那就是cache server本身的内部算法实现了，此处不做描述。<br>这里只是针对数据的存储方式以及提取方式进行了流程展示。</p>
+<p>1、一致性hash算法只是帮我们减少cache集群中的机器数量增减的时候，cache的数据能进行最少重建。只要cache集群的server数量有变化，必然产生数据命中的问题<br>
+2、对于数据的分布均衡问题，通过虚拟节点的思想来达到均衡分配。当然，我们cache server节点越少就越需要虚拟节点这个方式来均衡负载。<br>
+3、我们的cache客户端根本不会维护一个map来记录每个key存储在哪里，都是通过key的hash和cacheserver（也许ip可以作为参数）的hash计算当前的key应该存储在哪个节点上。<br>
+4、当我们的cache节点崩溃了。我们必定丢失部分cache数据，并且要根据活着的cache server和key进行新的一致性匹配计算。有可能对部分没有丢失的数据也要做重建…<br>
+5、至于正常到达数据存储节点，如何找到key对应的数据，那就是cache server本身的内部算法实现了，此处不做描述。<br>
+这里只是针对数据的存储方式以及提取方式进行了流程展示。</p>
 
       
 
@@ -434,19 +440,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">api</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">yar</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">Yii</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">api</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">bug</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">Yii</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -462,11 +464,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">devops</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">bug</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">devops</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -474,15 +476,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">jenkins</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">webhook</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">webhook</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">jenkins</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -494,10 +500,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">mac</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">memcache</a>
               </li>
              
@@ -506,15 +508,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">mac</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">php</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">trait</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">sign</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -526,7 +524,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">sign</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">phpstrom</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">trait</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -538,15 +544,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">svn</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">sql</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">svn</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">swoole</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">字符串</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">协程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -555,14 +569,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">xdebug</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">协程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">字符串</a>
               </li>
              
               <li class="article-tag-list-item">

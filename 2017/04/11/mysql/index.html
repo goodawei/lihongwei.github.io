@@ -8,13 +8,13 @@
   <link rel="dns-prefetch" href="http://blog.nicexiangcun.com">
   <title>mysql锁机制 | 李宏伟&#39;blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="锁机制用于管理对共享资源的并发访问，提供数据的完整性和一致性 读锁是共享的，不影响并发的读取，但是会阻塞写操作（当然这只是默认情况，可以通过修改配置，使其可以进行末尾插入），写锁是排他的，阻塞读和写。  行锁InnoDB行锁是通过给索引记录加锁来实现的，即：InnoDB会在它扫描到的每条索引记录上设置一个S或X锁，在MVCC模式下，简单的select语句不会加任何锁，除非手动添加。因此查询时，索引">
+  <meta name="description" content="锁机制用于管理对共享资源的并发访问，提供数据的完整性和一致性  读锁是共享的，不影响并发的读取，但是会阻塞写操作（当然这只是默认情况，可以通过修改配置，使其可以进行末尾插入），写锁是排他的，阻塞读和写。  ¶行锁 InnoDB行锁是通过给索引记录加锁来实现的，即：InnoDB会在它扫描到的每条索引记录上设置一个S或X锁，在MVCC模式下，简单的select语句不会加任何锁，除非手动添加。因此查询时">
 <meta name="keywords" content="mysql">
 <meta property="og:type" content="article">
 <meta property="og:title" content="mysql锁机制">
 <meta property="og:url" content="http:&#x2F;&#x2F;blog.nicexiangcun.com&#x2F;2017&#x2F;04&#x2F;11&#x2F;mysql&#x2F;index.html">
 <meta property="og:site_name" content="李宏伟&#39;blog">
-<meta property="og:description" content="锁机制用于管理对共享资源的并发访问，提供数据的完整性和一致性 读锁是共享的，不影响并发的读取，但是会阻塞写操作（当然这只是默认情况，可以通过修改配置，使其可以进行末尾插入），写锁是排他的，阻塞读和写。  行锁InnoDB行锁是通过给索引记录加锁来实现的，即：InnoDB会在它扫描到的每条索引记录上设置一个S或X锁，在MVCC模式下，简单的select语句不会加任何锁，除非手动添加。因此查询时，索引">
+<meta property="og:description" content="锁机制用于管理对共享资源的并发访问，提供数据的完整性和一致性  读锁是共享的，不影响并发的读取，但是会阻塞写操作（当然这只是默认情况，可以通过修改配置，使其可以进行末尾插入），写锁是排他的，阻塞读和写。  ¶行锁 InnoDB行锁是通过给索引记录加锁来实现的，即：InnoDB会在它扫描到的每条索引记录上设置一个S或X锁，在MVCC模式下，简单的select语句不会加任何锁，除非手动添加。因此查询时">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http:&#x2F;&#x2F;o8979n2hu.bkt.clouddn.com&#x2F;extra.png">
 <meta property="og:updated_time" content="2019-11-27T12:11:01.037Z">
@@ -175,16 +175,24 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="锁机制用于管理对共享资源的并发访问，提供数据的完整性和一致性"><a href="#锁机制用于管理对共享资源的并发访问，提供数据的完整性和一致性" class="headerlink" title="锁机制用于管理对共享资源的并发访问，提供数据的完整性和一致性"></a>锁机制用于管理对共享资源的并发访问，提供数据的完整性和一致性</h1><blockquote>
+        <h1>锁机制用于管理对共享资源的并发访问，提供数据的完整性和一致性</h1>
+<blockquote>
 <p>读锁是共享的，不影响并发的读取，但是会阻塞写操作（当然这只是默认情况，可以通过修改配置，使其可以进行末尾插入），写锁是排他的，阻塞读和写。</p>
 </blockquote>
-<h3 id="行锁"><a href="#行锁" class="headerlink" title="行锁"></a>行锁</h3><p>InnoDB行锁是通过给索引记录加锁来实现的，即：InnoDB会在它扫描到的每条索引记录上设置一个S或X锁，在MVCC模式下，简单的select语句不会加任何锁，除非手动添加。因此查询时，索引很重要 :100:</p>
-<h3 id="锁模式"><a href="#锁模式" class="headerlink" title="锁模式"></a>锁模式</h3><p>共享锁S(Shared Lock)： 允许事务使用该锁去读取<br>加锁语句： select … lock in share mode (手动加锁)<br>排它锁X(Exclusive Lock)： 允许事务使用该锁去update、insert或者delete<br>加锁语句： insert … update … delete … select … for update (手动加锁)</p>
-<h3 id="阻塞"><a href="#阻塞" class="headerlink" title="阻塞"></a>阻塞</h3><p>因为不同锁之间的兼容性关系，在有些时刻一个事务中的锁需要等待另一事务中的锁释放它所占有的资源，阻塞可以确保事务正常进行</p>
-<h3 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h3><p>指两个或两个以上的事务在执行过程中，因争夺资源而造成的一种互相等待的现象 除了超时机制外（innodb_lock_wait_timeout），InnoDB还采用了wait-for graph来进行死锁检测，若检测到死锁，InnoDB会选择回滚undo量最小的事务</p>
+<h3 id="行锁"><a class="header-anchor" href="#行锁">¶</a>行锁</h3>
+<p>InnoDB行锁是通过给索引记录加锁来实现的，即：InnoDB会在它扫描到的每条索引记录上设置一个S或X锁，在MVCC模式下，简单的select语句不会加任何锁，除非手动添加。因此查询时，索引很重要 💯</p>
+<h3 id="锁模式"><a class="header-anchor" href="#锁模式">¶</a>锁模式</h3>
+<p>共享锁S(Shared Lock)： 允许事务使用该锁去读取<br>
+加锁语句： select … lock in share mode (手动加锁)<br>
+排它锁X(Exclusive Lock)： 允许事务使用该锁去update、insert或者delete<br>
+加锁语句： insert … update … delete … select … for update (手动加锁)</p>
+<h3 id="阻塞"><a class="header-anchor" href="#阻塞">¶</a>阻塞</h3>
+<p>因为不同锁之间的兼容性关系，在有些时刻一个事务中的锁需要等待另一事务中的锁释放它所占有的资源，阻塞可以确保事务正常进行</p>
+<h3 id="死锁"><a class="header-anchor" href="#死锁">¶</a>死锁</h3>
+<p>指两个或两个以上的事务在执行过程中，因争夺资源而造成的一种互相等待的现象 除了超时机制外（innodb_lock_wait_timeout），InnoDB还采用了wait-for graph来进行死锁检测，若检测到死锁，InnoDB会选择回滚undo量最小的事务</p>
 <a id="more"></a>
-
-<h3 id="更新丢失"><a href="#更新丢失" class="headerlink" title="更新丢失"></a>更新丢失</h3><p>由于并发问题，在事务内部未正确使用锁定导致的更新丢失问题 zhangshan –&gt; money = 20</p>
+<h3 id="更新丢失"><a class="header-anchor" href="#更新丢失">¶</a>更新丢失</h3>
+<p>由于并发问题，在事务内部未正确使用锁定导致的更新丢失问题 zhangshan --&gt; money = 20</p>
 <table>
 <thead>
 <tr>
@@ -192,24 +200,28 @@
 <th>SessionB</th>
 </tr>
 </thead>
-<tbody><tr>
-<td>begin <br> 查询money = 20 <br>select money from account where user=’zhangshan’;</td>
+<tbody>
+<tr>
+<td>begin <br> 查询money = 20 <br>select money from account where user=‘zhangshan’;</td>
 <td></td>
 </tr>
 <tr>
 <td><br></td>
-<td>begin;<br>查询money = 20<br>select money from account where user=’zhangshan’;<br></td>
+<td>begin;<br>查询money = 20<br>select money from account where user=‘zhangshan’;<br></td>
 </tr>
 <tr>
-<td>update account set money=money+10 where user=’zhangshan’;<br>commit;</td>
+<td>update account set money=money+10 where user=‘zhangshan’;<br>commit;</td>
 <td><br></td>
 </tr>
 <tr>
 <td><br></td>
-<td>update account set money=money+50 where user=’zhangshan’;<br>commit;</td>
+<td>update account set money=money+50 where user=‘zhangshan’;<br>commit;</td>
 </tr>
-</tbody></table>
-<p>最终的结果是：70，少加10<br>解决办法：<br>select … for update 锁定该条记录，加排它锁</p>
+</tbody>
+</table>
+<p>最终的结果是：70，少加10<br>
+解决办法：<br>
+select … for update 锁定该条记录，加排它锁</p>
 <hr>
 <table>
 <thead>
@@ -218,25 +230,28 @@
 <th>SessionB</th>
 </tr>
 </thead>
-<tbody><tr>
-<td>begin<br>对该条记录加排它锁X<br>查询money = 20<br>select money from account where user=’zhangshan’ for update;</td>
+<tbody>
+<tr>
+<td>begin<br>对该条记录加排它锁X<br>查询money = 20<br>select money from account where user=‘zhangshan’ for update;</td>
 <td></td>
 </tr>
 <tr>
 <td><br></td>
-<td>begin;<br>被阻塞，程序挂起，等待Session A完成<br>查询money = 20<br>select money from account where user=’zhangshan’ for update;<br></td>
+<td>begin;<br>被阻塞，程序挂起，等待Session A完成<br>查询money = 20<br>select money from account where user=‘zhangshan’ for update;<br></td>
 </tr>
 <tr>
-<td>update account set money=money+10 where user=’zhangshan’;<br>commit;</td>
+<td>update account set money=money+10 where user=‘zhangshan’;<br>commit;</td>
 <td><br></td>
 </tr>
 <tr>
 <td><br></td>
-<td>update account set money=money+50 where user=’zhangshan’;<br>commit;</td>
+<td>update account set money=money+50 where user=‘zhangshan’;<br>commit;</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <hr>
-<h3 id="死锁产生的2种情况"><a href="#死锁产生的2种情况" class="headerlink" title="死锁产生的2种情况"></a>死锁产生的2种情况</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"> CREATE TABLE b (</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    id int(11) NOT NULL,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    uid int(11) DEFAULT NULL,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    PRIMARY KEY (id),</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    KEY uid (uid)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">) ENGINE&#x3D;InnoDB DEFAULT CHARSET&#x3D;utf8</span></pre></td></tr></table></figure>
+<h3 id="死锁产生的2种情况"><a class="header-anchor" href="#死锁产生的2种情况">¶</a>死锁产生的2种情况</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"> CREATE TABLE b (</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    id int(11) NOT NULL,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    uid int(11) DEFAULT NULL,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    PRIMARY KEY (id),</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    KEY uid (uid)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">) ENGINE&#x3D;InnoDB DEFAULT CHARSET&#x3D;utf8</span></pre></td></tr></table></figure>
 <table>
 <thead>
 <tr>
@@ -244,7 +259,8 @@
 <th>uid</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>1</td>
 <td>10</td>
 </tr>
@@ -260,15 +276,18 @@
 <td>4</td>
 <td>40</td>
 </tr>
-</tbody></table>
-<h4 id="第一种情况：区间死锁（目前最多的情况）"><a href="#第一种情况：区间死锁（目前最多的情况）" class="headerlink" title="第一种情况：区间死锁（目前最多的情况）"></a>第一种情况：区间死锁（目前最多的情况）</h4><table>
+</tbody>
+</table>
+<h4 id="第一种情况：区间死锁-目前最多的情况"><a class="header-anchor" href="#第一种情况：区间死锁-目前最多的情况">¶</a>第一种情况：区间死锁（目前最多的情况）</h4>
+<table>
 <thead>
 <tr>
 <th>Session A</th>
 <th>SessionB</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>begin;<br>使用辅助索引筛选时，此时使用Next-key算法锁定区间为:(11,55)<br>select * from b where uid=22 for update;</td>
 <td></td>
 </tr>
@@ -284,15 +303,18 @@
 <td><br></td>
 <td>死锁出现<br>Deadlock found，try restarting transaction<br>rollback;</td>
 </tr>
-</tbody></table>
-<h4 id="第二种情况：不同记录锁定"><a href="#第二种情况：不同记录锁定" class="headerlink" title="第二种情况：不同记录锁定"></a>第二种情况：不同记录锁定</h4><table>
+</tbody>
+</table>
+<h4 id="第二种情况：不同记录锁定"><a class="header-anchor" href="#第二种情况：不同记录锁定">¶</a>第二种情况：不同记录锁定</h4>
+<table>
 <thead>
 <tr>
 <th>Session A</th>
 <th>SessionB</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>begin;<br>id为主键，使用Record Lock算法锁定锁定id=5该行记录<br>select * from b where id = 5 for update;</td>
 <td></td>
 </tr>
@@ -316,11 +338,20 @@
 <td><br></td>
 <td>rollback;</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <hr>
-<h3 id="如何避免阻塞和死锁："><a href="#如何避免阻塞和死锁：" class="headerlink" title="如何避免阻塞和死锁："></a>如何避免阻塞和死锁：</h3><p>update时，尽量使用主键或辅助索引作为where条件，切勿不使用索引进行查询，否则全表锁定<br>跑脚本或者批量任务时，每次只对一条数据加事务处理，切勿将一个大循环包裹在一个事务里面<br>严禁在update语句里面封装子查询，select语句，update … set … where …就ok，其他的由程序处理<br>养成良好的事务习惯，事务一定要进行commit或rollback操作<br>涉及到修改同一张表数据的定时任务，应该间隔一定的时间，避免出现死锁<br>减少锁定范围，在跑定时任务时，筛选数据时，尤其是日期范围的，请务必使用between … and … 而不是end_time &lt; now()</p>
-<h3 id="隐式转换"><a href="#隐式转换" class="headerlink" title="隐式转换"></a>隐式转换</h3><ol>
-<li>查询时，类型不对，导致类型转换，结果不对<br>mysql&gt; select * from test_2 where name=0;</li>
+<h3 id="如何避免阻塞和死锁："><a class="header-anchor" href="#如何避免阻塞和死锁：">¶</a>如何避免阻塞和死锁：</h3>
+<p>update时，尽量使用主键或辅助索引作为where条件，切勿不使用索引进行查询，否则全表锁定<br>
+跑脚本或者批量任务时，每次只对一条数据加事务处理，切勿将一个大循环包裹在一个事务里面<br>
+严禁在update语句里面封装子查询，select语句，update … set … where …就ok，其他的由程序处理<br>
+养成良好的事务习惯，事务一定要进行commit或rollback操作<br>
+涉及到修改同一张表数据的定时任务，应该间隔一定的时间，避免出现死锁<br>
+减少锁定范围，在跑定时任务时，筛选数据时，尤其是日期范围的，请务必使用between … and … 而不是end_time &lt; now()</p>
+<h3 id="隐式转换"><a class="header-anchor" href="#隐式转换">¶</a>隐式转换</h3>
+<ol>
+<li>查询时，类型不对，导致类型转换，结果不对<br>
+mysql&gt; select * from test_2 where name=0;</li>
 </ol>
 <table>
 <thead>
@@ -329,7 +360,8 @@
 <th>name</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>1</td>
 <td>lhw</td>
 </tr>
@@ -341,12 +373,19 @@
 <td>3</td>
 <td>0</td>
 </tr>
-</tbody></table>
-<p>分析：很多开发在书写sql时，没有考虑到传入到数据库的值的类型，比如：上面name类型为char，而传入查询时，却输入的是0，而不是’0’<br>结果：mysql对匹配到行的字符串进行了类型转换，发现转换非法，转换成了0<br>注意：在查询时检查传入的查询条件类型</p>
+</tbody>
+</table>
+<p>分析：很多开发在书写sql时，没有考虑到传入到数据库的值的类型，比如：上面name类型为char，而传入查询时，却输入的是0，而不是’0’<br>
+结果：mysql对匹配到行的字符串进行了类型转换，发现转换非法，转换成了0<br>
+注意：在查询时检查传入的查询条件类型</p>
 <ol start="2">
-<li>全表扫描，查询慢<br>mysql&gt; explain select * from xboss_account where mobile=15510337665;<br><img src="http://o8979n2hu.bkt.clouddn.com/extra.png" alt="此处输入图片的描述"></li>
+<li>全表扫描，查询慢<br>
+mysql&gt; explain select * from xboss_account where mobile=15510337665;<br>
+<img src="http://o8979n2hu.bkt.clouddn.com/extra.png" alt="此处输入图片的描述"></li>
 </ol>
-<p>分析：mobile字段类型为char(11)，查询时，应该使用mobile=’15510337665’<br>注意：在php端书写sql时，应正确传入查询值的类型<br>正确使用类型转换，防止SQL注入，其它的类型转换，感兴趣的可以自己研究，如：<code>select &#39;11aa&#39; + 11,select a+1，select &#39;1&#39;+1</code>等</p>
+<p>分析：mobile字段类型为char(11)，查询时，应该使用mobile='15510337665’<br>
+注意：在php端书写sql时，应正确传入查询值的类型<br>
+正确使用类型转换，防止SQL注入，其它的类型转换，感兴趣的可以自己研究，如：<code>select '11aa' + 11,select a+1，select '1'+1</code>等</p>
 
       
 
@@ -603,19 +642,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">api</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">yar</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">Yii</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">api</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">bug</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">Yii</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -631,11 +666,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">devops</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">bug</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">devops</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -643,15 +678,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">jenkins</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">webhook</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">webhook</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">jenkins</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -663,10 +702,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">mac</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">memcache</a>
               </li>
              
@@ -675,15 +710,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">mac</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">php</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">trait</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">sign</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -695,7 +726,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">sign</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">phpstrom</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">trait</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -707,15 +746,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">svn</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">sql</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">svn</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">swoole</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">字符串</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">协程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -724,14 +771,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">xdebug</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">协程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">字符串</a>
               </li>
              
               <li class="article-tag-list-item">

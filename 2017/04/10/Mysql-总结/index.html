@@ -8,13 +8,13 @@
   <link rel="dns-prefetch" href="http://blog.nicexiangcun.com">
   <title>关于Mysql的一些总结 | 李宏伟&#39;blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content=":bug: 事务概念：事务是由一组SQL组成，可以认为是一个执行单元，在事务中，所有操作要么全部成功，要么全部回滚，建表统一使用InnoDB存储引擎  事务的ACID的特性：原子性(atomicity): 事务中的所有操作要么全部提交成功，要么全部失败回滚一致性(consistency): 在事务开始和完成时，数据都必须保持一致状态隔离性(isolation): 一个事务所做的修改在提交之前对其它">
+  <meta name="description" content="🐛 ¶事务概念： 事务是由一组SQL组成，可以认为是一个执行单元，在事务中，所有操作要么全部成功，要么全部回滚，建表统一使用InnoDB存储引擎  ¶事务的ACID的特性： 原子性(atomicity): 事务中的所有操作要么全部提交成功，要么全部失败回滚一致性(consistency): 在事务开始和完成时，数据都必须保持一致状态隔离性(isolation): 一个事务所做的修改在提交之前对其">
 <meta name="keywords" content="mysql">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于Mysql的一些总结">
 <meta property="og:url" content="http:&#x2F;&#x2F;blog.nicexiangcun.com&#x2F;2017&#x2F;04&#x2F;10&#x2F;Mysql-%E6%80%BB%E7%BB%93&#x2F;index.html">
 <meta property="og:site_name" content="李宏伟&#39;blog">
-<meta property="og:description" content=":bug: 事务概念：事务是由一组SQL组成，可以认为是一个执行单元，在事务中，所有操作要么全部成功，要么全部回滚，建表统一使用InnoDB存储引擎  事务的ACID的特性：原子性(atomicity): 事务中的所有操作要么全部提交成功，要么全部失败回滚一致性(consistency): 在事务开始和完成时，数据都必须保持一致状态隔离性(isolation): 一个事务所做的修改在提交之前对其它">
+<meta property="og:description" content="🐛 ¶事务概念： 事务是由一组SQL组成，可以认为是一个执行单元，在事务中，所有操作要么全部成功，要么全部回滚，建表统一使用InnoDB存储引擎  ¶事务的ACID的特性： 原子性(atomicity): 事务中的所有操作要么全部提交成功，要么全部失败回滚一致性(consistency): 在事务开始和完成时，数据都必须保持一致状态隔离性(isolation): 一个事务所做的修改在提交之前对其">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2019-11-27T12:11:01.029Z">
 <meta name="twitter:card" content="summary">
@@ -173,24 +173,30 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>:bug:</p>
-<h3 id="事务概念："><a href="#事务概念：" class="headerlink" title="事务概念："></a>事务概念：</h3><p>事务是由一组SQL组成，可以认为是一个执行单元，在事务中，所有操作要么全部成功，要么全部回滚，建表统一使用InnoDB存储引擎</p>
+        <p>🐛</p>
+<h3 id="事务概念："><a class="header-anchor" href="#事务概念：">¶</a>事务概念：</h3>
+<p>事务是由一组SQL组成，可以认为是一个执行单元，在事务中，所有操作要么全部成功，要么全部回滚，建表统一使用InnoDB存储引擎</p>
 <hr>
-<h3 id="事务的ACID的特性："><a href="#事务的ACID的特性：" class="headerlink" title="事务的ACID的特性："></a>事务的ACID的特性：</h3><p>原子性(atomicity): 事务中的所有操作要么全部提交成功，要么全部失败回滚一致性(consistency): 在事务开始和完成时，数据都必须保持一致状态隔离性(isolation): 一个事务所做的修改在提交之前对其它事务是不可见的持久性(durability):一旦事务提交，其所做的修改便会永久保存在数据库中</p>
+<h3 id="事务的acid的特性："><a class="header-anchor" href="#事务的acid的特性：">¶</a>事务的ACID的特性：</h3>
+<p>原子性(atomicity): 事务中的所有操作要么全部提交成功，要么全部失败回滚一致性(consistency): 在事务开始和完成时，数据都必须保持一致状态隔离性(isolation): 一个事务所做的修改在提交之前对其它事务是不可见的持久性(durability):一旦事务提交，其所做的修改便会永久保存在数据库中</p>
 <hr>
-<h3 id="事务使用场景："><a href="#事务使用场景：" class="headerlink" title="事务使用场景："></a>事务使用场景：</h3><p>例如一个金融平台，凡是涉及到核心业务，比如：金额、积分等操作都必须使用事务，事务保证了数据的一致性和完整性</p>
+<h3 id="事务使用场景："><a class="header-anchor" href="#事务使用场景：">¶</a>事务使用场景：</h3>
+<p>例如一个金融平台，凡是涉及到核心业务，比如：金额、积分等操作都必须使用事务，事务保证了数据的一致性和完整性</p>
 <p>比如用户购买，此时需要使用事务，同时需要使用select … for update进行数据验证，确保数据的一致性和完整性</p>
 <hr>
-<h3 id="不需要使用事务的场景："><a href="#不需要使用事务的场景：" class="headerlink" title="不需要使用事务的场景："></a>不需要使用事务的场景：</h3><p>用户登录<br>用户资产，钱包，积分等查询，允许一定的延时<br>凡是不涉及到交易的查询</p>
+<h3 id="不需要使用事务的场景："><a class="header-anchor" href="#不需要使用事务的场景：">¶</a>不需要使用事务的场景：</h3>
+<p>用户登录<br>
+用户资产，钱包，积分等查询，允许一定的延时<br>
+凡是不涉及到交易的查询</p>
 <hr>
-<h3 id="NULL的问题"><a href="#NULL的问题" class="headerlink" title="NULL的问题"></a>NULL的问题</h3><p>NULL：可以插入空值或NULL，NULL会占用数据库空间，数据库会请求额外的空间记录该行为NULL</p>
+<h3 id="null的问题"><a class="header-anchor" href="#null的问题">¶</a>NULL的问题</h3>
+<p>NULL：可以插入空值或NULL，NULL会占用数据库空间，数据库会请求额外的空间记录该行为NULL</p>
 <p>NOT NULL：不可以插入NULL，可以插入空值，空值不占用数据库空间</p>
 <p>NULL占用空间，空值不占用空间，B树索引不会存储NULL值，如果索引字段可以为NULL，则效率下降很多</p>
 <p>通常字段设置(NOT NULL) 如时间字段 NOT NULL DEFAULT 0000-00 00:00:00</p>
 <a id="more"></a>
-
 <p>任何数值的运算和字符组合，结果都是NULL</p>
-<p><code>mysql&gt; select 1+NULL, CONCAT(&#39;Invisible&#39;,NULL);</code></p>
+<p><code>mysql&gt; select 1+NULL, CONCAT('Invisible',NULL);</code></p>
 <table>
 <thead>
 <tr>
@@ -198,12 +204,15 @@
 <th>CONCAT(‘Invisible’,NULL)</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>NUL</td>
 <td>NULL</td>
 </tr>
-</tbody></table>
-<p>NULL允许插入和NULL，查询时容易产生歧义<br><code>mysql&gt; select * from test_1 where name &lt;&gt; ;</code></p>
+</tbody>
+</table>
+<p>NULL允许插入和NULL，查询时容易产生歧义<br>
+<code>mysql&gt; select * from test_1 where name &lt;&gt; ;</code></p>
 <table>
 <thead>
 <tr>
@@ -211,11 +220,13 @@
 <th>name</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>1</td>
 <td>lhw</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <p><code>mysql&gt; select * from test_1 where name is not null;</code></p>
 <table>
 <thead>
@@ -224,7 +235,8 @@
 <th>name</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>1</td>
 <td>lhw</td>
 </tr>
@@ -232,8 +244,10 @@
 <td>2</td>
 <td></td>
 </tr>
-</tbody></table>
-<p>count问题，忽略非主键外的null值<br><code>mysql&gt; select count(1),count(name) from test_1;</code></p>
+</tbody>
+</table>
+<p>count问题，忽略非主键外的null值<br>
+<code>mysql&gt; select count(1),count(name) from test_1;</code></p>
 <table>
 <thead>
 <tr>
@@ -241,12 +255,15 @@
 <th>count(name)</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>6</td>
 <td>3</td>
 </tr>
-</tbody></table>
-<p>排序问题<br>在order by排序的时候，如果存在NULL值，那么NULL是最小的，ASC正序排序的话，NULL值是在最前面的 <code>mysql&gt; select * from test_1 order by name asc;</code></p>
+</tbody>
+</table>
+<p>排序问题<br>
+在order by排序的时候，如果存在NULL值，那么NULL是最小的，ASC正序排序的话，NULL值是在最前面的 <code>mysql&gt; select * from test_1 order by name asc;</code></p>
 <table>
 <thead>
 <tr>
@@ -255,7 +272,8 @@
 <th>create_at</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>3</td>
 <td>null</td>
 <td>null</td>
@@ -270,17 +288,23 @@
 <td>lhw</td>
 <td>null</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <p>解决办法：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">select * from test_1 order by isnull(name) asc;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">select *,name is null as username from test_1 order by username asc;</span></pre></td></tr></table></figure>
-
 <hr>
-<h3 id="流控制函数"><a href="#流控制函数" class="headerlink" title="流控制函数"></a>流控制函数</h3><h3 id="case语法："><a href="#case语法：" class="headerlink" title="case语法："></a>case语法：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">CASE value WHEN [compare_value] THEN result [WHEN [compare_value] THEN result ...] [ELSE result] END</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">&lt;=等价于=&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">CASE WHEN [condition] THEN result [WHEN [condition] THEN result ...] [ELSE result] END</span></pre></td></tr></table></figure>
-<h3 id="if语法："><a href="#if语法：" class="headerlink" title="if语法："></a>if语法：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">IF(expr1,expr2,expr3)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">如果expr1为True，返回expr2，否则返回expr3</span></pre></td></tr></table></figure>
-<h3 id="ifnull语法："><a href="#ifnull语法：" class="headerlink" title="ifnull语法："></a>ifnull语法：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">IFNULL(expr1,expr2)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">如果expr1为null，返回expr2</span></pre></td></tr></table></figure>
-<h3 id="nullif语法："><a href="#nullif语法：" class="headerlink" title="nullif语法："></a>nullif语法：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">NULLIF(expr1,expr2)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">如果expr1=expr2，返回null，否则返回expr1</span></pre></td></tr></table></figure>
-<hr>
-<h3 id="隐式转换"><a href="#隐式转换" class="headerlink" title="隐式转换"></a>隐式转换</h3><p>查询时，类型不对，导致类型转换，结果不对<br><code>mysql&gt; select * from test_2 where name=0;</code></p>
+<h3 id="流控制函数"><a class="header-anchor" href="#流控制函数">¶</a>流控制函数</h3>
+<h3 id="case语法："><a class="header-anchor" href="#case语法：">¶</a>case语法：</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">CASE value WHEN [compare_value] THEN result [WHEN [compare_value] THEN result ...] [ELSE result] END</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">&lt;=等价于=&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">CASE WHEN [condition] THEN result [WHEN [condition] THEN result ...] [ELSE result] END</span></pre></td></tr></table></figure>
+<h3 id="if语法："><a class="header-anchor" href="#if语法：">¶</a>if语法：</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">IF(expr1,expr2,expr3)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">如果expr1为True，返回expr2，否则返回expr3</span></pre></td></tr></table></figure>
+<h3 id="ifnull语法："><a class="header-anchor" href="#ifnull语法：">¶</a>ifnull语法：</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">IFNULL(expr1,expr2)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">如果expr1为null，返回expr2</span></pre></td></tr></table></figure>
+<h3 id="nullif语法："><a class="header-anchor" href="#nullif语法：">¶</a>nullif语法：</h3>
+<h2 id="4"><a class="header-anchor" href="#4">¶</a><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">NULLIF(expr1,expr2)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">如果expr1=expr2，返回null，否则返回expr1</span></pre></td></tr></table></figure></h2>
+<h3 id="隐式转换"><a class="header-anchor" href="#隐式转换">¶</a>隐式转换</h3>
+<p>查询时，类型不对，导致类型转换，结果不对<br>
+<code>mysql&gt; select * from test_2 where name=0;</code></p>
 <table>
 <thead>
 <tr>
@@ -288,7 +312,8 @@
 <th>name</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>1</td>
 <td>lhw</td>
 </tr>
@@ -300,154 +325,266 @@
 <td>3</td>
 <td>0</td>
 </tr>
-</tbody></table>
-<p>分析：很多开发在书写sql时，没有考虑到传入到数据库的值的类型，比如：上面name类型为char，而传入查询时，却输入的是0，而不是’0’<br>结果：mysql对匹配到行的字符串进行了类型转换，发现转换非法，转换成了0<br>注意：在查询时检查传入的查询条件类型</p>
-<p>全表扫描，查询慢<br><code>mysql&gt; explain select * from xboss_account where mobile=15510337665;</code></p>
-<p>分析：mobile字段类型为char(11)，查询时，应该使用mobile=’15510337665’<br>注意：在php端书写sql时，应正确传入查询值的类型<br>正确使用类型转换，防止SQL注入，其它的类型转换，感兴趣的可以自己研究，如：select ‘11aa’ + 11,select a+1，select ‘1’+1等</p>
+</tbody>
+</table>
+<p>分析：很多开发在书写sql时，没有考虑到传入到数据库的值的类型，比如：上面name类型为char，而传入查询时，却输入的是0，而不是’0’<br>
+结果：mysql对匹配到行的字符串进行了类型转换，发现转换非法，转换成了0<br>
+注意：在查询时检查传入的查询条件类型</p>
+<p>全表扫描，查询慢<br>
+<code>mysql&gt; explain select * from xboss_account where mobile=15510337665;</code></p>
+<p>分析：mobile字段类型为char(11)，查询时，应该使用mobile='15510337665’<br>
+注意：在php端书写sql时，应正确传入查询值的类型<br>
+正确使用类型转换，防止SQL注入，其它的类型转换，感兴趣的可以自己研究，如：select ‘11aa’ + 11,select a+1，select ‘1’+1等</p>
 <hr>
-<h3 id="Group-by"><a href="#Group-by" class="headerlink" title="Group by"></a>Group by</h3><p>group by一般和聚合函数一起使用才有意义，在MySQL5.7引入了ONLY_FULL_GROUP_BY对语法合法性进行检测</p>
-<p>使用group by的两个要素：<br>出现在select后面的字段，要么是聚合函数中的，要么就是group by中的，若是该字段既不出现在聚合函数中，也不出现在后面的group by中，则该条select语句是错误的<br>若是需要筛选结果，可以先使用where，再用group by；或者先用group by，再用having</p>
-<p>为什么要求使用聚合函数：<br>在未使用聚合函数的情况下，如果group by后面的字段不唯一，则会出现查询出来的数据不对</p>
+<h3 id="group-by"><a class="header-anchor" href="#group-by">¶</a>Group by</h3>
+<p>group by一般和聚合函数一起使用才有意义，在MySQL5.7引入了ONLY_FULL_GROUP_BY对语法合法性进行检测</p>
+<p>使用group by的两个要素：<br>
+出现在select后面的字段，要么是聚合函数中的，要么就是group by中的，若是该字段既不出现在聚合函数中，也不出现在后面的group by中，则该条select语句是错误的<br>
+若是需要筛选结果，可以先使用where，再用group by；或者先用group by，再用having</p>
+<p>为什么要求使用聚合函数：<br>
+在未使用聚合函数的情况下，如果group by后面的字段不唯一，则会出现查询出来的数据不对</p>
 <hr>
-<h3 id="Sql-mode问题"><a href="#Sql-mode问题" class="headerlink" title="Sql mode问题"></a>Sql mode问题</h3><p>sql_mode通过检测sql的合法性来保证数据的一致性</p>
-<p>常用到的设置：<br>STRICT_TRANS_TABLES<br>如果不能将给定的值插入到事务表中，则放弃该语句，对于非事务表，如果出现在单行语句或多行语句的第一行，则放弃该语句</p>
-<p>NO_ENGINE_SUBSTITUTION<br>当使用create table或者alter table时，自动控制替换存储引擎</p>
-<p>ONLY_FULL_GROUP_BY<br>实现sql语句合法性检测<br>对于group by column表达式，select列必须使用聚合函数，否则报错，如：<br><code>select group_concat(id1),id2 from test_1 group by id2;</code></p>
+<h3 id="sql-mode问题"><a class="header-anchor" href="#sql-mode问题">¶</a>Sql mode问题</h3>
+<p>sql_mode通过检测sql的合法性来保证数据的一致性</p>
+<p>常用到的设置：<br>
+STRICT_TRANS_TABLES<br>
+如果不能将给定的值插入到事务表中，则放弃该语句，对于非事务表，如果出现在单行语句或多行语句的第一行，则放弃该语句</p>
+<p>NO_ENGINE_SUBSTITUTION<br>
+当使用create table或者alter table时，自动控制替换存储引擎</p>
+<p>ONLY_FULL_GROUP_BY<br>
+实现sql语句合法性检测<br>
+对于group by column表达式，select列必须使用聚合函数，否则报错，如：<br>
+<code>select group_concat(id1),id2 from test_1 group by id2;</code></p>
 <hr>
-<h3 id="没有开启严格模式，引起的问题："><a href="#没有开启严格模式，引起的问题：" class="headerlink" title="没有开启严格模式，引起的问题："></a>没有开启严格模式，引起的问题：</h3><p>一 比如：freeze_score不为负数，即：unsigned<br>update <code>xboss_integrals</code> set <code>freeze_score</code> = 500-1000, <code>updated_at</code> = ‘2016-07-04 16:51:20’ where <code>id</code> = ‘562’;<br>此时freeze_score会被设置为0，warning警告不会被返回给api端，导致数据不一致</p>
-<p>二 比如：mobile字段为int(11)<br>update zz set phone=’188qwewq’ where id=8;<br>此时phone字段会被设置为188，warning警告不会被返回给api端，导致数据不一致</p>
+<h3 id="没有开启严格模式-引起的问题："><a class="header-anchor" href="#没有开启严格模式-引起的问题：">¶</a>没有开启严格模式，引起的问题：</h3>
+<p>一 比如：freeze_score不为负数，即：unsigned<br>
+update <code>xboss_integrals</code> set <code>freeze_score</code> = 500-1000, <code>updated_at</code> = ‘2016-07-04 16:51:20’ where <code>id</code> = ‘562’;<br>
+此时freeze_score会被设置为0，warning警告不会被返回给api端，导致数据不一致</p>
+<p>二 比如：mobile字段为int(11)<br>
+update zz set phone=‘188qwewq’ where id=8;<br>
+此时phone字段会被设置为188，warning警告不会被返回给api端，导致数据不一致</p>
 <hr>
-<h3 id="JOIN语法"><a href="#JOIN语法" class="headerlink" title="JOIN语法"></a>JOIN语法</h3><p>此处只说MySQL最常用的两种join类型，inner join 和 {LEFT|RIGHT} [OUTER] join<br>在MySQL中的JOIN，CROSS JOIN和INNER JOIN和’,’在句法上相同,可以互相替换使用。但是在标准的SQL中，它们是不同的</p>
-<p>inner join(内连接)：<br>将A表和B表中存在连接关系的字段，组成的结果集(A表和B表的交集)</p>
-<p>left join(左连接,属于外连接):<br>以左表为准，去右表找数据，如果没有匹配的数据，则以null补位右表的数据，所以输出结果数为左表原数据集(right join同理)</p>
+<h3 id="join语法"><a class="header-anchor" href="#join语法">¶</a>JOIN语法</h3>
+<p>此处只说MySQL最常用的两种join类型，inner join 和 {LEFT|RIGHT} [OUTER] join<br>
+在MySQL中的JOIN，CROSS JOIN和INNER JOIN和’,'在句法上相同,可以互相替换使用。但是在标准的SQL中，它们是不同的</p>
+<p>inner join(内连接)：<br>
+将A表和B表中存在连接关系的字段，组成的结果集(A表和B表的交集)</p>
+<p>left join(左连接,属于外连接):<br>
+以左表为准，去右表找数据，如果没有匹配的数据，则以null补位右表的数据，所以输出结果数为左表原数据集(right join同理)</p>
 <p>tips：left join 可以转换为 inner join</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">select * from a inner join b on a.id=b.id;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">&lt;==&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">select * from a left join b on a.id=b.id <span class="built_in">where</span> b.id is not null;</span></pre></td></tr></table></figure>
+<h2 id="5"><a class="header-anchor" href="#5">¶</a><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">select * from a inner join b on a.id=b.id;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">&lt;==&gt;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">select * from a left join b on a.id=b.id <span class="built_in">where</span> b.id is not null;</span></pre></td></tr></table></figure></h2>
+<h3 id="常用字符处理函数"><a class="header-anchor" href="#常用字符处理函数">¶</a>常用字符处理函数</h3>
+<p><code>concat(str1,str2,...)</code><br>
+把给定字符串合并为一个字符串,适用于多个数据列<br>
+<code>select concat(firstname,lastname) as fullname from user;</code></p>
 <hr>
-<h3 id="常用字符处理函数"><a href="#常用字符处理函数" class="headerlink" title="常用字符处理函数"></a>常用字符处理函数</h3><p><code>concat(str1,str2,...)</code><br>把给定字符串合并为一个字符串,适用于多个数据列<br><code>select concat(firstname,lastname) as fullname from user;</code></p>
+<p><code>concat_ws(separator,str1,str2,...)</code><br>
+使用指定的分隔符将给定的字符串或列合并为一个字符串<br>
+<code>select concat_ws('-',id,name) from pp;</code></p>
 <hr>
-<p><code>concat_ws(separator,str1,str2,...)</code><br>使用指定的分隔符将给定的字符串或列合并为一个字符串<br><code>select concat_ws(&#39;-&#39;,id,name) from pp;</code></p>
+<p><code>ELT(N,str1,str2,str3,...)</code><br>
+返回字符串列表的第几个元素，当N为1时，返回str1，为2时，返回str2，当N大于字符串列表长度时，返回NULL<br>
+<code>select elt(2,'hello','world');</code><br>
+–&gt;world</p>
 <hr>
-<p><code>ELT(N,str1,str2,str3,...)</code><br>返回字符串列表的第几个元素，当N为1时，返回str1，为2时，返回str2，当N大于字符串列表长度时，返回NULL<br><code>select elt(2,&#39;hello&#39;,&#39;world&#39;);</code><br>–&gt;world</p>
+<p><code>SUBSTRING(str,pos),SUBSTRING(strFROMpos),SUBSTRING(str,pos,len),</code> <code>SUBSTRING(str FROM pos FOR len)</code><br>
+截取字符串，默认起始位置为1，结束位置为-1</p>
+<p>从第五个字符开始截取<br>
+<code>SELECT SUBSTRING('Quadratically',5);</code><br>
+–&gt;ratically</p>
+<p>从第四个字符开始截取<br>
+<code>SELECT SUBSTRING('foobarbar' FROM 4);</code><br>
+–&gt;barbar</p>
+<p>从第五个字符开始截取，截取长度为6个字符<br>
+<code>SELECT SUBSTRING('Quadratically',5,6);</code><br>
+–&gt;ratica</p>
+<p>从倒数第三个字符截取<br>
+<code>SELECT SUBSTRING('Sakila', -3);</code><br>
+–&gt;ila</p>
+<p>从倒数第4个字符开始，截取长度为2个字符<br>
+<code>SELECT SUBSTRING('Sakila' FROM -4 FOR 2);</code><br>
+–&gt;ki</p>
 <hr>
-<p><code>SUBSTRING(str,pos),SUBSTRING(strFROMpos),SUBSTRING(str,pos,len),</code> <code>SUBSTRING(str FROM pos FOR len)</code><br>截取字符串，默认起始位置为1，结束位置为-1</p>
-<p>从第五个字符开始截取<br><code>SELECT SUBSTRING(&#39;Quadratically&#39;,5);</code><br>–&gt;ratically</p>
-<p>从第四个字符开始截取<br><code>SELECT SUBSTRING(&#39;foobarbar&#39; FROM 4);</code><br>–&gt;barbar</p>
-<p>从第五个字符开始截取，截取长度为6个字符<br><code>SELECT SUBSTRING(&#39;Quadratically&#39;,5,6);</code><br>–&gt;ratica</p>
-<p>从倒数第三个字符截取<br><code>SELECT SUBSTRING(&#39;Sakila&#39;, -3);</code><br>–&gt;ila</p>
-<p>从倒数第4个字符开始，截取长度为2个字符<br><code>SELECT SUBSTRING(&#39;Sakila&#39; FROM -4 FOR 2);</code><br>–&gt;ki</p>
+<p><code>substring_index(str,delim,count)</code><br>
+截取字符串，<code>substring_index('www.mysql.com','.',2)</code>，以逗号分隔，截取：www.mysql</p>
+<p><code>select substring_index(sitename,'.',-2) from siteinfo where id=2;</code> 截取结果为:mysql.com</p>
 <hr>
-<p><code>substring_index(str,delim,count)</code><br>截取字符串，<code>substring_index(&#39;www.mysql.com&#39;,&#39;.&#39;,2)</code>，以逗号分隔，截取：<a href="http://www.mysql" target="_blank" rel="noopener">www.mysql</a></p>
-<p><code>select substring_index(sitename,&#39;.&#39;,-2) from siteinfo where id=2;</code> 截取结果为:mysql.com</p>
+<p><code>mid(str,pos,len)</code>截取字符串,<code>mid('helloworld',7,12)</code>，截取第7个到第12个字符之间的字符串，结果为：world<br>
+<code>select mid(username,6,5) from userinfo;</code></p>
 <hr>
-<p><code>mid(str,pos,len)</code>截取字符串,<code>mid(&#39;helloworld&#39;,7,12)</code>，截取第7个到第12个字符之间的字符串，结果为：world<br><code>select mid(username,6,5) from userinfo;</code></p>
+<p><code>left(str,len)&lt;=&gt;right(str,len)</code><br>
+截取字符串，<code>left('hello world',5)</code>，截取左边5个字符<br>
+<code>select right(username,5) from userinfo;</code></p>
 <hr>
-<p><code>left(str,len)&lt;=&gt;right(str,len)</code><br>截取字符串，<code>left(&#39;hello world&#39;,5)</code>，截取左边5个字符<br><code>select right(username,5) from userinfo;</code></p>
+<p><code>replace(str,from_str,to_str)</code><br>
+替换字符串<br>
+将username列中的zhang姓全部改为li姓<br>
+<code>update user set username=replace(username,'zhang','li');</code></p>
 <hr>
-<p><code>replace(str,from_str,to_str)</code><br>替换字符串<br>将username列中的zhang姓全部改为li姓<br><code>update user set username=replace(username,&#39;zhang&#39;,&#39;li&#39;);</code></p>
+<p><code>instr(str,substr)</code><br>
+返回指定字符在字符串中的位置，<code>instr('welcome you baby,','you'),</code>返回位置为：9<br>
+<code>select instr(username,'shan') as pos from userinfo where uid=1;</code></p>
 <hr>
-<p><code>instr(str,substr)</code><br>返回指定字符在字符串中的位置，<code>instr(&#39;welcome you baby,&#39;,&#39;you&#39;),</code>返回位置为：9<br><code>select instr(username,&#39;shan&#39;) as pos from userinfo where uid=1;</code></p>
+<p><code>find_in_set(str,strlist)</code><br>
+返回字符串在字符串列表中的位置，字符串列表必须以逗号’,'分隔，起始值为：1<br>
+<code>select find_in_set('shi','wo,shi,chinese') as pos;</code> 返回值为2</p>
 <hr>
-<p><code>find_in_set(str,strlist)</code><br>返回字符串在字符串列表中的位置，字符串列表必须以逗号’,’分隔，起始值为：1<br><code>select find_in_set(&#39;shi&#39;,&#39;wo,shi,chinese&#39;) as pos;</code> 返回值为2</p>
+<p><code>TRIM([{BOTH | LEADING | TRAILING} [remstr] FROM] str), TRIM([remstr FROM] str)</code><br>
+移除指定的字符，both表示前后，leading：前面，trailing：后面<br>
+移除字符串前后的空格，如果不指定，默认为both，移除空格<br>
+<code>select trim(' bar ');</code><br>
+–&gt;bar</p>
 <hr>
-<p><code>TRIM([{BOTH | LEADING | TRAILING} [remstr] FROM] str), TRIM([remstr FROM] str)</code><br>移除指定的字符，both表示前后，leading：前面，trailing：后面<br>移除字符串前后的空格，如果不指定，默认为both，移除空格<br><code>select trim(&#39; bar &#39;);</code><br>–&gt;bar</p>
+<p>移除字符串前面的x<br>
+<code>SELECT TRIM(LEADING 'x' FROM 'xxxbarxxx');</code><br>
+–&gt;barxxx</p>
 <hr>
-<p>移除字符串前面的x<br><code>SELECT TRIM(LEADING &#39;x&#39; FROM &#39;xxxbarxxx&#39;);</code><br>–&gt;barxxx</p>
+<p>移除字符串中的x<br>
+<code>SELECT TRIM(BOTH 'x' FROM 'xxxbarxxx');</code><br>
+–&gt;bar</p>
 <hr>
-<p>移除字符串中的x<br><code>SELECT TRIM(BOTH &#39;x&#39; FROM &#39;xxxbarxxx&#39;);</code><br>–&gt;bar</p>
+<p>移除字符串后面的xyz<br>
+<code>SELECT TRIM(TRAILING 'xyz' FROM 'barxxyz');</code><br>
+–&gt;barx</p>
+<p>###	 常用时间函数</p>
+<p>CURDATE(),CURTIME()<br>
+以’YYYY-MM-DD’格式返回当前日期<br>
+select curdate();<br>
+–&gt;2016-07-05</p>
 <hr>
-<p>移除字符串后面的xyz<br><code>SELECT TRIM(TRAILING &#39;xyz&#39; FROM &#39;barxxyz&#39;);</code><br>–&gt;barx</p>
-<h3 id="常用时间函数"><a href="#常用时间函数" class="headerlink" title="常用时间函数"></a>常用时间函数</h3><p>CURDATE(),CURTIME()<br>以’YYYY-MM-DD’格式返回当前日期<br>select curdate();<br>–&gt;2016-07-05</p>
+<p>以’YYYYMMDD’格式返回当前日期，+0表示+0天<br>
+select curdate()+0;<br>
+–&gt;20160705</p>
 <hr>
-<p>以’YYYYMMDD’格式返回当前日期，+0表示+0天<br>select curdate()+0;<br>–&gt;20160705</p>
+<p>以’HH:MM:SS’格式返回当前时间<br>
+select curtime();<br>
+–&gt;15:17:30</p>
 <hr>
-<p>以’HH:MM:SS’格式返回当前时间<br>select curtime();<br>–&gt;15:17:30</p>
+<p>以’HHMMSS’格式返回当前时间,+0表示+0秒<br>
+select curtime()+0;<br>
+–&gt;151855</p>
 <hr>
-<p>以’HHMMSS’格式返回当前时间,+0表示+0秒<br>select curtime()+0;<br>–&gt;151855</p>
+<p>DATE(),TIME()<br>
+返回时间表达式的日期部分<br>
+select date(now());<br>
+–&gt;2016-07-05</p>
 <hr>
-<p>DATE(),TIME()<br>返回时间表达式的日期部分<br>select date(now());<br>–&gt;2016-07-05</p>
+<p>返回时间表达式的时间部分<br>
+select time(now());<br>
+–&gt;15:14:16</p>
 <hr>
-<p>返回时间表达式的时间部分<br>select time(now());<br>–&gt;15:14:16</p>
+<p>DATEDIFF(expr1,expr2),TIMEDIFF(expr1,expr2)<br>
+返回expr1-expr2相差的天数，忽略时间部分<br>
+select datediff(now(),‘2016-6-12 12:00:00’);<br>
+–&gt;23</p>
 <hr>
-<p>DATEDIFF(expr1,expr2),TIMEDIFF(expr1,expr2)<br>返回expr1-expr2相差的天数，忽略时间部分<br>select datediff(now(),’2016-6-12 12:00:00’);<br>–&gt;23</p>
+<p>返回expr1-expr2相差的时间<br>
+select timediff(now(),‘2016-6-12 12:00:00’);<br>
+–&gt;555:24:52</p>
 <hr>
-<p>返回expr1-expr2相差的时间<br>select timediff(now(),’2016-6-12 12:00:00’);<br>–&gt;555:24:52</p>
+<p>FROM_UNIXTIME(unix_timestamp),FROM_UNIXTIME(unix_timestamp,format)<br>
+格式化unix时间戳成’YYYY-MM-DD HH:MM:SS’ or YYYYMMDDHHMMSS格式</p>
+<p>select from_unixtime(1467703739,’%Y %M %D %h:%i:%s’)<br>
+–&gt;2016 July 5th 03:28:59</p>
+<p>select from_unixtime(1467703739);<br>
+–&gt;2016-07-05 15:28:59</p>
 <hr>
-<p>FROM_UNIXTIME(unix_timestamp),FROM_UNIXTIME(unix_timestamp,format)<br>格式化unix时间戳成’YYYY-MM-DD HH:MM:SS’ or YYYYMMDDHHMMSS格式</p>
-<p>select from_unixtime(1467703739,’%Y %M %D %h:%i:%s’)<br>–&gt;2016 July 5th 03:28:59</p>
-<p>select from_unixtime(1467703739);<br>–&gt;2016-07-05 15:28:59</p>
-<hr>
-<p>TIMESTAMP(expr),TIMESTAMP(expr1,expr2)<br>当一个参数时，格式化为datetime类型，当为2个参数时，expr2将会对expr1的日期或时间部分进行相加</p>
-<p>select timestamp(‘2016-07-03’);<br>–&gt;2016-07-03 00:00:00</p>
-<p>SELECT TIMESTAMP(‘2003-12-31 12:00:00’,’09:00:00’);<br>–&gt;2003-12-31 21:00:00</p>
+<p>TIMESTAMP(expr),TIMESTAMP(expr1,expr2)<br>
+当一个参数时，格式化为datetime类型，当为2个参数时，expr2将会对expr1的日期或时间部分进行相加</p>
+<p>select timestamp(‘2016-07-03’);<br>
+–&gt;2016-07-03 00:00:00</p>
+<p>SELECT TIMESTAMP(‘2003-12-31 12:00:00’,‘09:00:00’);<br>
+–&gt;2003-12-31 21:00:00</p>
 <hr>
 <p>UNIX_TIMESTAMP()返回unix时间戳</p>
-<p>select unix_timestamp(‘2015-08-12 13:57:51’);<br>–&gt;1439359071</p>
-<p>DATE_FORMAT(date,format)，TIME_FORMAT(time,format)<br>格式化date成指定类型</p>
-<p>select date_format(now(),’%Y-%m-%d’);<br>–&gt;2016-07-05</p>
+<p>select unix_timestamp(‘2015-08-12 13:57:51’);<br>
+–&gt;1439359071</p>
+<p>DATE_FORMAT(date,format)，TIME_FORMAT(time,format)<br>
+格式化date成指定类型</p>
+<p>select date_format(now(),’%Y-%m-%d’);<br>
+–&gt;2016-07-05</p>
 <hr>
-<p>DATE_ADD(date,INTERVAL expr unit), DATE_SUB(date,INTERVAL expr unit)<br>时间加减</p>
-<p>加10分钟<br>select date_add(now(), interval 10 minute);<br>–&gt;2016-07-05 15:57:17</p>
-<p>减10分钟<br>select date_sub(now(), interval 10 minute);<br>–&gt;2016-07-05 15:37:47</p>
-<p>设置时间为24小时之前<br>set @time_before_24= (select date_sub(now(),interval 24 hour));</p>
-<h3 id="架构组件"><a href="#架构组件" class="headerlink" title="架构组件"></a>架构组件</h3><h3 id="MaxScale"><a href="#MaxScale" class="headerlink" title="MaxScale"></a>MaxScale</h3><ol>
+<p>DATE_ADD(date,INTERVAL expr unit), DATE_SUB(date,INTERVAL expr unit)<br>
+时间加减</p>
+<p>加10分钟<br>
+select date_add(now(), interval 10 minute);<br>
+–&gt;2016-07-05 15:57:17</p>
+<p>减10分钟<br>
+select date_sub(now(), interval 10 minute);<br>
+–&gt;2016-07-05 15:37:47</p>
+<p>设置时间为24小时之前<br>
+set @time_before_24= (select date_sub(now(),interval 24 hour));</p>
+<h3 id="架构组件"><a class="header-anchor" href="#架构组件">¶</a>架构组件</h3>
+<h3 id="maxscale"><a class="header-anchor" href="#maxscale">¶</a>MaxScale</h3>
+<ol>
 <li>自动读写分离</li>
-<li>自动剔除延迟超过30s的从库 </li>
-<li>读负载 </li>
+<li>自动剔除延迟超过30s的从库</li>
+<li>读负载</li>
 <li>最小化宕机时间</li>
 </ol>
-<h3 id="MHA"><a href="#MHA" class="headerlink" title="MHA"></a>MHA</h3><ol start="5">
+<h3 id="mha"><a class="header-anchor" href="#mha">¶</a>MHA</h3>
+<ol start="5">
 <li>自动故障探测，恢复</li>
 <li>差异日志应用，保证数据一致性</li>
 </ol>
-<h3 id="Pacemaker-Corosync"><a href="#Pacemaker-Corosync" class="headerlink" title="Pacemaker + Corosync"></a>Pacemaker + Corosync</h3><ol start="7">
+<h3 id="pacemaker-corosync"><a class="header-anchor" href="#pacemaker-corosync">¶</a>Pacemaker + Corosync</h3>
+<ol start="7">
 <li>提供心跳检测和自动故障切换，保证MaxScale的高可用</li>
 </ol>
-<h3 id="Box-Anemometer"><a href="#Box-Anemometer" class="headerlink" title="Box Anemometer"></a>Box Anemometer</h3><ol start="8">
+<h3 id="box-anemometer"><a class="header-anchor" href="#box-anemometer">¶</a>Box Anemometer</h3>
+<ol start="8">
 <li>慢查询分析系统，每5分钟自动采集慢查询日志并汇总</li>
 </ol>
-<h3 id="Binlog-Server"><a href="#Binlog-Server" class="headerlink" title="Binlog Server"></a>Binlog Server</h3><ol>
+<h3 id="binlog-server"><a class="header-anchor" href="#binlog-server">¶</a>Binlog Server</h3>
+<ol>
 <li>负责中继Binlog，并加密复制给海口机房</li>
 </ol>
-<h3 id="数据安全"><a href="#数据安全" class="headerlink" title="数据安全"></a>数据安全</h3><h3 id="数据审核"><a href="#数据审核" class="headerlink" title="数据审核"></a>数据审核</h3><p>明御数据库审计与风险控制系统提供准实时的数据操作审核记录</p>
-<h3 id="数据备份"><a href="#数据备份" class="headerlink" title="数据备份"></a>数据备份</h3><ol>
+<h3 id="数据安全"><a class="header-anchor" href="#数据安全">¶</a>数据安全</h3>
+<h3 id="数据审核"><a class="header-anchor" href="#数据审核">¶</a>数据审核</h3>
+<p>明御数据库审计与风险控制系统提供准实时的数据操作审核记录</p>
+<h3 id="数据备份"><a class="header-anchor" href="#数据备份">¶</a>数据备份</h3>
+<ol>
 <li>每天全量备份并加密</li>
-<li>每天单表备份并加密 </li>
-<li>实时binlog增量备份 </li>
+<li>每天单表备份并加密</li>
+<li>实时binlog增量备份</li>
 <li>灾备系统</li>
 </ol>
 <!-- http://o8979n2hu.bkt.clouddn.com/JBH%E6%95%B0%E6%8D%AE%E5%BA%93%E6%9E%B6%E6%9E%84-v2.png -->
-
-<h3 id="Sphinx"><a href="#Sphinx" class="headerlink" title="Sphinx"></a>Sphinx</h3><h3 id="规范"><a href="#规范" class="headerlink" title="规范"></a>规范</h3><ol>
-<li>手机号：长度&gt;=7个字符 </li>
-<li>姓名：长度&gt;=2个字符 </li>
+<h3 id="sphinx"><a class="header-anchor" href="#sphinx">¶</a>Sphinx</h3>
+<h3 id="规范"><a class="header-anchor" href="#规范">¶</a>规范</h3>
+<ol>
+<li>手机号：长度&gt;=7个字符</li>
+<li>姓名：长度&gt;=2个字符</li>
 <li>模糊查询结果统一最大取1W：limit=10000,maxmatches=10000</li>
 </ol>
 <p>表：<code>xboss_sphinx_counts</code></p>
 <ol>
-<li>解决后台分页（包含where条件的count，请直接去原库查询），例句：<br><code>select count(*) from xboss_account;</code></li>
-<li>已支持表：<br><code>xboss_account,xboss_user_orders</code></li>
-<li>例子（需要对xboss_account表进行count，并计算后台显示页数）：<br><code>select table_rows from xboss_sphinx_counts where query=&#39;*xboss_account*&#39;;</code><br>xboss_account必须跟上*号</li>
+<li>解决后台分页（包含where条件的count，请直接去原库查询），例句：<br>
+<code>select count(*) from xboss_account;</code></li>
+<li>已支持表：<br>
+<code>xboss_account,xboss_user_orders</code></li>
+<li>例子（需要对xboss_account表进行count，并计算后台显示页数）：<br>
+<code>select table_rows from xboss_sphinx_counts where query='*xboss_account*';</code><br>
+xboss_account必须跟上*号</li>
 </ol>
 <p>表：<code>xboss_account_sphinx</code></p>
 <ol>
 <li>解决模糊查询和模糊join查询：</li>
 </ol>
 <p>索引xboss_account表的true_name，mobile字段</p>
-<h3 id="SphinxSE-SQL语法："><a href="#SphinxSE-SQL语法：" class="headerlink" title="SphinxSE SQL语法："></a>SphinxSE SQL语法：</h3><p>语法：limit,offet,maxmatches</p>
-<p>limit默认为20，offset默认为0，maxmatches默认为1000（rows）<br>例子：</p>
+<h3 id="sphinxse-sql语法："><a class="header-anchor" href="#sphinxse-sql语法：">¶</a>SphinxSE SQL语法：</h3>
+<p>语法：limit,offet,maxmatches</p>
+<p>limit默认为20，offset默认为0，maxmatches默认为1000（rows）<br>
+例子：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">select * from xboss_account_sphinx <span class="built_in">where</span> query=<span class="string">'*18810*;limit=2000;maxmatches=100'</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">--&gt;输出100行结果</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">select * from xboss_account_sphinx <span class="built_in">where</span> query=<span class="string">'*18810*;limit=2000'</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">--&gt;输出1000行结果</span></pre></td></tr></table></figure>
-
-
 <hr>
 <p>引用索引字段</p>
 <ol>
-<li>‘@’引用索引字段,如：@mobile，@true_name，| 表示 and，必须加上：mode=extended</li>
+<li>'@'引用索引字段,如：@mobile，@true_name，| 表示 and，必须加上：mode=extended</li>
 <li>如果没有指定，则检索所有的索引字段</li>
 <li>下面查询true_name包含‘付’，且手机号包含‘18622’的用户</li>
 </ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">select b.true_name,b.mobile  from xboss_account_sphinx a join xboss_account b on a.uid=b.uid <span class="built_in">where</span> b.is_auth=<span class="string">'1'</span> and a.query=<span class="string">'@mobile *18622* | @true_name  *付*;mode=extended;limit=10000;maxmatches=10000'</span> <span class="built_in">limit</span> 15 offset 0;</span></pre></td></tr></table></figure>
-
-
 <hr>
 <p>filter</p>
 <ol>
@@ -456,14 +593,13 @@
 <li>例句：查询is_auth为1的用户，不等于：!filter=is_auth,1，范围：filter=is_auth,1,2,3</li>
 </ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">select b.true_name,b.mobile,b.created_at,b.updated_at  from xboss_account_sphinx a join xboss_account b on a.uid=b.uid <span class="built_in">where</span> a.query=<span class="string">'@mobile *18622* | @true_name *付*;mode=extended;limit=10000;maxmatches=10000;filter=is_auth,1'</span> order by b.created_at <span class="built_in">limit</span> 15 offset 0;</span></pre></td></tr></table></figure>
-
-<h3 id="分页（在外部实现）"><a href="#分页（在外部实现）" class="headerlink" title="分页（在外部实现）"></a>分页（在外部实现）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">select a.*,b.mobile,b.true_name from xboss_wallet_records a join xboss_account b join xboss_account_sphinx c on a.uid = b.uid and a.uid = c.uid <span class="built_in">where</span> a.`type_new` != <span class="string">'4'</span> and c.query=<span class="string">'*1881048*;limit=10000;maxmatches=10000'</span> order by a.id desc <span class="built_in">limit</span> 15 offset 0;</span></pre></td></tr></table></figure>
-
-<h3 id="and或or查询"><a href="#and或or查询" class="headerlink" title="and或or查询"></a>and或or查询</h3><p>and查询，用|分隔</p>
+<h3 id="分页-在外部实现"><a class="header-anchor" href="#分页-在外部实现">¶</a>分页（在外部实现）</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">select a.*,b.mobile,b.true_name from xboss_wallet_records a join xboss_account b join xboss_account_sphinx c on a.uid = b.uid and a.uid = c.uid <span class="built_in">where</span> a.`type_new` != <span class="string">'4'</span> and c.query=<span class="string">'*1881048*;limit=10000;maxmatches=10000'</span> order by a.id desc <span class="built_in">limit</span> 15 offset 0;</span></pre></td></tr></table></figure>
+<h3 id="and或or查询"><a class="header-anchor" href="#and或or查询">¶</a>and或or查询</h3>
+<p>and查询，用|分隔</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> names utf8;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">select * from xboss_account_sphinx a join xboss_wallet_records b on a.uid=b.uid <span class="built_in">where</span> a.query=<span class="string">'@mobile *18622* | @true_name *付*;mode=extended;limit=10000;maxmatches=10000'</span>\G;</span></pre></td></tr></table></figure>
-
-<h3 id="or查询"><a href="#or查询" class="headerlink" title="or查询"></a>or查询</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">select b.username from xboss_account_sphinx a join xboss_wallet_records b on a.uid=b.uid <span class="built_in">where</span> a.query =<span class="string">'*1881048*;limit=10000;maxmatches=10000'</span> or a.query=<span class="string">'*付*;limit=10000;maxmatches=10000'</span>\G;</span></pre></td></tr></table></figure>
-
+<h3 id="or查询"><a class="header-anchor" href="#or查询">¶</a>or查询</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">select b.username from xboss_account_sphinx a join xboss_wallet_records b on a.uid=b.uid <span class="built_in">where</span> a.query =<span class="string">'*1881048*;limit=10000;maxmatches=10000'</span> or a.query=<span class="string">'*付*;limit=10000;maxmatches=10000'</span>\G;</span></pre></td></tr></table></figure>
 
       
 
@@ -720,19 +856,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">api</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">yar</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">Yii</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">api</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">bug</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">Yii</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -748,11 +880,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">devops</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">bug</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">devops</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -760,15 +892,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">jenkins</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">webhook</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">webhook</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">jenkins</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -780,10 +916,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">mac</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">memcache</a>
               </li>
              
@@ -792,15 +924,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">mac</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">php</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">trait</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">sign</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -812,7 +940,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">sign</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">phpstrom</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">trait</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -824,15 +960,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">svn</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">sql</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">svn</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">swoole</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">字符串</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">协程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -841,14 +985,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">xdebug</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">协程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">字符串</a>
               </li>
              
               <li class="article-tag-list-item">

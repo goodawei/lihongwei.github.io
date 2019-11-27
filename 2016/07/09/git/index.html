@@ -8,13 +8,13 @@
   <link rel="dns-prefetch" href="http://blog.nicexiangcun.com">
   <title>git | 李宏伟&#39;blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="git 的配置项  git config 以下的三个级别global针对一台电脑中一个用户，配置文件通常中用户的加目录的 .gitconfig 中 12git config --配置级别  选项.属性 值 如：34git config --global color.ui true					＃配置ui颜色5git config --global user.name lhw">
+  <meta name="description" content="git 的配置项  git config 以下的三个级别 ¶global 针对一台电脑中一个用户，配置文件通常中用户的加目录的 .gitconfig 中 12git config --配置级别  选项.属性 值 如：34git config --global color.ui true					＃配置ui颜色5git config --global user.name lhw">
 <meta name="keywords" content="git">
 <meta property="og:type" content="article">
 <meta property="og:title" content="git">
 <meta property="og:url" content="http:&#x2F;&#x2F;blog.nicexiangcun.com&#x2F;2016&#x2F;07&#x2F;09&#x2F;git&#x2F;index.html">
 <meta property="og:site_name" content="李宏伟&#39;blog">
-<meta property="og:description" content="git 的配置项  git config 以下的三个级别global针对一台电脑中一个用户，配置文件通常中用户的加目录的 .gitconfig 中 12git config --配置级别  选项.属性 值 如：34git config --global color.ui true					＃配置ui颜色5git config --global user.name lhw">
+<meta property="og:description" content="git 的配置项  git config 以下的三个级别 ¶global 针对一台电脑中一个用户，配置文件通常中用户的加目录的 .gitconfig 中 12git config --配置级别  选项.属性 值 如：34git config --global color.ui true					＃配置ui颜色5git config --global user.name lhw">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2019-11-27T12:11:01.034Z">
 <meta name="twitter:card" content="summary">
@@ -173,29 +173,42 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="git-的配置项-git-config-以下的三个级别"><a href="#git-的配置项-git-config-以下的三个级别" class="headerlink" title="git 的配置项  git config 以下的三个级别"></a>git 的配置项  <code>git config</code> 以下的三个级别</h1><h3 id="global"><a href="#global" class="headerlink" title="global"></a>global</h3><p>针对一台电脑中一个用户，配置文件通常中用户的加目录的 .gitconfig 中</p>
+        <h1>git 的配置项  <code>git config</code> 以下的三个级别</h1>
+<h3 id="global"><a class="header-anchor" href="#global">¶</a>global</h3>
+<p>针对一台电脑中一个用户，配置文件通常中用户的加目录的 .gitconfig 中</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">git config --配置级别  选项.属性 值 如：</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">git config --global color.ui <span class="literal">true</span>					＃配置ui颜色</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">git config --global user.name lhw                   ＃指定提交的用户名</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">git config --global user.email bjletaoba@sina.com   ＃指定提交的用户邮箱</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">git config --global core.editor emacs  (vim)        ＃指定打开的编辑器</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">git config --global merge.tool vimdiff              ＃指定比较工具</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">git config --list                                   ＃查看配置项</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">git <span class="built_in">help</span> config                                     ＃帮助</span></pre></td></tr></table></figure>
-<h3 id="system"><a href="#system" class="headerlink" title="system"></a>system</h3><p>针对一台电脑，配置文件通常中/etc/.gitconfig 下</p>
-<h3 id="local"><a href="#local" class="headerlink" title="local"></a>local</h3><p>针对每一个项目，配置文件通常中 每个项目的 .git/文件夹下</p>
-<h1 id="常用查看命令"><a href="#常用查看命令" class="headerlink" title="常用查看命令"></a>常用查看命令</h1><p><code>git status</code><br><code>git log --oneline</code><br><code>git log --oneline --graph</code><br><code>git  show  hash值</code> 查看状态和跟踪日志和hash </p>
-<h3 id="git-add-用法"><a href="#git-add-用法" class="headerlink" title="git add 用法"></a><code>git add</code> 用法</h3><p><code>git add</code> 将文件放入缓存区，其目的是为下次的 commit 做准备，其实每次 <code>git commit</code> 提交的文件都是 缓存区的，如果在缓存区的文件<code>commit</code>之前在次修改，那么修改的部分不会<code>commit</code>到版本控制中</p>
+<h3 id="system"><a class="header-anchor" href="#system">¶</a>system</h3>
+<p>针对一台电脑，配置文件通常中/etc/.gitconfig 下</p>
+<h3 id="local"><a class="header-anchor" href="#local">¶</a>local</h3>
+<p>针对每一个项目，配置文件通常中 每个项目的 .git/文件夹下</p>
+<h1>常用查看命令</h1>
+<p><code>git status</code><br>
+<code>git log --oneline</code><br>
+<code>git log --oneline --graph</code><br>
+<code>git show hash值</code> 查看状态和跟踪日志和hash</p>
+<h3 id="git-add-用法"><a class="header-anchor" href="#git-add-用法">¶</a><code>git add</code> 用法</h3>
+<p><code>git add</code> 将文件放入缓存区，其目的是为下次的 commit 做准备，其实每次 <code>git commit</code> 提交的文件都是 缓存区的，如果在缓存区的文件<code>commit</code>之前在次修改，那么修改的部分不会<code>commit</code>到版本控制中</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">git add . 		<span class="comment">#添加所有文件</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">git add *.php 	<span class="comment"># 添加PHP文件</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">git add /dir/* 	<span class="comment">#添加目录</span></span></pre></td></tr></table></figure>
-
 <a id="more"></a>
-
-<h1 id="git-使用总结"><a href="#git-使用总结" class="headerlink" title="git 使用总结"></a>git 使用总结</h1><h3 id="如何使commit尽可能的少"><a href="#如何使commit尽可能的少" class="headerlink" title="如何使commit尽可能的少"></a>如何使<code>commit</code>尽可能的少</h3><p>场景：通常一个commit就代表一个版本或者一个功能的提交，所以有时候我们不希望有过多的commit，比如已经<code>commit</code>到本地的lhw.php 文件，当我再次修改它的时候，我不希望这次的<code>commit</code> 纪录进log，这时可用使用<code>amend</code>：<code>git commit --amend</code>(会在指定的编辑器中打开，关闭后自动提交),注意只限于提交到本地并未推送到远端，如果已经推送到远端暂时没用想到办法。另外<code>amend</code>只适用于修正最后一次<code>commit</code>如果选择之前的某个版本，只能<code>git reset --hard</code>回到某个历史版本后在做<code>amend</code>。</p>
+<h1>git 使用总结</h1>
+<h3 id="如何使commit尽可能的少"><a class="header-anchor" href="#如何使commit尽可能的少">¶</a>如何使<code>commit</code>尽可能的少</h3>
+<p>场景：通常一个commit就代表一个版本或者一个功能的提交，所以有时候我们不希望有过多的commit，比如已经<code>commit</code>到本地的lhw.php 文件，当我再次修改它的时候，我不希望这次的<code>commit</code> 纪录进log，这时可用使用<code>amend</code>：<code>git commit --amend</code>(会在指定的编辑器中打开，关闭后自动提交),注意只限于提交到本地并未推送到远端，如果已经推送到远端暂时没用想到办法。另外<code>amend</code>只适用于修正最后一次<code>commit</code>如果选择之前的某个版本，只能<code>git reset --hard</code>回到某个历史版本后在做<code>amend</code>。</p>
 <p>查看修改可用使用： <code>git show 指定hash值</code> ，而此处 <code>git commit</code> 不会产生新的log (具体想要几个<code>commit</code>还要根据具体的场景)</p>
-<h3 id="追随回归到过去的某一个版本"><a href="#追随回归到过去的某一个版本" class="headerlink" title="追随回归到过去的某一个版本"></a>追随回归到过去的某一个版本</h3><p><code>git reset --hard</code>  彻底回退到某个版本，本地的源码也会变为上一个版本的内容。</p>
+<h3 id="追随回归到过去的某一个版本"><a class="header-anchor" href="#追随回归到过去的某一个版本">¶</a>追随回归到过去的某一个版本</h3>
+<p><code>git reset --hard</code>  彻底回退到某个版本，本地的源码也会变为上一个版本的内容。</p>
 <p><code>git reset --soft</code>  回滚一个commit状态。能回到add之后那里,回退的是commit的信息，不会回退代码。如果还要提交，直接commit即可</p>
-<h3 id="gitignore-忽略版本控制"><a href="#gitignore-忽略版本控制" class="headerlink" title="gitignore 忽略版本控制"></a><code>gitignore</code> 忽略版本控制</h3><p>一个简单的例子忽略编辑器生成的 .idea文件</p>
-<p><code>git rm -r  --cached .idea/</code>   ＃指目录，从缓存区中删除中添加</p>
+<h3 id="gitignore-忽略版本控制"><a class="header-anchor" href="#gitignore-忽略版本控制">¶</a><code>gitignore</code> 忽略版本控制</h3>
+<p>一个简单的例子忽略编辑器生成的 .idea文件</p>
+<p><code>git rm -r --cached .idea/</code>   ＃指目录，从缓存区中删除中添加</p>
 <p>然后在 <code>gitignore</code> 配置中添加 <code>.idea</code> ,在提交。</p>
-<h3 id="rebase-变基"><a href="#rebase-变基" class="headerlink" title="rebase 变基"></a>rebase 变基</h3><p>由于分支上的commit合并到master的时候会产生新的commit,而rebase可以将分支上提交整合到master上，执行步骤如下：</p>
+<h3 id="rebase-变基"><a class="header-anchor" href="#rebase-变基">¶</a>rebase 变基</h3>
+<p>由于分支上的commit合并到master的时候会产生新的commit,而rebase可以将分支上提交整合到master上，执行步骤如下：</p>
 <p><code>git checkout feacture</code> 切换到发布分支</p>
 <p><code>git rebase master</code> 已master为基础</p>
 <p><code>git checkout master</code> 切回主干</p>
 <p><code>git merge feacture</code> 合并发布分支</p>
-<h3 id="cherry-pick-挑拣commit"><a href="#cherry-pick-挑拣commit" class="headerlink" title="cherry-pick 挑拣commit"></a>cherry-pick 挑拣commit</h3><p>场景：假设我们有个稳定版本的分支，叫v2.0，另外还有个开发版本的分支v3.0，我们不能直接把两个分支合并，这样会导致稳定版本混乱，但是又想增加一个v3.0中的功能到v2.0中，这里就可以使用cherry-pick了。</p>
+<h3 id="cherry-pick-挑拣commit"><a class="header-anchor" href="#cherry-pick-挑拣commit">¶</a>cherry-pick 挑拣commit</h3>
+<p>场景：假设我们有个稳定版本的分支，叫v2.0，另外还有个开发版本的分支v3.0，我们不能直接把两个分支合并，这样会导致稳定版本混乱，但是又想增加一个v3.0中的功能到v2.0中，这里就可以使用cherry-pick了。</p>
 <p>如把dev分支上的某些commit合并到release上</p>
 <p><code>git checkout dev</code> 当前的开发分支上</p>
 <p><code>git checkout 0628fadz</code> 从当前开发分支的0628fadz这个点开始检出代码</p>
@@ -206,24 +219,25 @@
 <p><code>git check-pick --abord</code> 如果遇到冲突可以取消操作并返回到预序列状态</p>
 <p><code>git status</code></p>
 <p><code>git check-pick --abord</code> 可以连续使用</p>
-<p><code>git push -u origin test</code> </p>
+<p><code>git push -u origin test</code></p>
 <p><code>git checekout release</code></p>
 <p><code>git merge test</code></p>
 <p><code>git pull</code></p>
 <p><code>git push</code></p>
 <p>具体使用参照 ： <a href="https://git-scm.com/docs/git-cherry-pick" target="_blank" rel="noopener">https://git-scm.com/docs/git-cherry-pick</a></p>
-<h1 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h1><p>分支的使用场景：</p>
+<h1>分支</h1>
+<p>分支的使用场景：</p>
 <p>分支使用场景个人理解也就是git的开发规范，git开发规范有很多，如gitflow,感觉gitflow确实解决了许多问题，但同时又带出来了许多新的问题，如分支的最终管理最终看起来很乱。</p>
 <p>简单的一套git分支规范：master(受保护的) ，dev(开发分支)，feacture(欲发布)，开发人员拉取dev分支在本地小步提交，开发完成合并到feacture，在由feacture合并到master</p>
 <p>大范围的bug,可以创建一个bug分支.</p>
 <p>新建分支：</p>
-<p><code>git branch -b  lhwtest_1000</code></p>
+<p><code>git branch -b lhwtest_1000</code></p>
 <p>切换分支：</p>
-<p><code>git checkout  -b lhwtest_1000</code></p>
+<p><code>git checkout -b lhwtest_1000</code></p>
 <p>查看分支：</p>
 <p><code>git branch</code></p>
 <p>提交到分支：</p>
-<p><code>git commit -m &#39;new touch file&#39;</code></p>
+<p><code>git commit -m 'new touch file'</code></p>
 <p>推送到指定 master 分支:</p>
 <p><code>git push origin lhwtest_1000</code></p>
 <p>切换到主干：</p>
@@ -232,28 +246,34 @@
 <p><code>git merge origin lhwtest_1000</code></p>
 <p>最后推送到master:</p>
 <p><code>git push origin</code></p>
-<p>单独revest某个文件 ： </p>
+<p>单独revest某个文件 ：</p>
 <p><code>git checkout -- /app/lhw.php</code></p>
-<p>分支开发完成没有bug后删除分支： </p>
-<p><code>git branch -d lhwtest_1000</code> </p>
+<p>分支开发完成没有bug后删除分支：</p>
+<p><code>git branch -d lhwtest_1000</code></p>
 <p>注意分支开发过程中要不断的获取主干代码，保持本地与主干的代码同步, 获取最新的远端代码(否则无法推送到远端)，已保证远端代码和本地是否存在冲突</p>
-<p><code>git fetch  origin</code></p>
-<p><code>git pull  origin</code></p>
+<p><code>git fetch origin</code></p>
+<p><code>git pull origin</code></p>
 <p>pull 于 fetch 的区别：</p>
 <p>pull = fetch + merge , git fetch 的时候会从远端拉取一个隐藏master分支,使用git branch -r 查看，这个分支会与本地分支进行diff,然后决定是否需要合并，而 git pull 则直接进行合并</p>
 <p>通常都说 git fetch 更加安全，但是实际工作中都默认使用 git pull 因为我们默认就是要已远端代码为准。</p>
-<h1 id="冲突解决"><a href="#冲突解决" class="headerlink" title="冲突解决"></a>冲突解决</h1><p> 冲突场景：当在分支和主干修改并提交了相同文件的相同位置，在与主干合并时<code>git</code>会提示<code>merge failed fix conficts and then commit the result</code>,此时可以通过 <code>git diff file</code>查看文件冲突信息，并且用编辑器打开文件修改冲突信息，保存退出，重新 <code>git add</code>和 <code>git commit</code></p>
-<h1 id="git-命令别名"><a href="#git-命令别名" class="headerlink" title="git 命令别名"></a>git 命令别名</h1><p> 一 git 本身的配置文件</p>
-<p> 添加：<code>git config --global alias.s status</code><br> 删除：<code>git config --global --unset alias.s</code></p>
+<h1>冲突解决</h1>
+<p>冲突场景：当在分支和主干修改并提交了相同文件的相同位置，在与主干合并时<code>git</code>会提示<code>merge failed fix conficts and then commit the result</code>,此时可以通过 <code>git diff file</code>查看文件冲突信息，并且用编辑器打开文件修改冲突信息，保存退出，重新 <code>git add</code>和 <code>git commit</code></p>
+<h1>git 命令别名</h1>
+<p>一 git 本身的配置文件</p>
+<p>添加：<code>git config --global alias.s status</code><br>
+删除：<code>git config --global --unset alias.s</code></p>
 <p>二 linux <code>bash shell</code> 的 <code>.bash_profile</code> 或者 <code>zsh</code>的 <code>.zshrc</code></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">alias</span> ll=<span class="string">'ls -al'</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">alias</span> subl=<span class="string">"'/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl'"</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">alias</span> nano=<span class="string">"subl"</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">alias</span> des=<span class="string">"cd ~/WebServer/Documents/"</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">alias</span> gs=<span class="string">"git status"</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">alias</span> gc=<span class="string">"git commit -m "</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">alias</span> gaa=<span class="string">"git add ."</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">alias</span> gp=<span class="string">"git push"</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">alias</span> gl=<span class="string">"git log --graph"</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">alias</span> he=<span class="string">"cd ~/hexo/hexo/lhw-hexo/"</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">alias</span> pos=<span class="string">"cd ~/hexo/hexo/lhw-hexo/source/_posts/"</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> EDITOR=<span class="string">"subl"</span></span></pre></td></tr></table></figure>
-<h1 id="github-常用技巧"><a href="#github-常用技巧" class="headerlink" title="github 常用技巧"></a>github 常用技巧</h1><p>快捷键 ： shift + ?</p>
+<h1>github 常用技巧</h1>
+<p>快捷键 ： shift + ?</p>
 <p>查看一些流行的packgecg : <a href="https://github.com/trending" target="_blank" rel="noopener">https://github.com/trending</a></p>
 <p>pull代码的时候，经常会和本地有合并情况，一但合并便会产生新的分支，使分支线比较凌乱，解决办法：</p>
-<p>命令行：git pull –rebase</p>
+<p>命令行：git pull --rebase</p>
 <p>phpstorm  选择rebase</p>
 <p>sourcetree 勾选寅生选项</p>
-<h1 id="理解一些感念"><a href="#理解一些感念" class="headerlink" title="理解一些感念"></a>理解一些感念</h1><p>一个本地仓库可以对应多个远程仓库，clone下来的仓库默认是与远端origin建立关联的,所以push的时候是可以直接push的，<br>使用 remote add 指向新的远程仓库。具体学习githubflow的流程，所以在push一个没用和远端建立关联的本地仓库时通常是要 push -u 指定远程仓库名称的。</p>
+<h1>理解一些感念</h1>
+<p>一个本地仓库可以对应多个远程仓库，clone下来的仓库默认是与远端origin建立关联的,所以push的时候是可以直接push的，<br>
+使用 remote add 指向新的远程仓库。具体学习githubflow的流程，所以在push一个没用和远端建立关联的本地仓库时通常是要 push -u 指定远程仓库名称的。</p>
 
       
 
@@ -510,19 +530,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">api</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">yar</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">Yii</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">api</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">bug</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">Yii</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -538,11 +554,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">devops</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">bug</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">devops</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -550,15 +566,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">jenkins</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">webhook</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">webhook</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">jenkins</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -570,10 +590,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">mac</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">memcache</a>
               </li>
              
@@ -582,15 +598,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">mac</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">php</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">trait</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">sign</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -602,7 +614,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">sign</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">phpstrom</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">trait</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -614,15 +634,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">svn</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">sql</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">svn</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">swoole</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">字符串</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">协程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -631,14 +659,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">xdebug</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">协程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">字符串</a>
               </li>
              
               <li class="article-tag-list-item">

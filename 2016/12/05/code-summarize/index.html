@@ -8,13 +8,13 @@
   <link rel="dns-prefetch" href="http://blog.nicexiangcun.com">
   <title>代码整洁之道之技巧总结 | 李宏伟&#39;blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="优雅的代码应该是什么样的 能够满足当前的需求（功能，稳定性，负载能力等）。 对未来的需求，能够快速的扩展，修改。 出现问题能够快速的定位问题方便修改问题。 尽量避免重复，最大程度复用。  针对这些问题，整理出一些自己对于设计模式的理解，其实设计模式就是别人走过的路，踩过的坑，总结出来的优秀经验。总结的代码整洁之道就是如何复用这些经验。 下面是代码整洁之道第一篇：技巧总结 :pray: 1.命名非">
+  <meta name="description" content="优雅的代码应该是什么样的  能够满足当前的需求（功能，稳定性，负载能力等）。 对未来的需求，能够快速的扩展，修改。 出现问题能够快速的定位问题方便修改问题。 尽量避免重复，最大程度复用。  针对这些问题，整理出一些自己对于设计模式的理解，其实设计模式就是别人走过的路，踩过的坑，总结出来的优秀经验。总结的代码整洁之道就是如何复用这些经验。 下面是代码整洁之道第一篇：技巧总结 🙏 1.命名非常重要">
 <meta name="keywords" content="设计模式">
 <meta property="og:type" content="article">
 <meta property="og:title" content="代码整洁之道之技巧总结">
 <meta property="og:url" content="http:&#x2F;&#x2F;blog.nicexiangcun.com&#x2F;2016&#x2F;12&#x2F;05&#x2F;code-summarize&#x2F;index.html">
 <meta property="og:site_name" content="李宏伟&#39;blog">
-<meta property="og:description" content="优雅的代码应该是什么样的 能够满足当前的需求（功能，稳定性，负载能力等）。 对未来的需求，能够快速的扩展，修改。 出现问题能够快速的定位问题方便修改问题。 尽量避免重复，最大程度复用。  针对这些问题，整理出一些自己对于设计模式的理解，其实设计模式就是别人走过的路，踩过的坑，总结出来的优秀经验。总结的代码整洁之道就是如何复用这些经验。 下面是代码整洁之道第一篇：技巧总结 :pray: 1.命名非">
+<meta property="og:description" content="优雅的代码应该是什么样的  能够满足当前的需求（功能，稳定性，负载能力等）。 对未来的需求，能够快速的扩展，修改。 出现问题能够快速的定位问题方便修改问题。 尽量避免重复，最大程度复用。  针对这些问题，整理出一些自己对于设计模式的理解，其实设计模式就是别人走过的路，踩过的坑，总结出来的优秀经验。总结的代码整洁之道就是如何复用这些经验。 下面是代码整洁之道第一篇：技巧总结 🙏 1.命名非常重要">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http:&#x2F;&#x2F;o8979n2hu.bkt.clouddn.com&#x2F;php-7-image-1474571041.jpg">
 <meta property="og:updated_time" content="2019-11-27T12:11:01.031Z">
@@ -176,46 +176,44 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p><img src="http://o8979n2hu.bkt.clouddn.com/php-7-image-1474571041.jpg" alt="Coding Summarize"></p>
-<h1 id="优雅的代码应该是什么样的"><a href="#优雅的代码应该是什么样的" class="headerlink" title="优雅的代码应该是什么样的"></a>优雅的代码应该是什么样的</h1><ul>
+<h1>优雅的代码应该是什么样的</h1>
+<ul>
 <li>能够满足当前的需求（功能，稳定性，负载能力等）。</li>
 <li>对未来的需求，能够快速的扩展，修改。</li>
 <li>出现问题能够快速的定位问题方便修改问题。</li>
 <li>尽量避免重复，最大程度复用。</li>
 </ul>
 <p>针对这些问题，整理出一些自己对于设计模式的理解，其实设计模式就是别人走过的路，踩过的坑，总结出来的优秀经验。总结的代码整洁之道就是如何复用这些经验。</p>
-<p>下面是代码整洁之道第一篇：技巧总结 :pray:</p>
+<p>下面是代码整洁之道第一篇：技巧总结 🙏</p>
 <p>1.命名非常重要，就为了可读性更好。</p>
 <p>2.适当的使用注释，开发新功能，修改别人的bug,关键业务逻辑，要合理的使用注释</p>
-<p>3.变量需要初始化 </p>
+<p>3.变量需要初始化</p>
 <p>4.1==$a 和常量比较常量在前,防御编程，避免误写出$a=1</p>
 <p>5.防御式编程和契约编程</p>
-<p>默认不信任任何外部调用和方法，默认双方遵守契约，任意一方撕毁契约则抛出异常，建议在UI及应用层倾向于防御式编程保证友好及体验，在逻辑层倾向于契约式编程尽早暴露隐患 </p>
-<p>6.可控的环境参数 :bug:</p>
-<p>代码不受环境的影响，各种魔术常亮，声明字符集，定义包含的绝对路径，错误级别7，自己开发的测试，准生产，生产环境切好等 :spider:</p>
-<p>7.PHP结束标记 </p>
+<p>默认不信任任何外部调用和方法，默认双方遵守契约，任意一方撕毁契约则抛出异常，建议在UI及应用层倾向于防御式编程保证友好及体验，在逻辑层倾向于契约式编程尽早暴露隐患</p>
+<p>6.可控的环境参数 🐛</p>
+<p>代码不受环境的影响，各种魔术常亮，声明字符集，定义包含的绝对路径，错误级别7，自己开发的测试，准生产，生产环境切好等 🕷</p>
+<p>7.PHP结束标记</p>
 <p>纯php语句不要结束标记</p>
 <a id="more"></a>
-
-<p>8.if的使用技巧之“给定初始值” </p>
-<p>9.if的使用技巧之“用”&amp;&amp;” 替换 if” </p>
+<p>8.if的使用技巧之“给定初始值”</p>
+<p>9.if的使用技巧之“用&quot;&amp;&amp;&quot; 替换 if”</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>($rand&gt;<span class="number">3</span>)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">     $long=<span class="number">5</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">$rand&gt;<span class="number">3</span> &amp;&amp; $long=<span class="number">5</span>;</span></pre></td></tr></table></figure>
-
-<p>10.if的使用技巧之“用三元运算符替换if” </p>
-<p>11.if的使用技巧之“去掉多此一举的if” </p>
+<p>10.if的使用技巧之“用三元运算符替换if”</p>
+<p>11.if的使用技巧之“去掉多此一举的if”</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="number">1</span>==$a)&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">   <span class="keyword">return</span> <span class="keyword">true</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">&#125;<span class="keyword">else</span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">   <span class="keyword">return</span> <span class="keyword">false</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> (<span class="number">1</span>==$a);</span></pre></td></tr></table></figure>
-
 <p>12.表驱动法 map</p>
-<p>在php中数组使用的是hashtable，时间复杂度是O(1),运行速度远远高于以上两种，另外书写起来也更简便的多。如果传入的参数是开始未定义的也不会运行查找浪费大量的系统资源。 </p>
-<p>13.使用更精悍短小的代码 </p>
-<p>函数的最佳最大长度是150行代码，这样的代码比较便于维护，也方便修改，对于某些过于集中的算法函数，可能长度会大于这个长度。不过尽量还是不要超过，短小的才是美好的，短小的便于理解也便于修改，而功能相对单一的代码也就意味着可以复用它的地方会更多，有更好的复用性，另外当程序出问题的时候，测试起来也会相对简单好定位，便于维护修改。 </p>
-<p>14.避免使用幻数 ,幻数，简单来说既是我们所说的硬编码. </p>
-<p>15.中间结果赋值给变量 </p>
-<p>当一个表达式中嵌套层数过多，逻辑过于复杂的时候，将其拆分成一块块的，将其每一块的结果赋值给中间变量，这样可以降低程序的阅读难度和提高可维护性。 </p>
+<p>在php中数组使用的是hashtable，时间复杂度是O(1),运行速度远远高于以上两种，另外书写起来也更简便的多。如果传入的参数是开始未定义的也不会运行查找浪费大量的系统资源。</p>
+<p>13.使用更精悍短小的代码</p>
+<p>函数的最佳最大长度是150行代码，这样的代码比较便于维护，也方便修改，对于某些过于集中的算法函数，可能长度会大于这个长度。不过尽量还是不要超过，短小的才是美好的，短小的便于理解也便于修改，而功能相对单一的代码也就意味着可以复用它的地方会更多，有更好的复用性，另外当程序出问题的时候，测试起来也会相对简单好定位，便于维护修改。</p>
+<p>14.避免使用幻数 ,幻数，简单来说既是我们所说的硬编码.</p>
+<p>15.中间结果赋值给变量</p>
+<p>当一个表达式中嵌套层数过多，逻辑过于复杂的时候，将其拆分成一块块的，将其每一块的结果赋值给中间变量，这样可以降低程序的阅读难度和提高可维护性。</p>
 <p>16.复杂的逻辑表达式做成布尔函数</p>
-<p>当某一个判断比较复杂的时候，可以考虑将其做成一个布尔函数，不要怕这个函数里面的代码少，很多时候这样写可以使你的逻辑更容易维护，另外碰到相同逻辑判定的地点还可以直接复用，不需要一处修改处处修改。 </p>
-<p>17.永远不要复制粘贴雷同的代码 </p>
+<p>当某一个判断比较复杂的时候，可以考虑将其做成一个布尔函数，不要怕这个函数里面的代码少，很多时候这样写可以使你的逻辑更容易维护，另外碰到相同逻辑判定的地点还可以直接复用，不需要一处修改处处修改。</p>
+<p>17.永远不要复制粘贴雷同的代码</p>
 <p>大段相同的代码实现类似的但是略有不同的程序功能的时候，我们很容易就回进行复制完后修改，其实这种做法会有很大的问题.</p>
-<p>18.备份源代码文件 </p>
+<p>18.备份源代码文件</p>
 
       
 
@@ -472,19 +470,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">api</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">yar</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">Yii</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">api</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">bug</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">Yii</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -500,11 +494,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">devops</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">bug</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">devops</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -512,15 +506,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">jenkins</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">webhook</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">webhook</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">jenkins</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -532,10 +530,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">mac</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">memcache</a>
               </li>
              
@@ -544,15 +538,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">mac</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">php</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">trait</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">sign</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -564,7 +554,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">sign</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">phpstrom</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">trait</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -576,15 +574,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">svn</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">sql</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">svn</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">swoole</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">字符串</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">协程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -593,14 +599,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">xdebug</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">协程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">字符串</a>
               </li>
              
               <li class="article-tag-list-item">

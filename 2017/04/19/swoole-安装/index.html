@@ -8,13 +8,13 @@
   <link rel="dns-prefetch" href="http://blog.nicexiangcun.com">
   <title>swoole 安装 | 李宏伟&#39;blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="从release上选择一个版本clone源代码 :wink:sudo  git clone https:&#x2F;&#x2F;github.com&#x2F;swoole&#x2F;swoole-src.git 编译生成configure文件一 ： 通过phpize脚本生成 cd swoole-src.git sudo &#x2F;usr&#x2F;bin&#x2F;phpize7.0 如果没有找到phpize 先安装phpize 1sudo apt-get in">
+  <meta name="description" content="¶从release上选择一个版本clone源代码 😉 sudo git clone https:&#x2F;&#x2F;github.com&#x2F;swoole&#x2F;swoole-src.git ¶编译生成configure文件 一 ： 通过phpize脚本生成 cd swoole-src.git sudo &#x2F;usr&#x2F;bin&#x2F;phpize7.0 如果没有找到phpize 先安装phpize 1sudo apt-get ins">
 <meta name="keywords" content="swoole">
 <meta property="og:type" content="article">
 <meta property="og:title" content="swoole 安装">
 <meta property="og:url" content="http:&#x2F;&#x2F;blog.nicexiangcun.com&#x2F;2017&#x2F;04&#x2F;19&#x2F;swoole-%E5%AE%89%E8%A3%85&#x2F;index.html">
 <meta property="og:site_name" content="李宏伟&#39;blog">
-<meta property="og:description" content="从release上选择一个版本clone源代码 :wink:sudo  git clone https:&#x2F;&#x2F;github.com&#x2F;swoole&#x2F;swoole-src.git 编译生成configure文件一 ： 通过phpize脚本生成 cd swoole-src.git sudo &#x2F;usr&#x2F;bin&#x2F;phpize7.0 如果没有找到phpize 先安装phpize 1sudo apt-get in">
+<meta property="og:description" content="¶从release上选择一个版本clone源代码 😉 sudo git clone https:&#x2F;&#x2F;github.com&#x2F;swoole&#x2F;swoole-src.git ¶编译生成configure文件 一 ： 通过phpize脚本生成 cd swoole-src.git sudo &#x2F;usr&#x2F;bin&#x2F;phpize7.0 如果没有找到phpize 先安装phpize 1sudo apt-get ins">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2019-11-27T12:11:01.043Z">
 <meta name="twitter:card" content="summary">
@@ -173,21 +173,23 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="从release上选择一个版本clone源代码-wink"><a href="#从release上选择一个版本clone源代码-wink" class="headerlink" title="从release上选择一个版本clone源代码 :wink:"></a>从release上选择一个版本clone源代码 :wink:</h3><p><code>sudo  git clone https://github.com/swoole/swoole-src.git</code></p>
-<h3 id="编译生成configure文件"><a href="#编译生成configure文件" class="headerlink" title="编译生成configure文件"></a>编译生成configure文件</h3><p>一 ： 通过phpize脚本生成<br> <code>cd swoole-src.git</code><br> <code>sudo /usr/bin/phpize7.0</code></p>
+        <h3 id="从release上选择一个版本clone源代码-😉"><a class="header-anchor" href="#从release上选择一个版本clone源代码-😉">¶</a>从release上选择一个版本clone源代码 😉</h3>
+<p><code>sudo git clone https://github.com/swoole/swoole-src.git</code></p>
+<h3 id="编译生成configure文件"><a class="header-anchor" href="#编译生成configure文件">¶</a>编译生成configure文件</h3>
+<p>一 ： 通过phpize脚本生成<br>
+<code>cd swoole-src.git</code><br>
+<code>sudo /usr/bin/phpize7.0</code></p>
 <p>如果没有找到<code>phpize</code> 先安装<code>phpize</code></p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">sudo apt-get install autoconf automake libtool m4</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">sudo apt-get install php7<span class="number">.0</span>-dev</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">For</span> PHP7<span class="number">.1</span>, <span class="keyword">use</span> <span class="title">php7</span>.1-<span class="title">dev</span></span></pre></td></tr></table></figure>
 <a id="more"></a>
-
 <p>二 ：  通过configure生成<code>makefile</code> 文件</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">sudo ./configure</span></pre></td></tr></table></figure>
-
 <p>三 ：通过 makefile 文件编译生成 <code>.so</code>文件</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">sudo make</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">sudo make test  <span class="comment">//可选</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">sudo make install</span></pre></td></tr></table></figure>
 <p>四 ：配置 <code>.ini</code></p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">cd /etc/php/<span class="number">7.0</span>/mods-available/</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">touch swoole.ini</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">extension=swoole.so</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">sudo ln -s /etc/php/<span class="number">7.0</span>/mods-available/swoole.ini/etc/php/<span class="number">7.0</span>/cli/conf.d/swoole.ini</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">sudo ln -s /etc/php/<span class="number">7.0</span>/mods-available/swoole.ini/etc/php/<span class="number">7.0</span>/fpm/conf.d/swoole.ini</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line"><span class="comment">//fpm模式下需要重启fpm，phpinfo 查看</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">sudo service php7<span class="number">.0</span>-fpm restart</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">php -m | grep swoole</span></pre></td></tr></table></figure>
-
-<h3 id="通过Cmake安装"><a href="#通过Cmake安装" class="headerlink" title="通过Cmake安装"></a>通过Cmake安装</h3><p>把<code>swoole.so</code>做为一个C库</p>
+<h3 id="通过cmake安装"><a class="header-anchor" href="#通过cmake安装">¶</a>通过Cmake安装</h3>
+<p>把<code>swoole.so</code>做为一个C库</p>
 
       
 
@@ -444,19 +446,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">api</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">yar</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">Yii</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">api</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">bug</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">Yii</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -472,11 +470,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">devops</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">bug</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">devops</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -484,15 +482,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">jenkins</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">webhook</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">webhook</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">jenkins</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -504,10 +506,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">mac</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">memcache</a>
               </li>
              
@@ -516,15 +514,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">mac</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">php</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">trait</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">sign</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -536,7 +530,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">sign</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">phpstrom</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">trait</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -548,15 +550,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">svn</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">sql</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">svn</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">swoole</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">字符串</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">协程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -565,14 +575,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">xdebug</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">协程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">字符串</a>
               </li>
              
               <li class="article-tag-list-item">
