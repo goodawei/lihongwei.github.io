@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://blog.nicexiangcun.com">
-  <title>Tag: yar | 李宏伟&#39;blog</title>
+  <title>Best practice for feature switch of devops | 李宏伟&#39;blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="李宏伟&#39;blog">
-<meta property="og:url" content="http:&#x2F;&#x2F;blog.nicexiangcun.com&#x2F;tags&#x2F;yar&#x2F;index.html">
+  <meta name="description" content="¶为什么要使用特性开关?  上线周期短，屏蔽在单一上线周期内已开发但未完成的特性（例如每周两次上线，但“产品列表”功能需要三周才能开发完成） 对比在不同 UI 下的用户行为和转化率（A&#x2F;B Testing） 部署与发布分离，持续频繁部署，业务随时可发布 部署：代码部署到生产环境 发布：特性上线，交付给最终用户使用,部署与发布分离，开发团队频繁持续进行部署，而业务人员（需求方）决定特性何时发布。">
+<meta name="keywords" content="devops">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Best practice for feature switch of devops">
+<meta property="og:url" content="http:&#x2F;&#x2F;blog.nicexiangcun.com&#x2F;2019&#x2F;11&#x2F;28&#x2F;devops-featur-switch&#x2F;index.html">
 <meta property="og:site_name" content="李宏伟&#39;blog">
+<meta property="og:description" content="¶为什么要使用特性开关?  上线周期短，屏蔽在单一上线周期内已开发但未完成的特性（例如每周两次上线，但“产品列表”功能需要三周才能开发完成） 对比在不同 UI 下的用户行为和转化率（A&#x2F;B Testing） 部署与发布分离，持续频繁部署，业务随时可发布 部署：代码部署到生产环境 发布：特性上线，交付给最终用户使用,部署与发布分离，开发团队频繁持续进行部署，而业务人员（需求方）决定特性何时发布。">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-12-01T12:44:53.280Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="李宏伟&#39;blog" type="application/atom+xml">
@@ -143,71 +147,228 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-devops-featur-switch" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/27/Yar/" class="archive-article-date">
-  	<time datetime="2017-03-27T14:57:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-27</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/27/Yar/">Yar</a>
+    <h1 class="article-title" itemprop="name">
+      Best practice for feature switch of devops
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/11/28/devops-featur-switch/" class="archive-article-date">
+  	<time datetime="2019-11-28T13:55:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="为什么要使用特性开关"><a class="header-anchor" href="#为什么要使用特性开关">¶</a>为什么要使用特性开关?</h3>
+<ul>
+<li>上线周期短，屏蔽在单一上线周期内已开发但未完成的特性（例如每周两次上线，但“产品列表”功能需要三周才能开发完成）</li>
+<li>对比在不同 UI 下的用户行为和转化率（A/B Testing）</li>
+<li>部署与发布分离，持续频繁部署，业务随时可发布</li>
+<li>部署：代码部署到生产环境</li>
+<li>发布：特性上线，交付给最终用户使用,部署与发布分离，开发团队频繁持续进行部署，而业务人员（需求方）决定特性何时发布。</li>
+</ul>
+<hr>
+<a id="more"></a>
+<h3 id="为什么不继续使用旧做法-挑代码-？"><a class="header-anchor" href="#为什么不继续使用旧做法-挑代码-？">¶</a>为什么不继续使用旧做法（挑代码）？</h3>
+<p>旧做法：每次发布前，从代码仓库中，由开发组长从最近的若干提交中，手工挑选出需要上线的若干个提交，测试人员进行测试并发布。<br>
+这种做法：</p>
+<ul>
+<li>生产环境和开发主干代码不一致，违背了单一主干代码的策略，造成代码库版本碎片化</li>
+<li>与持续集成理念背道而驰（不能早期集成、早期测试、提供快速反馈）</li>
+</ul>
+<hr>
+<h3 id="为什么不用-git-branch？"><a class="header-anchor" href="#为什么不用-git-branch？">¶</a>为什么不用 Git Branch？</h3>
+<p>Long-lived feature branch是一个常见的持续交付反模式。这是因为：如果项目拥有多个长期彼此独立演进的分支，往往需要等到最后发布时才合并代码，这与持续集成的最佳实践背道而驰。<br>
+可参见 ThoughtWorks技术雷达相关介绍：<a href="https://www.thoughtworks.com/radar/techniques/long-lived-branches-with-gitflow" target="_blank" rel="noopener">https://www.thoughtworks.com/radar/techniques/long-lived-branches-with-gitflow</a></p>
+<hr>
+<h3 id="特性开关是解决问题的最后手段"><a class="header-anchor" href="#特性开关是解决问题的最后手段">¶</a>特性开关是解决问题的最后手段</h3>
+<p>为了隐藏未完成的特性进入生产环境，我们应遵循以下步骤：</p>
+<ul>
+<li>首先考虑将大的业务特性分解，分批次小步引入新的特性。这样做的好处是减少上线风险，并收集用户对于新特性的真实使用反馈，便于持续改进该特性。</li>
+<li>其次，可以考虑新特性UI的入口地址与已有UI分离，给新特性赋予一个全新的URL，但不暴露该地址给真实用户，即可隐藏未完成的特性。最后才考虑特性开关，作为解决问题的最后手段。</li>
+</ul>
+<hr>
+<h3 id="使用特性开关的注意事项"><a class="header-anchor" href="#使用特性开关的注意事项">¶</a>使用特性开关的注意事项</h3>
+<ul>
+<li>使用特性开关包裹某一特性时，要特别注意不要遗漏某些特性代码在开关范围之外。</li>
+<li>使用了特性开关后，测试人员的测试策略 - 通常说来只需测试下列两种情况：</li>
+</ul>
+<ol>
+<li>启用所有下一次上线发布时需要的功能的情况</li>
+<li>启用所有功能的情况</li>
+</ol>
+<ul>
+<li>由特性开关控制的功能正式上线并稳定后，务必要去掉特性开关代码，包括配置文件中特性开关变量以及所有使用特性开关的代码。</li>
+<li>特性开关数量不能太多，一旦超过限定数量，务必清理已有特性开关</li>
+</ul>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" target="_blank" rel="noopener" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color4">yar</a>
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">devops</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/php//" class="article-tag-list-link color4">php</a>
+        			<a href="/categories/devops//" class="article-tag-list-link color2">devops</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" target="_blank" rel="noopener" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" target="_blank" rel="noopener" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;" target="_blank" rel="noopener"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://blog.nicexiangcun.com/2019/11/28/devops-featur-switch/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2019/11/29/awk/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          awk
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2019/02/24/bug-with-auther/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">好心修改别人的代码却带来新的bug</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -230,9 +391,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: true,

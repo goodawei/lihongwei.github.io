@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://blog.nicexiangcun.com">
   <title>代码整洁之道之优化嵌套代码 | 李宏伟&#39;blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="☘️ if else 和 switch case 优化方案 1 如果嵌套逻辑是 返回值或者输出等简单的一句话代码，则使用表驱动方案。 2 如果是逻辑处理或者函数调用，则采用策略和多态模式。 举个例子： 1$type &#x3D; $data[&amp;apos;type&amp;apos;];2 3&#x2F;&#x2F;1-绑卡 2-充值 3-投资 4-提现 5-登陆 6-基金4switch ($type) &amp;#123;5    case 1:6">
+  <meta name="description" content="☘️ if else 和 switch case 优化方案 1 如果嵌套逻辑是 返回值或者输出等简单的一句话代码，则使用表驱动方案。 2 如果是逻辑处理或者函数调用，则采用策略和多态模式。 举个例子： 1$type &#x3D; $data[&amp;apos;type&amp;apos;];2 3&#x2F;&#x2F;1-绑卡 2-充值4switch ($type) &amp;#123;5    case 1:6        $res &#x3D; (new Account">
 <meta name="keywords" content="设计模式">
 <meta property="og:type" content="article">
 <meta property="og:title" content="代码整洁之道之优化嵌套代码">
 <meta property="og:url" content="http:&#x2F;&#x2F;blog.nicexiangcun.com&#x2F;2019&#x2F;11&#x2F;30&#x2F;code-summarize-two&#x2F;index.html">
 <meta property="og:site_name" content="李宏伟&#39;blog">
-<meta property="og:description" content="☘️ if else 和 switch case 优化方案 1 如果嵌套逻辑是 返回值或者输出等简单的一句话代码，则使用表驱动方案。 2 如果是逻辑处理或者函数调用，则采用策略和多态模式。 举个例子： 1$type &#x3D; $data[&amp;apos;type&amp;apos;];2 3&#x2F;&#x2F;1-绑卡 2-充值 3-投资 4-提现 5-登陆 6-基金4switch ($type) &amp;#123;5    case 1:6">
+<meta property="og:description" content="☘️ if else 和 switch case 优化方案 1 如果嵌套逻辑是 返回值或者输出等简单的一句话代码，则使用表驱动方案。 2 如果是逻辑处理或者函数调用，则采用策略和多态模式。 举个例子： 1$type &#x3D; $data[&amp;apos;type&amp;apos;];2 3&#x2F;&#x2F;1-绑卡 2-充值4switch ($type) &amp;#123;5    case 1:6        $res &#x3D; (new Account">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-12-01T12:38:51.968Z">
+<meta property="og:updated_time" content="2019-12-01T12:43:51.083Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="李宏伟&#39;blog" type="application/atom+xml">
@@ -171,7 +171,7 @@
 <p>1 如果嵌套逻辑是 返回值或者输出等简单的一句话代码，则使用表驱动方案。</p>
 <p>2 如果是逻辑处理或者函数调用，则采用策略和多态模式。</p>
 <p>举个例子：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">$type = $data[<span class="string">'type'</span>];</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"> </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="comment">//1-绑卡 2-充值 3-投资 4-提现 5-登陆 6-基金</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span> ($type) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">case</span> <span class="number">1</span>:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">        $res = (<span class="keyword">new</span> AccountPermission())-&gt;bindCard($account);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">break</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">case</span> <span class="number">2</span>:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">        $res = (<span class="keyword">new</span> AccountPermission())-&gt;recharge($account);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">break</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">case</span> <span class="number">3</span>:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">        $res = (<span class="keyword">new</span> AccountPermission())-&gt;invest($account);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">break</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">case</span> <span class="number">4</span>:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">        $res = (<span class="keyword">new</span> AccountPermission())-&gt;withdraw($account);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">break</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">case</span> <span class="number">5</span>:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">        $res = (<span class="keyword">new</span> AccountPermission())-&gt;unbandCard($account);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">break</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">$type = $data[<span class="string">'type'</span>];</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"> </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="comment">//1-绑卡 2-充值</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span> ($type) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">case</span> <span class="number">1</span>:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">        $res = (<span class="keyword">new</span> AccountPermission())-&gt;bindCard($account);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">break</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">case</span> <span class="number">2</span>:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">        $res = (<span class="keyword">new</span> AccountPermission())-&gt;recharge($account);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">break</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
 <a id="more"></a>
 <p>以上这个例子逻辑大概就是根据客户端传递的type去调用不同的验证方法，这样写违背了设计原则之中的针对扩展开放，修改关闭原则，如果有新增type类型那么必须要修改此文件和AccountPermission文件，另外函数的封装要尽可能的<code>短小精悍</code>，代码逻辑直截了当并尽可能的减少依赖关系，这样才能体现出只做好一件事情。那么针对这些问题，以上的代码优化思路是这样的：</p>
 <p>1 定义抽象类或者接口 AbstractPermission</p>
@@ -310,8 +310,8 @@
     </a>
   
   
-    <a href="/2019/11/27/code_review/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">code_review</div>
+    <a href="/2019/11/29/awk/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">awk</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -437,11 +437,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">yar</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">Yii</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">yar</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">redis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -450,10 +454,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">bug</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">redis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -509,11 +509,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">php</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">trait</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">trait</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">php</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -521,19 +521,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">phpstrom</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">php7</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">phpstrom</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">powerful</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
