@@ -145,6 +145,224 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-正则" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/25/%E6%AD%A3%E5%88%99/">深入理解正则表达式</a>
+    </h1>
+  
+
+        
+        <a href="/2017/02/25/%E6%AD%A3%E5%88%99/" class="archive-article-date">
+  	<time datetime="2017-02-25T11:58:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="表达式测试-🐝"><a class="header-anchor" href="#表达式测试-🐝">¶</a>表达式测试 🐝</h3>
+<p>推荐一个测试地址 <a href="http://www.rexv.org/" target="_blank" rel="noopener">http://www.rexv.org/</a><br>
+测试题：用单引号和双引号匹配 <code>\$</code><br>
+答案 ： 首先<code>\$</code>都是元字符都需要转义，转义结果为：<code>\\\$</code></p>
+<ul>
+<li>用单引号来标识的正则: <code>/\\\\\$/</code></li>
+<li>用双引号来标识的正则: <code>/\\\\\\\$/</code></li>
+</ul>
+<h3 id="🌴-分组和后向引用"><a class="header-anchor" href="#🌴-分组和后向引用">¶</a>🌴 分组和后向引用</h3>
+<p>通过次数限定符，来限定前面括号中的单元。匹配到的单元将会被捕获，捕获到的内容可以在正则表达式的后面通过<code>\1,\2,\3</code>获取。</p>
+<h3 id="贪婪与非贪婪-🐞"><a class="header-anchor" href="#贪婪与非贪婪-🐞">¶</a>贪婪与非贪婪 🐞</h3>
+<ul>
+<li><code>.*</code> 贪婪模式，贪婪模式会回溯匹配效率低。</li>
+<li><code>.*?</code> 非贪婪模式</li>
+</ul>
+        
+          <a class="article-more-a" href="/2017/02/25/%E6%AD%A3%E5%88%99/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color3">正则</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/php//" class="article-tag-list-link color4">php</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/02/25/%E6%AD%A3%E5%88%99/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-字符串" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/24/%E5%AD%97%E7%AC%A6%E4%B8%B2/">字符串和字符编码原理</a>
+    </h1>
+  
+
+        
+        <a href="/2017/02/24/%E5%AD%97%E7%AC%A6%E4%B8%B2/" class="archive-article-date">
+  	<time datetime="2017-02-24T12:56:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="🕷单引号和双引号的区别"><a class="header-anchor" href="#🕷单引号和双引号的区别">¶</a>🕷单引号和双引号的区别</h3>
+<p>单引号和双引号的区别经常被当做面试题被问到，但是大部分回答的并不好，其中有以下几种区别经常被忽略。<br>
+当字符串用双引号或者heredoc结构定义时，其中变量可以被解析，同时可以解析以下字符</p>
+<ul>
+<li>\n,\r,\t,\v,\e,\f,\,$,&quot;</li>
+<li>[0-7]{1,3}符合该正则表达式的，是以一个八进制方式来表达的字符，例如</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="comment">* 101转10进制：1*8^2+0*8^1+1*8^0 = 64+0+1 = 65</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="comment">* 102转10进制：1*8^2+0*8^1+2*8^0 = 64+0+2 = 66</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="comment">*/</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">echo</span> <span class="string">"\101\102"</span> <span class="comment">// AB</span></span></pre></td></tr></table></figure>
+<ul>
+<li>\x[0-9A-Fa-f]{1,2}符合该正则表达的，是以一个十六进制方式来表达的字符，例如</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="comment">* 41转10进制：4*16^1+1*16^0 = 64+1 = 65</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="comment">* 42转10进制：4*16^2+2*16^0 = 64+2 = 66</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="comment">*/</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">echo</span> <span class="string">"\x41\x42"</span> <span class="comment">// AB</span></span></pre></td></tr></table></figure>
+<blockquote>
+<p>单引号只转义\ 和 ’</p>
+</blockquote>
+<h3 id="关于字符串下标"><a class="header-anchor" href="#关于字符串下标">¶</a>↘️ 关于字符串下标</h3>
+<ul>
+<li>获取字符串中的字符，可以通过下标去获取。</li>
+<li>用超出字符串长度的下标写入字符串，会拉长该字符串，中间以空格填充。</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">$str = <span class="string">'lhw'</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">$str[<span class="number">10</span>] = <span class="string">'ok'</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">echo</span> $str;</span></pre></td></tr></table></figure>
+<h3 id="🐜-字符串串行化"><a class="header-anchor" href="#🐜-字符串串行化">¶</a>🐜 字符串串行化</h3>
+<p>串行化的目的：将不易于存储的数据结构，通过串行化来存储数据库或者文件当中。</p>
+<ul>
+<li>serialize()   性能稍差，可序列号对象</li>
+<li>json_encode() 性能好，这序列化数组，并且不同语言可通用</li>
+<li>var_export($arr,true) 序列化数组，并写入文件，可做文件缓存使用，或者写入日志调试</li>
+</ul>
+<blockquote>
+<p>var_export 利用它的特性，可以将读取数据库的配置等信息，写入缓存文件。</p>
+</blockquote>
+        
+          <a class="article-more-a" href="/2017/02/24/%E5%AD%97%E7%AC%A6%E4%B8%B2/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color4">字符串</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/php//" class="article-tag-list-link color4">php</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/02/24/%E5%AD%97%E7%AC%A6%E4%B8%B2/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-微服务" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -238,102 +456,6 @@
 
 
   
-    <article id="post-code-summarize-two" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/10/code-summarize-two/">代码整洁之道之优化嵌套代码</a>
-    </h1>
-  
-
-        
-        <a href="/2017/02/10/code-summarize-two/" class="archive-article-date">
-  	<time datetime="2017-02-10T12:44:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1>☘️ if else 和 switch case 优化方案</h1>
-<p>1 如果嵌套逻辑是 返回值或者输出等简单的一句话代码，则使用表驱动方案。</p>
-<p>2 如果是逻辑处理或者函数调用，则采用策略和多态模式。</p>
-<p>举个例子：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">$type = $data[<span class="string">'type'</span>];</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"> </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="comment">//1-绑卡 2-充值 3-投资 4-提现 5-登陆 6-基金</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span> ($type) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">case</span> <span class="number">1</span>:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">        $res = (<span class="keyword">new</span> AccountPermission())-&gt;bindCard($account);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">break</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">case</span> <span class="number">2</span>:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">        $res = (<span class="keyword">new</span> AccountPermission())-&gt;recharge($account);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">break</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">case</span> <span class="number">3</span>:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">        $res = (<span class="keyword">new</span> AccountPermission())-&gt;invest($account);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">break</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">case</span> <span class="number">4</span>:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">        $res = (<span class="keyword">new</span> AccountPermission())-&gt;withdraw($account);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">break</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">case</span> <span class="number">5</span>:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">        $res = (<span class="keyword">new</span> AccountPermission())-&gt;unbandCard($account);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">break</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
-<p>以上这个例子逻辑大概就是根据客户端传递的type去调用不同的验证方法，这样写违背了设计原则之中的针对扩展开放，修改关闭原则，如果有新增type类型那么必须要修改此文件和AccountPermission文件，另外函数的封装要尽可能的<code>短小精悍</code>，代码逻辑直截了当并尽可能的减少依赖关系，这样才能体现出只做好一件事情。那么针对这些问题，以上的代码优化思路是这样的：</p>
-<p>1 定义抽象类或者接口 AbstractPermission</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">AbstractPermission</span></span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="class"></span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">abstract</span> <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">validator</span><span class="params">(...$data)</span></span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
-<p>2 创建不同的验证实体去实现或者继承AbstractPermission</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment">//BindCard的验证实体</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BindCardPermission</span> <span class="keyword">extends</span> <span class="title">AbstractPermission</span></span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="class"></span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">validator</span><span class="params">(...$parms)</span></span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">            <span class="comment">//todo</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">        &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2017/02/10/code-summarize-two/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color5">设计模式</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/设计模式//" class="article-tag-list-link color5">设计模式</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/02/10/code-summarize-two/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-release-flow-line" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -393,112 +515,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2016/12/08/release-flow-line/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-code-summarize" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/05/code-summarize/">代码整洁之道之技巧总结</a>
-    </h1>
-  
-
-        
-        <a href="/2016/12/05/code-summarize/" class="archive-article-date">
-  	<time datetime="2016-12-05T14:48:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="http://o8979n2hu.bkt.clouddn.com/php-7-image-1474571041.jpg" alt="Coding Summarize"></p>
-<h1>优雅的代码应该是什么样的</h1>
-<ul>
-<li>能够满足当前的需求（功能，稳定性，负载能力等）。</li>
-<li>对未来的需求，能够快速的扩展，修改。</li>
-<li>出现问题能够快速的定位问题方便修改问题。</li>
-<li>尽量避免重复，最大程度复用。</li>
-</ul>
-<p>针对这些问题，整理出一些自己对于设计模式的理解，其实设计模式就是别人走过的路，踩过的坑，总结出来的优秀经验。总结的代码整洁之道就是如何复用这些经验。</p>
-<p>下面是代码整洁之道第一篇：技巧总结 🙏</p>
-<p>1.命名非常重要，就为了可读性更好。</p>
-<p>2.适当的使用注释，开发新功能，修改别人的bug,关键业务逻辑，要合理的使用注释</p>
-<p>3.变量需要初始化</p>
-<p>4.1==$a 和常量比较常量在前,防御编程，避免误写出$a=1</p>
-<p>5.防御式编程和契约编程</p>
-<p>默认不信任任何外部调用和方法，默认双方遵守契约，任意一方撕毁契约则抛出异常，建议在UI及应用层倾向于防御式编程保证友好及体验，在逻辑层倾向于契约式编程尽早暴露隐患</p>
-<p>6.可控的环境参数 🐛</p>
-<p>代码不受环境的影响，各种魔术常亮，声明字符集，定义包含的绝对路径，错误级别7，自己开发的测试，准生产，生产环境切好等 🕷</p>
-<p>7.PHP结束标记</p>
-<p>纯php语句不要结束标记</p>
-        
-          <a class="article-more-a" href="/2016/12/05/code-summarize/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color5">设计模式</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/设计模式//" class="article-tag-list-link color5">设计模式</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/12/05/code-summarize/">展开全文 >></a>
         </p>
       
 
@@ -1169,11 +1185,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">yar</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">Yii</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">Yii</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">yar</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1201,15 +1217,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">微服务</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">jenkins</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">微服务</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1225,11 +1241,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">memcache</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">mac</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">mac</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">memcache</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1237,7 +1253,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">sign</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">php</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">trait</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1249,19 +1273,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">trait</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">sign</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">php7</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1273,11 +1289,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">svn</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">swoole</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">vue</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">svn</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">xdebug</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1286,14 +1310,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">字符串</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">swoole</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">xdebug</a>
               </li>
              
               <li class="article-tag-list-item">
