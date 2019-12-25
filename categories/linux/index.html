@@ -6,17 +6,13 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://blog.nicexiangcun.com">
-  <title>好心修改别人的代码却带来新的bug | 李宏伟&#39;blog</title>
+  <title>Category: linux | 李宏伟&#39;blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="有时候非常严重的问题，就是你常常忽略的小不点。  开发过程中，有时候会遇到要修改别人的代码，那么怎么确保不会带出新的问题出来呢🙏我们的鹏飞老大给出了几条建议💯。  UnitTest，仔细想了想，单元测试真的是太有必要了。 代码走查，优秀的技术团队通常都会有，走查和分享的环节。 开发纪律上以下上原话  代码块注释：标明作者、时间、描述 原则上不允许擅自修改他人代码：如需修改需通知作者配合修改，">
-<meta name="keywords" content="bug">
-<meta property="og:type" content="article">
-<meta property="og:title" content="好心修改别人的代码却带来新的bug">
-<meta property="og:url" content="http:&#x2F;&#x2F;blog.nicexiangcun.com&#x2F;2019&#x2F;02&#x2F;24&#x2F;bug-with-auther&#x2F;index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="李宏伟&#39;blog">
+<meta property="og:url" content="http:&#x2F;&#x2F;blog.nicexiangcun.com&#x2F;categories&#x2F;linux&#x2F;index.html">
 <meta property="og:site_name" content="李宏伟&#39;blog">
-<meta property="og:description" content="有时候非常严重的问题，就是你常常忽略的小不点。  开发过程中，有时候会遇到要修改别人的代码，那么怎么确保不会带出新的问题出来呢🙏我们的鹏飞老大给出了几条建议💯。  UnitTest，仔细想了想，单元测试真的是太有必要了。 代码走查，优秀的技术团队通常都会有，走查和分享的环节。 开发纪律上以下上原话  代码块注释：标明作者、时间、描述 原则上不允许擅自修改他人代码：如需修改需通知作者配合修改，">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-12-01T12:36:09.233Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="李宏伟&#39;blog" type="application/atom+xml">
@@ -147,198 +143,71 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-bug-with-auther" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      好心修改别人的代码却带来新的bug
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2019" class="archive-year">2019</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2019/12/25/%E5%86%85%E5%AD%98%E5%AD%97%E8%8A%82%E5%AF%B9%E9%BD%90/" class="archive-article-date">
+  	<time datetime="2019-12-25T13:34:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-25</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2019/12/25/%E5%86%85%E5%AD%98%E5%AD%97%E8%8A%82%E5%AF%B9%E9%BD%90/">linux中内存字节对齐</a>
     </h1>
   
 
-        
-        <a href="/2019/02/24/bug-with-auther/" class="archive-article-date">
-  	<time datetime="2019-02-24T13:50:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>有时候非常严重的问题，就是你常常忽略的小不点。</p>
-</blockquote>
-<p>开发过程中，有时候会遇到要修改别人的代码，那么怎么确保不会带出新的问题出来呢🙏我们的鹏飞老大给出了几条建议💯。</p>
-<ul>
-<li>UnitTest，仔细想了想，单元测试真的是太有必要了。</li>
-<li>代码走查，优秀的技术团队通常都会有，走查和分享的环节。</li>
-<li>开发纪律上以下上原话</li>
-</ul>
-<p>代码块注释：标明作者、时间、描述<br>
-原则上不允许擅自修改他人代码：如需修改需通知作者配合修改，如无法通知作者则必须慎重修改且须有测试保障<br>
-防御式编程与契约式编程：默认不信任任何外部调用和方法，默认双方遵守契约，任意一方撕毁契约则抛出异常，建议在UI及应用层倾向于防御式编程保证友好及体验，在逻辑层倾向于契约式编程尽早暴露隐患</p>
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" target="_blank" rel="noopener" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color4">bug</a>
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color1">linux</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/bug//" class="article-tag-list-link color4">bug</a>
+        			<a href="/categories/linux//" class="article-tag-list-link color1">linux</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" target="_blank" rel="noopener" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" target="_blank" rel="noopener" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;" target="_blank" rel="noopener"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://blog.nicexiangcun.com/2019/02/24/bug-with-auther/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2019/11/28/devops-featur-switch/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Best practice for feature switch of devops
-        
-      </div>
-    </a>
   
   
-    <a href="/2017/10/21/today-idea-20171021/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Never forget why you started, and your mission can be accomplished.</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
-  
+    
 
 
           </div>
@@ -361,10 +230,10 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
 		isTag: false,
-		isCategory: false,
+		isCategory: true,
 		open_in_new: true,
 		toc_hide_index: true,
 		root: "/",

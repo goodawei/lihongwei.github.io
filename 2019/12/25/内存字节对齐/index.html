@@ -6,18 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://blog.nicexiangcun.com">
-  <title>好心修改别人的代码却带来新的bug | 李宏伟&#39;blog</title>
+  <title>linux中内存字节对齐 | 李宏伟&#39;blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="有时候非常严重的问题，就是你常常忽略的小不点。  开发过程中，有时候会遇到要修改别人的代码，那么怎么确保不会带出新的问题出来呢🙏我们的鹏飞老大给出了几条建议💯。  UnitTest，仔细想了想，单元测试真的是太有必要了。 代码走查，优秀的技术团队通常都会有，走查和分享的环节。 开发纪律上以下上原话  代码块注释：标明作者、时间、描述 原则上不允许擅自修改他人代码：如需修改需通知作者配合修改，">
-<meta name="keywords" content="bug">
+  <meta name="description" content="¶linux下默认字节对齐是以int类型变量所占字节数对齐，也就是说会申请被4整除的内存地址写入int类型，所以这就是我们每次看int类型的地址不会看到有奇数的。 什么叫对齐 计算机中内存空间都是按照byte划分的，从理论上讲似乎对任何类型的变量的访问可以从任何地址开始，但实际情况是在访问特定类型变量的时候经常在特 定的内存地址访问，这就需要各种类型数据按照一定的规则在空间上排列，而不是顺序的一个">
+<meta name="keywords" content="linux">
 <meta property="og:type" content="article">
-<meta property="og:title" content="好心修改别人的代码却带来新的bug">
-<meta property="og:url" content="http:&#x2F;&#x2F;blog.nicexiangcun.com&#x2F;2019&#x2F;02&#x2F;24&#x2F;bug-with-auther&#x2F;index.html">
+<meta property="og:title" content="linux中内存字节对齐">
+<meta property="og:url" content="http:&#x2F;&#x2F;blog.nicexiangcun.com&#x2F;2019&#x2F;12&#x2F;25&#x2F;%E5%86%85%E5%AD%98%E5%AD%97%E8%8A%82%E5%AF%B9%E9%BD%90&#x2F;index.html">
 <meta property="og:site_name" content="李宏伟&#39;blog">
-<meta property="og:description" content="有时候非常严重的问题，就是你常常忽略的小不点。  开发过程中，有时候会遇到要修改别人的代码，那么怎么确保不会带出新的问题出来呢🙏我们的鹏飞老大给出了几条建议💯。  UnitTest，仔细想了想，单元测试真的是太有必要了。 代码走查，优秀的技术团队通常都会有，走查和分享的环节。 开发纪律上以下上原话  代码块注释：标明作者、时间、描述 原则上不允许擅自修改他人代码：如需修改需通知作者配合修改，">
+<meta property="og:description" content="¶linux下默认字节对齐是以int类型变量所占字节数对齐，也就是说会申请被4整除的内存地址写入int类型，所以这就是我们每次看int类型的地址不会看到有奇数的。 什么叫对齐 计算机中内存空间都是按照byte划分的，从理论上讲似乎对任何类型的变量的访问可以从任何地址开始，但实际情况是在访问特定类型变量的时候经常在特 定的内存地址访问，这就需要各种类型数据按照一定的规则在空间上排列，而不是顺序的一个">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-12-01T12:36:09.233Z">
+<meta property="og:image" content="http:&#x2F;&#x2F;cdn.nicexiangcun.com&#x2F;%E5%86%85%E5%AD%98%E5%AF%B9%E9%BD%90.png">
+<meta property="og:updated_time" content="2019-12-25T09:17:41.969Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;cdn.nicexiangcun.com&#x2F;%E5%86%85%E5%AD%98%E5%AF%B9%E9%BD%90.png">
   
     <link rel="alternative" href="/atom.xml" title="李宏伟&#39;blog" type="application/atom+xml">
   
@@ -147,38 +149,34 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-bug-with-auther" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-内存字节对齐" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      好心修改别人的代码却带来新的bug
+      linux中内存字节对齐
     </h1>
   
 
         
-        <a href="/2019/02/24/bug-with-auther/" class="archive-article-date">
-  	<time datetime="2019-02-24T13:50:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-24</time>
+        <a href="/2019/12/25/%E5%86%85%E5%AD%98%E5%AD%97%E8%8A%82%E5%AF%B9%E9%BD%90/" class="archive-article-date">
+  	<time datetime="2019-12-25T13:34:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-25</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <blockquote>
-<p>有时候非常严重的问题，就是你常常忽略的小不点。</p>
-</blockquote>
-<p>开发过程中，有时候会遇到要修改别人的代码，那么怎么确保不会带出新的问题出来呢🙏我们的鹏飞老大给出了几条建议💯。</p>
-<ul>
-<li>UnitTest，仔细想了想，单元测试真的是太有必要了。</li>
-<li>代码走查，优秀的技术团队通常都会有，走查和分享的环节。</li>
-<li>开发纪律上以下上原话</li>
-</ul>
-<p>代码块注释：标明作者、时间、描述<br>
-原则上不允许擅自修改他人代码：如需修改需通知作者配合修改，如无法通知作者则必须慎重修改且须有测试保障<br>
-防御式编程与契约式编程：默认不信任任何外部调用和方法，默认双方遵守契约，任意一方撕毁契约则抛出异常，建议在UI及应用层倾向于防御式编程保证友好及体验，在逻辑层倾向于契约式编程尽早暴露隐患</p>
+        <h4 id="linux下默认字节对齐是以int类型变量所占字节数对齐-也就是说会申请被4整除的内存地址写入int类型-所以这就是我们每次看int类型的地址不会看到有奇数的"><a class="header-anchor" href="#linux下默认字节对齐是以int类型变量所占字节数对齐-也就是说会申请被4整除的内存地址写入int类型-所以这就是我们每次看int类型的地址不会看到有奇数的">¶</a>linux下默认字节对齐是以int类型变量所占字节数对齐，也就是说会申请被4整除的内存地址写入int类型，所以这就是我们每次看int类型的地址不会看到有奇数的。</h4>
+<p>什么叫对齐</p>
+<p>计算机中内存空间都是按照byte划分的，从理论上讲似乎对任何类型的变量的访问可以从任何地址开始，但实际情况是在访问特定类型变量的时候经常在特 定的内存地址访问，这就需要各种类型数据按照一定的规则在空间上排列，而不是顺序的一个接一个的排放，这就是对齐。</p>
+<h4 id="为什么要进行对齐"><a class="header-anchor" href="#为什么要进行对齐">¶</a>为什么要进行对齐</h4>
+<p>各个硬件平台对存储空间的处理上有很大的不同。一些平台对某些特定类型的数据只能从某些特定地址开始存取。比如有些架构的CPU在访问一个没有进行对齐的变量的时候会发生错误,那么在这种架构下编程必须保证字节对齐.其他平台可能没有这种情况，但是最常见的是如果不按照适合其平台要求对 数据存放进行对齐，会在存取效率上带来损失。比如有些平台每次读都是从偶地址开始，如果一个int型（假设为32位系统）如果存放在偶地址开始的地方，那么一个读周期就可以读出这32bit，而如果存放在奇地址开始的地方，就需要2个读周期，并对两次读出的结果的高低字节进行拼凑才能得到该32bit数据（linux中：在内存中是低位在先，高位在后）。显然在读取效率上下降很多。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">double</span> a = <span class="number">9.99</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">char</span>   b = <span class="string">'1'</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">int</span>    c =  <span class="number">1</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">    <span class="built_in">printf</span>(<span class="string">"%p,sizeof(a):%lu\n"</span>,&amp;a,<span class="keyword">sizeof</span>(a));</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">    <span class="built_in">printf</span>(<span class="string">"%p,sizeof(b):%lu\n"</span>,&amp;b,<span class="keyword">sizeof</span>(b));</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">    <span class="built_in">printf</span>(<span class="string">"%p,sizeof(c):%lu\n"</span>,&amp;c,<span class="keyword">sizeof</span>(c));</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line"> &#125;</span></pre></td></tr></table></figure>
+<p><img src="http://cdn.nicexiangcun.com/%E5%86%85%E5%AD%98%E5%AF%B9%E9%BD%90.png" alt="计算机内存字节对齐"></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">   <span class="keyword">char</span>   a = <span class="string">'1'</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">   <span class="keyword">double</span> b = <span class="number">9.99</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">   <span class="keyword">char</span>   c = <span class="string">'1'</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">   <span class="keyword">int</span>    d =  <span class="number">1</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">   <span class="built_in">printf</span>(<span class="string">"%p,sizeof(a):%lu\n"</span>,&amp;a,<span class="keyword">sizeof</span>(a));</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">   <span class="built_in">printf</span>(<span class="string">"%p,sizeof(b):%lu\n"</span>,&amp;b,<span class="keyword">sizeof</span>(b));</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">   <span class="built_in">printf</span>(<span class="string">"%p,sizeof(c):%lu\n"</span>,&amp;c,<span class="keyword">sizeof</span>(c));</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">   <span class="built_in">printf</span>(<span class="string">"%p,sizeof(d):%lu\n"</span>,&amp;d,<span class="keyword">sizeof</span>(d));</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
 
       
 
@@ -213,7 +211,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color4">bug</a>
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color1">linux</a>
         		</li>
       		
 		</ul>
@@ -225,7 +223,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/bug//" class="article-tag-list-link color4">bug</a>
+        			<a href="/categories/linux//" class="article-tag-list-link color1">linux</a>
         		</li>
       		
 		</ul>
@@ -280,7 +278,7 @@
     <a class="close js-modal-close" href="javascript:;" target="_blank" rel="noopener"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://blog.nicexiangcun.com/2019/02/24/bug-with-auther/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://blog.nicexiangcun.com/2019/12/25/%E5%86%85%E5%AD%98%E5%AD%97%E8%8A%82%E5%AF%B9%E9%BD%90/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -294,18 +292,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/11/28/devops-featur-switch/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Best practice for feature switch of devops
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/10/21/today-idea-20171021/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Never forget why you started, and your mission can be accomplished.</div>
+    <a href="/2019/11/30/code-summarize/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">代码整洁之道之技巧总结</div>
       <i class="icon-circle-right"></i>
     </a>
   
