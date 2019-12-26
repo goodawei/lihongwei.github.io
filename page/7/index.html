@@ -145,6 +145,100 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-nginx" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/05/15/nginx/">nginx</a>
+    </h1>
+  
+
+        
+        <a href="/2016/05/15/nginx/" class="archive-article-date">
+  	<time datetime="2016-05-15T05:19:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-05-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1>nginx 信号控制</h1>
+<hr>
+<h3 id="查看服务端口列表项"><a class="header-anchor" href="#查看服务端口列表项">¶</a>查看服务端口列表项</h3>
+<p><code>netstat -antp</code> (p是显示那个进程 和进程号)</p>
+<h3 id="查看进程"><a class="header-anchor" href="#查看进程">¶</a>查看进程</h3>
+<p><code>ps -aux | grep 80</code> （httpd）</p>
+<h3 id="信号控制"><a class="header-anchor" href="#信号控制">¶</a>信号控制</h3>
+<p>使用参数<code>INT</code>是紧急杀掉进程非常暴力（特殊场景不推荐），<code>QUIT</code> 优雅的杀掉进程，等待<code>work</code>主进程接收处理所有请求后在杀掉。<code>HUP</code>平滑的读取配置文件，不用重启nginx就能使配置文件生效（很重要），<code>USR1</code> 告诉nginx 写入log 往新建的文件中写（在备份log日志时必须要用，因为<code>linux</code>中的文件存放地址是通过<code>innode</code>号存储的，当mv 备份文件的时候只是变化名字而已，而<code>innode</code>号依然不变，所有nginx依然往原始的<code>innode</code>号文件写入日志，此时需要用信号量<code>USR1</code>）。</p>
+        
+          <a class="article-more-a" href="/2016/05/15/nginx/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color1">nginx</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/webserver//" class="article-tag-list-link color5">webserver</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/05/15/nginx/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Yii2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -345,11 +439,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">redis</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">bug</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">bug</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">redis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -409,15 +503,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">TDD</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">sign</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">trait</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">TDD</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -429,11 +523,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">powerful</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">python</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">powerful</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -449,15 +543,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">xdebug</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">vue</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">字符串</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">xdebug</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -465,11 +555,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">正则</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">字符串</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">数据结构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">正则</a>
               </li>
             
             <div class="clearfix"></div>
