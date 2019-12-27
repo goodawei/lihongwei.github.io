@@ -8,15 +8,14 @@
   <link rel="dns-prefetch" href="http://blog.nicexiangcun.com">
   <title>数组和链表 | 李宏伟&#39;blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="数组的特点是在内存中地址是连续的，所以在随机访问一个数组中的地址的时间复杂度是O(1),寻址公式大概是： 12int a[3] &#x3D; &amp;#123;1,2,3&amp;#125;;34a[i]_address &#x3D; begin_address + i * data_type_size56   int a[3][2] &#x3D; &amp;#123;&amp;#123;1,2&amp;#125;,&amp;#123;6,7&amp;#125;,&amp;#123;3,">
-<meta name="keywords" content="数据结构">
+  <meta name="description" content="数组的特点是在内存中地址是连续的，所以在随机访问一个数组中的地址的时间复杂度是O(1),寻址公式大概是： 1	2int a[3] &#x3D; &amp;#123;1,2,3&amp;#125;;34a[i]_address &#x3D; begin_address + i * data_type_size56int a[3][2] &#x3D; &amp;#123;&amp;#123;1,2&amp;#125;,&amp;#123;6,7&amp;#125;,&amp;#123;3,5&amp;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数组和链表">
 <meta property="og:url" content="http:&#x2F;&#x2F;blog.nicexiangcun.com&#x2F;2019&#x2F;12&#x2F;26&#x2F;%E6%95%B0%E7%BB%84%E5%92%8C%E9%93%BE%E8%A1%A8&#x2F;index.html">
 <meta property="og:site_name" content="李宏伟&#39;blog">
-<meta property="og:description" content="数组的特点是在内存中地址是连续的，所以在随机访问一个数组中的地址的时间复杂度是O(1),寻址公式大概是： 12int a[3] &#x3D; &amp;#123;1,2,3&amp;#125;;34a[i]_address &#x3D; begin_address + i * data_type_size56   int a[3][2] &#x3D; &amp;#123;&amp;#123;1,2&amp;#125;,&amp;#123;6,7&amp;#125;,&amp;#123;3,">
+<meta property="og:description" content="数组的特点是在内存中地址是连续的，所以在随机访问一个数组中的地址的时间复杂度是O(1),寻址公式大概是： 1	2int a[3] &#x3D; &amp;#123;1,2,3&amp;#125;;34a[i]_address &#x3D; begin_address + i * data_type_size56int a[3][2] &#x3D; &amp;#123;&amp;#123;1,2&amp;#125;,&amp;#123;6,7&amp;#125;,&amp;#123;3,5&amp;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-12-26T01:55:36.349Z">
+<meta property="og:updated_time" content="2019-12-27T01:45:58.759Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="李宏伟&#39;blog" type="application/atom+xml">
@@ -168,14 +167,17 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>数组的特点是在内存中地址是连续的，所以在随机访问一个数组中的地址的时间复杂度是O(1),寻址公式大概是：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a[<span class="number">3</span>] = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">a[i]_address = begin_address + i * data_type_size</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">   <span class="keyword">int</span> a[<span class="number">3</span>][<span class="number">2</span>] = &#123;&#123;<span class="number">1</span>,<span class="number">2</span>&#125;,&#123;<span class="number">6</span>,<span class="number">7</span>&#125;,&#123;<span class="number">3</span>,<span class="number">5</span>&#125;&#125;;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">address = begin_address + ( i * n + j) * data_type_size</span></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">	</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a[<span class="number">3</span>] = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">a[i]_address = begin_address + i * data_type_size</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a[<span class="number">3</span>][<span class="number">2</span>] = &#123;&#123;<span class="number">1</span>,<span class="number">2</span>&#125;,&#123;<span class="number">6</span>,<span class="number">7</span>&#125;,&#123;<span class="number">3</span>,<span class="number">5</span>&#125;&#125;;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">address = begin_address + ( i * n + j) * data_type_size</span></pre></td></tr></table></figure>
 <p>数组由于对内存的要求比较苛刻，带来的一个问题就是低效的“插入”和“删除”，在做数据的插入和删除的时候要频繁的进行数据的迁移。对于数组的动态扩容策略的实现可以参考redis的字符串底层实现原理或者java中的arrayList&lt;&gt;.</p>
 <a id="more"></a>
-<p>使用场景： 若数据大小事先已知，并且涉及的数据操作非常简单，可以使用数组。</p>
+<p>使用场景注意： 操作的数据不宜过大。</p>
 <p>链表的分类：</p>
 <p>单链表：   后继指针指next向下一个节点的（节点包含头部，数据data和指针next）<br>
 双向链表： 后继指针next指向下一个节点的 (节点包括前驱指针prev,数据data,后继指针next)<br>
 循环链表： 尾结点指针指向头节点</p>
+<p>链表就是用指针将节点连接起来，它对内存的要求没有数组那么苛刻，所以链表在“插入”和“删除”的动作上的时间复杂度是O(1),但是由于链表内存不是连续的，所以不能随机访问某个元素，在查找的时候时间复杂度是O(n)。</p>
+<p>单链表的使用经典案例如：LRU缓存淘汰策略</p>
+<p>双向链表：java中的<code>LinkedHashMap</code>实现，双向链表比单链表会占用更多的内存，但是在查找元素的速度上会比单链表性能更高，因为双向链表的每个节点上既有前驱指针，又有后继指针，当我们知道具体某一个node的时候那么它的前驱和后继指针我们就知道了，所以它在查找过程中可以判断是忘前走还是往后走，体现了用空间换时间的思想。</p>
 
       
 
@@ -205,17 +207,6 @@
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color5">数据结构</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
@@ -427,11 +418,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">bug</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">redis</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">redis</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">bug</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -487,7 +478,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">php</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">sign</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -495,7 +486,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">sign</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">php</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -507,15 +498,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">powerful</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">phpstrom</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">powerful</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -539,19 +530,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">协程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">字符串</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">数据结构</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">协程</a>
               </li>
              
               <li class="article-tag-list-item">
