@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://blog.nicexiangcun.com">
-  <title>Archives: 2016/7 | 李宏伟&#39;blog</title>
+  <title>Api Gateway | 李宏伟&#39;blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="李宏伟&#39;blog">
-<meta property="og:url" content="http:&#x2F;&#x2F;blog.nicexiangcun.com&#x2F;archives&#x2F;2016&#x2F;07&#x2F;index.html">
+  <meta name="description" content="¶What   基于Nginx和lua的高性能Web平台，内部集成了大量精良的lua库，第三方模块以及大多数依赖项，方便搭建处理高并发、扩展性极高的动态web应用、web服务，动态网关。   扩展了Nginx的能力，将Nginx有效的变成了一个强大的web应用平台，web开发人员可以使用lua脚本调动nginx支持的各种c以及lua模块。快速构建出足以胜任c10k乃至c100k以上的单机并发连接的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Api Gateway">
+<meta property="og:url" content="http:&#x2F;&#x2F;blog.nicexiangcun.com&#x2F;2019&#x2F;12&#x2F;30&#x2F;gateway&#x2F;index.html">
 <meta property="og:site_name" content="李宏伟&#39;blog">
+<meta property="og:description" content="¶What   基于Nginx和lua的高性能Web平台，内部集成了大量精良的lua库，第三方模块以及大多数依赖项，方便搭建处理高并发、扩展性极高的动态web应用、web服务，动态网关。   扩展了Nginx的能力，将Nginx有效的变成了一个强大的web应用平台，web开发人员可以使用lua脚本调动nginx支持的各种c以及lua模块。快速构建出足以胜任c10k乃至c100k以上的单机并发连接的">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http:&#x2F;&#x2F;cdn.nicexiangcun.com&#x2F;Canvas%201.png">
+<meta property="og:updated_time" content="2019-12-30T13:37:52.614Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;cdn.nicexiangcun.com&#x2F;Canvas%201.png">
   
     <link rel="alternative" href="/atom.xml" title="李宏伟&#39;blog" type="application/atom+xml">
   
@@ -143,71 +148,185 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-gateway" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/07/09/git/" class="archive-article-date">
-  	<time datetime="2016-07-09T13:20:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-07-09</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/07/09/git/">git</a>
+    <h1 class="article-title" itemprop="name">
+      Api Gateway
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color4">git</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        
+        <a href="/2019/12/30/gateway/" class="archive-article-date">
+  	<time datetime="2019-12-30T13:52:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="what"><a class="header-anchor" href="#what">¶</a>What</h3>
+<ul>
+<li>
+<p>基于Nginx和lua的高性能Web平台，内部集成了大量精良的lua库，第三方模块以及大多数依赖项，方便搭建处理高并发、扩展性极高的动态web应用、web服务，动态网关。</p>
+</li>
+<li>
+<p>扩展了Nginx的能力，将Nginx有效的变成了一个强大的web应用平台，web开发人员可以使用lua脚本调动nginx支持的各种c以及lua模块。快速构建出足以胜任c10k乃至c100k以上的单机并发连接的功性能web应用系统。</p>
+</li>
+<li>
+<p>充分利用了Nginx的非阻塞的I/O模型，不仅对HTTP请求，甚至对于远程后端诸如<code>Mysql</code>、<code>PostgreSQL</code>,<code>Redis</code>等都进行了一致高性能相应。</p>
+</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">docker pull redis:latest</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">run</span> -p <span class="number">6379</span>:<span class="number">6379</span> --name redis -v $PWD/redis.conf:/root/redis/redis.conf -v $PWD/data:/root/redis/data -d redis redis-server</span></pre></td></tr></table></figure>
+<a id="more"></a>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"> location /lua &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">        content_by_lua_block &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">            <span class="keyword">local</span> redis = <span class="built_in">require</span> <span class="string">"resty.redis"</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">            <span class="keyword">local</span> red = redis:new()</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">            red:set_timeout(<span class="number">1000</span>) </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">            <span class="keyword">local</span> ok, err = red:connect(<span class="string">"127.0.0.1"</span>, <span class="number">6379</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> ok <span class="keyword">then</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">                ngx.say(<span class="string">"failed to connect: "</span>, err)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">                <span class="keyword">return</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">            <span class="keyword">end</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">            ok, err = red:set(<span class="string">"color"</span>, <span class="string">"red"</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> ok <span class="keyword">then</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">                ngx.say(<span class="string">"failed to set dog: "</span>, err)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">                <span class="keyword">return</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">            <span class="keyword">end</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">            ngx.say(red:get(<span class="string">"color"</span>))</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+<p>OpenResty -s quit -p <code>pwd</code>/ -c conf/nginx.conf</p>
+<p>OpenResty -p <code>pwd</code>/ -c conf/nginx.conf</p>
+<h3 id="站内应用案例"><a class="header-anchor" href="#站内应用案例">¶</a>站内应用案例</h3>
+<p><img src="http://cdn.nicexiangcun.com/Canvas%201.png" alt="iterm2"></p>
 
-          
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" target="_blank" rel="noopener" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/git//" class="article-tag-list-link color4">git</a>
+        			<a href="/categories/Gateway//" class="article-tag-list-link color3">Gateway</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" target="_blank" rel="noopener" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" target="_blank" rel="noopener" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;" target="_blank" rel="noopener"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://blog.nicexiangcun.com/2019/12/30/gateway/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2019/12/26/%E6%95%B0%E7%BB%84%E5%92%8C%E9%93%BE%E8%A1%A8/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">数组和链表</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -230,8 +349,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,

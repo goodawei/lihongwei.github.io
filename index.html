@@ -145,6 +145,94 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-gateway" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/12/30/gateway/">Api Gateway</a>
+    </h1>
+  
+
+        
+        <a href="/2019/12/30/gateway/" class="archive-article-date">
+  	<time datetime="2019-12-30T13:52:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="what"><a class="header-anchor" href="#what">¶</a>What</h3>
+<ul>
+<li>
+<p>基于Nginx和lua的高性能Web平台，内部集成了大量精良的lua库，第三方模块以及大多数依赖项，方便搭建处理高并发、扩展性极高的动态web应用、web服务，动态网关。</p>
+</li>
+<li>
+<p>扩展了Nginx的能力，将Nginx有效的变成了一个强大的web应用平台，web开发人员可以使用lua脚本调动nginx支持的各种c以及lua模块。快速构建出足以胜任c10k乃至c100k以上的单机并发连接的功性能web应用系统。</p>
+</li>
+<li>
+<p>充分利用了Nginx的非阻塞的I/O模型，不仅对HTTP请求，甚至对于远程后端诸如<code>Mysql</code>、<code>PostgreSQL</code>,<code>Redis</code>等都进行了一致高性能相应。</p>
+</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">docker pull redis:latest</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">run</span> -p <span class="number">6379</span>:<span class="number">6379</span> --name redis -v $PWD/redis.conf:/root/redis/redis.conf -v $PWD/data:/root/redis/data -d redis redis-server</span></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2019/12/30/gateway/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Gateway//" class="article-tag-list-link color3">Gateway</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/12/30/gateway/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-数组和链表" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -935,68 +1023,6 @@
 
 
   
-    <article id="post-today-idea-20171021" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/21/today-idea-20171021/">Never forget why you started, and your mission can be accomplished.</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/21/today-idea-20171021/" class="archive-article-date">
-  	<time datetime="2017-10-21T11:17:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/21/today-idea-20171021/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
@@ -1102,15 +1128,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">redis</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">bug</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1162,7 +1188,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">sign</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">trait</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1174,15 +1200,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">trait</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">sign</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">php7</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">powerful</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1191,6 +1213,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">powerful</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1214,11 +1240,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">字符串</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">协程</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">协程</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">字符串</a>
               </li>
              
               <li class="article-tag-list-item">
