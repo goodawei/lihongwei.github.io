@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://blog.nicexiangcun.com">
-  <title>Api Gateway | 李宏伟&#39;blog</title>
+  <title>OpenResty 搭建 Api Gateway | 李宏伟&#39;blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="¶What   基于Nginx和lua的高性能Web平台，内部集成了大量精良的lua库，第三方模块以及大多数依赖项，方便搭建处理高并发、扩展性极高的动态web应用、web服务，动态网关。   扩展了Nginx的能力，将Nginx有效的变成了一个强大的web应用平台，web开发人员可以使用lua脚本调动nginx支持的各种c以及lua模块。快速构建出足以胜任c10k乃至c100k以上的单机并发连接的">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Api Gateway">
+<meta property="og:title" content="OpenResty 搭建 Api Gateway">
 <meta property="og:url" content="http:&#x2F;&#x2F;blog.nicexiangcun.com&#x2F;2019&#x2F;12&#x2F;30&#x2F;gateway&#x2F;index.html">
 <meta property="og:site_name" content="李宏伟&#39;blog">
 <meta property="og:description" content="¶What   基于Nginx和lua的高性能Web平台，内部集成了大量精良的lua库，第三方模块以及大多数依赖项，方便搭建处理高并发、扩展性极高的动态web应用、web服务，动态网关。   扩展了Nginx的能力，将Nginx有效的变成了一个强大的web应用平台，web开发人员可以使用lua脚本调动nginx支持的各种c以及lua模块。快速构建出足以胜任c10k乃至c100k以上的单机并发连接的">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http:&#x2F;&#x2F;cdn.nicexiangcun.com&#x2F;Canvas%201.png">
-<meta property="og:updated_time" content="2019-12-30T13:54:16.586Z">
+<meta property="og:updated_time" content="2019-12-31T03:37:20.860Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;cdn.nicexiangcun.com&#x2F;Canvas%201.png">
   
@@ -155,7 +155,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Api Gateway
+      OpenResty 搭建 Api Gateway
     </h1>
   
 
@@ -180,21 +180,28 @@
 <p>充分利用了Nginx的非阻塞的I/O模型，不仅对HTTP请求，甚至对于远程后端诸如<code>Mysql</code>、<code>PostgreSQL</code>,<code>Redis</code>等都进行了一致高性能相应。</p>
 </li>
 </ul>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">docker pull redis:latest</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">run</span> -p <span class="number">6379</span>:<span class="number">6379</span> --name redis -v $PWD/redis.conf:/root/redis/redis.conf -v $PWD/data:/root/redis/data -d redis redis-server</span></pre></td></tr></table></figure>
-<a id="more"></a>
-<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"> location /lua &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">        content_by_lua_block &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">            <span class="keyword">local</span> redis = <span class="built_in">require</span> <span class="string">"resty.redis"</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">            <span class="keyword">local</span> red = redis:new()</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">            red:set_timeout(<span class="number">1000</span>) </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">            <span class="keyword">local</span> ok, err = red:connect(<span class="string">"127.0.0.1"</span>, <span class="number">6379</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> ok <span class="keyword">then</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">                ngx.say(<span class="string">"failed to connect: "</span>, err)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">                <span class="keyword">return</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">            <span class="keyword">end</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">            ok, err = red:set(<span class="string">"color"</span>, <span class="string">"red"</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> ok <span class="keyword">then</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">                ngx.say(<span class="string">"failed to set dog: "</span>, err)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">                <span class="keyword">return</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">            <span class="keyword">end</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">            ngx.say(red:get(<span class="string">"color"</span>))</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
-<p><code>OpenResty -s quit -p</code>pwd<code>/ -c conf/nginx.conf</code></p>
-<p><code>OpenResty -p</code>pwd<code>/ -c conf/nginx.conf</code></p>
-<h3 id="站内应用案例"><a class="header-anchor" href="#站内应用案例">¶</a>站内应用案例</h3>
-<p><img src="http://cdn.nicexiangcun.com/Canvas%201.png" alt="iterm2"></p>
 <h3 id="使用场景"><a class="header-anchor" href="#使用场景">¶</a>使用场景</h3>
 <ul>
-<li>web应用 会进行一些业务逻辑处理，一般流程 mysql/redis/http获取数据返回前端，如京东商品详情页。</li>
-<li>接入网关 如数据前置校验，缓存前置，数据过滤，API请求聚合，ABtest,降级，监控等。</li>
-<li>web防火墙 可以进行 IP/URL/UserAgent/Referer 黑名单，限流等。</li>
-<li>缓存服务器 可以对相应内容进行缓存，减少后端请求。</li>
-<li>其他 静态资源服务器，消息推送等。</li>
+<li>网关&amp;web防火墙：如数据前置校验，缓存前置，数据过滤，API请求聚合，ABtest,降级，监控等，可以进行 IP/URL/UserAgent/Referer 黑名单，限流等。</li>
 </ul>
+<p>站内应用案例：</p>
+<p><img src="http://cdn.nicexiangcun.com/Canvas%201.png" alt="iterm2"></p>
+<a id="more"></a>
+<p>图中golang注册中心服务负责将后台提交的规则信息以插件化的形式进行打包处理后提交至gateway管理中心，gateway加载插件处理流量。</p>
+<ul>
+<li>web应用：会进行一些业务逻辑处理，一般流程 mysql/redis/http获取数据返回前端，如京东商品详情页。</li>
+</ul>
+<p>利用<code>OpenResty</code>对于后端的远程存储可以进行高性能相应，可以代替类似于<code>php-fpm</code>对后端远程存储访问瓶颈的限制，转为由<code>OpenResty</code>请求，获取结果后通知给应用后端服务。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">docker pull redis:latest</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">run</span> -p <span class="number">6379</span>:<span class="number">6379</span> --name redis -v $PWD/redis.conf:/root/redis/redis.conf -v $PWD/data:/root/redis/data -d redis redis-server</span></pre></td></tr></table></figure>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"> location /lua &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">        content_by_lua_block &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">            <span class="keyword">local</span> redis = <span class="built_in">require</span> <span class="string">"resty.redis"</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">            <span class="keyword">local</span> red = redis:new()</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">            red:set_timeout(<span class="number">1000</span>) </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">            <span class="keyword">local</span> ok, err = red:connect(<span class="string">"127.0.0.1"</span>, <span class="number">6379</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> ok <span class="keyword">then</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">                ngx.say(<span class="string">"failed to connect: "</span>, err)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">                <span class="keyword">return</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">            <span class="keyword">end</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">            ok, err = red:set(<span class="string">"color"</span>, <span class="string">"red"</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> ok <span class="keyword">then</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">                ngx.say(<span class="string">"failed to set dog: "</span>, err)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">                <span class="keyword">return</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">            <span class="keyword">end</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">            ngx.say(red:get(<span class="string">"color"</span>))</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+<ul>
+<li>缓存：可以对相应内容进行缓存，减少后端请求，以及规则下发。</li>
+</ul>
+<p><code>OpenResty</code> 提供了lru和shared纯内存缓存服务。</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">lua_shared_dict books <span class="number">1</span>m;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">location /book &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    content_by_lua_block &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">local</span> cache = ngx.shared.books </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">local</span> <span class="built_in">len</span>, err = cache:lpush(<span class="string">"foo"</span>, <span class="string">"bar"</span>) </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span> <span class="keyword">then</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">             ngx.say(<span class="string">"push success"</span>) </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">else</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">             ngx.say(<span class="string">"push err: "</span>, err) </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">end</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">        cache:set(<span class="string">"lua"</span>, <span class="string">"lua"</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">        ngx.<span class="built_in">print</span>(cache:get(<span class="string">"lua"</span>))</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">        cache:set(<span class="string">"kind"</span>, <span class="built_in">require</span>(<span class="string">"cjson"</span>).encode(&#123;php=<span class="number">7</span>&#125;)) </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">        ngx.<span class="built_in">print</span>(<span class="built_in">require</span>(<span class="string">"cjson"</span>).decode(cache:get(<span class="string">"kind"</span>)).php)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">location /lru &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">      content_by_lua_block &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">local</span> lrucache = <span class="built_in">require</span> <span class="string">"resty.lrucache"</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">local</span> cache, err = lrucache.new(<span class="number">200</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">        cache:set(<span class="string">"dog"</span>, <span class="number">32</span>, <span class="number">0.03</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">        ngx.sleep(<span class="number">0.02</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">        <span class="keyword">local</span> data, stale_data = cache:get(<span class="string">"dog"</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">        ngx.<span class="built_in">print</span>(stale_data)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">      &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+<p><code>OpenResty -s quit -p</code>pwd<code>/ -c conf/nginx.conf</code></p>
+<p><code>OpenResty -p</code>pwd<code>/ -c conf/nginx.conf</code></p>
 
       
 
@@ -230,7 +237,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Gateway//" class="article-tag-list-link color3">Gateway</a>
+        			<a href="/categories/OpenResty//" class="article-tag-list-link color5">OpenResty</a>
         		</li>
       		
 		</ul>
@@ -431,11 +438,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">Yii</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">Linux</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">Yii</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -475,11 +482,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">laravel</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">大型网站</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">大型网站</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">laravel</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -499,19 +506,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">sign</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">trait</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">php7</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">sign</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">TDD</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">php7</a>
               </li>
              
               <li class="article-tag-list-item">

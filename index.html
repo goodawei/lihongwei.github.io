@@ -152,7 +152,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/30/gateway/">Api Gateway</a>
+      <a class="article-title" href="/2019/12/30/gateway/">OpenResty 搭建 Api Gateway</a>
     </h1>
   
 
@@ -177,7 +177,12 @@
 <p>充分利用了Nginx的非阻塞的I/O模型，不仅对HTTP请求，甚至对于远程后端诸如<code>Mysql</code>、<code>PostgreSQL</code>,<code>Redis</code>等都进行了一致高性能相应。</p>
 </li>
 </ul>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">docker pull redis:latest</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">run</span> -p <span class="number">6379</span>:<span class="number">6379</span> --name redis -v $PWD/redis.conf:/root/redis/redis.conf -v $PWD/data:/root/redis/data -d redis redis-server</span></pre></td></tr></table></figure>
+<h3 id="使用场景"><a class="header-anchor" href="#使用场景">¶</a>使用场景</h3>
+<ul>
+<li>网关&amp;web防火墙：如数据前置校验，缓存前置，数据过滤，API请求聚合，ABtest,降级，监控等，可以进行 IP/URL/UserAgent/Referer 黑名单，限流等。</li>
+</ul>
+<p>站内应用案例：</p>
+<p><img src="http://cdn.nicexiangcun.com/Canvas%201.png" alt="iterm2"></p>
         
           <a class="article-more-a" href="/2019/12/30/gateway/#more">more >></a>
         
@@ -194,7 +199,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Gateway//" class="article-tag-list-link color3">Gateway</a>
+        			<a href="/categories/OpenResty//" class="article-tag-list-link color5">OpenResty</a>
         		</li>
       		
 		</ul>
@@ -1124,11 +1129,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">Yii</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">Linux</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">Yii</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1168,11 +1173,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">laravel</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">大型网站</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">大型网站</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">laravel</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1192,19 +1197,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">sign</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">trait</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">php7</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">sign</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">TDD</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">php7</a>
               </li>
              
               <li class="article-tag-list-item">
