@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="李宏伟&#39;blog">
 <meta property="og:description" content="数组的特点是在内存中地址是连续的，所以在随机访问一个数组中的地址的时间复杂度是O(1),寻址公式大概是： 1	2int a[3] &#x3D; &amp;#123;1,2,3&amp;#125;;34a[i]_address &#x3D; begin_address + i * data_type_size56int a[3][2] &#x3D; &amp;#123;&amp;#123;1,2&amp;#125;,&amp;#123;6,7&amp;#125;,&amp;#123;3,5&amp;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-01-03T06:22:55.213Z">
+<meta property="og:updated_time" content="2020-01-03T06:37:10.174Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="李宏伟&#39;blog" type="application/atom+xml">
@@ -178,7 +178,7 @@
 <p>链表就是用指针将节点连接起来，它对内存的要求没有数组那么苛刻，所以链表在“插入”和“删除”的动作上的时间复杂度是O(1),但是由于链表内存不是连续的，所以不能随机访问某个元素，在查找的时候时间复杂度是O(n)。</p>
 <p>单链表的使用经典案例如：LRU缓存淘汰策略</p>
 <p>双向链表：java中的<code>LinkedHashMap</code>实现，双向链表比单链表会占用更多的内存，但是在查找元素的速度上会比单链表性能更高，因为双向链表的每个节点上既有前驱指针，又有后继指针，当我们知道具体某一个node的时候那么它的前驱和后继指针我们就知道了，所以它在查找过程中可以判断是忘前走还是往后走，体现了用空间换时间的设计思想。</p>
-<p>链表的另一种使用场景经常会配合散列表hashtable使用，配合hashtable使用的目的主要是为了解决链表在查询过程中时间复杂度O(N)的问题。做法是将单链表或者双链表中的节点通过hash函数散列到数组的槽(桶)上，用一个新的指针通过拉链的方式将冲突的节点连接上。这样在查找某一个node的时候，时间复杂度是接近O(1)的。</p>
+<p>链表的另一种使用场景经常会配合散列表使用，配合<code>hashtable</code>使用的目的主要是为了解决链表在查询过程中时间复杂度O(N)的问题。做法是将单链表或者双链表中的节点通过hash函数散列到数组的槽(桶)上，用一个新的指针通过拉链的方式将冲突的节点连接上。这样在查找某一个node的时候，时间复杂度是接近O(1)的。</p>
 
       
 
@@ -432,11 +432,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">bug</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">redis</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">redis</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">bug</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -492,11 +492,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">trait</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">sign</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">sign</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">trait</a>
               </li>
              
               <li class="article-tag-list-item">
