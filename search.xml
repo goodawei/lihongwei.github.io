@@ -70,6 +70,12 @@
 </blockquote>
 <a id="more"></a>
 <p><img src="http://cdn.nicexiangcun.com/hashtable.png" alt="hashtable"></p>
+<h3 id="数组的动态扩容策略"><a class="header-anchor" href="#数组的动态扩容策略">¶</a>数组的动态扩容策略</h3>
+<p>已java的 <code>hashmap</code>为例，它的初始长度是16，默认阀值为0.75，当存储长度达到了长度的3/4时，就会触发扩容动作，扩容的长度为2的整数次幂，这是因为2的整数次幂的数据减1转为二进制，低位都是1，在与hashcode随机出来的数转为二进制做与运算，其结果范围一定是0-hashcode之间的范围，不会越界。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line">bucketIndex = indexFor(hash, table.length);</span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">indexFor</span><span class="params">(<span class="keyword">int</span> h, <span class="keyword">int</span> length)</span> </span>&#123;</span></pre></td></tr><tr><td class="code"><pre><span class="line">        <span class="keyword">return</span> h &amp; (length-<span class="number">1</span>);</span></pre></td></tr><tr><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+<h3 id="散列函数"><a class="header-anchor" href="#散列函数">¶</a>散列函数</h3>
+<p>好的散列函数不但要保证计算速度快，还要保证散列性好，避免过多的碰撞，扰动函数的逻辑是将二进制数据右位移16位，正好是32bit的一半，然后自己的高半区和低半区做异或，就是为了混合原始哈希码的高位和低位，以此来加大低位的随机性。而且混合后的低位掺杂了高位的部分特征，这样高位的信息也被变相保留下来。</p>
+<p><img src="http://cdn.nicexiangcun.com/hashtable.png" alt="hashtable"></p>
 ]]></content>
       <categories>
         <category>数据结构</category>
