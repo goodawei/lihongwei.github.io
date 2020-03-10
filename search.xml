@@ -75,7 +75,7 @@
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line">bucketIndex = indexFor(hash, table.length);</span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">indexFor</span><span class="params">(<span class="keyword">int</span> h, <span class="keyword">int</span> length)</span> </span>&#123;</span></pre></td></tr><tr><td class="code"><pre><span class="line">        <span class="keyword">return</span> h &amp; (length-<span class="number">1</span>);</span></pre></td></tr><tr><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
 <h3 id="散列函数"><a class="header-anchor" href="#散列函数">¶</a>散列函数</h3>
 <p>好的散列函数不但要保证计算速度快，还要保证散列性好，避免过多的碰撞，扰动函数的逻辑是将二进制数据右位移16位，正好是32bit的一半，然后自己的高半区和低半区做异或，就是为了混合原始哈希码的高位和低位，以此来加大低位的随机性。而且混合后的低位掺杂了高位的部分特征，这样高位的信息也被变相保留下来。</p>
-<p><img src="http://cdn.nicexiangcun.com/hashtable.png" alt="hashtable"></p>
+<p><img src="http://cdn.nicexiangcun.com/hashcode.jpg" alt="hashtable"></p>
 ]]></content>
       <categories>
         <category>数据结构</category>
