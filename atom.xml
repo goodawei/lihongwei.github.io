@@ -6,7 +6,7 @@
   <link href="https://blog.chuangketime.com/atom.xml" rel="self"/>
   
   <link href="https://blog.chuangketime.com/"/>
-  <updated>2023-03-23T08:22:44.774Z</updated>
+  <updated>2023-03-23T09:15:17.550Z</updated>
   <id>https://blog.chuangketime.com/</id>
   
   <author>
@@ -17,55 +17,13 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>人工智能基础理论-数据公式</title>
-    <link href="https://blog.chuangketime.com/2023/03/23/AI%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA-%E6%95%B0%E6%8D%AE%E5%85%AC%E5%BC%8F/"/>
-    <id>https://blog.chuangketime.com/2023/03/23/AI%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA-%E6%95%B0%E6%8D%AE%E5%85%AC%E5%BC%8F/</id>
-    <published>2023-03-23T05:58:29.000Z</published>
-    <updated>2023-03-23T08:22:44.774Z</updated>
-    
-    
-    
-    
-    <category term="AI" scheme="https://blog.chuangketime.com/categories/AI/"/>
-    
-    <category term="基础理论" scheme="https://blog.chuangketime.com/categories/AI/%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA/"/>
-    
-    <category term="数学基础" scheme="https://blog.chuangketime.com/categories/AI/%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/"/>
-    
-    
-    <category term="AI" scheme="https://blog.chuangketime.com/tags/AI/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>人工智能基础理论-线性代数</title>
-    <link href="https://blog.chuangketime.com/2023/03/23/AI%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/"/>
-    <id>https://blog.chuangketime.com/2023/03/23/AI%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/</id>
-    <published>2023-03-23T05:44:37.000Z</published>
-    <updated>2023-03-23T08:22:53.918Z</updated>
-    
-    
-    
-    
-    <category term="AI" scheme="https://blog.chuangketime.com/categories/AI/"/>
-    
-    <category term="基础理论" scheme="https://blog.chuangketime.com/categories/AI/%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA/"/>
-    
-    <category term="算法导论" scheme="https://blog.chuangketime.com/categories/AI/%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA/"/>
-    
-    
-    <category term="AI" scheme="https://blog.chuangketime.com/tags/AI/"/>
-    
-  </entry>
-  
-  <entry>
     <title>哈希表数据结构</title>
     <link href="https://blog.chuangketime.com/2023/03/23/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%93%88%E5%B8%8C%E8%A1%A8/"/>
     <id>https://blog.chuangketime.com/2023/03/23/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%93%88%E5%B8%8C%E8%A1%A8/</id>
     <published>2023-03-23T05:34:15.000Z</published>
-    <updated>2023-03-23T08:48:42.413Z</updated>
+    <updated>2023-03-23T09:15:17.550Z</updated>
     
-    <content type="html"><![CDATA[<blockquote class="blockquote-center">hashtable是由数组和列表两种数据结构组合而成的，这里面有两个重要的知识点需要掌握，一个是如何对哈希表进行动态扩容，第二个如何巧妙的设计一个散列性和性能都非常好的散列函数。</blockquote><span id="more"></span><p><img src="http://cdn.chuangketime.com/hashtable.png" alt="hashtable"></p><h3 id="数组的动态扩容策略"><a class="header-anchor" href="#数组的动态扩容策略">¶</a>数组的动态扩容策略</h3><p>已java的 <code>hashmap</code>为例，它的初始长度是16，默认阀值为0.75，当存储长度达到了长度的3/4时，就会触发扩容动作，扩容的长度为2的整数次幂，这是因为2的整数次幂的数据减1转为二进制，低位都是1，在与hashcode随机出来的数转为二进制做与运算，其结果范围一定是0-hashcode之间的范围，不会越界。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">bucketIndex = indexFor(hash, table.length);</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="type">int</span> <span class="title function_">indexFor</span><span class="params">(<span class="type">int</span> h, <span class="type">int</span> length)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> h &amp; (length-<span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="散列函数"><a class="header-anchor" href="#散列函数">¶</a>散列函数</h3><p>好的散列函数不但要保证计算速度快，还要保证散列性好，避免过多的碰撞，扰动函数的逻辑是将二进制数据右位移16位，正好是32bit的一半，然后自己的高半区和低半区做异或，就是为了混合原始哈希码的高位和低位，以此来加大低位的随机性。而且混合后的低位掺杂了高位的部分特征，这样高位的信息也被变相保留下来。</p><p><img src="http://cdn.chuangketime.com/hashcode.jpg" alt="hashtable"></p>]]></content>
+    <content type="html"><![CDATA[<blockquote class="blockquote-center">hashtable是由数组和列表两种数据结构组合而成的，这里面有两个重要的知识点需要掌握，一个是如何对哈希表进行动态扩容，第二个如何巧妙的设计一个散列性和性能都非常好的散列函数。</blockquote><span id="more"></span><p><img src="https://cdn.chuangketime.com/hashtable.png" alt="hashtable"></p><h3 id="数组的动态扩容策略"><a class="header-anchor" href="#数组的动态扩容策略">¶</a>数组的动态扩容策略</h3><p>已java的 <code>hashmap</code>为例，它的初始长度是16，默认阀值为0.75，当存储长度达到了长度的3/4时，就会触发扩容动作，扩容的长度为2的整数次幂，这是因为2的整数次幂的数据减1转为二进制，低位都是1，在与hashcode随机出来的数转为二进制做与运算，其结果范围一定是0-hashcode之间的范围，不会越界。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">bucketIndex = indexFor(hash, table.length);</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="type">int</span> <span class="title function_">indexFor</span><span class="params">(<span class="type">int</span> h, <span class="type">int</span> length)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> h &amp; (length-<span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="散列函数"><a class="header-anchor" href="#散列函数">¶</a>散列函数</h3><p>好的散列函数不但要保证计算速度快，还要保证散列性好，避免过多的碰撞，扰动函数的逻辑是将二进制数据右位移16位，正好是32bit的一半，然后自己的高半区和低半区做异或，就是为了混合原始哈希码的高位和低位，以此来加大低位的随机性。而且混合后的低位掺杂了高位的部分特征，这样高位的信息也被变相保留下来。</p><p><img src="https://cdn.chuangketime.com/hashcode.jpg" alt="hashtable"></p>]]></content>
     
     
     <summary type="html">&lt;blockquote class=&quot;blockquote-center&quot;&gt;
@@ -139,13 +97,55 @@
   </entry>
   
   <entry>
+    <title>人工智能基础理论-数据公式</title>
+    <link href="https://blog.chuangketime.com/2023/03/23/AI%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA-%E6%95%B0%E6%8D%AE%E5%85%AC%E5%BC%8F/"/>
+    <id>https://blog.chuangketime.com/2023/03/23/AI%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA-%E6%95%B0%E6%8D%AE%E5%85%AC%E5%BC%8F/</id>
+    <published>2023-03-23T00:44:37.000Z</published>
+    <updated>2023-03-23T09:15:04.134Z</updated>
+    
+    
+    
+    
+    <category term="AI" scheme="https://blog.chuangketime.com/categories/AI/"/>
+    
+    <category term="基础理论" scheme="https://blog.chuangketime.com/categories/AI/%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA/"/>
+    
+    <category term="数学基础" scheme="https://blog.chuangketime.com/categories/AI/%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/"/>
+    
+    
+    <category term="AI" scheme="https://blog.chuangketime.com/tags/AI/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>人工智能基础理论-线性代数</title>
+    <link href="https://blog.chuangketime.com/2023/03/23/AI%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/"/>
+    <id>https://blog.chuangketime.com/2023/03/23/AI%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/</id>
+    <published>2023-03-23T00:44:37.000Z</published>
+    <updated>2023-03-23T09:14:53.214Z</updated>
+    
+    
+    
+    
+    <category term="AI" scheme="https://blog.chuangketime.com/categories/AI/"/>
+    
+    <category term="基础理论" scheme="https://blog.chuangketime.com/categories/AI/%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA/"/>
+    
+    <category term="算法导论" scheme="https://blog.chuangketime.com/categories/AI/%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA/"/>
+    
+    
+    <category term="AI" scheme="https://blog.chuangketime.com/tags/AI/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Linux 中内存字节对齐</title>
     <link href="https://blog.chuangketime.com/2023/03/12/%E5%86%85%E5%AD%98%E5%AD%97%E8%8A%82%E5%AF%B9%E9%BD%90/"/>
     <id>https://blog.chuangketime.com/2023/03/12/%E5%86%85%E5%AD%98%E5%AD%97%E8%8A%82%E5%AF%B9%E9%BD%90/</id>
     <published>2023-03-12T01:34:15.000Z</published>
-    <updated>2023-03-23T08:22:37.638Z</updated>
+    <updated>2023-03-23T09:15:19.174Z</updated>
     
-    <content type="html"><![CDATA[<p>🍒 Linux下默认字节对齐是以int类型变量所占字节数对齐，也就是说会申请被4整除的内存地址写入int类型，所以这就是我们每次看int类型的地址不会看到有奇数的。</p><h4 id="什么叫对齐"><a class="header-anchor" href="#什么叫对齐">¶</a>什么叫对齐</h4><p>计算机中内存空间都是按照byte划分的，从理论上讲似乎对任何类型的变量的访问可以从任何地址开始，但实际情况是在访问特定类型变量的时候经常在特 定的内存地址访问，这就需要各种类型数据按照一定的规则在空间上排列，而不是顺序的一个接一个的排放，这就是对齐。</p><h4 id="为什么要进行对齐"><a class="header-anchor" href="#为什么要进行对齐">¶</a>为什么要进行对齐</h4><span id="more"></span><p>各个硬件平台对存储空间的处理上有很大的不同。一些平台对某些特定类型的数据只能从某些特定地址开始存取。比如有些架构的CPU在访问一个没有进行对齐的变量的时候会发生错误,那么在这种架构下编程必须保证字节对齐.其他平台可能没有这种情况，但是最常见的是如果不按照适合其平台要求对 数据存放进行对齐，会在存取效率上带来损失。比如有些平台每次读都是从偶地址开始，如果一个int型（假设为32位系统）如果存放在偶地址开始的地方，那么一个读周期就可以读出这32bit，而如果存放在奇地址开始的地方，就需要2个读周期，并对两次读出的结果的高低字节进行拼凑才能得到该32bit数据（linux中：在内存中是低位在先，高位在后）。显然在读取效率上下降很多。</p><p>例1程序分配的内存地址如下图：</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"> <span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="type">double</span> a = <span class="number">9.99</span>;</span><br><span class="line">    <span class="type">char</span>   b = <span class="string">&#x27;1&#x27;</span>;</span><br><span class="line">    <span class="type">int</span>    c =  <span class="number">1</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%p,sizeof(a):%lu\n&quot;</span>,&amp;a,<span class="keyword">sizeof</span>(a));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%p,sizeof(b):%lu\n&quot;</span>,&amp;b,<span class="keyword">sizeof</span>(b));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%p,sizeof(c):%lu\n&quot;</span>,&amp;c,<span class="keyword">sizeof</span>(c));</span><br><span class="line"> &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure><p><img src="http://cdn.chuangketime.com/%E5%86%85%E5%AD%98%E5%AF%B9%E9%BD%90.png" alt="计算机内存字节对齐"></p><p>例2程序分配的内存地址如下图：</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">   <span class="type">char</span>   a = <span class="string">&#x27;1&#x27;</span>;</span><br><span class="line">   <span class="type">double</span> b = <span class="number">9.99</span>;</span><br><span class="line">   <span class="type">char</span>   c = <span class="string">&#x27;1&#x27;</span>;</span><br><span class="line">   <span class="type">int</span>    d =  <span class="number">1</span>;</span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">&quot;%p,sizeof(a):%lu\n&quot;</span>,&amp;a,<span class="keyword">sizeof</span>(a));</span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">&quot;%p,sizeof(b):%lu\n&quot;</span>,&amp;b,<span class="keyword">sizeof</span>(b));</span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">&quot;%p,sizeof(c):%lu\n&quot;</span>,&amp;c,<span class="keyword">sizeof</span>(c));</span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">&quot;%p,sizeof(d):%lu\n&quot;</span>,&amp;d,<span class="keyword">sizeof</span>(d));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><img src="http://cdn.chuangketime.com/%E5%86%85%E5%AD%98%E5%AF%B9%E9%BD%902.png" alt="计算机内存字节对齐"></p>]]></content>
+    <content type="html"><![CDATA[<p>🍒 Linux下默认字节对齐是以int类型变量所占字节数对齐，也就是说会申请被4整除的内存地址写入int类型，所以这就是我们每次看int类型的地址不会看到有奇数的。</p><h4 id="什么叫对齐"><a class="header-anchor" href="#什么叫对齐">¶</a>什么叫对齐</h4><p>计算机中内存空间都是按照byte划分的，从理论上讲似乎对任何类型的变量的访问可以从任何地址开始，但实际情况是在访问特定类型变量的时候经常在特 定的内存地址访问，这就需要各种类型数据按照一定的规则在空间上排列，而不是顺序的一个接一个的排放，这就是对齐。</p><h4 id="为什么要进行对齐"><a class="header-anchor" href="#为什么要进行对齐">¶</a>为什么要进行对齐</h4><span id="more"></span><p>各个硬件平台对存储空间的处理上有很大的不同。一些平台对某些特定类型的数据只能从某些特定地址开始存取。比如有些架构的CPU在访问一个没有进行对齐的变量的时候会发生错误,那么在这种架构下编程必须保证字节对齐.其他平台可能没有这种情况，但是最常见的是如果不按照适合其平台要求对 数据存放进行对齐，会在存取效率上带来损失。比如有些平台每次读都是从偶地址开始，如果一个int型（假设为32位系统）如果存放在偶地址开始的地方，那么一个读周期就可以读出这32bit，而如果存放在奇地址开始的地方，就需要2个读周期，并对两次读出的结果的高低字节进行拼凑才能得到该32bit数据（linux中：在内存中是低位在先，高位在后）。显然在读取效率上下降很多。</p><p>例1程序分配的内存地址如下图：</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"> <span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="type">double</span> a = <span class="number">9.99</span>;</span><br><span class="line">    <span class="type">char</span>   b = <span class="string">&#x27;1&#x27;</span>;</span><br><span class="line">    <span class="type">int</span>    c =  <span class="number">1</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%p,sizeof(a):%lu\n&quot;</span>,&amp;a,<span class="keyword">sizeof</span>(a));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%p,sizeof(b):%lu\n&quot;</span>,&amp;b,<span class="keyword">sizeof</span>(b));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%p,sizeof(c):%lu\n&quot;</span>,&amp;c,<span class="keyword">sizeof</span>(c));</span><br><span class="line"> &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure><p><img src="https://cdn.chuangketime.com/%E5%86%85%E5%AD%98%E5%AF%B9%E9%BD%90.png" alt="计算机内存字节对齐"></p><p>例2程序分配的内存地址如下图：</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">   <span class="type">char</span>   a = <span class="string">&#x27;1&#x27;</span>;</span><br><span class="line">   <span class="type">double</span> b = <span class="number">9.99</span>;</span><br><span class="line">   <span class="type">char</span>   c = <span class="string">&#x27;1&#x27;</span>;</span><br><span class="line">   <span class="type">int</span>    d =  <span class="number">1</span>;</span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">&quot;%p,sizeof(a):%lu\n&quot;</span>,&amp;a,<span class="keyword">sizeof</span>(a));</span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">&quot;%p,sizeof(b):%lu\n&quot;</span>,&amp;b,<span class="keyword">sizeof</span>(b));</span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">&quot;%p,sizeof(c):%lu\n&quot;</span>,&amp;c,<span class="keyword">sizeof</span>(c));</span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">&quot;%p,sizeof(d):%lu\n&quot;</span>,&amp;d,<span class="keyword">sizeof</span>(d));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><img src="https://cdn.chuangketime.com/%E5%86%85%E5%AD%98%E5%AF%B9%E9%BD%902.png" alt="计算机内存字节对齐"></p>]]></content>
     
     
     <summary type="html">&lt;p&gt;🍒 Linux下默认字节对齐是以int类型变量所占字节数对齐，也就是说会申请被4整除的内存地址写入int类型，所以这就是我们每次看int类型的地址不会看到有奇数的。&lt;/p&gt;

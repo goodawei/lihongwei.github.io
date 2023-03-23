@@ -17,14 +17,14 @@
 <meta property="og:site_name" content="AI Begining">
 <meta property="og:description" content="hashtable是由数组和列表两种数据结构组合而成的，这里面有两个重要的知识点需要掌握，一个是如何对哈希表进行动态扩容，第二个如何巧妙的设计一个散列性和性能都非常好的散列函数。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://cdn.chuangketime.com/hashtable.png">
-<meta property="og:image" content="http://cdn.chuangketime.com/hashcode.jpg">
+<meta property="og:image" content="https://cdn.chuangketime.com/hashtable.png">
+<meta property="og:image" content="https://cdn.chuangketime.com/hashcode.jpg">
 <meta property="article:published_time" content="2023-03-23T05:34:15.000Z">
-<meta property="article:modified_time" content="2023-03-23T08:48:42.413Z">
+<meta property="article:modified_time" content="2023-03-23T09:15:17.550Z">
 <meta property="article:author" content="李宏伟">
 <meta property="article:tag" content="hashtable">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://cdn.chuangketime.com/hashtable.png">
+<meta name="twitter:image" content="https://cdn.chuangketime.com/hashtable.png">
   
     <link rel="alternative" href="/atom.xml" title="AI Begining" type="application/atom+xml">
   
@@ -272,13 +272,13 @@
 	hashtable是由数组和列表两种数据结构组合而成的，这里面有两个重要的知识点需要掌握，一个是如何对哈希表进行动态扩容，第二个如何巧妙的设计一个散列性和性能都非常好的散列函数。
 </blockquote>
 <span id="more"></span>
-<p><img src="http://cdn.chuangketime.com/hashtable.png" alt="hashtable"></p>
+<p><img src="https://cdn.chuangketime.com/hashtable.png" alt="hashtable"></p>
 <h3 id="数组的动态扩容策略"><a class="header-anchor" href="#数组的动态扩容策略">¶</a>数组的动态扩容策略</h3>
 <p>已java的 <code>hashmap</code>为例，它的初始长度是16，默认阀值为0.75，当存储长度达到了长度的3/4时，就会触发扩容动作，扩容的长度为2的整数次幂，这是因为2的整数次幂的数据减1转为二进制，低位都是1，在与hashcode随机出来的数转为二进制做与运算，其结果范围一定是0-hashcode之间的范围，不会越界。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">bucketIndex = indexFor(hash, table.length);</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="type">int</span> <span class="title function_">indexFor</span><span class="params">(<span class="type">int</span> h, <span class="type">int</span> length)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> h &amp; (length-<span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="散列函数"><a class="header-anchor" href="#散列函数">¶</a>散列函数</h3>
 <p>好的散列函数不但要保证计算速度快，还要保证散列性好，避免过多的碰撞，扰动函数的逻辑是将二进制数据右位移16位，正好是32bit的一半，然后自己的高半区和低半区做异或，就是为了混合原始哈希码的高位和低位，以此来加大低位的随机性。而且混合后的低位掺杂了高位的部分特征，这样高位的信息也被变相保留下来。</p>
-<p><img src="http://cdn.chuangketime.com/hashcode.jpg" alt="hashtable"></p>
+<p><img src="https://cdn.chuangketime.com/hashcode.jpg" alt="hashtable"></p>
 
     
 
@@ -400,15 +400,6 @@
 
 
 <nav id="article-nav">
-  
-    <a href="/2023/03/23/AI%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          人工智能基础理论-线性代数
-        
-      </div>
-    </a>
   
   
     <a href="/2023/03/23/Centos%20%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85Rabbitmq/" id="article-nav-older" class="article-nav-link-wrap">
