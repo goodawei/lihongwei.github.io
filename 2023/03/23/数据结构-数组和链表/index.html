@@ -6,21 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://blog.chuangketime.com">
-  <title>文章分类 | AI Begining</title>
+  <title>数组和链表对比 | AI Begining</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="AI、机器学习、深度学习">
-<meta property="og:type" content="website">
-<meta property="og:title" content="文章分类">
-<meta property="og:url" content="https://blog.chuangketime.com/categories/index.html">
+  <meta name="description" content="数组的特点是在内存中地址是连续的，所以在随机访问一个数组中的地址的时间复杂度是O(1),寻址公式大概是： 123456789	int a[3] &#x3D; &amp;#123;1,2,3&amp;#125;;a[i]_address &#x3D; begin_address + i * data_type_sizeint a[3][2] &#x3D; &amp;#123;&amp;#123;1,2&amp;#125;,&amp;#123;6,7&amp;#125;,&amp;#123;3">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数组和链表对比">
+<meta property="og:url" content="https://blog.chuangketime.com/2023/03/23/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%95%B0%E7%BB%84%E5%92%8C%E9%93%BE%E8%A1%A8/index.html">
 <meta property="og:site_name" content="AI Begining">
-<meta property="og:description" content="AI、机器学习、深度学习">
+<meta property="og:description" content="数组的特点是在内存中地址是连续的，所以在随机访问一个数组中的地址的时间复杂度是O(1),寻址公式大概是： 123456789	int a[3] &#x3D; &amp;#123;1,2,3&amp;#125;;a[i]_address &#x3D; begin_address + i * data_type_sizeint a[3][2] &#x3D; &amp;#123;&amp;#123;1,2&amp;#125;,&amp;#123;6,7&amp;#125;,&amp;#123;3">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-03-23T02:13:21.000Z">
-<meta property="article:modified_time" content="2023-03-23T07:50:40.783Z">
+<meta property="article:published_time" content="2023-03-23T05:34:15.000Z">
+<meta property="article:modified_time" content="2023-03-23T08:52:12.886Z">
 <meta property="article:author" content="李宏伟">
-<meta property="article:tag" content="人工智能、AI、机器学习、深度学习 Deep Learing">
+<meta property="article:tag" content="Hashtable">
+<meta property="article:tag" content="Linklist">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="AI Begining" type="application/atom+xml">
@@ -212,14 +213,14 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="page-" class="article article-type-page " itemscope itemprop="blogPost">
+            <article id="post-数据结构-数组和链表" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
   
   
     <h1 class="article-title" itemprop="name">
-      文章分类
+      数组和链表对比
     </h1>
   
 
@@ -231,8 +232,8 @@
               <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
         </span>
 
-<a href="/categories/index.html" class="archive-article-date">
-        <time datetime="2023-03-23T02:13:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-23</time>
+<a href="/2023/03/23/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%95%B0%E7%BB%84%E5%92%8C%E9%93%BE%E8%A1%A8/" class="archive-article-date">
+        <time datetime="2023-03-23T05:34:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-23</time>
 </a>
 
   
@@ -245,7 +246,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">0字</span>
+      <span class="post-count">644字</span>
     </span>
   </span>
 
@@ -254,7 +255,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">1分</span>
+      <span class="post-count">2分</span>
     </span>
   </span>
 </div>
@@ -265,7 +266,20 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    
+    <p>数组的特点是在内存中地址是连续的，所以在随机访问一个数组中的地址的时间复杂度是O(1),寻址公式大概是：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">	</span><br><span class="line"><span class="type">int</span> a[<span class="number">3</span>] = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;;</span><br><span class="line"></span><br><span class="line">a[i]_address = begin_address + i * data_type_size</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> a[<span class="number">3</span>][<span class="number">2</span>] = &#123;&#123;<span class="number">1</span>,<span class="number">2</span>&#125;,&#123;<span class="number">6</span>,<span class="number">7</span>&#125;,&#123;<span class="number">3</span>,<span class="number">5</span>&#125;&#125;;</span><br><span class="line"></span><br><span class="line">address = begin_address + ( i * n + j) * data_type_size</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>数组由于对内存的要求比较苛刻，带来的一个问题就是低效的“插入”和“删除”，在做数据的插入和删除的时候要频繁的进行数据的迁移。对于数组的动态扩容策略的实现可以参考redis的字符串底层实现原理或者java中的arrayList&lt;&gt;.</p>
+<span id="more"></span>
+<p>使用场景注意： 操作的数据不宜过大。</p>
+<p>链表的分类：</p>
+<p>单链表：   后继指针指next向下一个节点的heac（节点包含头部，数据data和指针next）<br>
+双向链表： 后继指针next指向下一个节点的prev (节点包括前驱指针prev,数据data,后继指针next)<br>
+循环链表： 尾结点指针指向头节点</p>
+<p>链表就是用指针将节点连接起来，它对内存的要求没有数组那么苛刻，所以链表在“插入”和“删除”的动作上的时间复杂度是O(1),但是由于链表内存不是连续的，所以不能随机访问某个元素，在查找的时候时间复杂度是O(n)。</p>
+<p>单链表的使用经典案例如：LRU缓存淘汰策略</p>
+<p>双向链表：java中的<code>LinkedHashMap</code>实现，双向链表比单链表会占用更多的内存，但是在查找元素的速度上会比单链表性能更高，因为双向链表的每个节点上既有前驱指针，又有后继指针，当我们知道具体某一个node的时候那么它的前驱和后继指针我们就知道了，所以它在查找过程中可以判断是忘前走还是往后走，体现了用空间换时间的设计思想。</p>
+<p>链表的另一种使用场景经常会配合散列表使用，配合<code>hashtable</code>使用的目的主要是为了解决链表在查询过程中时间复杂度O(N)的问题。做法是将单链表或者双链表中的节点通过hash函数散列到数组的槽(桶)上，用一个新的指针通过拉链的方式将冲突的节点连接上。这样在查找某一个node的时候，时间复杂度是接近O(1)的。</p>
+
     
 
     
@@ -279,7 +293,7 @@
         </li>
         <li>
           <strong>本文链接：</strong>
-          <a href="https://blog.chuangketime.com/categories/index.html" title="文章分类" target="_blank">https://blog.chuangketime.com/categories/index.html</a>
+          <a href="https://blog.chuangketime.com/2023/03/23/数据结构-数组和链表/" title="数组和链表对比" target="_blank">https://blog.chuangketime.com/2023/03/23/数据结构-数组和链表/</a>
         </li>
         
         <li>
@@ -296,7 +310,37 @@
   <div class="article-info article-info-index">
     
     
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Hashtable</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Linklist</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
     
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/数据结构//" class="article-tag-list-link color5">数据结构</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/数据结构/哈希//" class="article-tag-list-link color3">哈希</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
     
 
@@ -346,7 +390,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://blog.chuangketime.com/categories/" alt="微信分享二维码"> -->
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://blog.chuangketime.com/2023/03/23/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%95%B0%E7%BB%84%E5%92%8C%E9%93%BE%E8%A1%A8/" alt="微信分享二维码"> -->
     </div>
 </div>
 
@@ -358,6 +402,25 @@
   </div>
 </article>
 
+
+<nav id="article-nav">
+  
+    <a href="/2023/03/23/Centos%20%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85Rabbitmq/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Centos环境下安装Rabbitmq步骤
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/03/12/%E5%86%85%E5%AD%98%E5%AD%97%E8%8A%82%E5%AF%B9%E9%BD%90/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Linux 中内存字节对齐</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
 
 <aside class="wrap-side-operation">
@@ -375,6 +438,38 @@
         
     </div>
 </aside>
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+
+<script>
+var gitalk = new Gitalk({
+  clientID: '8dcb5761a840b9223312',
+  clientSecret: 'f4063ecef1c4c8380384c0427c8b157e7cb77829',
+  repo: 'chuangketime-gitalk',
+  owner: 'goodawei',
+  admin: ['goodawei'],
+  id: md5(window.location.pathname),
+  distractionFreeMode: true
+})
+
+gitalk.render('gitalk-container')
+</script>
+  
 
 
 
@@ -424,7 +519,7 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

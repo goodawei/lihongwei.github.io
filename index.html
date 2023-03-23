@@ -425,6 +425,379 @@
 
 
   
+    <article id="post-数据结构-哈希表" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2023/03/23/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%93%88%E5%B8%8C%E8%A1%A8/" target="_blank">哈希表数据结构</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2023/03/23/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%93%88%E5%B8%8C%E8%A1%A8/" class="archive-article-date">
+        <time datetime="2023-03-23T05:34:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-23</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <blockquote class="blockquote-center">
+	hashtable是由数组和列表两种数据结构组合而成的，这里面有两个重要的知识点需要掌握，一个是如何对哈希表进行动态扩容，第二个如何巧妙的设计一个散列性和性能都非常好的散列函数。
+</blockquote>
+    
+    <a class="article-more-a" href="/2023/03/23/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%93%88%E5%B8%8C%E8%A1%A8/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hashtable</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/数据结构//" class="article-tag-list-link color5">数据结构</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/数据结构/哈希//" class="article-tag-list-link color3">哈希</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2023/03/23/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%93%88%E5%B8%8C%E8%A1%A8/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Centos 环境安装Rabbitmq" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2023/03/23/Centos%20%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85Rabbitmq/" target="_blank">Centos环境下安装Rabbitmq步骤</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2023/03/23/Centos%20%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85Rabbitmq/" class="archive-article-date">
+        <time datetime="2023-03-23T05:34:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-23</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h1>软件包准备</h1>
+<p>1.RabbitMQ版本 和 Erlang 版本兼容性关系</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://www.rabbitmq.com/which-erlang.html</span><br></pre></td></tr></table></figure>
+<p>2.官方下载地址</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">【erlang下载地址】：https://github.com/rabbitmq/erlang-rpm/releases</span><br><span class="line"> </span><br><span class="line">【socat下载地址】：http://www.rpmfind.net/linux/rpm2html/search.php?query=socat(x86-64)</span><br><span class="line"> </span><br><span class="line">【rabbitmq下载地址】：https://github.com/rabbitmq/rabbitmq-server/releases</span><br></pre></td></tr></table></figure>
+<p>3.安装包中说明，请下载对应的安装包</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">el6：CentOS 6.x 的下载</span><br><span class="line">el7：CentOS 7.x 的下载</span><br><span class="line">el8：CentOS 8.x 的下载</span><br></pre></td></tr></table></figure>
+<h1>安装步骤</h1>
+<p>1.安装依赖包</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install build-essential openssl openssl-devel unixODBC unixODBC-devel make gcc gcc-c++ kernel-devel m4 ncurses-devel tk tc xz</span><br></pre></td></tr></table></figure>
+<p>2.准备软件包</p>
+<ul>
+<li>erlang-23.3.4.8-1.el7.x86_64.rpm</li>
+<li>rabbitmq-server-3.9.11-1.el7.noarch.rpm</li>
+<li>socat-1.7.3.2-2.el7.x86_64.rpm</li>
+</ul>
+<p>3.创建软件包下载目录</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> rabbitmq &amp;&amp; <span class="built_in">cd</span> rabbitmq</span><br></pre></td></tr></table></figure>
+<p>4.安装 Erlang</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh erlang-23.3.4.8-1.el7.x86_64.rpm</span><br></pre></td></tr></table></figure>
+<p>5.检查Erlang安装状态</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">erl -v</span><br></pre></td></tr></table></figure>
+<p>6.安装socat</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh socat-1.7.3.2-2.el7.x86_64.rpm</span><br></pre></td></tr></table></figure>
+<p>7.安装rabbitmq</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh rabbitmq-server-3.9.11-1.el7.noarch.rpm</span><br><span class="line"><span class="comment"># 检查是否安装成功命令</span></span><br><span class="line">rpm -qa|grep rabbitmq</span><br></pre></td></tr></table></figure>
+<p>8.开启管理界面</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rabbitmq-plugins <span class="built_in">enable</span> rabbitmq_management</span><br></pre></td></tr></table></figure>
+<p>9.添加配置文件，解决只能localhost访问的问题</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">进入【/etc/rabbitmq】文件夹下</span><br><span class="line"><span class="built_in">cd</span> /etc/rabbitmq</span><br><span class="line">编辑【rabbitmq.config】文件</span><br><span class="line">vim rabbitmq.config</span><br><span class="line">[&#123;rabbit,[&#123;loopback_users,[]&#125;]&#125;].</span><br></pre></td></tr></table></figure>
+<p>10.启动rabbitmq</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">	启动rabbitmq命令：</span><br><span class="line">systemctl start rabbitmq-server</span><br><span class="line">	看启动状态命令：</span><br><span class="line">systemctl status rabbitmq-server</span><br></pre></td></tr></table></figure>
+<p>11.停止rabbitmq</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">停止rabbitmq命令：</span><br><span class="line">systemctl stop rabbitmq-server</span><br><span class="line"> </span><br><span class="line">查看启动状态命令：</span><br><span class="line">systemctl status rabbitmq-server</span><br></pre></td></tr></table></figure>
+<p>12.重启rabbitmq</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">重启rabbitmq命令：</span><br><span class="line">systemctl restart rabbitmq-server</span><br><span class="line"> </span><br><span class="line">查看启动状态命令：</span><br><span class="line">systemctl status rabbitmq-server</span><br></pre></td></tr></table></figure>
+<p>13.开放端口</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">开放5672端口命令</span><br><span class="line">/sbin/iptables -I INPUT -p tcp --dport 5672 -j ACCEPT</span><br><span class="line"> </span><br><span class="line">开放15672端口命令</span><br><span class="line">/sbin/iptables -I INPUT -p tcp --dport 15672 -j ACCEPT</span><br></pre></td></tr></table></figure>
+<p>14.登录管理界面</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">URL地址：http://192.168.109.101:15672/</span><br><span class="line">默认账号：guest</span><br><span class="line">默认密码：guest</span><br></pre></td></tr></table></figure>
+<h1>卸载</h1>
+<p>一、卸载rabbitmq相关文件</p>
+<ol>
+<li>systemctl stop rabbitmq-server</li>
+<li>yum list | grep rabbitmq</li>
+<li>yum -y remove rabbitmq-server.noarch</li>
+</ol>
+<p>二、 卸载erlang</p>
+<ol>
+<li>yum list | grep erlang</li>
+<li>yum -y remove erlang-*</li>
+</ol>
+<p>三、 删除有关的所有文件</p>
+<p>rm -rf /usr/lib64/erlang<br>
+rm -rf /var/lib/rabbitmq<br>
+rm -rf /usr/local/erlang<br>
+rm -rf /usr/local/rabbitmq</p>
+<h1>参考地址：</h1>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/shishishilove/article/details/122086399">https://blog.csdn.net/shishishilove/article/details/122086399</a></p>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Rabbitmq</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/基础服务//" class="article-tag-list-link color5">基础服务</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/基础服务/消息总线//" class="article-tag-list-link color5">消息总线</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2023/03/23/Centos%20%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85Rabbitmq/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-数据结构-数组和链表" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2023/03/23/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%95%B0%E7%BB%84%E5%92%8C%E9%93%BE%E8%A1%A8/" target="_blank">数组和链表对比</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2023/03/23/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%95%B0%E7%BB%84%E5%92%8C%E9%93%BE%E8%A1%A8/" class="archive-article-date">
+        <time datetime="2023-03-23T05:34:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-23</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>数组的特点是在内存中地址是连续的，所以在随机访问一个数组中的地址的时间复杂度是O(1),寻址公式大概是：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">	</span><br><span class="line"><span class="type">int</span> a[<span class="number">3</span>] = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;;</span><br><span class="line"></span><br><span class="line">a[i]_address = begin_address + i * data_type_size</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> a[<span class="number">3</span>][<span class="number">2</span>] = &#123;&#123;<span class="number">1</span>,<span class="number">2</span>&#125;,&#123;<span class="number">6</span>,<span class="number">7</span>&#125;,&#123;<span class="number">3</span>,<span class="number">5</span>&#125;&#125;;</span><br><span class="line"></span><br><span class="line">address = begin_address + ( i * n + j) * data_type_size</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>数组由于对内存的要求比较苛刻，带来的一个问题就是低效的“插入”和“删除”，在做数据的插入和删除的时候要频繁的进行数据的迁移。对于数组的动态扩容策略的实现可以参考redis的字符串底层实现原理或者java中的arrayList&lt;&gt;.</p>
+    
+    <a class="article-more-a" href="/2023/03/23/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%95%B0%E7%BB%84%E5%92%8C%E9%93%BE%E8%A1%A8/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Hashtable</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Linklist</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/数据结构//" class="article-tag-list-link color5">数据结构</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/数据结构/哈希//" class="article-tag-list-link color3">哈希</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2023/03/23/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%95%B0%E7%BB%84%E5%92%8C%E9%93%BE%E8%A1%A8/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-内存字节对齐" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -655,6 +1028,22 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">内存</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hashtable</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Rabbitmq</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Hashtable</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Linklist</a>
               </li>
             
             <div class="clearfix"></div>
