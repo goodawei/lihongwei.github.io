@@ -6,7 +6,7 @@
   <link href="https://blog.chuangketime.com/atom.xml" rel="self"/>
   
   <link href="https://blog.chuangketime.com/"/>
-  <updated>2023-03-24T06:54:23.189Z</updated>
+  <updated>2023-03-24T07:40:55.237Z</updated>
   <id>https://blog.chuangketime.com/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>OpenResty的一个非常有用的多级缓存库</title>
+    <link href="https://blog.chuangketime.com/2023/03/24/Lua-resty-mlcache%E5%BA%93/"/>
+    <id>https://blog.chuangketime.com/2023/03/24/Lua-resty-mlcache%E5%BA%93/</id>
+    <published>2023-03-24T05:34:15.000Z</published>
+    <updated>2023-03-24T07:40:55.237Z</updated>
+    
+    <content type="html"><![CDATA[<p>OpenResty 中有两个缓存的组件：shared dict 缓存和 lru 缓存。前者只能缓存字符串对象，缓存的数据有且只有一份，每一个 worker 都可以进行访问，所以常用于 worker 之间的数据通信,同时还支持对过期的数据进行访问获取。后者则可以缓存所有的 Lua 对象，但只能在单个 worker 进程内访问，有多少个 worker，就会有多少份缓存数据。</p><h4 id="lua-resty-mlcache"><a class="header-anchor" href="#lua-resty-mlcache">¶</a>lua-resty-mlcache</h4><p>这个库可以作为 key/value存储来处理，也可以缓存Lua类型和表，构建在lua_shared_dict，lua-resty-lrucache上 ，这种组合可以实现高性能和灵活的缓存。</p><span id="more"></span><p>功能：</p><ul><li>使用TTL缓存和负缓存，</li><li>通过lua-resty-lock构建互斥体，以防止在缓存失败时将狗堆影响到数据库/后端，</li><li>内置worker通信，传播缓存失效，并允许worker更新他们的L1 (lua-resty-lrucache )缓存的更改(set()，delete() )，</li><li>可以创建多个独立实例来保存各种类型的数据，同时依赖同一lua_shared_dict L2缓存，</li></ul><p>此库中内置的各种缓存级别的说明，引用官方图片说明。</p><p><img src="http://cdn.chuangketime.com/lua-resty-lrucache.jpg" alt="lrucache1"></p><p><img src="http://cdn.chuangketime.com/lua-resty-lrucache.jpg" alt="lrucache2"></p><p>缓存级别层次结构为：</p><ul><li><p>L1 ：使用Least-Recently-Used land缓存lua-resty-lrucache ，在填充时提供最快的查找，并避免耗尽worker的Lua虚拟机内存，</p></li><li><p>L2 ：所有员工共享的lua_shared_dict内存区域，只有L1未命中时才能访问此级别，并防止工作人员请求L3缓存，</p></li><li><p>L3 ：自定义函数，只由单个worker运行，以避免数据库/后端(通过lua-resty-lock )上的狗堆效应，通过L3获取的值将被设置为L2缓存，供其他员工访问，</p></li></ul>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;OpenResty 中有两个缓存的组件：shared dict 缓存和 lru 缓存。前者只能缓存字符串对象，缓存的数据有且只有一份，每一个 worker 都可以进行访问，所以常用于 worker 之间的数据通信,同时还支持对过期的数据进行访问获取。后者则可以缓存所有的 Lua 对象，但只能在单个 worker 进程内访问，有多少个 worker，就会有多少份缓存数据。&lt;/p&gt;
+&lt;h4 id=&quot;lua-resty-mlcache&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#lua-resty-mlcache&quot;&gt;¶&lt;/a&gt;lua-resty-mlcache&lt;/h4&gt;
+&lt;p&gt;这个库可以作为 key/value存储来处理，也可以缓存Lua类型和表，构建在lua_shared_dict，lua-resty-lrucache上 ，这种组合可以实现高性能和灵活的缓存。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="基础服务" scheme="https://blog.chuangketime.com/categories/%E5%9F%BA%E7%A1%80%E6%9C%8D%E5%8A%A1/"/>
+    
+    <category term="网关" scheme="https://blog.chuangketime.com/categories/%E5%9F%BA%E7%A1%80%E6%9C%8D%E5%8A%A1/%E7%BD%91%E5%85%B3/"/>
+    
+    
+    <category term="OpenResty" scheme="https://blog.chuangketime.com/tags/OpenResty/"/>
+    
+    <category term="lua" scheme="https://blog.chuangketime.com/tags/lua/"/>
+    
+  </entry>
   
   <entry>
     <title>人工智能的发展历史</title>

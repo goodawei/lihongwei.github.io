@@ -223,6 +223,115 @@
             
 
   
+    <article id="post-Lua-resty-mlcache库" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2023/03/24/Lua-resty-mlcache%E5%BA%93/" target="_blank">OpenResty的一个非常有用的多级缓存库</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/2023/03/24/Lua-resty-mlcache%E5%BA%93/" class="archive-article-date">
+        <time datetime="2023-03-24T05:34:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-24</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>OpenResty 中有两个缓存的组件：shared dict 缓存和 lru 缓存。前者只能缓存字符串对象，缓存的数据有且只有一份，每一个 worker 都可以进行访问，所以常用于 worker 之间的数据通信,同时还支持对过期的数据进行访问获取。后者则可以缓存所有的 Lua 对象，但只能在单个 worker 进程内访问，有多少个 worker，就会有多少份缓存数据。</p>
+<h4 id="lua-resty-mlcache"><a class="header-anchor" href="#lua-resty-mlcache">¶</a>lua-resty-mlcache</h4>
+<p>这个库可以作为 key/value存储来处理，也可以缓存Lua类型和表，构建在lua_shared_dict，lua-resty-lrucache上 ，这种组合可以实现高性能和灵活的缓存。</p>
+    
+    <a class="article-more-a" href="/2023/03/24/Lua-resty-mlcache%E5%BA%93/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">OpenResty</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">lua</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/基础服务//" class="article-tag-list-link color5">基础服务</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/基础服务/网关//" class="article-tag-list-link color3">网关</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2023/03/24/Lua-resty-mlcache%E5%BA%93/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="posts-AI人工智能发展历史" class="article article-type-posts  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1121,6 +1230,14 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Linklist</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">OpenResty</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">lua</a>
               </li>
             
             <div class="clearfix"></div>
