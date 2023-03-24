@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>人工智能基础理论-线性代数</title>
+    <title>人工智能基础理论-线性空间理论</title>
     <url>/2023/03/23/AI%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/</url>
     <content><![CDATA[]]></content>
       <categories>
         <category>AI</category>
         <category>基础理论</category>
-        <category>算法导论</category>
+        <category>线性代数</category>
+        <category>线性空间</category>
       </categories>
       <tags>
         <tag>AI</tag>

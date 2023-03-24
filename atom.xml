@@ -126,11 +126,11 @@
   </entry>
   
   <entry>
-    <title>人工智能基础理论-线性代数</title>
+    <title>人工智能基础理论-线性空间理论</title>
     <link href="https://blog.chuangketime.com/2023/03/23/AI%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/"/>
     <id>https://blog.chuangketime.com/2023/03/23/AI%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/</id>
     <published>2023-03-23T00:44:37.000Z</published>
-    <updated>2023-03-23T09:14:53.214Z</updated>
+    <updated>2023-03-24T02:21:49.812Z</updated>
     
     
     
@@ -139,7 +139,9 @@
     
     <category term="基础理论" scheme="https://blog.chuangketime.com/categories/AI/%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA/"/>
     
-    <category term="算法导论" scheme="https://blog.chuangketime.com/categories/AI/%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA/"/>
+    <category term="线性代数" scheme="https://blog.chuangketime.com/categories/AI/%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/"/>
+    
+    <category term="线性空间" scheme="https://blog.chuangketime.com/categories/AI/%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/%E7%BA%BF%E6%80%A7%E7%A9%BA%E9%97%B4/"/>
     
     
     <category term="AI" scheme="https://blog.chuangketime.com/tags/AI/"/>
