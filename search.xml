@@ -297,7 +297,7 @@ rm -rf /usr/local/rabbitmq</p>
 </ul>
 <p>此库中内置的各种缓存级别的说明，引用官方图片说明。</p>
 <p><img src="http://cdn.chuangketime.com/lua-resty-lrucache.jpg" alt="lrucache1"></p>
-<p><img src="http://cdn.chuangketime.com/lua-resty-lrucache.jpg" alt="lrucache2"></p>
+<p><img src="https://cdn.chuangketime.com/lua-resty-mlcache.png" alt="lrucache2"></p>
 <p>缓存级别层次结构为：</p>
 <ul>
 <li>
