@@ -6,7 +6,7 @@
   <link href="https://blog.chuangketime.com/atom.xml" rel="self"/>
   
   <link href="https://blog.chuangketime.com/"/>
-  <updated>2023-03-23T09:41:57.446Z</updated>
+  <updated>2023-03-24T02:14:00.244Z</updated>
   <id>https://blog.chuangketime.com/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>人工智能的发展历史</title>
+    <link href="https://blog.chuangketime.com/2023/03/24/AI%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%8F%91%E5%B1%95%E5%8E%86%E5%8F%B2/"/>
+    <id>https://blog.chuangketime.com/2023/03/24/AI%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%8F%91%E5%B1%95%E5%8E%86%E5%8F%B2/</id>
+    <published>2023-03-24T00:44:37.000Z</published>
+    <updated>2023-03-24T02:14:00.244Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="https://cdn.chuangketime.com/AI/chatgpt-test.gif" alt="gpt-test"></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://cdn.chuangketime.com/AI/chatgpt-test.gif&quot; alt=&quot;gpt-test&quot;&gt;&lt;/p&gt;
+</summary>
+      
+    
+    
+    
+    <category term="AI" scheme="https://blog.chuangketime.com/categories/AI/"/>
+    
+    <category term="发展史" scheme="https://blog.chuangketime.com/categories/AI/%E5%8F%91%E5%B1%95%E5%8F%B2/"/>
+    
+    
+    <category term="AI" scheme="https://blog.chuangketime.com/tags/AI/"/>
+    
+  </entry>
   
   <entry>
     <title>Centos环境下安装Rabbitmq步骤</title>
@@ -99,27 +126,6 @@
   </entry>
   
   <entry>
-    <title>人工智能基础理论-数据公式</title>
-    <link href="https://blog.chuangketime.com/2023/03/23/AI%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA-%E6%95%B0%E6%8D%AE%E5%85%AC%E5%BC%8F/"/>
-    <id>https://blog.chuangketime.com/2023/03/23/AI%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA-%E6%95%B0%E6%8D%AE%E5%85%AC%E5%BC%8F/</id>
-    <published>2023-03-23T00:44:37.000Z</published>
-    <updated>2023-03-23T09:15:04.134Z</updated>
-    
-    
-    
-    
-    <category term="AI" scheme="https://blog.chuangketime.com/categories/AI/"/>
-    
-    <category term="基础理论" scheme="https://blog.chuangketime.com/categories/AI/%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA/"/>
-    
-    <category term="数学基础" scheme="https://blog.chuangketime.com/categories/AI/%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/"/>
-    
-    
-    <category term="AI" scheme="https://blog.chuangketime.com/tags/AI/"/>
-    
-  </entry>
-  
-  <entry>
     <title>人工智能基础理论-线性代数</title>
     <link href="https://blog.chuangketime.com/2023/03/23/AI%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/"/>
     <id>https://blog.chuangketime.com/2023/03/23/AI%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/</id>
@@ -134,6 +140,27 @@
     <category term="基础理论" scheme="https://blog.chuangketime.com/categories/AI/%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA/"/>
     
     <category term="算法导论" scheme="https://blog.chuangketime.com/categories/AI/%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA/"/>
+    
+    
+    <category term="AI" scheme="https://blog.chuangketime.com/tags/AI/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>人工智能基础理论-数学公式</title>
+    <link href="https://blog.chuangketime.com/2023/03/23/AI%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA-%E6%95%B0%E6%8D%AE%E5%85%AC%E5%BC%8F/"/>
+    <id>https://blog.chuangketime.com/2023/03/23/AI%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA-%E6%95%B0%E6%8D%AE%E5%85%AC%E5%BC%8F/</id>
+    <published>2023-03-23T00:44:37.000Z</published>
+    <updated>2023-03-24T02:11:03.529Z</updated>
+    
+    
+    
+    
+    <category term="AI" scheme="https://blog.chuangketime.com/categories/AI/"/>
+    
+    <category term="基础理论" scheme="https://blog.chuangketime.com/categories/AI/%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA/"/>
+    
+    <category term="数学基础" scheme="https://blog.chuangketime.com/categories/AI/%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/"/>
     
     
     <category term="AI" scheme="https://blog.chuangketime.com/tags/AI/"/>

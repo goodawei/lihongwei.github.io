@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>人工智能基础理论-数据公式</title>
+    <title>人工智能基础理论-线性代数</title>
+    <url>/2023/03/23/AI%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>AI</category>
+        <category>基础理论</category>
+        <category>算法导论</category>
+      </categories>
+      <tags>
+        <tag>AI</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>人工智能基础理论-数学公式</title>
     <url>/2023/03/23/AI%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA-%E6%95%B0%E6%8D%AE%E5%85%AC%E5%BC%8F/</url>
     <content><![CDATA[]]></content>
       <categories>
@@ -110,19 +123,6 @@ rm -rf /usr/local/rabbitmq</p>
       </tags>
   </entry>
   <entry>
-    <title>人工智能基础理论-线性代数</title>
-    <url>/2023/03/23/AI%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>AI</category>
-        <category>基础理论</category>
-        <category>算法导论</category>
-      </categories>
-      <tags>
-        <tag>AI</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>哈希表数据结构</title>
     <url>/2023/03/23/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%93%88%E5%B8%8C%E8%A1%A8/</url>
     <content><![CDATA[<blockquote class="blockquote-center">
@@ -169,6 +169,19 @@ rm -rf /usr/local/rabbitmq</p>
       <tags>
         <tag>Hashtable</tag>
         <tag>Linklist</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>人工智能的发展历史</title>
+    <url>/2023/03/24/AI%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%8F%91%E5%B1%95%E5%8E%86%E5%8F%B2/</url>
+    <content><![CDATA[<p><img src="https://cdn.chuangketime.com/AI/chatgpt-test.gif" alt="gpt-test"></p>
+]]></content>
+      <categories>
+        <category>AI</category>
+        <category>发展史</category>
+      </categories>
+      <tags>
+        <tag>AI</tag>
       </tags>
   </entry>
 </search>

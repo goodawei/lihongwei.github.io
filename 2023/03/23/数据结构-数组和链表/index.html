@@ -421,8 +421,8 @@
     </a>
   
   
-    <a href="/2023/03/23/AI%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA-%E6%95%B0%E6%8D%AE%E5%85%AC%E5%BC%8F/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">人工智能基础理论-数据公式</div>
+    <a href="/2023/03/23/AI%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">人工智能基础理论-线性代数</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -784,6 +784,20 @@ gitalk.render('gitalk-container')
   <!-- <script async type="text/javascript" size="90" alpha="0.2" zIndex="0" src="/plugins/ribbon.js/ribbon.min.js"></script> -->
   
   
+  
+  <script type="text/javascript" src="/lib/snow.js"></script>
+  <script type="text/javascript" src="/lib/jquery-2.1.4.min.js"></script>
+  <!-- 代码块复制功能 -->
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
+  <script type="text/javascript" src="/clipboard_use.js"></script>
+
+  <script>
+    snow.down();
+    $(window).resize(function() {
+      $("canvas").css("z-index","500").remove();
+      snow.down();
+    });
+  </script>
   
 </body>
 
