@@ -213,6 +213,135 @@
             
 
   
+    <article id="post-Python Django 框架安装使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/blog/2023/03/29/Python%20Django%20%E6%A1%86%E6%9E%B6%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/" target="_blank">Python Django 框架安装使用</a>
+  
+    </h1>
+  
+
+
+  
+  
+<a href="/blog/2023/03/29/Python%20Django%20%E6%A1%86%E6%9E%B6%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/" class="archive-article-date">
+        <time datetime="2023-03-29T05:51:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-29</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h3 id="准备python环境"><a class="header-anchor" href="#准备python环境">¶</a>准备python环境</h3>
+<ol>
+<li>用brew安装</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install python3</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>
+<p>查看bin目录位置</p>
+<ul>
+<li>brew 安装后的软件通常会在 /usr/local/bin有指向/usr/local/Cellar相对应软件的软连，而/usr/local/bin 通常情况下已经在你的环境变量中，如果你的系统没有其他版本的python的话，直接使用即可。</li>
+<li>由于mac系统下可能会存在其他版本的python.如果启用自定义安装的版本需要覆盖掉默认的版本，可以配置环境变量 ~/.bash_profile 或 ~/.zshrc 配置你的别名指向位置</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">alias python=&quot;/usr/local/bin/python3.9&quot;</span><br><span class="line">alias pip=/usr/local/bin/pip3.9</span><br></pre></td></tr></table></figure>
+<h3 id="安装-django"><a class="header-anchor" href="#安装-django">¶</a>安装 django</h3>
+<p>pip install --upgrade pip</p>
+<p>python -m pip install Django</p>
+<p>pip install mysqlclient  #mac 使用mysqlclient 需要找到libmysqlclient.21.dylib路径并导入环境变量 e.g export LD_LIBRARY_PATH=/usr/local/mysql-8.0.22-macos10.15-x86_64/lib/</p>
+<p>pip install pytz</p>
+<p>pip install djangorestframework  # see: <a target="_blank" rel="noopener" href="https://www.django-rest-framework.org/">https://www.django-rest-framework.org/</a></p>
+<p>pycharm install djangorestframework</p>
+<h3 id="体验"><a class="header-anchor" href="#体验">¶</a>体验</h3>
+<pre><code>todo 
+</code></pre>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">django</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/blog/categories/计算机语言//" class="article-tag-list-link color1">计算机语言</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/blog/categories/计算机语言/python//" class="article-tag-list-link color2">python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/blog/2023/03/29/Python%20Django%20%E6%A1%86%E6%9E%B6%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Lua-resty-mlcache库" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -353,18 +482,6 @@
     
     <p><img src="https://cdn.chuangketime.com/AI/chatgpt-demo.gif" alt="gpt-demo"></p>
 <p>上面是最近一直比较🔥聊天机器人chatgpt的一个小测试，在人工智能领域这个概念早在1950年就被英国著名计算机科学家图灵提出了，1950年图灵提出了一个概念说机器能不能像人一样思考，并且他还针对自己提出的概念提出了一个测试方法也就是后来被称为的图灵测试，就是说在一个相对隔离的环境下一个人向对面的一台机器提问如果得到的回答他不能区分出到底是人还是机器，或者有30%的概率他相信是一个人的话，就说明这台机器通过了图灵测试，是不是和最近人工智能领域的chartgpt很像呢，但是呢图灵当时还有一个大胆的预测说是在大概2000年左右的时候,人类的人工智能就能达到这种水平，但是呢人工智能的发展也经历了几次低谷，下面我们来看一下人工智能的发展历史。</p>
-<p><img src="https://cdn.chuangketime.com/AI/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%8F%91%E5%B1%95%E5%8E%86%E5%8F%B2%E8%BD%A8%E8%BF%B9%E5%9B%BE.png" alt="AI-history"></p>
-<h2 id="孕育期（-1956-年以前）"><a class="header-anchor" href="#孕育期（-1956-年以前）">¶</a>孕育期（ 1956 年以前）</h2>
-<h3 id="数理逻辑-符号主义学派"><a class="header-anchor" href="#数理逻辑-符号主义学派">¶</a>数理逻辑-符号主义学派</h3>
-<ul>
-<li>
-<p>在数理逻辑初创期，亚里斯多德（公元前 384 一 322 ，古希腊伟大的哲学家和科学家），创立<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%BC%94%E7%BB%8E%E6%8E%A8%E7%90%86">演绎法</a>，提出了演绎推理的一般原则-三段论</p>
-</li>
-<li>
-<p>在逻辑代数时期，莱布尼茨（1646 一 1716 ，德国数学家和哲学家）把形式逻辑符号化，奠定了数理逻辑的基础。</p>
-</li>
-</ul>
-<h3 id="人工神经网络-连接主义学派"><a class="header-anchor" href="#人工神经网络-连接主义学派">¶</a>人工神经网络-连接主义学派</h3>
     
     <a class="article-more-a" href="/blog/2023/03/24/AI%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%8F%91%E5%B1%95%E5%8E%86%E5%8F%B2/#more">more >></a>
     
@@ -1228,6 +1345,14 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Linklist</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">django</a>
               </li>
             
             <div class="clearfix"></div>

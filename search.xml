@@ -18,6 +18,7 @@
     <url>/blog/2023/03/24/AI%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%8F%91%E5%B1%95%E5%8E%86%E5%8F%B2/</url>
     <content><![CDATA[<p><img src="https://cdn.chuangketime.com/AI/chatgpt-demo.gif" alt="gpt-demo"></p>
 <p>上面是最近一直比较🔥聊天机器人chatgpt的一个小测试，在人工智能领域这个概念早在1950年就被英国著名计算机科学家图灵提出了，1950年图灵提出了一个概念说机器能不能像人一样思考，并且他还针对自己提出的概念提出了一个测试方法也就是后来被称为的图灵测试，就是说在一个相对隔离的环境下一个人向对面的一台机器提问如果得到的回答他不能区分出到底是人还是机器，或者有30%的概率他相信是一个人的话，就说明这台机器通过了图灵测试，是不是和最近人工智能领域的chartgpt很像呢，但是呢图灵当时还有一个大胆的预测说是在大概2000年左右的时候,人类的人工智能就能达到这种水平，但是呢人工智能的发展也经历了几次低谷，下面我们来看一下人工智能的发展历史。</p>
+<span id="more"></span>
 <p><img src="https://cdn.chuangketime.com/AI/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%8F%91%E5%B1%95%E5%8E%86%E5%8F%B2%E8%BD%A8%E8%BF%B9%E5%9B%BE.png" alt="AI-history"></p>
 <h2 id="孕育期（-1956-年以前）"><a class="header-anchor" href="#孕育期（-1956-年以前）">¶</a>孕育期（ 1956 年以前）</h2>
 <h3 id="数理逻辑-符号主义学派"><a class="header-anchor" href="#数理逻辑-符号主义学派">¶</a>数理逻辑-符号主义学派</h3>
@@ -30,7 +31,6 @@
 </li>
 </ul>
 <h3 id="人工神经网络-连接主义学派"><a class="header-anchor" href="#人工神经网络-连接主义学派">¶</a>人工神经网络-连接主义学派</h3>
-<span id="more"></span>
 <ul>
 <li>1890 年美国生物学家詹姆士首次阐明人脑的结构及功能，及记忆、学习、联想相关功能的规律。</li>
 <li>1943 年美国神经生理学家麦克洛奇和皮兹建成第一个神经网络模型 <a href="https://baike.baidu.com/item/%E9%BA%A6%E5%8D%A1%E6%B4%9B%E5%85%8B%E4%B8%80%E5%8C%B9%E5%85%B9%E6%A8%A1%E5%9E%8B">MP 模型</a>。</li>
@@ -318,6 +318,44 @@ rm -rf /usr/local/rabbitmq</p>
       <tags>
         <tag>Hashtable</tag>
         <tag>Linklist</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python Django 框架安装使用</title>
+    <url>/blog/2023/03/29/Python%20Django%20%E6%A1%86%E6%9E%B6%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<h3 id="准备python环境"><a class="header-anchor" href="#准备python环境">¶</a>准备python环境</h3>
+<ol>
+<li>用brew安装</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">brew install python3</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>
+<p>查看bin目录位置</p>
+<ul>
+<li>brew 安装后的软件通常会在 /usr/local/bin有指向/usr/local/Cellar相对应软件的软连，而/usr/local/bin 通常情况下已经在你的环境变量中，如果你的系统没有其他版本的python的话，直接使用即可。</li>
+<li>由于mac系统下可能会存在其他版本的python.如果启用自定义安装的版本需要覆盖掉默认的版本，可以配置环境变量 ~/.bash_profile 或 ~/.zshrc 配置你的别名指向位置</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">alias python=&quot;/usr/local/bin/python3.9&quot;</span><br><span class="line">alias pip=/usr/local/bin/pip3.9</span><br></pre></td></tr></table></figure>
+<h3 id="安装-django"><a class="header-anchor" href="#安装-django">¶</a>安装 django</h3>
+<p>pip install --upgrade pip</p>
+<p>python -m pip install Django</p>
+<p>pip install mysqlclient  #mac 使用mysqlclient 需要找到libmysqlclient.21.dylib路径并导入环境变量 e.g export LD_LIBRARY_PATH=/usr/local/mysql-8.0.22-macos10.15-x86_64/lib/</p>
+<p>pip install pytz</p>
+<p>pip install djangorestframework  # see: <a href="https://www.django-rest-framework.org/">https://www.django-rest-framework.org/</a></p>
+<p>pycharm install djangorestframework</p>
+<h3 id="体验"><a class="header-anchor" href="#体验">¶</a>体验</h3>
+<pre><code>todo 
+</code></pre>
+]]></content>
+      <categories>
+        <category>计算机语言</category>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+        <tag>django</tag>
       </tags>
   </entry>
 </search>
