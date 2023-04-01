@@ -1,21 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>人工智能基础理论-数学公式</title>
-    <url>/blog/2022/03/23/AI%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA-%E6%95%B0%E6%8D%AE%E5%85%AC%E5%BC%8F/</url>
-    <content><![CDATA[<h3 id="求和"><a href="#求和" class="headerlink" title="求和"></a>求和</h3><h3 id="方差"><a href="#方差" class="headerlink" title="方差"></a>方差</h3><h3 id="对数"><a href="#对数" class="headerlink" title="对数"></a>对数</h3><h3 id="公式"><a href="#公式" class="headerlink" title="公式"></a>公式</h3><script type="math/tex; mode=display">f(x)=\frac{1}{1+e^{x}}</script><p>$x^p_ {ij}$</p>
-<p>$x_ {ij}$</p>
-]]></content>
-      <categories>
-        <category>AI</category>
-        <category>基础理论</category>
-        <category>数学基础</category>
-      </categories>
-      <tags>
-        <tag>AI</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>人工智能的发展历史</title>
     <url>/blog/2023/03/24/AI%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%8F%91%E5%B1%95%E5%8E%86%E5%8F%B2/</url>
     <content><![CDATA[<p><img src="https://cdn.chuangketime.com/AI/chatgpt-demo.gif" alt="gpt-demo"></p>
@@ -111,6 +96,56 @@
     <title>向量点乘与叉乘的几何意义</title>
     <url>/blog/2023/03/01/AI%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA-%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-%E5%90%91%E9%87%8F%E4%B9%98%E7%A7%AF%E7%9A%84%E6%84%8F%E4%B9%89/</url>
     <content><![CDATA[<h3 id="向量的点乘-（叉乘）"><a href="#向量的点乘-（叉乘）" class="headerlink" title="向量的点乘 （叉乘）"></a>向量的点乘 （叉乘）</h3>]]></content>
+      <categories>
+        <category>AI</category>
+        <category>基础理论</category>
+        <category>线性代数</category>
+        <category>线性空间</category>
+      </categories>
+      <tags>
+        <tag>AI</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>人工智能基础理论-数学公式</title>
+    <url>/blog/2022/03/23/AI%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA-%E6%95%B0%E6%8D%AE%E5%85%AC%E5%BC%8F/</url>
+    <content><![CDATA[<h3 id="求和"><a href="#求和" class="headerlink" title="求和"></a>求和</h3><h3 id="方差"><a href="#方差" class="headerlink" title="方差"></a>方差</h3><h3 id="对数"><a href="#对数" class="headerlink" title="对数"></a>对数</h3><h3 id="公式"><a href="#公式" class="headerlink" title="公式"></a>公式</h3><script type="math/tex; mode=display">f(x)=\frac{1}{1+e^{x}}</script><p>$x^p_ {ij}$</p>
+<p>$x_ {ij}$</p>
+]]></content>
+      <categories>
+        <category>AI</category>
+        <category>基础理论</category>
+        <category>数学基础</category>
+      </categories>
+      <tags>
+        <tag>AI</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>人工智能基础理论-线性代数-矩阵</title>
+    <url>/blog/2023/04/01/AI%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA-%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-%E7%9F%A9%E9%98%B5/</url>
+    <content><![CDATA[<h2 id="理解-标量、向量、矩阵、张量"><a href="#理解-标量、向量、矩阵、张量" class="headerlink" title="理解 标量、向量、矩阵、张量"></a>理解 标量、向量、矩阵、张量</h2><h3 id="标量"><a href="#标量" class="headerlink" title="标量"></a>标量</h3><p>万事万物都可以抽象为具有某些特征的组合，这些组合可以理解为是一个集合set,集合是线性代数最基本的一个概念，集合是由具有某些特征的对象汇聚的集体，</p>
+<h3 id="向量"><a href="#向量" class="headerlink" title="向量"></a>向量</h3><p>上面说集合是由具有某些特征的标量组成的，e.g  a<sub>1</sub>  a<sub>2</sub> a<sub>3</sub> a<sub>n</sub>那么 （a<sub>1</sub>….a<sub>n</sub>） 就构成了一个维度上的向量。向量不但有大小还有方向，方向代表了它的一个维度，标量只有大小没有方向。</p>
+<p>向量带来了维度的增加，是数据分析转化的最基本元素,通常数据的每一个属性代表着一个维度。每个属性值在多维的空间里都有一个确定的点。</p>
+<span id="more"></span>
+<h3 id="矩阵"><a href="#矩阵" class="headerlink" title="矩阵"></a>矩阵</h3><p>向量描述了事物属性的维度和大小，那么当一个集合里有多组向量时，就代表着有多个维度和大小的特征向量描述着这个集合，</p>
+<p>e.g: t 时刻下每种油品账户的余额 矩阵</p>
+<script type="math/tex; mode=display">
+ \left\{
+ \begin{matrix}
+   a_{t1柴油} & a_{t1汽油} & a_{t1然气 } \\
+   a_{t2柴油} & a_{t2汽油} & a_{t2然气 } \\
+   a_{t3柴油} & a_{t3汽油} & a_{t3然气 }
+  \end{matrix}
+  \right\}</script><p>数据矩阵表现形式</p>
+<script type="math/tex; mode=display">
+ \left\{
+ \begin{matrix}
+   a_{11} & a_{12} & a_{13} \\
+   a_{21} & a_{22} & a_{23} \\
+   a_{31} & a_{32} & a_{33}
+  \end{matrix}
+  \right\}</script><h3 id="张量"><a href="#张量" class="headerlink" title="张量"></a>张量</h3>]]></content>
       <categories>
         <category>AI</category>
         <category>基础理论</category>
@@ -274,41 +309,6 @@
       </categories>
       <tags>
         <tag>内存</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>人工智能基础理论-线性空间理论</title>
-    <url>/blog/2023/04/01/AI%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA-%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-%E7%9F%A9%E9%98%B5/</url>
-    <content><![CDATA[<h2 id="理解-标量、向量、矩阵、张量"><a href="#理解-标量、向量、矩阵、张量" class="headerlink" title="理解 标量、向量、矩阵、张量"></a>理解 标量、向量、矩阵、张量</h2><h3 id="标量"><a href="#标量" class="headerlink" title="标量"></a>标量</h3><p>万事万物都可以抽象为具有某些特征的组合，这些组合可以理解为是一个集合set,集合是线性代数最基本的一个概念，集合是由具有某些特征的对象汇聚的集体，</p>
-<h3 id="向量"><a href="#向量" class="headerlink" title="向量"></a>向量</h3><p>上面说集合是由具有某些特征的标量组成的，e.g  a<sub>11</sub>  a<sub>2</sub> a<sub>3</sub> a<sub>n</sub>那么 （a<sub>1</sub>….a<sub>n</sub>） 就构成了一个维度上的向量。向量不但有大小还有方向，方向代表了它的一个维度，标量只有大小没有方向。</p>
-<p>向量带来了维度的增加，是数据分析转化的最基本元素,通常数据的每一个属性代表着一个维度。每个属性值在多维的空间里都有一个确定的点。</p>
-<span id="more"></span>
-<h3 id="矩阵"><a href="#矩阵" class="headerlink" title="矩阵"></a>矩阵</h3><p>向量描述了事物属性的维度和大小，那么当一个集合里有多组向量时，就代表着有多个维度和大小的特征向量描述着这个集合，</p>
-<p>e.g: t 时刻下每种油品账户的余额 矩阵</p>
-<script type="math/tex; mode=display">
- \left\{
- \begin{matrix}
-   a_{t1柴油} & a_{t1汽油} & a_{t1然气 } \\
-   a_{t2柴油} & a_{t2汽油} & a_{t2然气 } \\
-   a_{t3柴油} & a_{t3汽油} & a_{t3然气 }
-  \end{matrix}
-  \right\}</script><p>数据矩阵表现形式</p>
-<script type="math/tex; mode=display">
- \left\{
- \begin{matrix}
-   a_{11} & a_{12} & a_{13} \\
-   a_{21} & a_{22} & a_{23} \\
-   a_{31} & a_{32} & a_{33}
-  \end{matrix}
-  \right\}</script><h3 id="张量"><a href="#张量" class="headerlink" title="张量"></a>张量</h3>]]></content>
-      <categories>
-        <category>AI</category>
-        <category>基础理论</category>
-        <category>线性代数</category>
-        <category>线性空间</category>
-      </categories>
-      <tags>
-        <tag>AI</tag>
       </tags>
   </entry>
   <entry>
