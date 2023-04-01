@@ -6,21 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://blog.chuangketime.com">
-  <title>tags | AI Begining</title>
+  <title>人工智能基础理论-线性空间理论 | AI Begining</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="AI、机器学习、深度学习">
-<meta property="og:type" content="website">
-<meta property="og:title" content="tags">
-<meta property="og:url" content="https://blog.chuangketime.com/tags/index.html">
+  <meta name="description" content="理解 标量、向量、矩阵、张量标量万事万物都可以抽象为具有某些特征的组合，这些组合可以理解为是一个集合set,集合是线性代数最基本的一个概念，集合是由具有某些特征的对象汇聚的集体， 向量上面说集合是由具有某些特征的标量组成的，e.g  a11  a2 a3 an那么 （a1….an） 就构成了一个维度上的向量。向量不但有大小还有方向，方向代表了它的一个维度，标量只有大小没有方向。 向量带来了维度的增">
+<meta property="og:type" content="article">
+<meta property="og:title" content="人工智能基础理论-线性空间理论">
+<meta property="og:url" content="https://blog.chuangketime.com/2023/04/01/AI%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA-%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-%E7%9F%A9%E9%98%B5/index.html">
 <meta property="og:site_name" content="AI Begining">
-<meta property="og:description" content="AI、机器学习、深度学习">
+<meta property="og:description" content="理解 标量、向量、矩阵、张量标量万事万物都可以抽象为具有某些特征的组合，这些组合可以理解为是一个集合set,集合是线性代数最基本的一个概念，集合是由具有某些特征的对象汇聚的集体， 向量上面说集合是由具有某些特征的标量组成的，e.g  a11  a2 a3 an那么 （a1….an） 就构成了一个维度上的向量。向量不但有大小还有方向，方向代表了它的一个维度，标量只有大小没有方向。 向量带来了维度的增">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-03-22T10:18:16.000Z">
-<meta property="article:modified_time" content="2023-03-23T08:27:19.439Z">
+<meta property="article:published_time" content="2023-04-01T00:44:37.000Z">
+<meta property="article:modified_time" content="2023-04-01T07:55:05.116Z">
 <meta property="article:author" content="李宏伟">
-<meta property="article:tag" content="人工智能、AI、机器学习、深度学习 Deep Learing">
+<meta property="article:tag" content="AI">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/blog/atom.xml" title="AI Begining" type="application/atom+xml">
@@ -208,14 +208,14 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="page-" class="article article-type-page " itemscope itemprop="blogPost">
+            <article id="posts-AI基础理论-线性代数-矩阵" class="article article-type-posts " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
   
   
     <h1 class="article-title" itemprop="name">
-      tags
+      人工智能基础理论-线性空间理论
     </h1>
   
 
@@ -227,8 +227,8 @@
               <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
         </span>
 
-<a href="/blog/tags/index.html" class="archive-article-date">
-        <time datetime="2023-03-22T10:18:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-22</time>
+<a href="/blog/2023/04/01/AI%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA-%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-%E7%9F%A9%E9%98%B5/" class="archive-article-date">
+        <time datetime="2023-04-01T00:44:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-01</time>
 </a>
 
   
@@ -241,7 +241,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">0字</span>
+      <span class="post-count">362字</span>
     </span>
   </span>
 
@@ -261,7 +261,27 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    
+    <h2 id="理解-标量、向量、矩阵、张量"><a href="#理解-标量、向量、矩阵、张量" class="headerlink" title="理解 标量、向量、矩阵、张量"></a>理解 标量、向量、矩阵、张量</h2><h3 id="标量"><a href="#标量" class="headerlink" title="标量"></a>标量</h3><p>万事万物都可以抽象为具有某些特征的组合，这些组合可以理解为是一个集合set,集合是线性代数最基本的一个概念，集合是由具有某些特征的对象汇聚的集体，</p>
+<h3 id="向量"><a href="#向量" class="headerlink" title="向量"></a>向量</h3><p>上面说集合是由具有某些特征的标量组成的，e.g  a<sub>11</sub>  a<sub>2</sub> a<sub>3</sub> a<sub>n</sub>那么 （a<sub>1</sub>….a<sub>n</sub>） 就构成了一个维度上的向量。向量不但有大小还有方向，方向代表了它的一个维度，标量只有大小没有方向。</p>
+<p>向量带来了维度的增加，是数据分析转化的最基本元素,通常数据的每一个属性代表着一个维度。每个属性值在多维的空间里都有一个确定的点。</p>
+<h3 id="矩阵"><a href="#矩阵" class="headerlink" title="矩阵"></a>矩阵</h3><p>向量描述了事物属性的维度和大小，那么当一个集合里有多组向量时，就代表着有多个维度和大小的特征向量描述着这个集合，</p>
+<p>e.g: t 时刻下每种油品账户的余额 矩阵</p>
+<script type="math/tex; mode=display">
+ \left\{
+ \begin{matrix}
+   a_{t1柴油} & a_{t1汽油} & a_{t1然气 } \\
+   a_{t2柴油} & a_{t2汽油} & a_{t2然气 } \\
+   a_{t3柴油} & a_{t3汽油} & a_{t3然气 }
+  \end{matrix}
+  \right\}</script><p>数据矩阵表现形式</p>
+<script type="math/tex; mode=display">
+ \left\{
+ \begin{matrix}
+   a_{11} & a_{12} & a_{13} \\
+   a_{21} & a_{22} & a_{23} \\
+   a_{31} & a_{32} & a_{33}
+  \end{matrix}
+  \right\}</script><h3 id="张量"><a href="#张量" class="headerlink" title="张量"></a>张量</h3>
     
 
     
@@ -275,7 +295,7 @@
         </li>
         <li>
           <strong>本文链接：</strong>
-          <a href="https://blog.chuangketime.com/blog/tags/index.html" title="tags" target="_blank">https://blog.chuangketime.com/blog/tags/index.html</a>
+          <a href="https://blog.chuangketime.com/blog/2023/04/01/AI基础理论-线性代数-矩阵/" title="人工智能基础理论-线性空间理论" target="_blank">https://blog.chuangketime.com/blog/2023/04/01/AI基础理论-线性代数-矩阵/</a>
         </li>
         
         <li>
@@ -292,7 +312,41 @@
   <div class="article-info article-info-index">
     
     
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">AI</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
     
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/blog/categories/AI//" class="article-tag-list-link color3">AI</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/blog/categories/AI/基础理论//" class="article-tag-list-link color5">基础理论</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/blog/categories/AI/基础理论/线性代数//" class="article-tag-list-link color5">线性代数</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/blog/categories/AI/基础理论/线性代数/线性空间//" class="article-tag-list-link color5">线性空间</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
     
 
@@ -342,7 +396,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://blog.chuangketime.com/tags/" alt="微信分享二维码"> -->
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://blog.chuangketime.com/2023/04/01/AI%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA-%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-%E7%9F%A9%E9%98%B5/" alt="微信分享二维码"> -->
     </div>
 </div>
 
@@ -354,6 +408,16 @@
   </div>
 </article>
 
+
+<nav id="article-nav">
+  
+  
+    <a href="/blog/2023/03/29/Python%20Django%20%E6%A1%86%E6%9E%B6%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Python Django 框架安装使用</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
 
 <aside class="wrap-side-operation">
@@ -371,6 +435,38 @@
         
     </div>
 </aside>
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+
+<script>
+var gitalk = new Gitalk({
+  clientID: '8dcb5761a840b9223312',
+  clientSecret: 'f4063ecef1c4c8380384c0427c8b157e7cb77829',
+  repo: 'chuangketime-gitalk',
+  owner: 'goodawei',
+  admin: ['goodawei'],
+  id: md5(window.location.pathname),
+  distractionFreeMode: true
+})
+
+gitalk.render('gitalk-container')
+</script>
+  
 
 
 
@@ -420,7 +516,7 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
