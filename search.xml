@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>人工智能的发展历史</title>
-    <url>/blog/2023/03/24/AI%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%8F%91%E5%B1%95%E5%8E%86%E5%8F%B2/</url>
+    <url>/2023/03/24/AI%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%8F%91%E5%B1%95%E5%8E%86%E5%8F%B2/</url>
     <content><![CDATA[<p><img src="https://cdn.chuangketime.com/AI/chatgpt-demo.gif" alt="gpt-demo"></p>
 <p>上面是最近一直比较🔥聊天机器人chatgpt的一个小测试，在人工智能领域这个概念早在1950年就被英国著名计算机科学家图灵提出了，1950年图灵提出了一个概念说机器能不能像人一样思考，并且他还针对自己提出的概念提出了一个测试方法也就是后来被称为的图灵测试，就是说在一个相对隔离的环境下一个人向对面的一台机器提问如果得到的回答他不能区分出到底是人还是机器，或者有30%的概率他相信是一个人的话，就说明这台机器通过了图灵测试，是不是和最近人工智能领域的chartgpt很像呢，但是呢图灵当时还有一个大胆的预测说是在大概2000年左右的时候,人类的人工智能就能达到这种水平，但是呢人工智能的发展也经历了几次低谷，下面我们来看一下人工智能的发展历史。</p>
 <span id="more"></span>
@@ -94,7 +94,7 @@
   </entry>
   <entry>
     <title>人工智能基础理论-数学公式</title>
-    <url>/blog/2022/03/23/AI%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA-%E6%95%B0%E6%8D%AE%E5%85%AC%E5%BC%8F/</url>
+    <url>/2022/03/23/AI%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA-%E6%95%B0%E6%8D%AE%E5%85%AC%E5%BC%8F/</url>
     <content><![CDATA[<h3 id="求和"><a href="#求和" class="headerlink" title="求和"></a>求和</h3><h3 id="方差"><a href="#方差" class="headerlink" title="方差"></a>方差</h3><h3 id="对数"><a href="#对数" class="headerlink" title="对数"></a>对数</h3><h3 id="公式"><a href="#公式" class="headerlink" title="公式"></a>公式</h3><script type="math/tex; mode=display">f(x)=\frac{1}{1+e^{x}}</script><p>$x^p_ {ij}$</p>
 <p>$x_ {ij}$</p>
 ]]></content>
@@ -108,8 +108,22 @@
       </tags>
   </entry>
   <entry>
+    <title>向量点乘与叉乘的几何意义</title>
+    <url>/2023/03/01/AI%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA-%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-%E5%90%91%E9%87%8F%E4%B9%98%E7%A7%AF%E7%9A%84%E6%84%8F%E4%B9%89/</url>
+    <content><![CDATA[<h3 id="向量的点乘-（叉乘）"><a href="#向量的点乘-（叉乘）" class="headerlink" title="向量的点乘 （叉乘）"></a>向量的点乘 （叉乘）</h3>]]></content>
+      <categories>
+        <category>AI</category>
+        <category>基础理论</category>
+        <category>线性代数</category>
+        <category>线性空间</category>
+      </categories>
+      <tags>
+        <tag>AI</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>线性代数-矩阵</title>
-    <url>/blog/2023/04/01/AI%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA-%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-%E7%9F%A9%E9%98%B5/</url>
+    <url>/2023/04/01/AI%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA-%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-%E7%9F%A9%E9%98%B5/</url>
     <content><![CDATA[<h3 id="如何理解-标量、向量、矩阵、张量"><a href="#如何理解-标量、向量、矩阵、张量" class="headerlink" title="如何理解 标量、向量、矩阵、张量"></a>如何理解 标量、向量、矩阵、张量</h3><h4 id="标量"><a href="#标量" class="headerlink" title="标量"></a>标量</h4><p>单一属性值，只有大小，亦称“无向量”。有些物理量，只具有数值大小，而没有方向，部分有正负之分。这些量之间的运算遵循一般的代数法则，称做“标量”。如质量、密度、温度、功、能量、路程、速率、体积、时间、热量、电阻、功率、势能、引力势能、电势能等物理量。无论选取什么坐标系，标量的数值恒保持不变。</p>
 <h4 id="向量"><a href="#向量" class="headerlink" title="向量"></a>向量</h4><p>上面说集合是由具有某些特征的标量组成的，e.g.   a<sub>1</sub>,a<sub>2</sub>,a<sub>3</sub>,a<sub>n</sub>那么 （a<sub>1</sub>….a<sub>n</sub>） 就构成了一个维度上的向量。向量不但有大小还有方向，方向代表了它的一个维度。</p>
 <p>向量带来了维度的增加，是数据分析转化的最基本元素,通常数据的每一个属性代表着一个维度。每个属性值在多维的空间里都有一个确定的点。</p>
@@ -145,22 +159,8 @@
       </tags>
   </entry>
   <entry>
-    <title>向量点乘与叉乘的几何意义</title>
-    <url>/blog/2023/03/01/AI%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA-%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-%E5%90%91%E9%87%8F%E4%B9%98%E7%A7%AF%E7%9A%84%E6%84%8F%E4%B9%89/</url>
-    <content><![CDATA[<h3 id="向量的点乘-（叉乘）"><a href="#向量的点乘-（叉乘）" class="headerlink" title="向量的点乘 （叉乘）"></a>向量的点乘 （叉乘）</h3>]]></content>
-      <categories>
-        <category>AI</category>
-        <category>基础理论</category>
-        <category>线性代数</category>
-        <category>线性空间</category>
-      </categories>
-      <tags>
-        <tag>AI</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Centos环境下安装Rabbitmq步骤</title>
-    <url>/blog/2023/03/23/Centos%20%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85Rabbitmq/</url>
+    <url>/2023/03/23/Centos%20%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85Rabbitmq/</url>
     <content><![CDATA[<h1 id="软件包准备"><a href="#软件包准备" class="headerlink" title="软件包准备"></a>软件包准备</h1><p>1.RabbitMQ版本 和 Erlang 版本兼容性关系</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">https://www.rabbitmq.com/which-erlang.html</span><br></pre></td></tr></table></figure>
 <p>2.官方下载地址</p>
@@ -225,7 +225,7 @@
   </entry>
   <entry>
     <title>OpenResty的一个非常有用的多级缓存库</title>
-    <url>/blog/2023/03/24/Lua-resty-mlcache%E5%BA%93/</url>
+    <url>/2023/03/24/Lua-resty-mlcache%E5%BA%93/</url>
     <content><![CDATA[<p>OpenResty 中有两个缓存的组件：shared dict 缓存和 lru 缓存。前者只能缓存字符串对象，缓存的数据有且只有一份，每一个 worker 都可以进行访问，所以常用于 worker 之间的数据通信,同时还支持对过期的数据进行访问获取。后者则可以缓存所有的 Lua 对象，但只能在单个 worker 进程内访问，有多少个 worker，就会有多少份缓存数据。</p>
 <h4 id="lua-resty-mlcache"><a href="#lua-resty-mlcache" class="headerlink" title="lua-resty-mlcache"></a>lua-resty-mlcache</h4><p>这个库可以作为 key/value存储来处理，也可以缓存Lua类型和表，构建在lua_shared_dict，lua-resty-lrucache上 ，这种组合可以实现高性能和灵活的缓存。</p>
 <span id="more"></span>
@@ -260,7 +260,7 @@
   </entry>
   <entry>
     <title>Python Django 框架安装使用</title>
-    <url>/blog/2023/03/29/Python%20Django%20%E6%A1%86%E6%9E%B6%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/</url>
+    <url>/2023/03/29/Python%20Django%20%E6%A1%86%E6%9E%B6%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<h3 id="准备python环境"><a href="#准备python环境" class="headerlink" title="准备python环境"></a>准备python环境</h3><ol>
 <li>用brew安装</li>
 </ol>
@@ -292,30 +292,8 @@
       </tags>
   </entry>
   <entry>
-    <title>哈希表数据结构</title>
-    <url>/blog/2023/03/23/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%93%88%E5%B8%8C%E8%A1%A8/</url>
-    <content><![CDATA[<blockquote class="blockquote-center">
-    hashtable是由数组和列表两种数据结构组合而成的，这里面有两个重要的知识点需要掌握，一个是如何对哈希表进行动态扩容，第二个如何巧妙的设计一个散列性和性能都非常好的散列函数。
-</blockquote>
-
-<span id="more"></span>
-<p><img src="https://cdn.chuangketime.com/hashtable.png" alt="hashtable"></p>
-<h4 id="数组的动态扩容策略"><a href="#数组的动态扩容策略" class="headerlink" title="数组的动态扩容策略"></a>数组的动态扩容策略</h4><p>已java的 <code>hashmap</code>为例，它的初始长度是16，默认阀值为0.75，当存储长度达到了长度的3/4时，就会触发扩容动作，扩容的长度为2的整数次幂，这是因为2的整数次幂的数据减1转为二进制，低位都是1，在与hashcode随机出来的数转为二进制做与运算，其结果范围一定是0-hashcode之间的范围，不会越界。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">bucketIndex = indexFor(hash, table.length);</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="type">int</span> <span class="title function_">indexFor</span><span class="params">(<span class="type">int</span> h, <span class="type">int</span> length)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> h &amp; (length-<span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="散列函数"><a href="#散列函数" class="headerlink" title="散列函数"></a>散列函数</h4><p>好的散列函数不但要保证计算速度快，还要保证散列性好，避免过多的碰撞，扰动函数的逻辑是将二进制数据右位移16位，正好是32bit的一半，然后自己的高半区和低半区做异或，就是为了混合原始哈希码的高位和低位，以此来加大低位的随机性。而且混合后的低位掺杂了高位的部分特征，这样高位的信息也被变相保留下来。</p>
-<p><img src="https://cdn.chuangketime.com/hashcode.jpg" alt="hashtable"></p>
-]]></content>
-      <categories>
-        <category>数据结构</category>
-        <category>哈希</category>
-      </categories>
-      <tags>
-        <tag>hashtable</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Linux 中内存字节对齐</title>
-    <url>/blog/2023/03/12/%E5%86%85%E5%AD%98%E5%AD%97%E8%8A%82%E5%AF%B9%E9%BD%90/</url>
+    <url>/2023/03/12/%E5%86%85%E5%AD%98%E5%AD%97%E8%8A%82%E5%AF%B9%E9%BD%90/</url>
     <content><![CDATA[<p>:cherries: Linux下默认字节对齐是以int类型变量所占字节数对齐，也就是说会申请被4整除的内存地址写入int类型，所以这就是我们每次看int类型的地址不会看到有奇数的。</p>
 <h4 id="什么叫对齐"><a href="#什么叫对齐" class="headerlink" title="什么叫对齐"></a>什么叫对齐</h4><p>   计算机中内存空间都是按照byte划分的，从理论上讲似乎对任何类型的变量的访问可以从任何地址开始，但实际情况是在访问特定类型变量的时候经常在特 定的内存地址访问，这就需要各种类型数据按照一定的规则在空间上排列，而不是顺序的一个接一个的排放，这就是对齐。 </p>
 <h4 id="为什么要进行对齐"><a href="#为什么要进行对齐" class="headerlink" title="为什么要进行对齐"></a>为什么要进行对齐</h4><span id="more"></span>
@@ -336,32 +314,8 @@
       </tags>
   </entry>
   <entry>
-    <title>数组和链表对比</title>
-    <url>/blog/2023/03/23/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%95%B0%E7%BB%84%E5%92%8C%E9%93%BE%E8%A1%A8/</url>
-    <content><![CDATA[<p>数组的特点是在内存中地址是连续的，所以在随机访问一个数组中的地址的时间复杂度是O(1),寻址公式大概是：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">	</span><br><span class="line"><span class="type">int</span> a[<span class="number">3</span>] = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;;</span><br><span class="line"></span><br><span class="line">a[i]_address = begin_address + i * data_type_size</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> a[<span class="number">3</span>][<span class="number">2</span>] = &#123;&#123;<span class="number">1</span>,<span class="number">2</span>&#125;,&#123;<span class="number">6</span>,<span class="number">7</span>&#125;,&#123;<span class="number">3</span>,<span class="number">5</span>&#125;&#125;;</span><br><span class="line"></span><br><span class="line">address = begin_address + ( i * n + j) * data_type_size</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>数组由于对内存的要求比较苛刻，带来的一个问题就是低效的“插入”和“删除”，在做数据的插入和删除的时候要频繁的进行数据的迁移。对于数组的动态扩容策略的实现可以参考redis的字符串底层实现原理或者java中的arrayList&lt;&gt;.</p>
-<span id="more"></span>
-<p>使用场景注意： 操作的数据不宜过大。</p>
-<p>链表的分类：</p>
-<p>单链表：   后继指针指next向下一个节点的heac（节点包含头部，数据data和指针next）<br>双向链表： 后继指针next指向下一个节点的prev (节点包括前驱指针prev,数据data,后继指针next)<br>循环链表： 尾结点指针指向头节点</p>
-<p>链表就是用指针将节点连接起来，它对内存的要求没有数组那么苛刻，所以链表在“插入”和“删除”的动作上的时间复杂度是O(1),但是由于链表内存不是连续的，所以不能随机访问某个元素，在查找的时候时间复杂度是O(n)。</p>
-<p>单链表的使用经典案例如：LRU缓存淘汰策略 </p>
-<p>双向链表：java中的<code>LinkedHashMap</code>实现，双向链表比单链表会占用更多的内存，但是在查找元素的速度上会比单链表性能更高，因为双向链表的每个节点上既有前驱指针，又有后继指针，当我们知道具体某一个node的时候那么它的前驱和后继指针我们就知道了，所以它在查找过程中可以判断是忘前走还是往后走，体现了用空间换时间的设计思想。</p>
-<p>链表的另一种使用场景经常会配合散列表使用，配合<code>hashtable</code>使用的目的主要是为了解决链表在查询过程中时间复杂度O(N)的问题。做法是将单链表或者双链表中的节点通过hash函数散列到数组的槽(桶)上，用一个新的指针通过拉链的方式将冲突的节点连接上。这样在查找某一个node的时候，时间复杂度是接近O(1)的。</p>
-]]></content>
-      <categories>
-        <category>数据结构</category>
-        <category>哈希</category>
-      </categories>
-      <tags>
-        <tag>Hashtable</tag>
-        <tag>Linklist</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>图</title>
-    <url>/blog/2023/04/03/%E5%9B%BE/</url>
+    <url>/2023/04/03/%E5%9B%BE/</url>
     <content><![CDATA[<h4 id="图的存储形式"><a href="#图的存储形式" class="headerlink" title="图的存储形式"></a>图的存储形式</h4><p>一. 图的2种存储形式: </p>
 <ol>
 <li>邻接矩阵法，底层依赖一个二维数组。每个顶点都有自己的一个独立的行，其他顶点作为自己的列，与自己有关系的，就在当前行所在的列做标记，可以表示有向图、无向图、加权图。</li>
@@ -385,7 +339,7 @@
   </entry>
   <entry>
     <title>堆</title>
-    <url>/blog/2023/04/03/%E5%A0%86/</url>
+    <url>/2023/04/03/%E5%A0%86/</url>
     <content><![CDATA[<p>堆的存储结构可以想象成一个数组，索引i为顶点，2i为左节点，2i+1为右节点，堆是一种特殊的树，首先它是一个完全二叉树，其次每个顶点要么大于等于，要么小于等于其叶子节点。叶子节点均靠左排列。</p>
 <h3 id="堆的应用场景"><a href="#堆的应用场景" class="headerlink" title="堆的应用场景"></a>堆的应用场景</h3><h4 id="top-k-问题"><a href="#top-k-问题" class="headerlink" title="top k 问题"></a>top k 问题</h4><p>堆是维护动态集合最值的利器，需要从业务场景中分析是用大顶堆还是小顶堆， 如top k, 需要维护一个小顶堆，数据到来时，判断是否大于堆顶元素，如果大于将堆顶元素替换堆顶元素，然后重新堆化，从堆顶元素开始堆化，可能会使堆的结构产生空洞，可以采用尾插法，将新来的元素插入堆尾，然后堆尾与堆顶交换重新堆化。</p>
 <h4 id="优先级队列"><a href="#优先级队列" class="headerlink" title="优先级队列"></a>优先级队列</h4><span id="more"></span>
@@ -399,6 +353,52 @@
       </categories>
       <tags>
         <tag>堆</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>哈希表数据结构</title>
+    <url>/2023/03/23/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%93%88%E5%B8%8C%E8%A1%A8/</url>
+    <content><![CDATA[<blockquote class="blockquote-center">
+    hashtable是由数组和列表两种数据结构组合而成的，这里面有两个重要的知识点需要掌握，一个是如何对哈希表进行动态扩容，第二个如何巧妙的设计一个散列性和性能都非常好的散列函数。
+</blockquote>
+
+<span id="more"></span>
+<p><img src="https://cdn.chuangketime.com/hashtable.png" alt="hashtable"></p>
+<h4 id="数组的动态扩容策略"><a href="#数组的动态扩容策略" class="headerlink" title="数组的动态扩容策略"></a>数组的动态扩容策略</h4><p>已java的 <code>hashmap</code>为例，它的初始长度是16，默认阀值为0.75，当存储长度达到了长度的3/4时，就会触发扩容动作，扩容的长度为2的整数次幂，这是因为2的整数次幂的数据减1转为二进制，低位都是1，在与hashcode随机出来的数转为二进制做与运算，其结果范围一定是0-hashcode之间的范围，不会越界。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">bucketIndex = indexFor(hash, table.length);</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="type">int</span> <span class="title function_">indexFor</span><span class="params">(<span class="type">int</span> h, <span class="type">int</span> length)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> h &amp; (length-<span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="散列函数"><a href="#散列函数" class="headerlink" title="散列函数"></a>散列函数</h4><p>好的散列函数不但要保证计算速度快，还要保证散列性好，避免过多的碰撞，扰动函数的逻辑是将二进制数据右位移16位，正好是32bit的一半，然后自己的高半区和低半区做异或，就是为了混合原始哈希码的高位和低位，以此来加大低位的随机性。而且混合后的低位掺杂了高位的部分特征，这样高位的信息也被变相保留下来。</p>
+<p><img src="https://cdn.chuangketime.com/hashcode.jpg" alt="hashtable"></p>
+]]></content>
+      <categories>
+        <category>数据结构</category>
+        <category>哈希</category>
+      </categories>
+      <tags>
+        <tag>hashtable</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数组和链表对比</title>
+    <url>/2023/03/23/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%95%B0%E7%BB%84%E5%92%8C%E9%93%BE%E8%A1%A8/</url>
+    <content><![CDATA[<p>数组的特点是在内存中地址是连续的，所以在随机访问一个数组中的地址的时间复杂度是O(1),寻址公式大概是：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">	</span><br><span class="line"><span class="type">int</span> a[<span class="number">3</span>] = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;;</span><br><span class="line"></span><br><span class="line">a[i]_address = begin_address + i * data_type_size</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> a[<span class="number">3</span>][<span class="number">2</span>] = &#123;&#123;<span class="number">1</span>,<span class="number">2</span>&#125;,&#123;<span class="number">6</span>,<span class="number">7</span>&#125;,&#123;<span class="number">3</span>,<span class="number">5</span>&#125;&#125;;</span><br><span class="line"></span><br><span class="line">address = begin_address + ( i * n + j) * data_type_size</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>数组由于对内存的要求比较苛刻，带来的一个问题就是低效的“插入”和“删除”，在做数据的插入和删除的时候要频繁的进行数据的迁移。对于数组的动态扩容策略的实现可以参考redis的字符串底层实现原理或者java中的arrayList&lt;&gt;.</p>
+<span id="more"></span>
+<p>使用场景注意： 操作的数据不宜过大。</p>
+<p>链表的分类：</p>
+<p>单链表：   后继指针指next向下一个节点的heac（节点包含头部，数据data和指针next）<br>双向链表： 后继指针next指向下一个节点的prev (节点包括前驱指针prev,数据data,后继指针next)<br>循环链表： 尾结点指针指向头节点</p>
+<p>链表就是用指针将节点连接起来，它对内存的要求没有数组那么苛刻，所以链表在“插入”和“删除”的动作上的时间复杂度是O(1),但是由于链表内存不是连续的，所以不能随机访问某个元素，在查找的时候时间复杂度是O(n)。</p>
+<p>单链表的使用经典案例如：LRU缓存淘汰策略 </p>
+<p>双向链表：java中的<code>LinkedHashMap</code>实现，双向链表比单链表会占用更多的内存，但是在查找元素的速度上会比单链表性能更高，因为双向链表的每个节点上既有前驱指针，又有后继指针，当我们知道具体某一个node的时候那么它的前驱和后继指针我们就知道了，所以它在查找过程中可以判断是忘前走还是往后走，体现了用空间换时间的设计思想。</p>
+<p>链表的另一种使用场景经常会配合散列表使用，配合<code>hashtable</code>使用的目的主要是为了解决链表在查询过程中时间复杂度O(N)的问题。做法是将单链表或者双链表中的节点通过hash函数散列到数组的槽(桶)上，用一个新的指针通过拉链的方式将冲突的节点连接上。这样在查找某一个node的时候，时间复杂度是接近O(1)的。</p>
+]]></content>
+      <categories>
+        <category>数据结构</category>
+        <category>哈希</category>
+      </categories>
+      <tags>
+        <tag>Hashtable</tag>
+        <tag>Linklist</tag>
       </tags>
   </entry>
 </search>
