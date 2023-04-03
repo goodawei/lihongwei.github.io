@@ -108,14 +108,14 @@
       </tags>
   </entry>
   <entry>
-    <title>人工智能基础理论-线性代数-矩阵</title>
+    <title>线性代数-矩阵</title>
     <url>/blog/2023/04/01/AI%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA-%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-%E7%9F%A9%E9%98%B5/</url>
-    <content><![CDATA[<h2 id="理解-标量、向量、矩阵、张量"><a href="#理解-标量、向量、矩阵、张量" class="headerlink" title="理解 标量、向量、矩阵、张量"></a>理解 标量、向量、矩阵、张量</h2><h3 id="标量"><a href="#标量" class="headerlink" title="标量"></a>标量</h3><p>万事万物都可以抽象为具有某些特征的组合，这些组合可以理解为是一个集合set,集合是线性代数最基本的一个概念，集合是由具有某些特征的对象汇聚的集体，</p>
-<h3 id="向量"><a href="#向量" class="headerlink" title="向量"></a>向量</h3><p>上面说集合是由具有某些特征的标量组成的，e.g  a<sub>1</sub>  a<sub>2</sub> a<sub>3</sub> a<sub>n</sub>那么 （a<sub>1</sub>….a<sub>n</sub>） 就构成了一个维度上的向量。向量不但有大小还有方向，方向代表了它的一个维度，标量只有大小没有方向。</p>
+    <content><![CDATA[<h3 id="如何理解-标量、向量、矩阵、张量"><a href="#如何理解-标量、向量、矩阵、张量" class="headerlink" title="如何理解 标量、向量、矩阵、张量"></a>如何理解 标量、向量、矩阵、张量</h3><h4 id="标量"><a href="#标量" class="headerlink" title="标量"></a>标量</h4><p>单一属性值，只有大小，亦称“无向量”。有些物理量，只具有数值大小，而没有方向，部分有正负之分。这些量之间的运算遵循一般的代数法则，称做“标量”。如质量、密度、温度、功、能量、路程、速率、体积、时间、热量、电阻、功率、势能、引力势能、电势能等物理量。无论选取什么坐标系，标量的数值恒保持不变。</p>
+<h4 id="向量"><a href="#向量" class="headerlink" title="向量"></a>向量</h4><p>上面说集合是由具有某些特征的标量组成的，e.g.   a<sub>1</sub>,a<sub>2</sub>,a<sub>3</sub>,a<sub>n</sub>那么 （a<sub>1</sub>….a<sub>n</sub>） 就构成了一个维度上的向量。向量不但有大小还有方向，方向代表了它的一个维度。</p>
 <p>向量带来了维度的增加，是数据分析转化的最基本元素,通常数据的每一个属性代表着一个维度。每个属性值在多维的空间里都有一个确定的点。</p>
 <span id="more"></span>
-<h3 id="矩阵"><a href="#矩阵" class="headerlink" title="矩阵"></a>矩阵</h3><p>向量描述了事物属性的维度和大小，那么当一个集合里有多组向量时，就代表着有多个维度和大小的特征向量描述着这个集合，</p>
-<p>e.g: t 时刻下每种油品账户的余额 矩阵</p>
+<h4 id="矩阵"><a href="#矩阵" class="headerlink" title="矩阵"></a>矩阵</h4><p>万事万物都可以抽象为具有某些特征的组合，这些组合的集合形成了矩阵,集合是线性代数最基本的一个概念。</p>
+<p>e.g: t 时刻下每种油品账户的余额矩阵</p>
 <script type="math/tex; mode=display">
  \left\{
  \begin{matrix}
@@ -131,7 +131,8 @@
    a_{21} & a_{22} & a_{23} \\
    a_{31} & a_{32} & a_{33}
   \end{matrix}
-  \right\}</script><h3 id="张量"><a href="#张量" class="headerlink" title="张量"></a>张量</h3>]]></content>
+  \right\}</script><h4 id="张量"><a href="#张量" class="headerlink" title="张量"></a>张量</h4><p>集合是由具有某些特征的对象汇聚的集体，向量描述了事物属性的维度和大小，那么当一个集合里有多组向量时，就代表着有多个维度和大小的特征向量描述着这个集合，每个维度在这个多维空间里都是一个确定的点形成了一个空间的张量。</p>
+]]></content>
       <categories>
         <category>AI</category>
         <category>基础理论</category>
@@ -298,9 +299,9 @@
 
 <span id="more"></span>
 <p><img src="https://cdn.chuangketime.com/hashtable.png" alt="hashtable"></p>
-<h3 id="数组的动态扩容策略"><a href="#数组的动态扩容策略" class="headerlink" title="数组的动态扩容策略"></a>数组的动态扩容策略</h3><p>已java的 <code>hashmap</code>为例，它的初始长度是16，默认阀值为0.75，当存储长度达到了长度的3/4时，就会触发扩容动作，扩容的长度为2的整数次幂，这是因为2的整数次幂的数据减1转为二进制，低位都是1，在与hashcode随机出来的数转为二进制做与运算，其结果范围一定是0-hashcode之间的范围，不会越界。</p>
+<h4 id="数组的动态扩容策略"><a href="#数组的动态扩容策略" class="headerlink" title="数组的动态扩容策略"></a>数组的动态扩容策略</h4><p>已java的 <code>hashmap</code>为例，它的初始长度是16，默认阀值为0.75，当存储长度达到了长度的3/4时，就会触发扩容动作，扩容的长度为2的整数次幂，这是因为2的整数次幂的数据减1转为二进制，低位都是1，在与hashcode随机出来的数转为二进制做与运算，其结果范围一定是0-hashcode之间的范围，不会越界。</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">bucketIndex = indexFor(hash, table.length);</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="type">int</span> <span class="title function_">indexFor</span><span class="params">(<span class="type">int</span> h, <span class="type">int</span> length)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> h &amp; (length-<span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="散列函数"><a href="#散列函数" class="headerlink" title="散列函数"></a>散列函数</h3><p>好的散列函数不但要保证计算速度快，还要保证散列性好，避免过多的碰撞，扰动函数的逻辑是将二进制数据右位移16位，正好是32bit的一半，然后自己的高半区和低半区做异或，就是为了混合原始哈希码的高位和低位，以此来加大低位的随机性。而且混合后的低位掺杂了高位的部分特征，这样高位的信息也被变相保留下来。</p>
+<h4 id="散列函数"><a href="#散列函数" class="headerlink" title="散列函数"></a>散列函数</h4><p>好的散列函数不但要保证计算速度快，还要保证散列性好，避免过多的碰撞，扰动函数的逻辑是将二进制数据右位移16位，正好是32bit的一半，然后自己的高半区和低半区做异或，就是为了混合原始哈希码的高位和低位，以此来加大低位的随机性。而且混合后的低位掺杂了高位的部分特征，这样高位的信息也被变相保留下来。</p>
 <p><img src="https://cdn.chuangketime.com/hashcode.jpg" alt="hashtable"></p>
 ]]></content>
       <categories>
