@@ -6,7 +6,7 @@
   <link href="https://blog.chuangketime.com/atom.xml" rel="self"/>
   
   <link href="https://blog.chuangketime.com/"/>
-  <updated>2023-04-03T01:48:15.242Z</updated>
+  <updated>2023-04-03T09:12:36.194Z</updated>
   <id>https://blog.chuangketime.com/</id>
   
   <author>
@@ -17,13 +17,65 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>图</title>
+    <link href="https://blog.chuangketime.com/2023/04/03/%E5%9B%BE/"/>
+    <id>https://blog.chuangketime.com/2023/04/03/%E5%9B%BE/</id>
+    <published>2023-04-03T09:05:14.000Z</published>
+    <updated>2023-04-03T09:12:36.194Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="图的存储形式"><a href="#图的存储形式" class="headerlink" title="图的存储形式"></a>图的存储形式</h4><p>一. 图的2种存储形式: </p><ol><li>邻接矩阵法，底层依赖一个二维数组。每个顶点都有自己的一个独立的行，其他顶点作为自己的列，与自己有关系的，就在当前行所在的列做标记，可以表示有向图、无向图、加权图。</li></ol><h4 id="图的遍历方式"><a href="#图的遍历方式" class="headerlink" title="图的遍历方式"></a>图的遍历方式</h4><span id="more"></span><p>二. 广度优先： 3个变量的使用逻辑</p><ul><li>queue: 里面的顶点代表已经访问的顶点，但是相邻顶点还没有访问，出队列后，代表相邻顶点访问，但是相邻的相邻还没有访问，依次类推。</li><li>visted: </li><li>line:</li></ul><p>三. 深度优先</p>]]></content>
+    
+    
+    <summary type="html">&lt;h4 id=&quot;图的存储形式&quot;&gt;&lt;a href=&quot;#图的存储形式&quot; class=&quot;headerlink&quot; title=&quot;图的存储形式&quot;&gt;&lt;/a&gt;图的存储形式&lt;/h4&gt;&lt;p&gt;一. 图的2种存储形式: &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;邻接矩阵法，底层依赖一个二维数组。每个顶点都有自己的一个独立的行，其他顶点作为自己的列，与自己有关系的，就在当前行所在的列做标记，可以表示有向图、无向图、加权图。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&quot;图的遍历方式&quot;&gt;&lt;a href=&quot;#图的遍历方式&quot; class=&quot;headerlink&quot; title=&quot;图的遍历方式&quot;&gt;&lt;/a&gt;图的遍历方式&lt;/h4&gt;</summary>
+    
+    
+    
+    <category term="数据结构" scheme="https://blog.chuangketime.com/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    <category term="图" scheme="https://blog.chuangketime.com/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%9B%BE/"/>
+    
+    
+    <category term="图" scheme="https://blog.chuangketime.com/tags/%E5%9B%BE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>堆</title>
+    <link href="https://blog.chuangketime.com/2023/04/03/%E5%A0%86/"/>
+    <id>https://blog.chuangketime.com/2023/04/03/%E5%A0%86/</id>
+    <published>2023-04-03T08:51:03.000Z</published>
+    <updated>2023-04-03T09:12:46.130Z</updated>
+    
+    <content type="html"><![CDATA[<p>堆的存储结构可以想象成一个数组，索引i为顶点，2i为左节点，2i+1为右节点，堆是一种特殊的树，首先它是一个完全二叉树，其次每个顶点要么大于等于，要么小于等于其叶子节点。叶子节点均靠左排列。</p><h3 id="堆的应用场景"><a href="#堆的应用场景" class="headerlink" title="堆的应用场景"></a>堆的应用场景</h3><h4 id="top-k-问题"><a href="#top-k-问题" class="headerlink" title="top k 问题"></a>top k 问题</h4><p>堆是维护动态集合最值的利器，需要从业务场景中分析是用大顶堆还是小顶堆， 如top k, 需要维护一个小顶堆，数据到来时，判断是否大于堆顶元素，如果大于将堆顶元素替换堆顶元素，然后重新堆化，从堆顶元素开始堆化，可能会使堆的结构产生空洞，可以采用尾插法，将新来的元素插入堆尾，然后堆尾与堆顶交换重新堆化。</p><h4 id="优先级队列"><a href="#优先级队列" class="headerlink" title="优先级队列"></a>优先级队列</h4><span id="more"></span><p>维护一个大顶堆，每次从堆顶弹出队列，在重新堆化。 优先级队列的使用场景学习是重点</p><h4 id="中位数"><a href="#中位数" class="headerlink" title="中位数"></a>中位数</h4><p>将数组数据一分二，前半部分较小的数据建立大顶堆， 后半部分交大数据建小顶堆，始终保持大顶堆的数据 大于等于小顶堆的数据，当数据个数为奇数时大顶堆的堆顶就是中位数，当为偶数时小顶堆的堆顶为中位数。</p><h4 id="堆排"><a href="#堆排" class="headerlink" title="堆排"></a>堆排</h4><p>如何在原数组中建堆。<br>堆排的过程就是不断的将堆顶与堆尾元素交换（可以理解为弹出），然后在将    剩下的数据重新堆化，在重复交换动作。</p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;堆的存储结构可以想象成一个数组，索引i为顶点，2i为左节点，2i+1为右节点，堆是一种特殊的树，首先它是一个完全二叉树，其次每个顶点要么大于等于，要么小于等于其叶子节点。叶子节点均靠左排列。&lt;/p&gt;
+&lt;h3 id=&quot;堆的应用场景&quot;&gt;&lt;a href=&quot;#堆的应用场景&quot; class=&quot;headerlink&quot; title=&quot;堆的应用场景&quot;&gt;&lt;/a&gt;堆的应用场景&lt;/h3&gt;&lt;h4 id=&quot;top-k-问题&quot;&gt;&lt;a href=&quot;#top-k-问题&quot; class=&quot;headerlink&quot; title=&quot;top k 问题&quot;&gt;&lt;/a&gt;top k 问题&lt;/h4&gt;&lt;p&gt;堆是维护动态集合最值的利器，需要从业务场景中分析是用大顶堆还是小顶堆， 如top k, 需要维护一个小顶堆，数据到来时，判断是否大于堆顶元素，如果大于将堆顶元素替换堆顶元素，然后重新堆化，从堆顶元素开始堆化，可能会使堆的结构产生空洞，可以采用尾插法，将新来的元素插入堆尾，然后堆尾与堆顶交换重新堆化。&lt;/p&gt;
+&lt;h4 id=&quot;优先级队列&quot;&gt;&lt;a href=&quot;#优先级队列&quot; class=&quot;headerlink&quot; title=&quot;优先级队列&quot;&gt;&lt;/a&gt;优先级队列&lt;/h4&gt;</summary>
+    
+    
+    
+    <category term="数据结构" scheme="https://blog.chuangketime.com/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    <category term="堆" scheme="https://blog.chuangketime.com/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%A0%86/"/>
+    
+    
+    <category term="堆" scheme="https://blog.chuangketime.com/tags/%E5%A0%86/"/>
+    
+  </entry>
+  
+  <entry>
     <title>线性代数-矩阵</title>
     <link href="https://blog.chuangketime.com/2023/04/01/AI%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA-%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-%E7%9F%A9%E9%98%B5/"/>
     <id>https://blog.chuangketime.com/2023/04/01/AI%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA-%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-%E7%9F%A9%E9%98%B5/</id>
     <published>2023-04-01T00:44:37.000Z</published>
-    <updated>2023-04-03T01:48:15.242Z</updated>
+    <updated>2023-04-03T07:53:52.723Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="如何理解-标量、向量、矩阵、张量"><a href="#如何理解-标量、向量、矩阵、张量" class="headerlink" title="如何理解 标量、向量、矩阵、张量"></a>如何理解 标量、向量、矩阵、张量</h3><h4 id="标量"><a href="#标量" class="headerlink" title="标量"></a>标量</h4><p>单一属性值，只有大小，亦称“无向量”。有些物理量，只具有数值大小，而没有方向，部分有正负之分。这些量之间的运算遵循一般的代数法则，称做“标量”。如质量、密度、温度、功、能量、路程、速率、体积、时间、热量、电阻、功率、势能、引力势能、电势能等物理量。无论选取什么坐标系，标量的数值恒保持不变。</p><h4 id="向量"><a href="#向量" class="headerlink" title="向量"></a>向量</h4><p>上面说集合是由具有某些特征的标量组成的，e.g.   a<sub>1</sub>,a<sub>2</sub>,a<sub>3</sub>,a<sub>n</sub>那么 （a<sub>1</sub>….a<sub>n</sub>） 就构成了一个维度上的向量。向量不但有大小还有方向，方向代表了它的一个维度。</p><p>向量带来了维度的增加，是数据分析转化的最基本元素,通常数据的每一个属性代表着一个维度。每个属性值在多维的空间里都有一个确定的点。</p><span id="more"></span><h4 id="矩阵"><a href="#矩阵" class="headerlink" title="矩阵"></a>矩阵</h4><p>万事万物都可以抽象为具有某些特征的组合，这些组合的集合形成了矩阵,集合是线性代数最基本的一个概念。</p><p>e.g: t 时刻下每种油品账户的余额矩阵</p><script type="math/tex; mode=display"> \left\{ \begin{matrix}   a_{t1柴油} & a_{t1汽油} & a_{t1然气 } \\   a_{t2柴油} & a_{t2汽油} & a_{t2然气 } \\   a_{t3柴油} & a_{t3汽油} & a_{t3然气 }  \end{matrix}  \right\}</script><p>数据矩阵表现形式</p><script type="math/tex; mode=display"> \left\{ \begin{matrix}   a_{11} & a_{12} & a_{13} \\   a_{21} & a_{22} & a_{23} \\   a_{31} & a_{32} & a_{33}  \end{matrix}  \right\}</script><h4 id="张量"><a href="#张量" class="headerlink" title="张量"></a>张量</h4><p>集合是由具有某些特征的对象汇聚的集体，向量描述了事物属性的维度和大小，那么当一个集合里有多组向量时，就代表着有多个维度和大小的特征向量描述着这个集合，每个维度在这个多维空间里都是一个确定的点形成了一个空间的张量。</p>]]></content>
+    <content type="html"><![CDATA[<h3 id="如何理解-标量、向量、矩阵、张量"><a href="#如何理解-标量、向量、矩阵、张量" class="headerlink" title="如何理解 标量、向量、矩阵、张量"></a>如何理解 标量、向量、矩阵、张量</h3><h4 id="标量"><a href="#标量" class="headerlink" title="标量"></a>标量</h4><p>单一属性值，只有大小，亦称“无向量”。有些物理量，只具有数值大小，而没有方向，部分有正负之分。这些量之间的运算遵循一般的代数法则，称做“标量”。如质量、密度、温度、功、能量、路程、速率、体积、时间、热量、电阻、功率、势能、引力势能、电势能等物理量。无论选取什么坐标系，标量的数值恒保持不变。</p><h4 id="向量"><a href="#向量" class="headerlink" title="向量"></a>向量</h4><p>上面说集合是由具有某些特征的标量组成的，e.g.   a<sub>1</sub>,a<sub>2</sub>,a<sub>3</sub>,a<sub>n</sub>那么 （a<sub>1</sub>….a<sub>n</sub>） 就构成了一个维度上的向量。向量不但有大小还有方向，方向代表了它的一个维度。</p><p>向量带来了维度的增加，是数据分析转化的最基本元素,通常数据的每一个属性代表着一个维度。每个属性值在多维的空间里都有一个确定的点。</p><span id="more"></span><h4 id="矩阵"><a href="#矩阵" class="headerlink" title="矩阵"></a>矩阵</h4><p>万事万物都可以抽象为具有某些特征的组合，这些组合的集合形成了矩阵,集合是线性代数最基本的一个概念。</p><p>e.g: t 时刻下每种油品账户的余额矩阵</p><script type="math/tex; mode=display"> \left\{ \begin{matrix}   a_{t1柴油} & a_{t1汽油} & a_{t1然气 } \\   a_{t2柴油} & a_{t2汽油} & a_{t2然气 } \\   a_{t3柴油} & a_{t3汽油} & a_{t3然气 } \\   a_{tn柴油} & a_{tn汽油} & a_{tn然气 }  \end{matrix}  \right\}</script><p>数据矩阵表现形式</p><script type="math/tex; mode=display"> \left\{ \begin{matrix}   a_{11} & a_{12} & a_{13} \\   a_{21} & a_{22} & a_{23} \\   a_{31} & a_{32} & a_{33}  \end{matrix}  \right\}</script><h4 id="张量"><a href="#张量" class="headerlink" title="张量"></a>张量</h4><p>集合是由具有某些特征的对象汇聚的集体，向量描述了事物属性的维度和大小，那么当一个集合里有多组向量时，就代表着有多个维度和大小的特征向量描述着这个集合，每个维度在这个多维空间里都是一个确定的点形成了一个空间的张量。</p>]]></content>
     
     
     <summary type="html">&lt;h3 id=&quot;如何理解-标量、向量、矩阵、张量&quot;&gt;&lt;a href=&quot;#如何理解-标量、向量、矩阵、张量&quot; class=&quot;headerlink&quot; title=&quot;如何理解 标量、向量、矩阵、张量&quot;&gt;&lt;/a&gt;如何理解 标量、向量、矩阵、张量&lt;/h3&gt;&lt;h4 id=&quot;标量&quot;&gt;&lt;a href=&quot;#标量&quot; class=&quot;headerlink&quot; title=&quot;标量&quot;&gt;&lt;/a&gt;标量&lt;/h4&gt;&lt;p&gt;单一属性值，只有大小，亦称“无向量”。有些物理量，只具有数值大小，而没有方向，部分有正负之分。这些量之间的运算遵循一般的代数法则，称做“标量”。如质量、密度、温度、功、能量、路程、速率、体积、时间、热量、电阻、功率、势能、引力势能、电势能等物理量。无论选取什么坐标系，标量的数值恒保持不变。&lt;/p&gt;

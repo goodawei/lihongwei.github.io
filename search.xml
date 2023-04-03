@@ -121,7 +121,8 @@
  \begin{matrix}
    a_{t1柴油} & a_{t1汽油} & a_{t1然气 } \\
    a_{t2柴油} & a_{t2汽油} & a_{t2然气 } \\
-   a_{t3柴油} & a_{t3汽油} & a_{t3然气 }
+   a_{t3柴油} & a_{t3汽油} & a_{t3然气 } \\
+   a_{tn柴油} & a_{tn汽油} & a_{tn然气 }
   \end{matrix}
   \right\}</script><p>数据矩阵表现形式</p>
 <script type="math/tex; mode=display">
@@ -356,6 +357,48 @@
       <tags>
         <tag>Hashtable</tag>
         <tag>Linklist</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>图</title>
+    <url>/blog/2023/04/03/%E5%9B%BE/</url>
+    <content><![CDATA[<h4 id="图的存储形式"><a href="#图的存储形式" class="headerlink" title="图的存储形式"></a>图的存储形式</h4><p>一. 图的2种存储形式: </p>
+<ol>
+<li>邻接矩阵法，底层依赖一个二维数组。每个顶点都有自己的一个独立的行，其他顶点作为自己的列，与自己有关系的，就在当前行所在的列做标记，可以表示有向图、无向图、加权图。</li>
+</ol>
+<h4 id="图的遍历方式"><a href="#图的遍历方式" class="headerlink" title="图的遍历方式"></a>图的遍历方式</h4><span id="more"></span>
+<p>二. 广度优先： 3个变量的使用逻辑</p>
+<ul>
+<li>queue: 里面的顶点代表已经访问的顶点，但是相邻顶点还没有访问，出队列后，代表相邻顶点访问，但是相邻的相邻还没有访问，依次类推。</li>
+<li>visted: </li>
+<li>line:</li>
+</ul>
+<p>三. 深度优先</p>
+]]></content>
+      <categories>
+        <category>数据结构</category>
+        <category>图</category>
+      </categories>
+      <tags>
+        <tag>图</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>堆</title>
+    <url>/blog/2023/04/03/%E5%A0%86/</url>
+    <content><![CDATA[<p>堆的存储结构可以想象成一个数组，索引i为顶点，2i为左节点，2i+1为右节点，堆是一种特殊的树，首先它是一个完全二叉树，其次每个顶点要么大于等于，要么小于等于其叶子节点。叶子节点均靠左排列。</p>
+<h3 id="堆的应用场景"><a href="#堆的应用场景" class="headerlink" title="堆的应用场景"></a>堆的应用场景</h3><h4 id="top-k-问题"><a href="#top-k-问题" class="headerlink" title="top k 问题"></a>top k 问题</h4><p>堆是维护动态集合最值的利器，需要从业务场景中分析是用大顶堆还是小顶堆， 如top k, 需要维护一个小顶堆，数据到来时，判断是否大于堆顶元素，如果大于将堆顶元素替换堆顶元素，然后重新堆化，从堆顶元素开始堆化，可能会使堆的结构产生空洞，可以采用尾插法，将新来的元素插入堆尾，然后堆尾与堆顶交换重新堆化。</p>
+<h4 id="优先级队列"><a href="#优先级队列" class="headerlink" title="优先级队列"></a>优先级队列</h4><span id="more"></span>
+<p>维护一个大顶堆，每次从堆顶弹出队列，在重新堆化。 优先级队列的使用场景学习是重点</p>
+<h4 id="中位数"><a href="#中位数" class="headerlink" title="中位数"></a>中位数</h4><p>将数组数据一分二，前半部分较小的数据建立大顶堆， 后半部分交大数据建小顶堆，始终保持大顶堆的数据 大于等于小顶堆的数据，当数据个数为奇数时大顶堆的堆顶就是中位数，当为偶数时小顶堆的堆顶为中位数。</p>
+<h4 id="堆排"><a href="#堆排" class="headerlink" title="堆排"></a>堆排</h4><p>如何在原数组中建堆。<br>堆排的过程就是不断的将堆顶与堆尾元素交换（可以理解为弹出），然后在将    剩下的数据重新堆化，在重复交换动作。</p>
+]]></content>
+      <categories>
+        <category>数据结构</category>
+        <category>堆</category>
+      </categories>
+      <tags>
+        <tag>堆</tag>
       </tags>
   </entry>
 </search>
